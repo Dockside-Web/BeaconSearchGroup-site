@@ -4,10 +4,10 @@ import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
   //UPDATE THIS FOR EVERY NEW CLIENT
-  site: "https://YOURDOMAIN.com",
+  site: "https://beaconsearchgroup.com",
   output: "static",
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss()]
   },
-  integrations: [sitemap()],
+  integrations: [sitemap()]
 });

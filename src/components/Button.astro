@@ -1,47 +1,60 @@
 ---
+// Button.astro
+// Polymorphic button: renders <a> when `href` is passed, otherwise <button>.
+// Ported from the original React Button component (variant/size logic preserved).
+
+type Variant = 'primary' | 'secondary' | 'outline' | 'outlineLight' | 'ghost'
+type Size = 'md' | 'lg'
+
 interface Props {
-    href: string;
-    variant?: "primary" | "secondary" | "secondaryLight";
-    size?: "sm" | "md" | "lg";
-    class?: string;
+  href?: string
+  variant?: Variant
+  size?: Size
+  type?: 'button' | 'submit' | 'reset'
+  class?: string
+  ariaLabel?: string
 }
 
 const {
-    href,
-    variant = "primary",
-    size = "md",
-    class: className
-} = Astro.props;
+  href,
+  variant = 'primary',
+  size = 'md',
+  type = 'button',
+  class: className = '',
+  ariaLabel,
+} = Astro.props
 
-// Base styles for all buttons
-const baseStyles =
-    "inline-flex items-center justify-center rounded-md font-bold uppercase tracking-widest transition-all active:scale-95";
+const base =
+  'inline-flex items-center justify-center gap-2 font-sans font-semibold rounded-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-primary disabled:opacity-60 disabled:cursor-not-allowed'
 
-// Variant styles
-const variants = {
-    primary:
-        "bg-brand-primary text-brand-secondary hover:brightness-85 shadow-md hover:shadow-xl hover:-translate-y-0.5",
-    secondary:
-        "border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white",
-    secondaryLight:
-        "border-2 border-white text-white hover:bg-brand-secondary hover:border-brand-secondary"
-};
+// NOTE: brand-secondary-dark / brand-primary-dark aren't defined in the tokens
+// you shared, so hover states use opacity (/90) instead. Swap back to the
+// -dark tokens here if they exist in your tailwind.config.js.
+const variants: Record<Variant, string> = {
+  primary: 'bg-brand-secondary text-white hover:bg-brand-secondary/90 shadow-sm',
+  secondary: 'bg-brand-primary text-white hover:bg-brand-primary/90 shadow-sm',
+  outline:
+    'border border-brand-accent/25 text-brand-accent hover:border-brand-primary hover:text-brand-primary bg-white',
+  outlineLight: 'border border-white/35 text-white hover:bg-white/10',
+  ghost: 'text-brand-accent hover:text-brand-primary',
+}
 
-// Size styles
-const sizes = {
-    sm: "px-6 py-2.5 text-xs",
-    md: "px-10 py-4 text-sm",
-    lg: "px-14 py-5 text-base"
-};
+const sizes: Record<Size, string> = {
+  md: 'px-5 py-2.5 text-sm',
+  lg: 'px-7 py-3.5 text-[15px]',
+}
 
-const combinedClasses = [
-    baseStyles,
-    variants[variant],
-    sizes[size],
-    className
-].join(" ");
+const classes = [base, variants[variant], sizes[size], className].filter(Boolean).join(' ')
 ---
 
-<a href={href} class={combinedClasses}>
-    <slot />
-</a>
+{
+  href ? (
+    <a href={href} class={classes} aria-label={ariaLabel}>
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class={classes} aria-label={ariaLabel}>
+      <slot />
+    </button>
+  )
+}

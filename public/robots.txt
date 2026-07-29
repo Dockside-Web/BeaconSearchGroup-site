@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://URL.com/sitemap-index.xml
+Sitemap: https://beaconsearchgroup.com/sitemap-index.xml

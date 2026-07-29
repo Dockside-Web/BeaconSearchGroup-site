@@ -1,0 +1,283 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CTA from '../components/CTA.astro';
+import PageHero from '../components/PageHero.astro';
+
+const services = [
+  {
+    slug: 'executive-recruitment',
+    name: 'Executive Recruitment / Retained Search',
+    tagline: 'Confidential, dedicated search for leadership-level hiring.',
+    whatItIs:
+      'An exclusive search partnership for executive and leadership-level roles. Through an upfront engagement, you get dedicated recruiting resources, a customized search strategy, targeted market outreach, and access to highly qualified passive candidates — with a 98% search success rate and a confidential, white-glove process from first call to start date.',
+    bestFor: [
+      'C-suite, VP, and director-level leadership hires',
+      'Confidential replacements where discretion is essential',
+      'Roles where the right person is not actively job-hunting',
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
+    imageAlt: 'Two executives in a private boardroom discussion',
+  },
+  {
+    slug: 'direct-hire',
+    name: 'Direct Hire Placement',
+    tagline: 'Permanent placement, sourced and vetted end to end.',
+    whatItIs:
+      'Permanent placement services focused on identifying and securing top talent for critical roles. We manage the full recruitment process — sourcing, screening, and offer acceptance — with fees based on a percentage of the candidate\u2019s first-year salary and payable only upon a successful hire.',
+    bestFor: [
+      'Engineering, quality, EHS, supply chain, HR, and operations roles',
+      'Companies replacing a key contributor or adding headcount',
+      'Hard-to-fill roles where posting a job has not worked',
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
+    imageAlt: 'A hiring manager welcoming a newly placed employee in an industrial office',
+  },
+  {
+    slug: 'contract-staffing',
+    name: 'Contract Staffing',
+    tagline: 'Flexible technical talent for project work and coverage gaps.',
+    whatItIs:
+      'Experienced professionals on our payroll, ready to support project demands, seasonal workloads, workforce gaps, or interim leadership needs. Contract employees can convert to direct hires when your business needs evolve — with all compliance, insurance, and onboarding handled on our end.',
+    bestFor: [
+      'Launches, shutdowns, capital projects, and seasonal ramps',
+      'Leave coverage and interim technical leadership',
+      'Teams that want to work with someone before committing',
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
+    imageAlt: 'Contract technicians working on a capital project inside a manufacturing plant',
+  },
+  {
+    slug: 'rpo',
+    name: 'Recruitment Process Outsourcing (RPO)',
+    tagline: 'Your recruiting team, scaled up without adding headcount.',
+    whatItIs:
+      'An embedded recruiting partnership for organizations with sustained or high-volume hiring needs. We plug into your process as an extension of your internal team, running requisitions end to end under your employer brand — so your hiring managers see consistent quality without carrying the full recruiting load internally.',
+    bestFor: [
+      'Sustained hiring volume that has outgrown your internal team\u2019s capacity',
+      'Organizations that want recruiting handled under their own employer brand',
+      'Companies scaling headcount quickly across multiple roles or sites',
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
+    imageAlt: 'A consultant leading a hiring process working session with an operations team',
+  },
+  {
+    slug: 'greenfield-brownfield',
+    name: 'Greenfield & Brownfield Recruitment',
+    tagline: 'Project-based recruiting for facility launches and expansions.',
+    whatItIs:
+      'Specialized project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth. We help you rapidly build high-performing teams while meeting aggressive hiring timelines and operational goals — from the first hire on the ground to full staffing.',
+    bestFor: [
+      'New facility launches and plant startups',
+      'Acquisitions and large-scale workforce growth initiatives',
+      'Expansions with aggressive, fixed hiring timelines',
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
+    imageAlt: 'Warehouse operations team managing inventory in a large distribution facility',
+  },
+  {
+    slug: 'recruiter-for-hire',
+    name: 'Recruiter for Hire',
+    tagline: 'Hourly recruiting support, without a placement-fee commitment.',
+    whatItIs:
+      'A flexible recruiting model that provides hourly support for sourcing, screening, interviewing, and hiring assistance. It gives you expert recruiting resources without the commitment of a traditional placement-fee structure — ideal for targeted hiring projects and ongoing recruitment support.',
+    bestFor: [
+      'Internal teams that need extra recruiting hands, not another agency fee',
+      'Targeted hiring projects with a defined scope',
+      'Ongoing support that flexes up or down with demand',
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
+    imageAlt: 'Automated production line inside a modern manufacturing plant',
+  },
+]
+
+const pageTitle = "Services";
+const metaDescription = "DESCRIPTION";
+---
+
+<Layout title={pageTitle} description={metaDescription}>
+    <PageHero
+        eyebrow="Our Services"
+        title="Six engagements. One standard of work."
+        intro="Retained search, direct hire, contract staffing, RPO, project-based recruiting, and recruiter-for-hire — matched to the problem you actually have, whether that's one executive hire or an entire plant to staff."
+        image="https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg"
+        imageAlt="Automated production line inside a modern manufacturing plant"
+        >
+        <div class="flex flex-wrap gap-3">
+            <a
+            href="/contact"
+            class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark"
+            >
+            Talk to Us About Hiring
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+            </svg>
+            </a>
+            <a
+            href="/careers"
+            class="inline-flex items-center gap-2 border border-white/40 px-6 py-3 font-sans text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+            >
+            I'm looking for a role
+            </a>
+        </div>
+    </PageHero>
+
+    
+    <!-- ============ Any size, any volume ============ -->
+    <section class="bg-brand-primary-soft/40 py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+            <div>
+                <h2 class="font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
+                Any size. Any volume.
+                </h2>
+                <p class="mt-5 font-sans text-base leading-relaxed text-brand-accent/70">
+                A twelve-person job shop hiring its first quality engineer gets the same senior
+                recruiter as a Fortune 500 operation staffing a new plant. We scale the process, not
+                the level of attention — and we'll tell you honestly if a search is outside what we
+                do well.
+                </p>
+            </div>
+    </div>
+    </section>
+    
+    <!-- ============ Services ============ -->
+    {
+    services.map((service, index) => {
+        const imageOnLeft = index % 2 === 1
+        return (
+        <section
+            id={service.slug}
+            class={`scroll-mt-24 py-20 sm:py-24 ${index % 2 === 0 ? 'bg-white' : 'bg-brand-primary-soft/40'}`}
+        >
+            <div class="mx-auto max-w-6xl px-6">
+            <div class="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+                {/* Text column */}
+                <div class={imageOnLeft ? 'order-2 lg:order-2' : 'order-2 lg:order-1'}>
+                <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
+                    {`0${index + 1} — Service`}
+                </p>
+                <h2 class="mt-4 font-serif text-3xl font-bold leading-tight tracking-tight text-brand-accent sm:text-4xl">
+                    {service.name}
+                </h2>
+                <p class="mt-3 font-serif text-lg italic text-brand-primary-dark">
+                    {service.tagline}
+                </p>
+                <p class="mt-6 max-w-xl font-sans text-base leading-relaxed text-brand-accent/75">
+                    {service.whatItIs}
+                </p>
+    
+                <h3 class="mt-9 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
+                    Best for
+                </h3>
+                <ul class="mt-4 space-y-3">
+                    {service.bestFor.map((item) => (
+                    <li class="flex gap-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-0.5 h-4 w-4 shrink-0 text-brand-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 6 9 17l-5-5" />
+                        </svg>
+                        <span class="font-sans text-[15px] leading-relaxed text-brand-accent/80">
+                        {item}
+                        </span>
+                    </li>
+                    ))}
+                </ul>
+                </div>
+    
+                {/* Image + how-it-works column */}
+                <div class={`space-y-6 order-1 ${imageOnLeft ? 'lg:order-1' : 'lg:order-2'}`}>
+                <div class="relative overflow-hidden">
+                    <img
+                    src={service.image}
+                    alt={service.imageAlt}
+                    class="aspect-[3/2] w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                    />
+                    <span aria-hidden="true" class="absolute bottom-0 left-0 h-1.5 w-24 bg-brand-secondary"></span>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+        )
+    })
+    }
+    
+    <!-- ============ Process ============ -->
+    <section class="bg-white py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+        <div class="mx-auto max-w-2xl text-center">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
+            What To Expect
+        </p>
+        <h2 class="mt-4 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
+            A search that stays transparent from intake to start date
+        </h2>
+        <p class="mt-5 font-sans text-base leading-relaxed text-brand-accent/70">
+            No black boxes, no resume spam, and no silence between submittals. You'll always know
+            where the search stands and why.
+        </p>
+        </div>
+    
+        <ol class="mt-12 grid gap-px overflow-hidden rounded-sm bg-brand-accent/10 md:grid-cols-4">
+        {
+            [
+            {
+                title: 'Intake',
+                body: 'A real conversation about the role, the team, and the market reality of filling it.',
+            },
+            {
+                title: 'Search',
+                body: 'Targeted outreach to people already doing the work — most of them are not applying anywhere.',
+            },
+            {
+                title: 'Short list',
+                body: 'A small slate with written assessments. Quality over volume, every time.',
+            },
+            {
+                title: 'Close',
+                body: 'Offer guidance, counteroffer coaching, and follow-through past the start date.',
+            },
+            ].map((step, index) => (
+            <li class="bg-white p-7">
+                <span class="font-serif text-3xl font-bold text-brand-primary">{`0${index + 1}`}</span>
+                <h3 class="mt-3 font-serif text-xl font-bold text-brand-accent">{step.title}</h3>
+                <p class="mt-2 font-sans text-sm leading-relaxed text-brand-accent/65">{step.body}</p>
+            </li>
+            ))
+        }
+        </ol>
+    </div>
+    </section>
+
+    <CTA />
+</Layout>
+
+
+<script>
+  // Simple scroll-reveal for the service sections — optional, remove if
+  // your project already has a global reveal system (e.g. Dockside's
+  // reveal-left/reveal-right IntersectionObserver setup).
+  const revealTargets = document.querySelectorAll('section[id]')
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('opacity-100', 'translate-y-0')
+          entry.target.classList.remove('opacity-0', 'translate-y-4')
+          observer.unobserve(entry.target)
+        }
+      })
+    },
+    { threshold: 0.1 }
+  )
+  revealTargets.forEach((el) => {
+    el.classList.add('transition', 'duration-700', 'opacity-0', 'translate-y-4')
+    observer.observe(el)
+  })
+</script>

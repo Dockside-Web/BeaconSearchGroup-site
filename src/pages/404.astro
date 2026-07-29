@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import CTASection from "../components/CTA.astro";
 
 const pageTitle = "Page Not Found";
 const metaDescription = "This page doesn't exist.";
@@ -8,8 +9,29 @@ const metaDescription = "This page doesn't exist.";
 
 <Layout title={pageTitle} description={metaDescription}>
   <PageHero
-    title="404 Error"
-    subtitle="This page doesn't exist."
-    tagline="ERROR"
-  />
+        eyebrow="ERROR"
+        title="Page Not Found"
+        intro="The page you are looking for does not exist. You may have mistyped the URL or the page may have been moved."
+        image="https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg"
+        imageAlt="Automated production line inside a modern manufacturing plant"
+        >
+        <div class="flex flex-wrap gap-3">
+            <a
+            href="/contact"
+            class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark"
+            >
+            Talk to Us About Hiring
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
+            </svg>
+            </a>
+            <a
+            href="/careers"
+            class="inline-flex items-center gap-2 border border-white/40 px-6 py-3 font-sans text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+            >
+            I'm looking for a role
+            </a>
+        </div>
+    </PageHero>
+
 </Layout>

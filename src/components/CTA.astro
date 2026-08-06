@@ -1,15 +1,5 @@
 ---
 import Button from './Button.astro';
-
-interface Props {
-  title?: string;
-  intro?: string;
-}
-
-const {
-  title = 'Tell us what you need to hire.',
-  intro = 'One conversation is usually enough for us to tell you whether we can help, what the market looks like, and what it will realistically take to fill the role.',
-} = Astro.props;
 ---
 
 <section
@@ -35,13 +25,15 @@ const {
         id="cta-heading"
         class="mt-5 font-serif text-3xl font-bold leading-tight tracking-tight sm:text-4xl"
       >
-        {title}
+        Ready to take the next step?
       </h2>
-      <p class="mt-4 font-sans text-base leading-relaxed text-white/70">{intro}</p>
+      <p class="mt-4 font-sans text-base leading-relaxed text-white/70">
+        Whether you are building a team or searching for your next career move, one conversation is all it takes to explore the possibilities.
+      </p>
     </div>
     <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row md:flex-col lg:flex-row">
       <Button href="/contact" variant="primary" size="lg">
-        Start a Search
+        Looking to Hire?
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
         </svg>
@@ -50,7 +42,7 @@ const {
         <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
         </svg>
-        Browse Open Roles
+        Looking for a job?
       </Button>
     </div>
   </div>

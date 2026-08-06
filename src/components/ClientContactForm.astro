@@ -1,0 +1,204 @@
+---
+import Button from './Button.astro'
+
+const formAction = 'https://usebasin.com/f/6e42e968a35e'
+---
+
+<div class="relative">
+  <!-- Active Form -->
+  <div id="cf-form-wrap">
+    <form
+      id="candidate-form"
+      action={formAction}
+      method="POST"
+      enctype="multipart/form-data"
+      class="flex flex-col gap-5"
+    >
+      <input type="hidden" name="_subject" value="New Candidate Profile Submission" />
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="cf-name" class="block font-sans text-sm font-medium text-brand-accent">
+            Full Name <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            id="cf-name"
+            name="name"
+            type="text"
+            required
+            autocomplete="name"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="cf-email" class="block font-sans text-sm font-medium text-brand-accent">
+            Email Address <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            id="cf-email"
+            name="email"
+            type="email"
+            required
+            autocomplete="email"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="cf-phone" class="block font-sans text-sm font-medium text-brand-accent">
+            Phone Number <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            id="cf-phone"
+            name="phone"
+            type="tel"
+            required
+            autocomplete="tel"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="cf-role" class="block font-sans text-sm font-medium text-brand-accent">
+            Target Role / Specialty <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            id="cf-role"
+            name="target_role"
+            type="text"
+            placeholder="e.g. Quality Engineer, Operations Director"
+            required
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="cf-linkedin" class="block font-sans text-sm font-medium text-brand-accent">
+            LinkedIn Profile URL
+          </label>
+          <input
+            id="cf-linkedin"
+            name="linkedin_url"
+            type="url"
+            placeholder="https://linkedin.com/in/yourprofile"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="cf-resume" class="block font-sans text-sm font-medium text-brand-accent">
+            Upload Resume (.pdf, .doc, .docx)
+          </label>
+          <div class="mt-1.5">
+            <input
+              id="cf-resume"
+              name="resume"
+              type="file"
+              accept=".pdf,.doc,.docx"
+              class="block w-full cursor-pointer rounded-sm border border-brand-accent/20 bg-white font-sans text-sm text-brand-accent/70 file:mr-4 file:cursor-pointer file:rounded-sm file:border-0 file:bg-brand-primary-soft file:px-4 file:py-2.5 file:font-sans file:text-sm file:font-semibold file:text-brand-primary-dark hover:file:bg-brand-primary-soft/70 focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="cf-message" class="block font-sans text-sm font-medium text-brand-accent">
+          Message / Career Preferences <span class="text-brand-secondary">*</span>
+        </label>
+        <textarea
+          id="cf-message"
+          name="message"
+          rows={4}
+          placeholder="Tell us what you are looking for in your next role, preferred location, target compensation, etc..."
+          class="mt-1.5 w-full resize-none rounded-sm border border-brand-accent/20 bg-white p-4 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+        ></textarea>
+      </div>
+
+      <div id="cf-error" class="hidden rounded-sm border border-red-200 bg-red-50 px-4 py-3 font-sans text-sm text-red-700">
+        Something went wrong sending your profile. Please try again or email us directly.
+      </div>
+
+      <div class="mt-2 flex items-center justify-end">
+        <Button type="submit" variant="primary" size="lg">
+          <span id="cf-submit-label">Submit Candidate Profile</span>
+        </Button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Success State -->
+  <div id="cf-success" class="hidden flex-col items-center py-8 text-center">
+    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-brand-primary" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+    </div>
+    <h3 class="mt-4 font-serif text-xl font-bold text-brand-accent">
+      Thanks — You're on Our Radar
+    </h3>
+    <p class="mt-2 max-w-sm font-sans text-sm leading-relaxed text-brand-accent/70">
+      A member of our team will review your background and reach out when relevant opportunities align with your target profile.
+    </p>
+    <button
+      id="cf-reset"
+      type="button"
+      class="mt-6 font-sans text-sm font-semibold text-brand-primary hover:underline"
+    >
+      Submit another profile
+    </button>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('candidate-form') as HTMLFormElement | null
+  const formWrap = document.getElementById('cf-form-wrap') as HTMLDivElement | null
+  const successPanel = document.getElementById('cf-success') as HTMLDivElement | null
+  const errorBanner = document.getElementById('cf-error') as HTMLDivElement | null
+  const submitLabel = document.getElementById('cf-submit-label') as HTMLSpanElement | null
+  const resetBtn = document.getElementById('cf-reset') as HTMLButtonElement | null
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!formWrap || !successPanel) return
+
+    errorBanner?.classList.add('hidden')
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null
+    if (submitBtn) submitBtn.disabled = true
+    if (submitLabel) submitLabel.textContent = 'Sending...'
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      })
+
+      if (response.ok) {
+        formWrap.classList.add('hidden')
+        successPanel.classList.remove('hidden')
+        successPanel.classList.add('flex')
+        successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        form.reset()
+      } else {
+        errorBanner?.classList.remove('hidden')
+      }
+    } catch {
+      errorBanner?.classList.remove('hidden')
+    } finally {
+      if (submitBtn) submitBtn.disabled = false
+      if (submitLabel) submitLabel.textContent = 'Submit Candidate Profile'
+    }
+  })
+
+  resetBtn?.addEventListener('click', () => {
+    if (!formWrap || !successPanel) return
+    successPanel.classList.add('hidden')
+    successPanel.classList.remove('flex')
+    formWrap.classList.remove('hidden')
+  })
+</script>

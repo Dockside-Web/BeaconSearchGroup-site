@@ -1,147 +1,473 @@
 ---
-//Update this variable with your actual Basin form ID for the form to work correctly.
-const basinURL = "https://usebasin.com/f/BASIN_ID_HERE";
+import Button from './Button.astro'
 
-//Update this variable with your actual Cloudflare Turnstile site key for the widget to work correctly.
-//Also check the index to ensure the script tag for the Cloudflare Turnstile widget is included in the head of your layout.
-const turnstileSiteKey = "0x4AAAAAACtwydU4s9rO0pbJ";
+interface Props {
+  clientBasinId?: string
+  candidateBasinId?: string
+}
+
+const {
+  clientBasinId = '6e42e968a35e',
+  candidateBasinId = '6e42e968a35e'
+} = Astro.props
 ---
 
-<div class="w-full max-w-2xl rounded-2xl border border-gray-100 bg-white p-8 shadow-sm">
-  <form id="contact-form" action={basinURL} method="POST" class="space-y-5">
-    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-      <div>
-        <label for="name" class="mb-1 block text-sm font-medium text-gray-700">
-          Full Name <span class="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="John Doe"
-          required
-          class="contact-input focus:border-brand-secondary focus:ring-brand-secondary w-full rounded-lg border border-gray-300 px-4 py-2 transition-all outline-none"
-        />
-      </div>
-
-      <div>
-        <label for="name" class="mb-1 block text-sm font-medium text-gray-700">
-          Company (optional) <span class="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          id="company"
-          name="company"
-          placeholder="Company Name, LLC"
-          required
-          class="contact-input focus:border-brand-secondary focus:ring-brand-secondary w-full rounded-lg border border-gray-300 px-4 py-2 transition-all outline-none"
-        />
-      </div>
-    </div>
-
-    <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
-      <div>
-        <label for="email" class="mb-1 block text-sm font-medium text-gray-700">
-          Email Address <span class="text-red-500">*</span>
-        </label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="you@example.com"
-          required
-          class="contact-input focus:border-brand-secondary focus:ring-brand-secondary w-full rounded-lg border border-gray-300 px-4 py-2 transition-all outline-none"
-        />
-      </div>
-
-      <div>
-        <label for="phone" class="mb-1 block text-sm font-medium text-gray-700">
-          Phone Number
-        </label>
-        <input
-          type="tel"
-          id="phone"
-          name="phone"
-          placeholder="(555) 000-0000"
-          class="contact-input focus:border-brand-secondary focus:ring-brand-secondary w-full rounded-lg border border-gray-300 px-4 py-2 transition-all outline-none"
-        />
-      </div>
-    </div>
-
-    <div class="space-y-1"> 
-      <label for="message" class="mb-1 block text-sm font-medium text-gray-700">
-        Message <span class="text-red-500">*</span>
-      </label>
-      <textarea
-        id="message"
-        name="message"
-        rows="4"
-        placeholder="How can we help?"
-        required
-        class="contact-input focus:border-brand-secondary focus:ring-brand-secondary w-full resize-none rounded-lg border border-gray-300 px-4 py-2 transition-all outline-none"
-      ></textarea>
-      
-      <p class="text-[10px] text-gray-400 italic leading-none">
-        Fields marked with <span class="text-red-500">*</span> are required.
+<div id="contact-form-container" class="w-full">
+  <div class="text-left">
+    <div class="flex items-center gap-2">
+      <span class="h-0.5 w-6 bg-brand-secondary"></span>
+      <p class="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-brand-primary">
+        Get in Touch
       </p>
     </div>
+    <h2 class="mt-2 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
+      How can we help you?
+    </h2>
+    <p class="mt-3 font-sans text-sm leading-relaxed text-brand-accent/70 sm:text-base">
+      Whether you are an employer building a team or a professional looking for your next role, we are here to help.
+    </p>
+  </div>
 
-    <!-- Cloudflare Turnstile widget -->
-    <div
-      class="cf-turnstile"
-      data-sitekey={turnstileSiteKey}
-      data-callback="turnstileFinished"
-      data-theme="light"
+  {/* Persona Toggle Tabs */}
+  <div class="mt-8 rounded-md bg-brand-accent/5 p-1.5">
+    <div class="grid grid-cols-2 gap-2" role="tablist" aria-label="Inquiry Type">
+      <button
+        type="button"
+        id="btn-client"
+        class="toggle-btn rounded-sm py-3 font-sans text-xs font-semibold uppercase tracking-wider transition-all sm:text-sm bg-white text-brand-accent shadow-sm cursor-pointer"
+        aria-selected="true"
+      >
+        Company Looking to Hire
+      </button>
+      <button
+        type="button"
+        id="btn-candidate"
+        class="toggle-btn rounded-sm py-3 font-sans text-xs font-semibold uppercase tracking-wider transition-all sm:text-sm text-brand-accent/60 hover:text-brand-accent cursor-pointer"
+        aria-selected="false"
+      >
+        Job Seeker / Candidate
+      </button>
+    </div>
+  </div>
+
+  {/* =======================================================
+      FORM 1: CLIENT / COMPANY FORM
+     ======================================================= */}
+  <div id="client-form-wrap" class="mt-8">
+    <form
+      id="form-client"
+      action={`https://usebasin.com/f/${clientBasinId}`}
+      method="POST"
+      enctype="multipart/form-data"
+      class="flex flex-col gap-5"
     >
-    </div>
+      <input type="hidden" name="_subject" value="New Client Hiring Inquiry" />
 
-    <!-- Hidden honeypot field. Needs to have the same name as the one configured in Basin to work correctly. -->
-    <div class="absolute top-0 -left-600 h-0 overflow-hidden" aria-hidden="true">
-      <label for="_botvortex">Leave this field empty</label>
-      <input type="text" id="_botvortex" name="_botvortex" tabindex="-1" autocomplete="off" />
-    </div>
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="client-name" class="block font-sans text-sm font-medium text-brand-accent">
+            Full Name <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            id="client-name"
+            name="name"
+            required
+            autocomplete="name"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
 
+        <div>
+          <label for="client-company" class="block font-sans text-sm font-medium text-brand-accent">
+            Company Name <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            id="client-company"
+            name="company"
+            required
+            autocomplete="organization"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="client-email" class="block font-sans text-sm font-medium text-brand-accent">
+            Work Email <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="email"
+            id="client-email"
+            name="email"
+            required
+            autocomplete="email"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="client-phone" class="block font-sans text-sm font-medium text-brand-accent">
+            Phone Number <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="tel"
+            id="client-phone"
+            name="phone"
+            required
+            autocomplete="tel"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="client-roles" class="block font-sans text-sm font-medium text-brand-accent">
+            Role(s) Needed <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            id="client-roles"
+            name="roles_needed"
+            required
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="client-timeline" class="block font-sans text-sm font-medium text-brand-accent">
+            Hiring Timeline
+          </label>
+          <select
+            id="client-timeline"
+            name="timeline"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          >
+            <option value="Immediate">Immediate Need</option>
+            <option value="30 Days">Within 30 Days</option>
+            <option value="1-3 Months">1–3 Months</option>
+            <option value="Exploring">Just Exploring</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label for="client-message" class="block font-sans text-sm font-medium text-brand-accent">
+          Project / Search Details <span class="text-brand-secondary">*</span>
+        </label>
+        <textarea
+          id="client-message"
+          name="message"
+          rows={4}
+          required
+          placeholder="Tell us about the open position, required skills, or headcount needs..."
+          class="mt-1.5 w-full resize-none rounded-sm border border-brand-accent/20 bg-white p-4 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+        ></textarea>
+      </div>
+
+      <div id="client-error" class="hidden rounded-sm border border-red-300 bg-red-100/90 px-4 py-3 font-sans text-sm text-red-900">
+        Something went wrong submitting your request. Please try again or email us directly.
+      </div>
+
+      <div class="mt-2 flex items-center justify-end">
+        <Button type="submit" variant="primary" size="lg" class="w-full sm:w-auto">
+          <span id="client-submit-label">Submit Hiring Request</span>
+        </Button>
+      </div>
+    </form>
+  </div>
+
+  {/* Client Success State */}
+  <div id="client-success" class="hidden flex-col items-center py-12 text-center">
+    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-brand-primary" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+    </div>
+    <h3 class="mt-4 font-serif text-2xl font-bold text-brand-accent">
+      Search Request Received
+    </h3>
+    <p class="mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-accent/70">
+      Thank you for reaching out. A senior partner will review your requirements and follow up within one business day.
+    </p>
     <button
-      type="submit"
-      id="submit-btn"
-      disabled
-      class="w-full rounded-lg bg-indigo-600 px-6 py-3 font-semibold text-white shadow-md transition-all duration-200 hover:bg-indigo-700 hover:shadow-lg active:scale-[0.98] active:transform disabled:cursor-not-allowed disabled:bg-gray-300 disabled:shadow-none"
+      id="client-reset"
+      type="button"
+      class="mt-6 font-sans text-sm font-semibold text-brand-primary hover:underline"
     >
-      Send Message
+      Submit another request
     </button>
-  </form>
+  </div>
+
+  {/* =======================================================
+      FORM 2: JOB SEEKER / CANDIDATE FORM
+     ======================================================= */}
+  <div id="candidate-form-wrap" class="mt-8 hidden">
+    <form
+      id="form-candidate"
+      action={`https://usebasin.com/f/${candidateBasinId}`}
+      method="POST"
+      enctype="multipart/form-data"
+      class="flex flex-col gap-5"
+    >
+      <input type="hidden" name="_subject" value="New Candidate Profile Inquiry" />
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="cand-name" class="block font-sans text-sm font-medium text-brand-accent">
+            Full Name <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            id="cand-name"
+            name="name"
+            required
+            autocomplete="name"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="cand-email" class="block font-sans text-sm font-medium text-brand-accent">
+            Email Address <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="email"
+            id="cand-email"
+            name="email"
+            required
+            autocomplete="email"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="cand-phone" class="block font-sans text-sm font-medium text-brand-accent">
+            Phone Number <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="tel"
+            id="cand-phone"
+            name="phone"
+            required
+            autocomplete="tel"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="cand-role" class="block font-sans text-sm font-medium text-brand-accent">
+            Target Role / Specialty <span class="text-brand-secondary">*</span>
+          </label>
+          <input
+            type="text"
+            id="cand-role"
+            name="target_role"
+            placeholder="e.g. Quality Engineer, Operations Director"
+            required
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="cand-linkedin" class="block font-sans text-sm font-medium text-brand-accent">
+            LinkedIn Profile URL
+          </label>
+          <input
+            type="url"
+            id="cand-linkedin"
+            name="linkedin_url"
+            placeholder="https://linkedin.com/in/yourprofile"
+            class="mt-1.5 w-full rounded-sm border border-brand-accent/20 bg-white px-4 py-2.5 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+          />
+        </div>
+
+        <div>
+          <label for="cand-resume" class="block font-sans text-sm font-medium text-brand-accent">
+            Upload Resume (.pdf, .doc, .docx)
+          </label>
+          <div class="mt-1.5">
+            <input
+              type="file"
+              id="cand-resume"
+              name="resume"
+              accept=".pdf,.doc,.docx"
+              class="block w-full cursor-pointer rounded-sm border border-brand-accent/20 bg-white font-sans text-sm text-brand-accent/70 file:mr-4 file:cursor-pointer file:rounded-sm file:border-0 file:bg-brand-primary-soft file:px-4 file:py-2.5 file:font-sans file:text-sm file:font-semibold file:text-brand-primary-dark hover:file:bg-brand-primary-soft/70 focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="cand-message" class="block font-sans text-sm font-medium text-brand-accent">
+          Message / Career Preferences<span class="text-brand-secondary">*</span>
+        </label>
+        <textarea
+          id="cand-message"
+          name="message"
+          rows={4}
+          required
+          placeholder="Tell us what you are looking for in your next role, preferred location, target compensation, etc..."
+          class="mt-1.5 w-full resize-none rounded-sm border border-brand-accent/20 bg-white p-4 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
+        ></textarea>
+      </div>
+
+      <div id="cand-error" class="hidden rounded-sm border border-red-300 bg-red-100/90 px-4 py-3 font-sans text-sm text-red-900">
+        Something went wrong sending your profile. Please try again or email us directly.
+      </div>
+
+      <div class="mt-2 flex items-center justify-end">
+        <Button type="submit" variant="primary" size="lg" class="w-full sm:w-auto">
+          <span id="cand-submit-label">Submit Candidate Profile</span>
+        </Button>
+      </div>
+    </form>
+  </div>
+
+  {/* Candidate Success State */}
+  <div id="candidate-success" class="hidden flex-col items-center py-12 text-center">
+    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-brand-primary" aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"/>
+      </svg>
+    </div>
+    <h3 class="mt-4 font-serif text-2xl font-bold text-brand-accent">
+      Thanks — You're on Our Radar
+    </h3>
+    <p class="mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-accent/70">
+      A member of our team will review your background and reach out when relevant opportunities align with your target profile.
+    </p>
+    <button
+      id="cand-reset"
+      type="button"
+      class="mt-6 font-sans text-sm font-semibold text-brand-primary hover:underline"
+    >
+      Submit another profile
+    </button>
+  </div>
 </div>
 
 <script>
-  declare global {
-    interface Window {
-      turnstileFinished?: () => void;
+  // Elements
+  const btnClient = document.getElementById('btn-client')
+  const btnCandidate = document.getElementById('btn-candidate')
+
+  const clientWrap = document.getElementById('client-form-wrap')
+  const candWrap = document.getElementById('candidate-form-wrap')
+
+  const formClient = document.getElementById('form-client') as HTMLFormElement | null
+  const formCandidate = document.getElementById('form-candidate') as HTMLFormElement | null
+
+  const clientSuccess = document.getElementById('client-success')
+  const candSuccess = document.getElementById('candidate-success')
+
+  const clientError = document.getElementById('client-error')
+  const candError = document.getElementById('cand-error')
+
+  const clientSubmitLabel = document.getElementById('client-submit-label')
+  const candSubmitLabel = document.getElementById('cand-submit-label')
+
+  const clientReset = document.getElementById('client-reset')
+  const candReset = document.getElementById('cand-reset')
+
+  // Tab Switcher
+  function setTab(active: 'client' | 'candidate') {
+    if (active === 'client') {
+      clientWrap?.classList.remove('hidden')
+      candWrap?.classList.add('hidden')
+
+      btnClient?.classList.add('bg-white', 'text-brand-accent', 'shadow-sm')
+      btnClient?.classList.remove('text-brand-accent/60')
+      btnClient?.setAttribute('aria-selected', 'true')
+
+      btnCandidate?.classList.remove('bg-white', 'shadow-sm')
+      btnCandidate?.classList.add('text-brand-accent/60')
+      btnCandidate?.setAttribute('aria-selected', 'false')
+    } else {
+      candWrap?.classList.remove('hidden')
+      clientWrap?.classList.add('hidden')
+
+      btnCandidate?.classList.add('bg-white', 'text-brand-accent', 'shadow-sm')
+      btnCandidate?.classList.remove('text-brand-accent/60')
+      btnCandidate?.setAttribute('aria-selected', 'true')
+
+      btnClient?.classList.remove('bg-white', 'shadow-sm')
+      btnClient?.classList.add('text-brand-accent/60')
+      btnClient?.setAttribute('aria-selected', 'false')
     }
   }
 
-  let isTurnstileVerified = false;
-  const form = document.getElementById("contact-form") as HTMLFormElement;
-  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
-  const requiredInputs = form.querySelectorAll("[required]") as NodeListOf<
-    HTMLInputElement | HTMLTextAreaElement
-  >;
+  btnClient?.addEventListener('click', () => setTab('client'))
+  btnCandidate?.addEventListener('click', () => setTab('candidate'))
 
-  // Function called by Cloudflare when check is passed
-  window.turnstileFinished = function () {
-    isTurnstileVerified = true;
-    checkFormValidity();
-  };
+  // Generic Submit Handler for Basin AJAX Post
+  async function handleFormSubmit(
+    form: HTMLFormElement | null,
+    wrap: HTMLElement | null,
+    successPanel: HTMLElement | null,
+    errorPanel: HTMLElement | null,
+    labelEl: HTMLElement | null,
+    defaultLabel: string
+  ) {
+    if (!form || !wrap || !successPanel) return
 
-  const checkFormValidity = () => {
-    // Check if all required fields have values
-    const allFieldsFilled = Array.from(requiredInputs).every((input) => input.value.trim() !== "");
+    errorPanel?.classList.add('hidden')
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null
+    if (submitBtn) submitBtn.disabled = true
+    if (labelEl) labelEl.textContent = 'Sending...'
 
-    // Only enable if fields are filled AND turnstile is verified
-    submitBtn.disabled = !(allFieldsFilled && isTurnstileVerified);
-  };
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      })
 
-  // Add event listeners to all required inputs
-  requiredInputs.forEach((input) => {
-    input.addEventListener("input", checkFormValidity);
-  });
+      if (response.ok) {
+        wrap.classList.add('hidden')
+        successPanel.classList.remove('hidden')
+        successPanel.classList.add('flex')
+        successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        form.reset()
+      } else {
+        errorPanel?.classList.remove('hidden')
+      }
+    } catch {
+      errorPanel?.classList.remove('hidden')
+    } finally {
+      if (submitBtn) submitBtn.disabled = false
+      if (labelEl) labelEl.textContent = defaultLabel
+    }
+  }
+
+  // Bind Submit Listeners
+  formClient?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    handleFormSubmit(formClient, clientWrap, clientSuccess, clientError, clientSubmitLabel, 'Submit Hiring Request')
+  })
+
+  formCandidate?.addEventListener('submit', (e) => {
+    e.preventDefault()
+    handleFormSubmit(formCandidate, candWrap, candSuccess, candError, candSubmitLabel, 'Submit Candidate Profile')
+  })
+
+  // Bind Reset Listeners
+  clientReset?.addEventListener('click', () => {
+    clientSuccess?.classList.add('hidden')
+    clientSuccess?.classList.remove('flex')
+    clientWrap?.classList.remove('hidden')
+  })
+
+  candReset?.addEventListener('click', () => {
+    candSuccess?.classList.add('hidden')
+    candSuccess?.classList.remove('flex')
+    candWrap?.classList.remove('hidden')
+  })
 </script>

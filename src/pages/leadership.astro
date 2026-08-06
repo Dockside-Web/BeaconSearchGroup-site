@@ -1,0 +1,193 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import CTASection from '../components/CTA.astro';
+
+import aaronPhoto from "../assets/headshot-aaron.webp";
+import alexPhoto from "../assets/headshot-aaron.webp";
+
+interface LeaderLink {
+  type: 'email' | 'linkedin';
+  href: string;
+}
+
+const leaders = [
+  {
+    name: 'Aaron Laird',
+    credentials: 'CSP',
+    title: 'Managing Partner & Co-Founder',
+    image: aaronPhoto,
+    imageAlt: 'Portrait of Aaron Laird, Managing Partner & Co-Founder of Beacon Search Group',
+    bio: 'Aaron brings 17+ years of recruiting experience in manufacturing, engineering, and skilled trades. Known for his integrity and consultative approach, he has built lasting relationships with clients and candidates nationwide. Outside of work, he is a WWII memorabilia collector who loves time on the water with family.',
+    links: [
+      { type: 'email', href: 'mailto:Alaird@BeaconSearchGroup.com' },
+      { type: 'linkedin', href: 'https://www.linkedin.com/in/aaron-laird-csp-35a6551b/' },
+    ],
+  },
+  {
+    name: 'Alex Gundy',
+    title: 'Managing Partner & Co-Founder',
+    image: alexPhoto,
+    imageAlt: 'Portrait of Alex Gundy, Managing Partner & Co-Founder of Beacon Search Group',
+    bio: 'Alex has 12+ years of technical recruiting experience across manufacturing, engineering, and construction. An MBA graduate of Bowling Green State University, he is known for his reliability and deep industry relationships. Outside of work, he enjoys family time, sports, and classic rock.',
+    links: [
+      { type: 'email', href: 'mailto:Agundy@BeaconSearchGroup.com' },
+      { type: 'linkedin', href: 'https://www.linkedin.com/in/alexgundy/' },
+    ],
+  },
+];
+
+const affiliations = [
+  { name: 'Bowling Green Chamber of Commerce', href: 'https://www.bgchamber.net/' },
+  { name: 'NOHRA', href: 'https://toledoshrm.org/' },
+  {
+    name: 'Toledo Regional Chamber',
+    href: 'https://www.bbb.org/us/oh/toledo/profile/chamber-of-commerce/toledo-regional-chamber-of-commerce-0422-6958',
+  },
+];
+
+const metaDescription =
+  "Meet the leadership team at Beacon Search Group — Aaron Laird and Alex Gundy, Co-Founders and Managing Partners, bringing decades of combined recruiting experience to manufacturing and industrial talent search.";
+---
+
+<Layout description={metaDescription}>
+  {/* ================= PAGE HEADER ================= */}
+  <section class="relative w-full overflow-hidden bg-brand-accent">
+    <div aria-hidden="true" class="absolute inset-0 bg-brand-accent/95"></div>
+    <div aria-hidden="true" class="absolute -left-24 top-0 hidden h-full w-24 rotate-12 bg-brand-primary/[0.07] md:block"></div>
+
+    <div class="relative mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 md:py-24">
+      <p class="flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-primary">
+        <span aria-hidden="true" class="inline-block h-px w-8 bg-brand-secondary"></span>
+        Leadership Team
+      </p>
+      <h1 class="mt-6 max-w-3xl font-serif text-[34px] font-bold leading-[1.1] tracking-tight text-white sm:text-5xl">
+        Built on Experience. Founded on Trust.
+      </h1>
+      <p class="mt-3 max-w-2xl font-serif text-2xl font-semibold italic text-brand-primary sm:text-3xl">
+        Driven to Do Recruiting Better.
+      </p>
+      <p class="mt-6 max-w-2xl font-sans text-lg leading-relaxed text-white/75">
+        Meet the co-founders behind Beacon Search Group — decades of combined recruiting experience,
+        one shared commitment to doing right by clients and candidates alike.
+      </p>
+    </div>
+  </section>
+
+  {/* ================= LEADERSHIP GRID ================= */}
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24" aria-labelledby="leadership-heading">
+    <h2 id="leadership-heading" class="sr-only">Our Leadership</h2>
+
+    <ul class="grid gap-8 sm:grid-cols-2">
+      {leaders.map((leader) => (
+        <li class="group flex flex-col border border-brand-accent/10 bg-white">
+          <div class="relative aspect-4/3 overflow-hidden bg-brand-primary-soft">
+            <Image
+              src={leader.image}
+              alt={leader.imageAlt}
+              class="h-full w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+
+          <div class="flex flex-1 flex-col p-7">
+            <h3 class="font-serif text-2xl font-bold text-brand-accent">
+              {leader.name}
+              {leader.credentials && (
+                <span class="ml-1 font-sans text-base font-semibold text-brand-accent/50">
+                  , {leader.credentials}
+                </span>
+              )}
+            </h3>
+            <p class="mt-1 font-sans text-sm font-semibold uppercase tracking-widest text-brand-secondary">
+              {leader.title}
+            </p>
+
+            <p class="mt-5 flex-1 font-sans text-sm leading-relaxed text-brand-accent/70">
+              {leader.bio}
+            </p>
+
+            <div class="mt-6 flex items-center gap-3 border-t border-brand-accent/10 pt-5">
+              {leader.links.map((link) => (
+                <a
+                  href={link.href}
+                  target={link.type === 'linkedin' ? '_blank' : undefined}
+                  rel={link.type === 'linkedin' ? 'noopener noreferrer' : undefined}
+                  aria-label={link.type === 'email' ? `Email ${leader.name}` : `${leader.name} on LinkedIn`}
+                  class="flex h-9 w-9 items-center justify-center rounded-full border border-brand-accent/15 text-brand-accent/60 transition-colors duration-200 hover:border-brand-primary hover:bg-brand-primary hover:text-white"
+                >
+                  {link.type === 'email' ? (
+                    <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  ) : (
+                    <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 11.001-4.124 2.062 2.062 0 01-.001 4.124zM7.114 20.452H3.558V9h3.556v11.452z" />
+                    </svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {/* ================= OUR STORY ================= */}
+  <section class="bg-brand-primary-soft/50 py-16 md:py-24" aria-labelledby="story-heading">
+    <div class="mx-auto max-w-4xl px-5 sm:px-8">
+      <p class="text-center font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+        Our Story
+      </p>
+      <h2 id="story-heading" class="mt-2 text-center font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
+        Built on Experience. Founded on Trust.
+        <span class="block italic text-brand-primary-dark">Driven to Do Recruiting Better.</span>
+      </h2>
+ 
+      <div class="mt-10 space-y-6 font-sans text-base leading-relaxed text-brand-accent/75">
+        <p>
+          Beacon Search Group was created from a shared vision at a pivotal point in our careers. 
+          The name Beacon represents what we strive to be every day: a trusted guide, 
+          a reliable partner, and a source of clarity in an often complex hiring landscape.
+        </p>
+        <p>
+          We founded Beacon Search Group with one simple goal: to build the kind of recruiting 
+          firm we always wanted to work with, one rooted in integrity, accountability, transparency, 
+          and genuine relationships. A firm where clients are viewed as long term partners and 
+          candidates are treated with respect.
+        </p>
+        <p>
+          Beyond recruiting, we believe strongly in giving back to the communities where we live and work. 
+          Our team is actively involved in local and regional organizations, serving on nonprofit boards 
+          and participating in initiatives that support economic and workforce development. 
+          It's part of how we stay connected and invested in the success of the region we serve.
+        </p>
+      </div>
+ 
+      <div class="mt-10 border-t border-brand-accent/10 pt-8">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
+          Proud members of
+        </p>
+        <ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2">
+          {affiliations.map((org) => (
+            <li>
+              <a
+                href={org.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="font-sans text-sm font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 transition-colors duration-200 hover:text-brand-primary-dark"
+              >
+                {org.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  {/* ================= CTA SECTION ================= */}
+  <CTASection />
+</Layout>

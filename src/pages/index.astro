@@ -93,22 +93,21 @@ const differentiators = [
 
 const testimonials = [
   {
-    quote: 'Beacon understood our technical requirements immediately. They placed three principal controls engineers in under a month when our internal recruiters had struggled for six.',
-    name: 'Marcus Vance',
-    title: 'VP of Manufacturing Engineering',
-    company: 'Apex Precision Systems',
+    quote:
+      'Aaron has been my go-to recruiting partner for over 18 years. His work ethic, deep local knowledge, and focus on finding the exact skill fit make him my first call for any open role.',
+    title: 'HR Manager',
+    company: 'Tier 1 Automotive Supplier',
   },
   {
-    quote: 'The level of vetting is unmatched. Every candidate Beacon presented was genuine, qualified, and thoroughly screened for both technical fit and our plant culture.',
-    name: 'Elena Rostova',
-    title: 'Director of Human Resources',
-    company: 'Vanguard Industrial Group',
+  quote: "Aaron isn't just a recruiter; he's a trusted partner who truly understands manufacturing. He asks the right questions, communicates constantly, and presents candidates who fit both our skills and culture perfectly.",
+  title: 'VP of Operations',
+  company: 'Manufacturing Company',
   },
   {
-    quote: 'When we launched our second facility, Beacon helped us staff 35 technical and leadership positions seamlessly. They act like a true extension of our executive team.',
-    name: 'David Thorne',
-    title: 'Chief Operating Officer',
-    company: 'Kinetix Dynamics',
+    quote: 'NEED A 3RD ONE HERE.',
+    name: 'Test name',
+    title: 'Director of Test',
+    company: 'GG Group',
   },
 ];
 
@@ -132,7 +131,7 @@ const paths = [
 ];
 
 
-const metaDescription = "DESCRIPTION";
+const metaDescription = "Beacon Search Group recruits for manufacturers, engineering firms, and industrial operations nationwide, from skilled trades to executive leadership. Retained search, direct hire, and more.";
 ---
 
 <Layout description={metaDescription}>
@@ -162,7 +161,7 @@ const metaDescription = "DESCRIPTION";
 
           <p class="mt-6 max-w-2xl font-sans text-lg leading-relaxed text-white/75">
             We place engineers, skilled tradespeople, and operations leaders with manufacturers
-            and industrial companies — from a single hard-to-fill role to a full plant ramp-up.
+            and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
             Decades of combined experience, and a network you cannot query from a database.
           </p>
         </div>
@@ -238,7 +237,7 @@ const metaDescription = "DESCRIPTION";
     <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24" aria-labelledby="services-heading">
       <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary-dark">What We Do</p>
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">What We Do</p>
           <h2 id="services-heading" class="mt-2 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">Four ways to work with us</h2>
           <p class="mt-4 max-w-2xl font-sans text-base leading-relaxed text-brand-accent/70">
             Whether you need one senior engineer or a full second shift, the engagement flexes to the problem — not the other way around.
@@ -282,7 +281,7 @@ const metaDescription = "DESCRIPTION";
               <p class="mt-3 flex-1 font-sans text-sm leading-relaxed text-brand-accent/65">
                 {service.tagline}
               </p>
-              <span class="mt-6 inline-flex items-center gap-2 font-sans text-sm font-semibold text-brand-secondary-dark">
+              <span class="mt-6 inline-flex items-center gap-2 font-sans text-sm font-semibold text-brand-secondary">
                 Learn more
                 <svg
                   class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
@@ -387,10 +386,10 @@ const metaDescription = "DESCRIPTION";
 
           <div class="order-1 lg:order-2">
             <div>
-              <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary-dark">Why Beacon</p>
+              <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">Why Beacon</p>
               <h2 id="why-heading" class="mt-2 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">Hiring in this market is hard. That is exactly the job.</h2>
               <p class="mt-4 max-w-2xl font-sans text-base leading-relaxed text-brand-accent/70">
-                Technical talent is scarce, candidates are cautious, and job boards return the same forty resumes to everyone. We work the way recruiting worked before it got automated — by knowing people.
+                Technical talent is scarce, candidates are cautious, and job boards return the same forty resumes to everyone. We work the way recruiting worked before it got automated: by knowing people.
               </p>
             </div>
 
@@ -430,7 +429,7 @@ const metaDescription = "DESCRIPTION";
     {/* ================= SOCIAL PROOF ================= */}
     <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24" aria-labelledby="proof-heading">
       <div class="text-center">
-        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary-dark">Client Feedback</p>
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">Client Feedback</p>
         <h2 id="proof-heading" class="mt-2 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">What our clients say</h2>
         <p class="mx-auto mt-4 max-w-2xl font-sans text-base leading-relaxed text-brand-accent/70">
           From growing manufacturers to Fortune 500 operations, the measure of a search partner is whether people call them back for the next role.
@@ -438,35 +437,43 @@ const metaDescription = "DESCRIPTION";
       </div>
 
       <ul class="mt-12 grid gap-6 md:grid-cols-3">
-        {testimonials.map((testimonial) => (
-          <li class="flex flex-col border border-brand-accent/10 bg-white p-7 transition-colors duration-200 hover:border-brand-primary/50">
-            <svg class="h-6 w-6 text-brand-primary" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-            </svg>
-            <blockquote class="mt-5 flex-1">
-              <p class="font-serif text-[17px] leading-relaxed text-brand-accent/85">
-                “{testimonial.quote}”
-              </p>
-            </blockquote>
-            <footer class="mt-6 flex items-center gap-4 border-t border-brand-accent/10 pt-5">
-              <span
-                aria-hidden="true"
-                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft font-sans text-sm font-bold text-brand-primary-dark"
-              >
-                {testimonial.name.charAt(0)}
-              </span>
-              <div>
-                <p class="font-sans text-sm font-semibold text-brand-accent">
-                  {testimonial.name}
-                </p>
-                <p class="mt-0.5 font-sans text-[13px] text-brand-accent/55">
-                  {testimonial.title}, {testimonial.company}
-                </p>
-              </div>
-            </footer>
-          </li>
-        ))}
-      </ul>
+  {testimonials.map((testimonial) => (
+    <li class="flex flex-col border border-brand-accent/10 bg-white p-7 transition-colors duration-200 hover:border-brand-primary/50">
+      <svg
+        class="h-6 w-6 text-brand-primary"
+        fill="currentColor"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+      </svg>
+      <blockquote class="mt-5 flex-1">
+        <p class="font-serif text-[17px] leading-relaxed text-brand-accent/85">
+          “{testimonial.quote}”
+        </p>
+      </blockquote>
+      <footer class="mt-6 flex items-center gap-4 border-t border-brand-accent/10 pt-5">
+        {/* Replaced initial text circle with a subtle Building/Company SVG Icon */}
+        <span
+          aria-hidden="true"
+          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary-dark"
+        >
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+        </span>
+        <div>
+          <p class="font-sans text-sm font-semibold text-brand-accent">
+            {testimonial.title}
+          </p>
+          <p class="mt-0.5 font-sans text-[13px] text-brand-accent/55">
+            {testimonial.company}
+          </p>
+        </div>
+      </footer>
+    </li>
+  ))}
+</ul>
 
       <div class="mt-14 border border-brand-accent/10 bg-brand-primary-soft px-6 py-10">
         <div class="flex items-center justify-center gap-3">

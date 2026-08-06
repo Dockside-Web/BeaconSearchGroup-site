@@ -3,6 +3,9 @@
 
 @theme {
   --color-brand-primary: #50abe4;
+  --color-brand-primary-soft: #eaf6fc; /* Light blue tint */
+  --color-brand-primary-dark: #1f6491; /* Dark blue for readable text */
+
   --color-brand-secondary: #f59242;
   --color-brand-accent: #202020;
 
@@ -11,7 +14,7 @@
 }
 
 /* Force hover to work on all devices (especially laptops with touchscreens) */
-@variant hover (&:hover);
+@custom-variant hover (&:hover);
 
 @layer base {
   html,

@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { contactInfo } from '../data/site.ts'
 import logo from '../assets/logo/logo-icon-only.png';
 
 interface Props {
@@ -19,12 +20,6 @@ const {
     { name: 'Contract & Staffing', slug: 'contract-staffing' },
     { name: 'RPO & Volume Hiring', slug: 'rpo-volume' },
   ],
-  contactInfo = {
-    phone: '(555) 019-2834',
-    phoneHref: 'tel:5550192834',
-    email: 'info@beaconsearchgroup.com',
-    addressLines: ['100 Industrial Parkway', 'Suite 400', 'Cleveland, OH 44114'],
-  },
 } = Astro.props;
 
 const year = new Date().getFullYear();
@@ -56,7 +51,7 @@ const companyLinks = [
         </p>
         <p class="mt-4 font-sans text-sm leading-relaxed text-white/60">
           Specialized recruiting and executive search for manufacturing, engineering,
-          and industrial operations — for companies of any size or hiring volume.
+          and industrial operations. We work with companies of any size or hiring volume.
         </p>
       </div>
 

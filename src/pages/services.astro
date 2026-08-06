@@ -3,20 +3,52 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import PageHero from '../components/PageHero.astro';
 
+const stats = [
+  { target: 50, suffix: '+', label: 'Years of Combined Experience' },
+  { target: 98, suffix: '%', label: 'Search Success Rate' },
+  { target: 8, suffix: '', label: 'Technical & Professional Disciplines' },
+];
+
+const helpCategories = [
+  {
+    title: 'Permanent Placement',
+    description: 'Targeted executive search and direct hire solutions to secure key long-term leadership and technical talent.',
+    services: 'executive-recruitment',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
+    imageAlt: 'Executive meeting in boardroom',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  },
+  {
+    title: 'Flexible Workforce',
+    description: 'Agile contract staffing and recruiter-for-hire capabilities designed for project demands and sudden gaps.',
+    services: 'contract-staffing',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
+    imageAlt: 'Technician on manufacturing plant floor',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
+  },
+  {
+    title: 'Scaled & Project Recruiting',
+    description: 'Embedded RPO and greenfield/brownfield expansion recruiting to hit high-volume, fixed-timeline targets.',
+    services: 'rpo',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
+    imageAlt: 'Operations team collaborating',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+  },
+];
+
 const services = [
   {
     slug: 'executive-recruitment',
     name: 'Executive Recruitment / Retained Search',
     tagline: 'Confidential, dedicated search for leadership-level hiring.',
     whatItIs:
-      'An exclusive search partnership for executive and leadership-level roles. Through an upfront engagement, you get dedicated recruiting resources, a customized search strategy, targeted market outreach, and access to highly qualified passive candidates — with a 98% search success rate and a confidential, white-glove process from first call to start date.',
+      'An exclusive search partnership for executive and leadership-level roles — dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
     bestFor: [
       'C-suite, VP, and director-level leadership hires',
       'Confidential replacements where discretion is essential',
       'Roles where the right person is not actively job-hunting',
     ],
-    image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
     imageAlt: 'Two executives in a private boardroom discussion',
   },
   {
@@ -24,14 +56,13 @@ const services = [
     name: 'Direct Hire Placement',
     tagline: 'Permanent placement, sourced and vetted end to end.',
     whatItIs:
-      'Permanent placement services focused on identifying and securing top talent for critical roles. We manage the full recruitment process — sourcing, screening, and offer acceptance — with fees based on a percentage of the candidate\u2019s first-year salary and payable only upon a successful hire.',
+      'Permanent placement for critical roles — we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
     bestFor: [
       'Engineering, quality, EHS, supply chain, HR, and operations roles',
       'Companies replacing a key contributor or adding headcount',
       'Hard-to-fill roles where posting a job has not worked',
     ],
-    image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
     imageAlt: 'A hiring manager welcoming a newly placed employee in an industrial office',
   },
   {
@@ -39,14 +70,13 @@ const services = [
     name: 'Contract Staffing',
     tagline: 'Flexible technical talent for project work and coverage gaps.',
     whatItIs:
-      'Experienced professionals on our payroll, ready to support project demands, seasonal workloads, workforce gaps, or interim leadership needs. Contract employees can convert to direct hires when your business needs evolve — with all compliance, insurance, and onboarding handled on our end.',
+      'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire — compliance, insurance, and onboarding handled on our end.',
     bestFor: [
       'Launches, shutdowns, capital projects, and seasonal ramps',
       'Leave coverage and interim technical leadership',
       'Teams that want to work with someone before committing',
     ],
-    image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
     imageAlt: 'Contract technicians working on a capital project inside a manufacturing plant',
   },
   {
@@ -54,14 +84,13 @@ const services = [
     name: 'Recruitment Process Outsourcing (RPO)',
     tagline: 'Your recruiting team, scaled up without adding headcount.',
     whatItIs:
-      'An embedded recruiting partnership for organizations with sustained or high-volume hiring needs. We plug into your process as an extension of your internal team, running requisitions end to end under your employer brand — so your hiring managers see consistent quality without carrying the full recruiting load internally.',
+      'An embedded recruiting partnership for sustained or high-volume hiring. We run requisitions end to end under your employer brand, so hiring managers see consistent quality without carrying the full recruiting load internally.',
     bestFor: [
-      'Sustained hiring volume that has outgrown your internal team\u2019s capacity',
+      'Sustained hiring volume that has outgrown your internal team capacity',
       'Organizations that want recruiting handled under their own employer brand',
       'Companies scaling headcount quickly across multiple roles or sites',
     ],
-    image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
     imageAlt: 'A consultant leading a hiring process working session with an operations team',
   },
   {
@@ -69,14 +98,13 @@ const services = [
     name: 'Greenfield & Brownfield Recruitment',
     tagline: 'Project-based recruiting for facility launches and expansions.',
     whatItIs:
-      'Specialized project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth. We help you rapidly build high-performing teams while meeting aggressive hiring timelines and operational goals — from the first hire on the ground to full staffing.',
+      'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth — built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
     bestFor: [
       'New facility launches and plant startups',
       'Acquisitions and large-scale workforce growth initiatives',
       'Expansions with aggressive, fixed hiring timelines',
     ],
-    image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
     imageAlt: 'Warehouse operations team managing inventory in a large distribution facility',
   },
   {
@@ -84,200 +112,374 @@ const services = [
     name: 'Recruiter for Hire',
     tagline: 'Hourly recruiting support, without a placement-fee commitment.',
     whatItIs:
-      'A flexible recruiting model that provides hourly support for sourcing, screening, interviewing, and hiring assistance. It gives you expert recruiting resources without the commitment of a traditional placement-fee structure — ideal for targeted hiring projects and ongoing recruitment support.',
+      'Hourly support for sourcing, screening, interviewing, and hiring assistance — expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
     bestFor: [
       'Internal teams that need extra recruiting hands, not another agency fee',
       'Targeted hiring projects with a defined scope',
       'Ongoing support that flexes up or down with demand',
     ],
-    image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
     imageAlt: 'Automated production line inside a modern manufacturing plant',
   },
-]
+];
 
-const pageTitle = "Services";
-const metaDescription = "DESCRIPTION";
+const processSteps = [
+  {
+    number: '1',
+    title: 'PARTNERSHIP & ALIGNMENT',
+    body: 'We dive deep into your operational environment, culture, and technical requirements to define the exact candidate profile.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
+  },
+  {
+    number: '2',
+    title: 'TARGETED SOURCING',
+    body: 'Proactive outreach to passive industry talent and vetted networks, going far beyond surface-level job boards.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>`,
+  },
+  {
+    number: '3',
+    title: 'VETTING & EVALUATION',
+    body: 'Rigorously screened for technical competence, track record, and cultural add before any profile hits your desk.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>`,
+  },
+  {
+    number: '4',
+    title: 'OFFER & ONBOARDING',
+    body: 'Managing interview cadence, offer negotiations, and resignation transitions through a successful day one.',
+    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>`,
+  },
+];
+
+const faqs = [
+  {
+    question: 'How quickly can you start submitting candidates for our role?',
+    answer:
+      'Our initial intake call takes 30–45 minutes. For standard direct hire and contract roles, you can expect your first batch of vetted candidates within 3 to 5 business days.',
+  },
+  {
+    question: 'What industries and roles do you specialize in?',
+    answer:
+      'We focus heavily on technical, industrial, and specialized disciplines across engineering, operations, quality, supply chain, EHS, human resources, and C-suite leadership.',
+  },
+  {
+    question: 'How do fee structures work across your engagement models?',
+    answer:
+      'Direct hire is contingency-based (paid upon successful placement), Retained Search involves structured milestones, Contract Staffing operates on hourly billing, and Recruiter-for-Hire uses hourly advisory rates.',
+  },
+  {
+    question: 'What happens if a placed candidate does not work out?',
+    answer:
+      'All permanent placements come backed with our standard replacement guarantee period to ensure complete peace of mind and long-term fit.',
+  },
+];
+
+const pageTitle = 'Services';
+const metaDescription = 'Explore our workforce engagement models and recruitment solutions.';
 ---
 
 <Layout title={pageTitle} description={metaDescription}>
-    <PageHero
-        eyebrow="Our Services"
-        title="Six engagements. One standard of work."
-        intro="Retained search, direct hire, contract staffing, RPO, project-based recruiting, and recruiter-for-hire — matched to the problem you actually have, whether that's one executive hire or an entire plant to staff."
-        image="https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg"
-        imageAlt="Automated production line inside a modern manufacturing plant"
-        >
-        <div class="flex flex-wrap gap-3">
-            <a
-            href="/contact"
-            class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark"
-            >
-            Talk to Us About Hiring
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M5 12h14" /><path d="m12 5 7 7-7 7" />
-            </svg>
-            </a>
-            <a
-            href="/careers"
-            class="inline-flex items-center gap-2 border border-white/40 px-6 py-3 font-sans text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
-            >
-            I'm looking for a role
-            </a>
-        </div>
-    </PageHero>
-
-    
-    <!-- ============ Any size, any volume ============ -->
-    <section class="bg-brand-primary-soft/40 py-20 sm:py-24">
-    <div class="mx-auto max-w-6xl px-6">
-            <div>
-                <h2 class="font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
-                Any size. Any volume.
-                </h2>
-                <p class="mt-5 font-sans text-base leading-relaxed text-brand-accent/70">
-                A twelve-person job shop hiring its first quality engineer gets the same senior
-                recruiter as a Fortune 500 operation staffing a new plant. We scale the process, not
-                the level of attention — and we'll tell you honestly if a search is outside what we
-                do well.
-                </p>
-            </div>
+  <PageHero
+    eyebrow="Our Services"
+    title="Six engagements. One standard of work."
+    intro="Retained search, direct hire, contract staffing, RPO, project-based recruiting, and recruiter-for-hire matched to the problem you actually have, whether that's one executive hire or an entire plant to staff."
+    image="https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg"
+    imageAlt="Automated production line inside a modern manufacturing plant"
+  >
+    <div class="flex flex-wrap gap-3">
+      <a
+        href="/contact"
+        class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark"
+      >
+        Talk to Us About Hiring
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </a>
+      <a
+        href="/careers"
+        class="inline-flex items-center gap-2 border border-white/40 px-6 py-3 font-sans text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+      >
+        I'm looking for a role
+      </a>
     </div>
-    </section>
-    
-    <!-- ============ Services ============ -->
-    {
-    services.map((service, index) => {
-        const imageOnLeft = index % 2 === 1
-        return (
-        <section
+  </PageHero>
+
+  <!-- ============ 1. STATS SECTION (WITH COUNT-UP ANIMATION) ============ -->
+  <section id="stats-section" class="bg-white py-16 border-b border-brand-accent/10">
+    <div class="mx-auto max-w-6xl px-6 text-center">
+      <h2 class="font-serif text-lg sm:text-xl font-bold uppercase tracking-widest text-brand-accent/80 mb-12">
+        Time-tested industry experience, powerful results
+      </h2>
+      <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-brand-accent/15">
+        {stats.map((stat) => (
+          <div class="py-6 md:py-0 md:px-8 flex flex-col items-center">
+            <div class="font-serif text-5xl sm:text-6xl font-bold text-brand-primary tracking-tight flex items-center">
+              <span class="stat-number" data-target={stat.target}>0</span>
+              <span>{stat.suffix}</span>
+            </div>
+            <span class="mt-3 font-sans text-sm sm:text-base font-semibold text-brand-accent/80 max-w-[220px]">
+              {stat.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 2. HOW WE HELP SECTION ============ -->
+  <section class="bg-brand-accent text-white py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold tracking-tight mb-4">How We Help</h2>
+        <p class="font-sans text-base text-white/75">
+          Flexible, scalable recruiting capabilities structured around your specific organizational needs.
+        </p>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-3">
+        {helpCategories.map((category) => (
+          <div class="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xs transition hover:-translate-y-1 hover:border-brand-primary/50">
+            <div class="relative h-48 w-full overflow-hidden">
+              <img
+                src={category.image}
+                alt={category.imageAlt}
+                class="h-full w-full object-cover opacity-80"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-brand-accent via-transparent to-transparent"></div>
+              <div
+                class="absolute bottom-4 left-4 p-2.5 rounded-lg bg-brand-primary text-white shadow-md"
+                set:html={category.icon}
+              ></div>
+            </div>
+
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="font-serif text-xl font-bold text-white mb-2">{category.title}</h3>
+              <p class="font-sans text-sm leading-relaxed text-white/75 flex-1 mb-6">
+                {category.description}
+              </p>
+              <a
+                href={`#${category.services}`}
+                class="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-brand-secondary transition hover:text-white"
+              >
+                Learn More
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 3. SERVICES SECTION (RICH CARDS WITH IMAGES & ACCORDION) ============ -->
+  <section class="bg-slate-50 py-20 sm:py-24">
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <h2 class="font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
+          Services We Provide
+        </h2>
+        <p class="mt-4 font-sans text-base text-brand-accent/70">
+          Tailored engagement models designed to meet your precise talent acquisition demands.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        {services.map((service, index) => (
+          <details
             id={service.slug}
-            class={`scroll-mt-24 py-20 sm:py-24 ${index % 2 === 0 ? 'bg-white' : 'bg-brand-primary-soft/40'}`}
-        >
-            <div class="mx-auto max-w-6xl px-6">
-            <div class="grid gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
-                {/* Text column */}
-                <div class={imageOnLeft ? 'order-2 lg:order-2' : 'order-2 lg:order-1'}>
-                <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
-                    {`0${index + 1} — Service`}
-                </p>
-                <h2 class="mt-4 font-serif text-3xl font-bold leading-tight tracking-tight text-brand-accent sm:text-4xl">
-                    {service.name}
-                </h2>
-                <p class="mt-3 font-serif text-lg italic text-brand-primary-dark">
-                    {service.tagline}
-                </p>
-                <p class="mt-6 max-w-xl font-sans text-base leading-relaxed text-brand-accent/75">
-                    {service.whatItIs}
-                </p>
-    
-                <h3 class="mt-9 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
-                    Best for
-                </h3>
-                <ul class="mt-4 space-y-3">
-                    {service.bestFor.map((item) => (
-                    <li class="flex gap-3">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="mt-0.5 h-4 w-4 shrink-0 text-brand-secondary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M20 6 9 17l-5-5" />
-                        </svg>
-                        <span class="font-sans text-[15px] leading-relaxed text-brand-accent/80">
-                        {item}
-                        </span>
-                    </li>
-                    ))}
-                </ul>
+            class="group scroll-mt-24 overflow-hidden rounded-2xl border border-brand-accent/10 bg-white shadow-xs transition-all duration-200 [&[open]]:shadow-xl"
+          >
+            <summary class="flex cursor-pointer items-center justify-between p-6 sm:p-8 font-serif text-lg sm:text-xl font-bold text-brand-accent list-none select-none hover:bg-slate-50/50">
+              <div class="flex items-center gap-4">
+                <span class="font-sans text-xs font-bold uppercase tracking-widest text-brand-primary bg-brand-primary/10 px-3 py-1 rounded-full">
+                  0{index + 1}
+                </span>
+                <span>{service.name}</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-brand-accent transition-transform duration-200 group-open:rotate-180 group-open:bg-brand-primary group-open:text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
                 </div>
-    
-                {/* Image + how-it-works column */}
-                <div class={`space-y-6 order-1 ${imageOnLeft ? 'lg:order-1' : 'lg:order-2'}`}>
-                <div class="relative overflow-hidden">
-                    <img
+              </div>
+            </summary>
+
+            <div class="border-t border-slate-100 p-6 sm:p-8 bg-white">
+              <div class="grid md:grid-cols-12 gap-8 items-start">
+                <div class="md:col-span-5 overflow-hidden rounded-xl border border-slate-100 shadow-xs">
+                  <img
                     src={service.image}
                     alt={service.imageAlt}
-                    class="aspect-[3/2] w-full object-cover"
+                    class="h-48 md:h-full w-full object-cover"
                     loading="lazy"
-                    decoding="async"
-                    />
-                    <span aria-hidden="true" class="absolute bottom-0 left-0 h-1.5 w-24 bg-brand-secondary"></span>
+                  />
                 </div>
-                </div>
-            </div>
-            </div>
-        </section>
-        )
-    })
-    }
-    
-    <!-- ============ Process ============ -->
-    <section class="bg-white py-20 sm:py-24">
-    <div class="mx-auto max-w-6xl px-6">
-        <div class="mx-auto max-w-2xl text-center">
-        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
-            What To Expect
-        </p>
-        <h2 class="mt-4 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
-            A search that stays transparent from intake to start date
-        </h2>
-        <p class="mt-5 font-sans text-base leading-relaxed text-brand-accent/70">
-            No black boxes, no resume spam, and no silence between submittals. You'll always know
-            where the search stands and why.
-        </p>
-        </div>
-    
-        <ol class="mt-12 grid gap-px overflow-hidden rounded-sm bg-brand-accent/10 md:grid-cols-4">
-        {
-            [
-            {
-                title: 'Intake',
-                body: 'A real conversation about the role, the team, and the market reality of filling it.',
-            },
-            {
-                title: 'Search',
-                body: 'Targeted outreach to people already doing the work — most of them are not applying anywhere.',
-            },
-            {
-                title: 'Short list',
-                body: 'A small slate with written assessments. Quality over volume, every time.',
-            },
-            {
-                title: 'Close',
-                body: 'Offer guidance, counteroffer coaching, and follow-through past the start date.',
-            },
-            ].map((step, index) => (
-            <li class="bg-white p-7">
-                <span class="font-serif text-3xl font-bold text-brand-primary">{`0${index + 1}`}</span>
-                <h3 class="mt-3 font-serif text-xl font-bold text-brand-accent">{step.title}</h3>
-                <p class="mt-2 font-sans text-sm leading-relaxed text-brand-accent/65">{step.body}</p>
-            </li>
-            ))
-        }
-        </ol>
-    </div>
-    </section>
 
-    <CTA />
+                <div class="md:col-span-7 flex flex-col justify-between">
+                  <div>
+                    <p class="font-serif italic font-medium text-brand-primary text-base mb-3">
+                      {service.tagline}
+                    </p>
+                    <p class="font-sans text-sm leading-relaxed text-brand-accent/80 mb-6">
+                      {service.whatItIs}
+                    </p>
+
+                    <h4 class="font-sans text-xs font-bold uppercase tracking-wider text-brand-accent/50 mb-3">
+                      Best For
+                    </h4>
+                    <ul class="space-y-2.5 mb-6">
+                      {service.bestFor.map((item) => (
+                        <li class="flex items-start gap-2.5 font-sans text-sm text-brand-accent/80">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-secondary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 6 9 17l-5-5"/>
+                          </svg>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <a
+                    href="/contact"
+                    class="inline-flex items-center gap-2 self-start font-sans text-sm font-semibold text-brand-primary transition hover:text-brand-primary-dark"
+                  >
+                    Talk to us about this model
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 4. PROCESS SECTION ============ -->
+  <section class="bg-brand-primary-soft py-20 sm:py-24">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="mx-auto max-w-2xl text-center mb-14">
+        <h2 class="text-3xl font-bold tracking-tight text-brand-accent uppercase sm:text-4xl">
+          OUR PROCESS
+        </h2>
+        <p class="mt-4 text-base leading-relaxed text-brand-accent/70 sm:text-lg">
+          A clear, structured path from initial alignment to long-term success.
+        </p>
+      </div>
+
+      <div class="relative">
+        <!-- Connecting line (desktop only) -->
+        <div class="hidden lg:block absolute top-9 left-0 right-0 h-0.5 bg-brand-primary/25"></div>
+
+        <ol class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {processSteps.map((step) => (
+            <li class="relative flex flex-col items-center text-center">
+              <!-- Icon + number badge -->
+              <div class="relative z-10 mb-4 flex h-[72px] w-[72px] items-center justify-center rounded-full bg-brand-primary shadow-md text-white [&>svg]:h-8 [&>svg]:w-8">
+                <Fragment set:html={step.icon} />
+                <span class="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-bold text-brand-accent shadow-sm border border-slate-200">
+                  {step.number}
+                </span>
+              </div>
+
+              <!-- Card -->
+              <div class="w-full flex-1 rounded-2xl bg-white p-5 shadow-sm border border-brand-accent/5 transition hover:-translate-y-1 hover:shadow-md">
+                <h3 class="text-sm font-bold uppercase tracking-wider mb-2 text-brand-accent">
+                  {step.title}
+                </h3>
+                <p class="text-sm leading-relaxed text-brand-accent/70">
+                  {step.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 5. FAQ SECTION ============ -->
+  <section class="bg-slate-50 py-20 sm:py-24 border-t border-brand-accent/10">
+    <div class="mx-auto max-w-3xl px-6">
+      <div class="text-center mb-12">
+        <h2 class="font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="group rounded-xl border border-brand-accent/10 bg-white p-6 shadow-xs [&[open]]:shadow-sm">
+            <summary class="flex cursor-pointer items-center justify-between font-serif text-base sm:text-lg font-bold text-brand-accent list-none">
+              <span>{faq.question}</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5 text-brand-primary transition-transform duration-200 group-open:rotate-180 shrink-0 ml-4"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <p class="mt-3 font-sans text-sm leading-relaxed text-brand-accent/75 pt-3 border-t border-slate-100">
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTA />
 </Layout>
 
-
+<!-- ============ COUNT-UP ANIMATION SCRIPT ============ -->
 <script>
-  // Simple scroll-reveal for the service sections — optional, remove if
-  // your project already has a global reveal system (e.g. Dockside's
-  // reveal-left/reveal-right IntersectionObserver setup).
-  const revealTargets = document.querySelectorAll('section[id]')
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('opacity-100', 'translate-y-0')
-          entry.target.classList.remove('opacity-0', 'translate-y-4')
-          observer.unobserve(entry.target)
-        }
-      })
-    },
-    { threshold: 0.1 }
-  )
-  revealTargets.forEach((el) => {
-    el.classList.add('transition', 'duration-700', 'opacity-0', 'translate-y-4')
-    observer.observe(el)
-  })
+  function initCountUp() {
+    const statsSection = document.getElementById('stats-section');
+    if (!statsSection) return;
+
+    let animated = false;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !animated) {
+            animated = true;
+            const elements = statsSection.querySelectorAll('.stat-number');
+
+            elements.forEach((el) => {
+              const target = parseInt(el.getAttribute('data-target') || '0', 10);
+              const duration = 1500; // ms
+              const stepTime = 20;
+              const steps = duration / stepTime;
+              const increment = target / steps;
+              let current = 0;
+
+              const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                  el.textContent = target.toString();
+                  clearInterval(timer);
+                } else {
+                  el.textContent = Math.floor(current).toString();
+                }
+              }, stepTime);
+            });
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    observer.observe(statsSection);
+  }
+
+  // Initialize on DOM load and Astro page navigation events
+  document.addEventListener('DOMContentLoaded', initCountUp);
+  document.addEventListener('astro:page-load', initCountUp);
 </script>

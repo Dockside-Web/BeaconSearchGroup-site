@@ -18,46 +18,98 @@ const stats: StatItem[] = [
   { value: 'Nationwide', number: null, suffix: '', label: 'Search reach across U.S. industry' },
 ];
 
-const featuredService = {
-  name: 'Executive Recruitment',
-  subtitle: 'Retained Search',
-  slug: 'executive-search',
-  tagline: "An exclusive search partnership for executive and leadership-level hiring. Through an upfront engagement, you get dedicated recruiting resources, a customized search strategy, targeted outreach, and access to passive candidates who aren't on any job board.",
-  image: 'https://cdn.magicpatterns.com/patterns/generated-images/8eeabe6d-c66a-4049-b5a4-afc43f76dbe9.jpg',
-  imageAlt: 'Two professionals reviewing plans on a tablet overlooking a production floor',
-};
-
-const otherServices = [
+const services = [
   {
-    name: 'Direct Hire Placement',
+    slug: 'executive-recruitment',
+    name: 'Executive Recruitment',
+    subtitle: 'Retained Search',
+    tagline: 'Confidential, dedicated search for leadership-level hiring.',
+    whatItIs:
+      'An exclusive search partnership for executive and leadership-level roles — dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
+    bestFor: [
+      'C-suite, VP, and director-level leadership hires',
+      'Confidential replacements where discretion is essential',
+      'Roles where the right person is not actively job-hunting',
+    ],
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
+    imageAlt: 'Two executives in a private boardroom discussion',
+    badge: 'Signature Service',
+  },
+  {
     slug: 'direct-hire',
-    tagline: 'Permanent placement services focused on identifying top talent for critical roles, with fees payable only upon a successful hire.',
-    icon: 'target',
+    name: 'Direct Hire Placement',
+    subtitle: 'Permanent Placement',
+    tagline: 'Permanent placement, sourced and vetted end to end.',
+    whatItIs:
+      'Permanent placement for critical roles — we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
+    bestFor: [
+      'Engineering, quality, EHS, supply chain, HR, and operations roles',
+      'Companies replacing a key contributor or adding headcount',
+      'Hard-to-fill roles where posting a job has not worked',
+    ],
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
+    imageAlt: 'A hiring manager welcoming a newly placed employee in an industrial office',
   },
   {
-    name: 'Contract Staffing',
     slug: 'contract-staffing',
-    tagline: 'Experienced professionals on our payroll to support project demands, seasonal workloads, or interim leadership needs.',
-    icon: 'clock',
+    name: 'Contract Staffing',
+    subtitle: 'Interim & Project Support',
+    tagline: 'Flexible technical talent for project work and coverage gaps.',
+    whatItIs:
+      'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire — compliance, insurance, and onboarding handled on our end.',
+    bestFor: [
+      'Launches, shutdowns, capital projects, and seasonal ramps',
+      'Leave coverage and interim technical leadership',
+      'Teams that want to work with someone before committing',
+    ],
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
+    imageAlt: 'Contract technicians working on a capital project inside a manufacturing plant',
   },
   {
+    slug: 'rpo',
     name: 'Recruitment Process Outsourcing (RPO)',
-    slug: 'rpo-volume',
-    tagline: 'Embedded recruiting solutions to manage high volume hiring, plant expansions, and full department builds seamlessly.',
-    icon: 'layers',
+    subtitle: 'Embedded Partnership',
+    tagline: 'Your recruiting team, scaled up without adding headcount.',
+    whatItIs:
+      'An embedded recruiting partnership for sustained or high-volume hiring. We run requisitions end to end under your employer brand, so hiring managers see consistent quality without carrying the full recruiting load internally.',
+    bestFor: [
+      'Sustained hiring volume that has outgrown your internal team capacity',
+      'Organizations that want recruiting handled under their own employer brand',
+      'Companies scaling headcount quickly across multiple roles or sites',
+    ],
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
+    imageAlt: 'A consultant leading a hiring process working session with an operations team',
   },
   {
-    name: 'Greenfield & Brownfield Recruitment',
     slug: 'greenfield-brownfield',
-    tagline: 'Specialized project recruiting for facility startups, plant expansions, and large scale workforce growth initiatives.',
-    icon: 'building',
+    name: 'Greenfield & Brownfield Recruitment',
+    subtitle: 'Facility Launches & Ramps',
+    tagline: 'Project-based recruiting for facility launches and expansions.',
+    whatItIs:
+      'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth — built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
+    bestFor: [
+      'New facility launches and plant startups',
+      'Acquisitions and large-scale workforce growth initiatives',
+      'Expansions with aggressive, fixed hiring timelines',
+    ],
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
+    imageAlt: 'Warehouse operations team managing inventory in a large distribution facility',
   },
   {
-    name: 'Recruiter for Hire',
     slug: 'recruiter-for-hire',
-    tagline: 'Hourly recruiting support for sourcing, screening, and interviewing without the commitment of traditional placement fees.',
-    icon: 'user-check',
-  }
+    name: 'Recruiter for Hire',
+    subtitle: 'Hourly Support',
+    tagline: 'Hourly recruiting support, without a placement-fee commitment.',
+    whatItIs:
+      'Hourly support for sourcing, screening, interviewing, and hiring assistance — expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
+    bestFor: [
+      'Internal teams that need extra recruiting hands, not another agency fee',
+      'Targeted hiring projects with a defined scope',
+      'Ongoing support that flexes up or down with demand',
+    ],
+    image: 'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
+    imageAlt: 'Automated production line inside a modern manufacturing plant',
+  },
 ];
 
 // Inline SVG path data, keyed to match the `icon` field above
@@ -141,109 +193,98 @@ const testimonials = [
 
 const clientLogos = ['Company Logo Here', 'Company Logo Here', 'Company Logo Here', 'Company Logo Here', 'Company Logo Here', 'Company Logo Here'];
 
-const paths = [
-  {
-    to: '/contact',
-    label: "I'm hiring",
-    description: 'Tell us about the role. We will tell you what the market looks like and what it takes to fill it.',
-    action: 'Start a search',
-    accent: 'secondary',
-  },
-  {
-    to: '/careers',
-    label: "I'm looking for a role",
-    description: 'See open positions across manufacturing, engineering, skilled trades, and leadership.',
-    action: 'Browse open roles',
-    accent: 'primary',
-  },
-];
-
-
 const metaDescription = "Beacon Search Group recruits for manufacturers, engineering firms, and industrial operations nationwide, from skilled trades to executive leadership. Retained search, direct hire, and more.";
 ---
 
 <Layout description={metaDescription}>
   <section class="relative w-full overflow-hidden bg-brand-accent">
-      <img
-        src="https://cdn.magicpatterns.com/patterns/generated-images/f2b14831-d44e-4040-a984-08ce782d5f22.jpg"
-        alt="Advanced manufacturing floor with CNC machines lit by a sweeping beam of light"
-        class="absolute inset-0 h-full w-full object-cover opacity-40"
-        loading="eager"
-        decoding="async"
-      />
-      <div aria-hidden="true" class="absolute inset-0 bg-brand-accent/80"></div>
-      <div aria-hidden="true" class="absolute inset-y-0 left-0 hidden w-1/2 bg-brand-accent/45 md:block"></div>
-      <div aria-hidden="true" class="absolute -left-24 top-0 hidden h-full w-24 rotate-12 bg-brand-primary/[0.07] md:block"></div>
+    <img
+      src="https://cdn.magicpatterns.com/patterns/generated-images/f2b14831-d44e-4040-a984-08ce782d5f22.jpg"
+      alt="Advanced manufacturing floor with CNC machines lit by a sweeping beam of light"
+      class="absolute inset-0 h-full w-full object-cover opacity-40"
+      loading="eager"
+      decoding="async"
+    />
+    <div aria-hidden="true" class="absolute inset-0 bg-brand-accent/80"></div>
+    <div aria-hidden="true" class="absolute inset-y-0 left-0 hidden w-1/2 bg-brand-accent/45 md:block"></div>
+    <div aria-hidden="true" class="absolute -left-24 top-0 hidden h-full w-24 rotate-12 bg-brand-primary/[0.07] md:block"></div>
 
-      <div class="relative mx-auto w-full max-w-7xl px-5 pb-14 pt-16 sm:px-8 md:pb-20 md:pt-28">
-        <div class="max-w-3xl transition-all duration-700 ease-out">
-          <p class="flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-primary">
-            <span aria-hidden="true" class="inline-block h-px w-8 bg-brand-secondary"></span>
-            Specialized Recruiting &amp; Executive Search
-          </p>
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-16 sm:px-8 md:pb-20 md:pt-28">
+      <div class="max-w-3xl transition-all duration-700 ease-out">
+        <p class="flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-primary">
+          <span aria-hidden="true" class="inline-block h-px w-8 bg-brand-secondary"></span>
+          Specialized Recruiting &amp; Executive Search
+        </p>
 
-          <h1 class="mt-6 font-serif text-[38px] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[62px]">
-            Lighting the Way In{' '}
-            <span class="relative inline-block text-brand-primary">Talent Innovation</span>
-          </h1>
+        <h1 class="mt-6 font-serif text-[38px] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[62px]">
+          Lighting the Way In{' '}
+          <span class="relative inline-block text-brand-primary">Talent Innovation</span>
+        </h1>
 
-          <p class="mt-6 max-w-2xl font-sans text-lg leading-relaxed text-white/75">
-            We place engineers, skilled tradespeople, and operations leaders with manufacturers
-            and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
-            Decades of combined experience, and a network you cannot query from a database.
-          </p>
+        <p class="mt-6 max-w-2xl font-sans text-lg leading-relaxed text-white/75">
+          We place engineers, skilled tradespeople, and operations leaders with manufacturers
+          and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
+          Decades of combined experience, and a network you cannot query from a database.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-4 sm:grid-cols-2 md:mt-14 md:max-w-4xl">
+        {/* Card 1: Employer Path */}
+        <div class="group relative flex flex-col justify-between overflow-hidden rounded-sm border border-brand-secondary/60 bg-brand-secondary/10 p-6 transition-colors duration-200 hover:bg-brand-secondary/20">
+          <span
+            aria-hidden="true"
+            class="absolute left-0 top-0 h-full w-1 bg-brand-secondary"
+          ></span>
+          <div class="pl-3">
+            <svg class="h-6 w-6 text-brand-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+            </svg>
+            <h2 class="mt-4 font-serif text-2xl font-bold text-white">
+              <a href="/contact" class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-accent after:absolute after:inset-0">
+                I'm hiring
+              </a>
+            </h2>
+            <p class="mt-2 font-sans text-sm leading-relaxed text-white/65">
+              Tell us about the role. We will tell you what the market looks like and what it takes to fill it.
+            </p>
+          </div>
+          <span class="mt-6 inline-flex items-center gap-2 pl-3 font-sans text-sm font-semibold text-brand-secondary">
+            Start a search
+            <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
         </div>
 
-        <div class="mt-10 grid gap-4 sm:grid-cols-2 md:mt-14 md:max-w-4xl">
-          {paths.map((path) => {
-            const isSecondary = path.accent === 'secondary';
-            return (
-              <a
-                href={path.to}
-                class={`group relative flex flex-col justify-between overflow-hidden rounded-sm border p-6 transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-accent ${
-                  isSecondary
-                    ? 'border-brand-secondary/60 bg-brand-secondary/10 hover:bg-brand-secondary/20'
-                    : 'border-white/20 bg-white/6 hover:bg-white/12'
-                }`}
-              >
-                <span
-                  aria-hidden="true"
-                  class={`absolute left-0 top-0 h-full w-1 ${
-                    isSecondary ? 'bg-brand-secondary' : 'bg-brand-primary'
-                  }`}
-                />
-                <div class="pl-3">
-                  {/* Users Icon / Briefcase Icon */}
-                  {isSecondary ? (
-                    <svg class="h-6 w-6 text-brand-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  ) : (
-                    <svg class="h-6 w-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                  <h2 class="mt-4 font-serif text-2xl font-bold text-white">{path.label}</h2>
-                  <p class="mt-2 font-sans text-sm leading-relaxed text-white/65">
-                    {path.description}
-                  </p>
-                </div>
-                <span
-                  class={`mt-6 inline-flex items-center gap-2 pl-3 font-sans text-sm font-semibold ${
-                    isSecondary ? 'text-brand-secondary' : 'text-brand-primary'
-                  }`}
-                >
-                  {path.action}
-                  <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </span>
+        {/* Card 2: Candidate Path */}
+        <div class="group relative flex flex-col justify-between overflow-hidden rounded-sm border border-white/20 bg-white/6 p-6 transition-colors duration-200 hover:bg-white/12">
+          <span
+            aria-hidden="true"
+            class="absolute left-0 top-0 h-full w-1 bg-brand-primary"
+          ></span>
+          <div class="pl-3">
+            <svg class="h-6 w-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <h2 class="mt-4 font-serif text-2xl font-bold text-white">
+              <a href="/careers" class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-accent after:absolute after:inset-0">
+                I'm looking for a role
               </a>
-            );
-          })}
+            </h2>
+            <p class="mt-2 font-sans text-sm leading-relaxed text-white/65">
+              See open positions across manufacturing, engineering, skilled trades, and leadership.
+            </p>
+          </div>
+          <span class="mt-6 inline-flex items-center gap-2 pl-3 font-sans text-sm font-semibold text-brand-primary">
+            Browse open roles
+            <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     {/* ================= STATS BAR ================= */}
     <section aria-label="Beacon Search Group at a glance" class="w-full bg-brand-primary-soft">
@@ -272,86 +313,141 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
     </section>
 
     {/* ================= SERVICES OVERVIEW ================= */}
-    <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24" aria-labelledby="services-heading">
-      <SectionHeader
-      eyebrow="Our Services"
-      title="The right engagement for the role you're filling"
-      description="From one retained executive search to a full contract workforce ramp-up, the engagement flexes to how you actually need to hire."
-    />
+<section class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20" aria-labelledby="services-heading">
+  <SectionHeader
+    eyebrow="Our Services"
+    title="The right engagement for the role you're filling"
+    description="From one retained executive search to a full contract workforce ramp-up, the engagement flexes to how you actually need to hire."
+  />
 
-  {/* ---- Featured: Executive Search ---- */}
-  <a
-    href={`/services#${featuredService.slug}`}
-    class="group relative mt-12 flex flex-col overflow-hidden border border-brand-accent/10 bg-white shadow-sm transition-shadow duration-200 hover:shadow-md md:flex-row"
-  >
-    <div class="relative order-1 aspect-4/3 overflow-hidden md:aspect-auto md:w-2/5">
-      <img
-        src={featuredService.image}
-        alt={featuredService.imageAlt}
-        class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-        loading="lazy"
-        decoding="async"
-      />
-      <span
-        aria-hidden="true"
-        class="absolute left-0 top-6 flex items-center gap-2 bg-brand-secondary py-1.5 pl-4 pr-5 font-sans text-[11px] font-semibold uppercase tracking-[0.15em] text-brand-accent shadow-sm"
-      >
-        <svg class="h-3 w-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2l2.6 6.6L22 9l-5.5 4.6L18 22l-6-4-6 4 1.5-8.4L2 9l7.4-.4L12 2z" />
-        </svg>
-        Signature Service
-      </span>
-    </div>
-
-    <div class="order-2 flex flex-1 flex-col justify-center px-7 py-9 sm:px-10 sm:py-10 md:px-12">
-      <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
-        {featuredService.subtitle}
-      </p>
-      <h3 class="mt-3 font-serif text-2xl font-bold text-brand-accent sm:text-3xl">
-        {featuredService.name}
-      </h3>
-      <p class="mt-4 max-w-xl font-sans text-sm leading-relaxed text-brand-accent/70 sm:text-[15px]">
-        {featuredService.tagline}
-      </p>
-
-      <div class="mt-7 flex flex-wrap items-center gap-8 border-t border-brand-accent/10 pt-6">
-        <span class="inline-flex items-center gap-2 font-sans text-sm font-semibold text-brand-secondary">
-          Learn more about retained search
-          <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-          </svg>
-        </span>
-      </div>
-    </div>
-  </a>
-
-  {/* ---- Secondary services: icon-badge grid ---- */}
-  <ul class="mt-6 grid gap-5 sm:grid-cols-2">
-    {otherServices.map((service) => (
-      <li class="group flex gap-5 border border-brand-accent/10 bg-white p-6 transition-colors duration-200 hover:border-brand-primary/40 hover:bg-brand-primary-soft/30">
-        <span
-          aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary-dark transition-colors duration-200 group-hover:bg-brand-primary group-hover:text-white"
+  <div class="mt-10 lg:mt-12 lg:grid lg:grid-cols-12 lg:gap-8 items-center" id="services-tabs">
+    {/* Navigation Column (Compacted Vertical Sidebar / Horizontal Mobile Scroll) */}
+    <nav 
+      class="lg:col-span-4 flex lg:flex-col overflow-x-auto lg:overflow-x-visible no-scrollbar space-x-2.5 lg:space-x-0 lg:space-y-1.5 pb-4 lg:pb-0 border-b border-brand-accent/10 lg:border-b-0 lg:border-r lg:pr-6" 
+      aria-label="Services List"
+    >
+      {services.map((service, index) => (
+        <button
+          type="button"
+          data-service-tab={service.slug}
+          aria-selected={index === 0 ? "true" : "false"}
+          class={`service-tab-btn group relative flex shrink-0 lg:shrink flex-col text-left px-3 py-2.5 rounded-sm border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary min-w-[200px] sm:min-w-[240px] lg:min-w-0 ${
+            index === 0
+              ? 'border-brand-primary/40 bg-brand-primary-soft/40 shadow-xs'
+              : 'border-brand-accent/10 lg:border-transparent bg-white lg:bg-transparent hover:bg-brand-primary-soft/20'
+          }`}
         >
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d={iconPaths[service.icon]} />
-          </svg>
-        </span>
-        <div>
-          <h3 class="font-serif text-lg font-bold text-brand-accent">
-            <a href={`/services#${service.slug}`} class="after:absolute after:inset-0 focus:outline-none">
+          <span
+            aria-hidden="true"
+            class={`active-indicator absolute left-0 top-0 bottom-0 w-1 bg-brand-primary transition-opacity duration-200 ${
+              index === 0 ? 'opacity-100' : 'opacity-0 group-hover:opacity-40'
+            }`}
+          />
+          <div class="pl-2">
+            <div class="flex items-center justify-between gap-1.5">
+              <span class="font-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-secondary">
+                {service.subtitle}
+              </span>
+              {service.badge && (
+                <span class="bg-brand-secondary/20 text-brand-accent text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded-xs shrink-0">
+                  {service.badge}
+                </span>
+              )}
+            </div>
+            <h3 class="mt-0.5 font-serif text-sm sm:text-base font-bold text-brand-accent group-hover:text-brand-primary transition-colors">
               {service.name}
-            </a>
-          </h3>
-          <p class="mt-2 font-sans text-sm leading-relaxed text-brand-accent/65">
-            {service.tagline}
-          </p>
-        </div>
-      </li>
-    ))}
-  </ul>
+            </h3>
+          </div>
+        </button>
+      ))}
+    </nav>
 
-  <div class="mt-10 flex justify-center">
+    {/* Content Panel Column (Centered vertically relative to sidebar) */}
+    <div class="lg:col-span-8 mt-6 lg:mt-0 my-auto">
+      {services.map((service, index) => (
+        <div
+          id={`panel-${service.slug}`}
+          data-service-panel={service.slug}
+          class={`service-panel transition-all duration-300 ${
+            index === 0 ? 'block opacity-100' : 'hidden opacity-0'
+          }`}
+        >
+          <div class="border border-brand-accent/10 bg-white p-6 sm:p-8 shadow-xs">
+            {/* Header Area */}
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-accent/10 pb-4">
+              <div>
+                <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+                  {service.subtitle}
+                </p>
+                <h3 class="mt-1 font-serif text-2xl font-bold text-brand-accent sm:text-3xl">
+                  {service.name}
+                </h3>
+              </div>
+              {service.badge && (
+                <span class="bg-brand-secondary py-1 px-3 font-sans text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-accent shadow-xs">
+                  {service.badge}
+                </span>
+              )}
+            </div>
+
+            {/* Grid Content */}
+            <div class="mt-6 grid gap-6 md:grid-cols-12 md:items-center">
+              {/* Image Column */}
+              <div class="relative overflow-hidden rounded-sm border border-brand-accent/10 md:col-span-5 aspect-4/3 md:aspect-square">
+                <img
+                  src={service.image}
+                  alt={service.imageAlt}
+                  class="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              {/* Text Body */}
+              <div class="flex flex-col justify-center md:col-span-7">
+                <p class="font-sans text-xs sm:text-sm leading-relaxed text-brand-accent/80">
+                  {service.whatItIs}
+                </p>
+
+                <div class="mt-4 border-t border-brand-accent/10 pt-3.5">
+                  <p class="font-sans text-[10px] font-semibold uppercase tracking-wider text-brand-accent/50">
+                    Best Suited For
+                  </p>
+                  <ul class="mt-2 space-y-1.5">
+                    {service.bestFor.map((item) => (
+                      <li class="flex items-start gap-2 font-sans text-xs text-brand-accent/80">
+                        <span class="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary">
+                          <svg class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                          </svg>
+                        </span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Link */}
+            <div class="mt-6 border-t border-brand-accent/10 pt-4">
+              <a
+                href={`/services#${service.slug}`}
+                class="group inline-flex items-center gap-2 font-sans text-xs sm:text-sm font-semibold text-brand-secondary hover:text-brand-accent transition-colors"
+              >
+                Learn more about {service.name}
+                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="mt-12 flex justify-center">
     <Button href="/services" variant="outline" size="md">
       View All Services
       <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -561,6 +657,17 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
 
 </Layout>
 
+<style>
+  /* Utility to hide scrollbars on mobile horizontal tab list */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
 
 <script>
   function initCounters(): void {
@@ -603,4 +710,55 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
 
   document.addEventListener('DOMContentLoaded', initCounters);
   document.addEventListener('astro:page-load', initCounters);
+
+  function setupServiceTabs(): void {
+    const container = document.getElementById('services-tabs');
+    if (!container) return;
+
+    const tabs = container.querySelectorAll<HTMLButtonElement>('[data-service-tab]');
+    const panels = container.querySelectorAll<HTMLElement>('[data-service-panel]');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const targetSlug = tab.getAttribute('data-service-tab');
+        if (!targetSlug) return;
+
+        // Update tabs state
+        tabs.forEach((t) => {
+          const isSelected = t === tab;
+          t.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+          
+          const indicator = t.querySelector('.active-indicator');
+          if (isSelected) {
+            t.classList.add('border-brand-primary/40', 'bg-brand-primary-soft/40', 'shadow-xs');
+            t.classList.remove('border-brand-accent/10', 'lg:border-transparent', 'bg-white', 'lg:bg-transparent');
+            if (indicator) indicator.classList.replace('opacity-0', 'opacity-100');
+          } else {
+            t.classList.remove('border-brand-primary/40', 'bg-brand-primary-soft/40', 'shadow-xs');
+            t.classList.add('border-brand-accent/10', 'lg:border-transparent', 'bg-white', 'lg:bg-transparent');
+            if (indicator) indicator.classList.replace('opacity-100', 'opacity-0');
+          }
+        });
+
+        // Update panels visibility
+        panels.forEach((panel) => {
+          const isMatch = panel.getAttribute('data-service-panel') === targetSlug;
+          if (isMatch) {
+            panel.classList.remove('hidden');
+            setTimeout(() => {
+              panel.classList.remove('opacity-0');
+              panel.classList.add('opacity-100');
+            }, 10);
+          } else {
+            panel.classList.add('opacity-0');
+            panel.classList.remove('opacity-100');
+            panel.classList.add('hidden');
+          }
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', setupServiceTabs);
+  document.addEventListener('astro:page-load', setupServiceTabs);
 </script>

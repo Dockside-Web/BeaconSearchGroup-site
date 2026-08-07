@@ -3,43 +3,13 @@ import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
 import PageHero from '../components/PageHero.astro';
 
-const stats = [
-  { target: 50, suffix: '+', label: 'Years of Combined Experience' },
-  { target: 98, suffix: '%', label: 'Search Success Rate' },
-  { target: 8, suffix: '', label: 'Technical & Professional Disciplines' },
-];
-
-const helpCategories = [
+const engagementModels = [
   {
-    title: 'Permanent Placement',
-    description: 'Targeted executive search and direct hire solutions to secure key long-term leadership and technical talent.',
-    services: 'executive-recruitment',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
-    imageAlt: 'Executive meeting in boardroom',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
-  },
-  {
-    title: 'Flexible Workforce',
-    description: 'Agile contract staffing and recruiter-for-hire capabilities designed for project demands and sudden gaps.',
-    services: 'contract-staffing',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
-    imageAlt: 'Technician on manufacturing plant floor',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>`,
-  },
-  {
-    title: 'Scaled & Project Recruiting',
-    description: 'Embedded RPO and greenfield/brownfield expansion recruiting to hit high-volume, fixed-timeline targets.',
-    services: 'rpo',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
-    imageAlt: 'Operations team collaborating',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
-  },
-];
-
-const services = [
-  {
+    number: '01',
     slug: 'executive-recruitment',
+    category: 'Permanent Placement',
     name: 'Executive Recruitment / Retained Search',
+    shortName: 'Retained Search',
     tagline: 'Confidential, dedicated search for leadership-level hiring.',
     whatItIs:
       'An exclusive search partnership for executive and leadership-level roles — dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
@@ -48,12 +18,47 @@ const services = [
       'Confidential replacements where discretion is essential',
       'Roles where the right person is not actively job-hunting',
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
+    includes: [
+      'Dedicated recruiting resources',
+      'Customized search strategy',
+      'Passive candidate outreach',
+      'Candidate vetting and evaluation',
+      'Offer and onboarding support',
+    ],
+    engagement: 'Retained',
+    billing: 'Structured search milestones',
+    process: [
+      {
+        number: '01',
+        title: 'Align',
+        body: 'Define the role, culture, compensation, and candidate profile.'
+      },
+      {
+        number: '02',
+        title: 'Map',
+        body: 'Identify the target market and reach qualified passive candidates.'
+      },
+      {
+        number: '03',
+        title: 'Evaluate',
+        body: 'Screen candidates against the technical and leadership requirements.'
+      },
+      {
+        number: '04',
+        title: 'Close',
+        body: 'Manage interviews, offer negotiations, and the transition to day one.'
+      },
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
     imageAlt: 'Two executives in a private boardroom discussion',
   },
   {
+    number: '02',
     slug: 'direct-hire',
+    category: 'Permanent Placement',
     name: 'Direct Hire Placement',
+    shortName: 'Direct Hire',
     tagline: 'Permanent placement, sourced and vetted end to end.',
     whatItIs:
       'Permanent placement for critical roles — we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
@@ -62,12 +67,48 @@ const services = [
       'Companies replacing a key contributor or adding headcount',
       'Hard-to-fill roles where posting a job has not worked',
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
-    imageAlt: 'A hiring manager welcoming a newly placed employee in an industrial office',
+    includes: [
+      'Candidate sourcing and outreach',
+      'Initial screening and qualification',
+      'Technical and experience evaluation',
+      'Interview coordination',
+      'Offer and acceptance support',
+    ],
+    engagement: 'Contingency',
+    billing: 'Percentage of first-year salary upon successful hire',
+    process: [
+      {
+        number: '01',
+        title: 'Define',
+        body: 'Build a clear understanding of the role, requirements, and ideal candidate.'
+      },
+      {
+        number: '02',
+        title: 'Source',
+        body: 'Identify and engage qualified candidates through targeted recruiting.'
+      },
+      {
+        number: '03',
+        title: 'Vet',
+        body: 'Screen candidates before presenting them for consideration.'
+      },
+      {
+        number: '04',
+        title: 'Place',
+        body: 'Support interviews, offer acceptance, and the transition into the role.'
+      },
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
+    imageAlt:
+      'A hiring manager welcoming a newly placed employee in an industrial office',
   },
   {
+    number: '03',
     slug: 'contract-staffing',
+    category: 'Flexible Workforce',
     name: 'Contract Staffing',
+    shortName: 'Contract Staffing',
     tagline: 'Flexible technical talent for project work and coverage gaps.',
     whatItIs:
       'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire — compliance, insurance, and onboarding handled on our end.',
@@ -76,12 +117,48 @@ const services = [
       'Leave coverage and interim technical leadership',
       'Teams that want to work with someone before committing',
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
-    imageAlt: 'Contract technicians working on a capital project inside a manufacturing plant',
+    includes: [
+      'Recruiting and candidate sourcing',
+      'Payroll and employment administration',
+      'Compliance and insurance handling',
+      'Onboarding support',
+      'Flexible project and workforce coverage',
+    ],
+    engagement: 'Contract',
+    billing: 'Hourly',
+    process: [
+      {
+        number: '01',
+        title: 'Scope',
+        body: 'Understand the project, timeline, technical requirements, and workforce gap.'
+      },
+      {
+        number: '02',
+        title: 'Source',
+        body: 'Identify experienced professionals aligned with the assignment.'
+      },
+      {
+        number: '03',
+        title: 'Deploy',
+        body: 'Handle onboarding, payroll, compliance, and placement.'
+      },
+      {
+        number: '04',
+        title: 'Support',
+        body: 'Stay involved as project needs change or the assignment develops.'
+      },
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
+    imageAlt:
+      'Contract technicians working on a capital project inside a manufacturing plant',
   },
   {
+    number: '04',
     slug: 'rpo',
+    category: 'Scaled Recruiting',
     name: 'Recruitment Process Outsourcing (RPO)',
+    shortName: 'RPO',
     tagline: 'Your recruiting team, scaled up without adding headcount.',
     whatItIs:
       'An embedded recruiting partnership for sustained or high-volume hiring. We run requisitions end to end under your employer brand, so hiring managers see consistent quality without carrying the full recruiting load internally.',
@@ -90,12 +167,48 @@ const services = [
       'Organizations that want recruiting handled under their own employer brand',
       'Companies scaling headcount quickly across multiple roles or sites',
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
-    imageAlt: 'A consultant leading a hiring process working session with an operations team',
+    includes: [
+      'Embedded recruiting support',
+      'Requisition management',
+      'Sourcing and candidate outreach',
+      'Candidate screening and coordination',
+      'Scalable recruiting capacity',
+    ],
+    engagement: 'Embedded Partnership',
+    billing: 'Structured engagement',
+    process: [
+      {
+        number: '01',
+        title: 'Assess',
+        body: 'Understand your hiring volume, internal capacity, and recruiting workflow.'
+      },
+      {
+        number: '02',
+        title: 'Embed',
+        body: 'Integrate recruiting resources into your existing team and employer brand.'
+      },
+      {
+        number: '03',
+        title: 'Execute',
+        body: 'Run requisitions, sourcing, screening, and candidate coordination end to end.'
+      },
+      {
+        number: '04',
+        title: 'Scale',
+        body: 'Adjust recruiting capacity as hiring demand changes across your organization.'
+      },
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
+    imageAlt:
+      'A consultant leading a hiring process working session with an operations team',
   },
   {
+    number: '05',
     slug: 'greenfield-brownfield',
+    category: 'Project Recruiting',
     name: 'Greenfield & Brownfield Recruitment',
+    shortName: 'Project Recruiting',
     tagline: 'Project-based recruiting for facility launches and expansions.',
     whatItIs:
       'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth — built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
@@ -104,12 +217,48 @@ const services = [
       'Acquisitions and large-scale workforce growth initiatives',
       'Expansions with aggressive, fixed hiring timelines',
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
-    imageAlt: 'Warehouse operations team managing inventory in a large distribution facility',
+    includes: [
+      'Project-specific recruiting strategy',
+      'High-volume candidate sourcing',
+      'Workforce planning support',
+      'Coordinated hiring execution',
+      'Recruiting against fixed project timelines',
+    ],
+    engagement: 'Project-Based',
+    billing: 'Structured project engagement',
+    process: [
+      {
+        number: '01',
+        title: 'Plan',
+        body: 'Map workforce requirements, hiring phases, roles, and project timelines.'
+      },
+      {
+        number: '02',
+        title: 'Build',
+        body: 'Create the recruiting pipeline needed to support the project.'
+      },
+      {
+        number: '03',
+        title: 'Ramp',
+        body: 'Accelerate sourcing and candidate flow as hiring volume increases.'
+      },
+      {
+        number: '04',
+        title: 'Staff',
+        body: 'Drive hiring toward the workforce target and project completion date.'
+      },
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
+    imageAlt:
+      'Warehouse operations team managing inventory in a large distribution facility',
   },
   {
+    number: '06',
     slug: 'recruiter-for-hire',
+    category: 'Flexible Recruiting',
     name: 'Recruiter for Hire',
+    shortName: 'Recruiter for Hire',
     tagline: 'Hourly recruiting support, without a placement-fee commitment.',
     whatItIs:
       'Hourly support for sourcing, screening, interviewing, and hiring assistance — expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
@@ -118,8 +267,41 @@ const services = [
       'Targeted hiring projects with a defined scope',
       'Ongoing support that flexes up or down with demand',
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
-    imageAlt: 'Automated production line inside a modern manufacturing plant',
+    includes: [
+      'Dedicated recruiting support',
+      'Candidate sourcing',
+      'Candidate screening',
+      'Interview and hiring assistance',
+      'Flexible recruiting capacity',
+    ],
+    engagement: 'Hourly Support',
+    billing: 'Hourly',
+    process: [
+      {
+        number: '01',
+        title: 'Scope',
+        body: 'Define the roles, workload, recruiting needs, and level of support required.'
+      },
+      {
+        number: '02',
+        title: 'Integrate',
+        body: 'Work alongside your existing team and hiring process.'
+      },
+      {
+        number: '03',
+        title: 'Recruit',
+        body: 'Provide sourcing, screening, interviewing, and hiring support.'
+      },
+      {
+        number: '04',
+        title: 'Adjust',
+        body: 'Flex the level of recruiting support as your needs change.'
+      },
+    ],
+    image:
+      'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
+    imageAlt:
+      'Automated production line inside a modern manufacturing plant',
   },
 ];
 
@@ -152,6 +334,26 @@ const processSteps = [
 
 const faqs = [
   {
+    question: 'When should I choose retained search vs. direct hire?',
+    answer:
+      'Retained Search is designed for executive and leadership-level roles where a dedicated, confidential search strategy is important. Direct Hire is designed for permanent roles where sourcing, screening, and placement are managed on a successful-hire basis.',
+  },
+  {
+    question: 'Can contract employees convert to direct hire?',
+    answer:
+      'Yes. Contract staffing can provide an opportunity to work with someone before making a longer-term commitment, with conversion to direct hire available.',
+  },
+  {
+    question: 'How does RPO differ from Recruiter for Hire?',
+    answer:
+      'RPO is an embedded recruiting partnership designed around sustained or high-volume hiring, with recruiting handled under your employer brand. Recruiter for Hire provides hourly recruiting support for targeted or ongoing needs without a traditional placement-fee structure.',
+  },
+  {
+    question: 'Can you staff an entire new facility or major expansion?',
+    answer:
+      'Yes. Greenfield and Brownfield Recruitment is designed for facility startups, plant expansions, acquisitions, and large-scale workforce growth with aggressive, fixed hiring timelines.',
+  },
+  {
     question: 'How quickly can you start submitting candidates for our role?',
     answer:
       'Our initial intake call takes 30–45 minutes. For standard direct hire and contract roles, you can expect your first batch of vetted candidates within 3 to 5 business days.',
@@ -164,7 +366,7 @@ const faqs = [
   {
     question: 'How do fee structures work across your engagement models?',
     answer:
-      'Direct hire is contingency-based (paid upon successful placement), Retained Search involves structured milestones, Contract Staffing operates on hourly billing, and Recruiter-for-Hire uses hourly advisory rates.',
+      'Direct hire is contingency-based, Retained Search involves structured milestones, Contract Staffing operates on hourly billing, and Recruiter-for-Hire uses hourly advisory rates.',
   },
   {
     question: 'What happens if a placed candidate does not work out?',
@@ -174,10 +376,15 @@ const faqs = [
 ];
 
 const pageTitle = 'Services';
-const metaDescription = 'Explore our workforce engagement models and recruitment solutions.';
+const metaDescription =
+  'Explore Beacon Search Group engagement models for executive search, direct hire, contract staffing, RPO, project recruiting, and recruiter-for-hire support.';
 ---
 
 <Layout title={pageTitle} description={metaDescription}>
+
+  <!-- =========================================================
+       HERO
+       ========================================================= -->
   <PageHero
     eyebrow="Our Services"
     title="Six engagements. One standard of work."
@@ -191,10 +398,12 @@ const metaDescription = 'Explore our workforce engagement models and recruitment
         class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark"
       >
         Talk to Us About Hiring
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
         </svg>
       </a>
+
       <a
         href="/careers"
         class="inline-flex items-center gap-2 border border-white/40 px-6 py-3 font-sans text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
@@ -204,282 +413,562 @@ const metaDescription = 'Explore our workforce engagement models and recruitment
     </div>
   </PageHero>
 
-  <!-- ============ 1. STATS SECTION (WITH COUNT-UP ANIMATION) ============ -->
-  <section id="stats-section" class="bg-white py-16 border-b border-brand-accent/10">
-    <div class="mx-auto max-w-6xl px-6 text-center">
-      <h2 class="font-serif text-lg sm:text-xl font-bold uppercase tracking-widest text-brand-accent/80 mb-12">
-        Time-tested industry experience, powerful results
-      </h2>
-      <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-brand-accent/15">
-        {stats.map((stat) => (
-          <div class="py-6 md:py-0 md:px-8 flex flex-col items-center">
-            <div class="font-serif text-5xl sm:text-6xl font-bold text-brand-primary tracking-tight flex items-center">
-              <span class="stat-number" data-target={stat.target}>0</span>
-              <span>{stat.suffix}</span>
-            </div>
-            <span class="mt-3 font-sans text-sm sm:text-base font-semibold text-brand-accent/80 max-w-55">
-              {stat.label}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
 
-  <!-- ============ 2. HOW WE HELP SECTION ============ -->
-  <section class="bg-brand-accent text-white py-20 sm:py-24">
+  <!-- =========================================================
+       1. FIND THE RIGHT ENGAGEMENT
+       ========================================================= -->
+  <section class="bg-white py-20 sm:py-24">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="font-serif text-3xl sm:text-4xl font-bold tracking-tight mb-4">How We Help</h2>
-        <p class="font-sans text-base text-white/75">
-          Flexible, scalable recruiting capabilities structured around your specific organizational needs.
+
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+          Start Here
+        </p>
+
+        <h2 class="mt-2 font-serif text-3xl font-bold tracking-tight text-brand-accent sm:text-4xl">
+          Which engagement fits your need?
+        </h2>
+
+        <p class="mt-4 font-sans text-base leading-relaxed text-brand-accent/70">
+          The right recruiting model depends on what you're trying to accomplish. Start with the hiring problem, and we'll help you choose the right way to engage.
         </p>
       </div>
 
-      <div class="grid gap-8 md:grid-cols-3">
-        {helpCategories.map((category) => (
-          <div class="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xs transition hover:-translate-y-1 hover:border-brand-primary/50">
-            <div class="relative h-48 w-full overflow-hidden">
-              <img
-                src={category.image}
-                alt={category.imageAlt}
-                class="h-full w-full object-cover opacity-80"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-linear-to-t from-brand-accent via-transparent to-transparent"></div>
-              <div
-                class="absolute bottom-4 left-4 p-2.5 rounded-lg bg-brand-primary text-white shadow-md"
-                set:html={category.icon}
-              ></div>
-            </div>
+      <div class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {engagementModels.map((service) => (
+          <a
+            href={`#${service.slug}`}
+            class="group flex min-h-28 items-center gap-4 border border-brand-accent/10 bg-brand-primary-soft/20 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-primary/30 hover:bg-brand-primary-soft/40"
+          >
+            <span class="font-serif text-2xl font-bold text-brand-primary/70">
+              {service.number}
+            </span>
 
-            <div class="flex flex-1 flex-col p-6">
-              <h3 class="font-serif text-xl font-bold text-white mb-2">{category.title}</h3>
-              <p class="font-sans text-sm leading-relaxed text-white/75 flex-1 mb-6">
-                {category.description}
-              </p>
-              <a
-                href={`#${category.services}`}
-                class="inline-flex items-center gap-2 font-sans text-xs font-bold uppercase tracking-wider text-brand-secondary transition hover:text-white"
-              >
-                Learn More
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
+            <span class="min-w-0 flex-1">
+              <span class="block font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
+                I need to...
+              </span>
+
+              <span class="mt-1 block font-serif text-base font-bold leading-snug text-brand-accent">
+                {service.bestFor[0]}
+              </span>
+
+              <span class="mt-2 inline-flex items-center gap-1.5 font-sans text-[10px] font-bold uppercase tracking-wider text-brand-primary">
+                {service.shortName}
+                <svg class="h-3 w-3 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </span>
+            </span>
+          </a>
         ))}
       </div>
+
     </div>
   </section>
 
-  <!-- ============ 3. SERVICES SECTION (RICH CARDS WITH IMAGES & ACCORDION) ============ -->
-  <section class="bg-slate-50 py-20 sm:py-24">
-    <div class="mx-auto max-w-5xl px-6">
-      <div class="text-center max-w-2xl mx-auto mb-16">
-        <h2 class="font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
-          Services We Provide
+
+  <!-- =========================================================
+       2. ENGAGEMENT MODELS
+       ========================================================= -->
+  <section class="bg-brand-primary-soft/30 py-20 sm:py-28">
+    <div class="mx-auto max-w-6xl px-6">
+
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+          How We Engage
+        </p>
+
+        <h2 class="mt-2 font-serif text-3xl font-bold tracking-tight text-brand-accent sm:text-4xl">
+          Recruiting built around the problem you're solving.
         </h2>
-        <p class="mt-4 font-sans text-base text-brand-accent/70">
-          Tailored engagement models designed to meet your precise talent acquisition demands.
+
+        <p class="mt-4 font-sans text-base leading-relaxed text-brand-accent/70">
+          Every engagement is structured differently, but the standard stays the same: understand the need, find the right people, and stay involved through the finish line.
         </p>
       </div>
 
-      <div class="space-y-6">
-        {services.map((service, index) => (
-          <details
+
+      <div class="mt-16 space-y-16 sm:space-y-24">
+
+        {engagementModels.map((service, index) => (
+          <article
             id={service.slug}
-            class="group scroll-mt-24 overflow-hidden rounded-2xl border border-brand-accent/10 bg-white shadow-xs transition-all duration-200 [[open]]:shadow-xl"
+            class="scroll-mt-24"
           >
-            <summary class="flex cursor-pointer items-center justify-between p-6 sm:p-8 font-serif text-lg sm:text-xl font-bold text-brand-accent list-none select-none hover:bg-slate-50/50">
-              <div class="flex items-center gap-4">
-                <span class="font-sans text-xs font-bold uppercase tracking-widest text-brand-primary bg-brand-primary/10 px-3 py-1 rounded-full">
-                  0{index + 1}
-                </span>
-                <span>{service.name}</span>
+
+            <!-- Service Header -->
+            <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
+
+              <div class="lg:col-span-8">
+                <div class="flex items-center gap-3">
+                  <span class="font-serif text-4xl font-bold leading-none text-brand-primary/60 sm:text-5xl">
+                    {service.number}
+                  </span>
+
+                  <span class="h-px w-12 bg-brand-primary/30"></span>
+
+                  <span class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+                    {service.category}
+                  </span>
+                </div>
+
+                <h3 class="mt-4 font-serif text-3xl font-bold tracking-tight text-brand-accent sm:text-4xl">
+                  {service.name}
+                </h3>
+
+                <p class="mt-3 max-w-2xl font-serif text-lg italic leading-relaxed text-brand-primary">
+                  {service.tagline}
+                </p>
               </div>
-              <div class="flex items-center gap-3">
-                <div class="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-brand-accent transition-transform duration-200 group-open:rotate-180 group-open:bg-brand-primary group-open:text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+
+              <div class="lg:col-span-4 lg:text-right">
+                <a
+                  href="/contact"
+                  class="inline-flex items-center gap-2 border-b border-brand-primary/30 pb-1 font-sans text-xs font-bold uppercase tracking-wider text-brand-primary transition hover:border-brand-primary hover:text-brand-primary-dark"
+                >
+                  Talk to us about this model
+                  <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
                   </svg>
-                </div>
+                </a>
               </div>
-            </summary>
 
-            <div class="border-t border-slate-100 p-6 sm:p-8 bg-white">
-              <div class="grid md:grid-cols-12 gap-8 items-start">
-                <div class="md:col-span-5 overflow-hidden rounded-xl border border-slate-100 shadow-xs">
-                  <img
-                    src={service.image}
-                    alt={service.imageAlt}
-                    class="h-48 md:h-full w-full object-cover"
-                    loading="lazy"
-                  />
+            </div>
+
+
+            <!-- Main Service Content -->
+            <div class="mt-8 grid overflow-hidden border border-brand-accent/10 bg-white lg:grid-cols-12">
+
+              <!-- Image -->
+              <div class="relative min-h-72 overflow-hidden lg:col-span-5">
+                <img
+                  src={service.image}
+                  alt={service.imageAlt}
+                  class="h-full w-full object-cover"
+                  loading={index < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/60 via-transparent to-transparent"></div>
+
+                <span class="absolute bottom-5 left-6 font-serif text-7xl font-bold leading-none text-white/20">
+                  {service.number}
+                </span>
+              </div>
+
+
+              <!-- Information -->
+              <div class="lg:col-span-7">
+
+                <!-- What It Is -->
+                <div class="border-b border-brand-accent/10 p-6 sm:p-8">
+                  <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
+                    The Engagement
+                  </p>
+
+                  <p class="mt-3 max-w-2xl font-sans text-sm leading-relaxed text-brand-accent/75 sm:text-base">
+                    {service.whatItIs}
+                  </p>
                 </div>
 
-                <div class="md:col-span-7 flex flex-col justify-between">
-                  <div>
-                    <p class="font-serif italic font-medium text-brand-primary text-base mb-3">
-                      {service.tagline}
-                    </p>
-                    <p class="font-sans text-sm leading-relaxed text-brand-accent/80 mb-6">
-                      {service.whatItIs}
+
+                <!-- What You Get -->
+                <div class="grid border-b border-brand-accent/10 sm:grid-cols-2">
+
+                  <div class="border-b border-brand-accent/10 p-6 sm:border-b-0 sm:border-r sm:p-8">
+                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
+                      What You Get
                     </p>
 
-                    <h4 class="font-sans text-xs font-bold uppercase tracking-wider text-brand-accent/50 mb-3">
-                      Best For
-                    </h4>
-                    <ul class="space-y-2.5 mb-6">
-                      {service.bestFor.map((item) => (
-                        <li class="flex items-start gap-2.5 font-sans text-sm text-brand-accent/80">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-brand-secondary shrink-0 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 6 9 17l-5-5"/>
-                          </svg>
-                          <span>{item}</span>
+                    <ul class="mt-4 space-y-3">
+                      {service.includes.map((item) => (
+                        <li class="flex items-start gap-2.5 font-sans text-xs leading-relaxed text-brand-accent/75">
+                          <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary">
+                            <svg class="h-2.5 w-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                          </span>
+                          {item}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <a
-                    href="/contact"
-                    class="inline-flex items-center gap-2 self-start font-sans text-sm font-semibold text-brand-primary transition hover:text-brand-primary-dark"
-                  >
-                    Talk to us about this model
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                  </a>
+
+                  <!-- Best For -->
+                  <div class="p-6 sm:p-8">
+                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
+                      Best For
+                    </p>
+
+                    <ul class="mt-4 space-y-3">
+                      {service.bestFor.map((item) => (
+                        <li class="font-sans text-xs leading-relaxed text-brand-accent/75">
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
                 </div>
+
+
+                <!-- Engagement Structure -->
+                <div class="grid sm:grid-cols-2">
+
+                  <div class="border-b border-brand-accent/10 p-6 sm:border-b-0 sm:border-r sm:p-8">
+                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
+                      Engagement
+                    </p>
+
+                    <p class="mt-2 font-serif text-base font-bold text-brand-accent">
+                      {service.engagement}
+                    </p>
+                  </div>
+
+                  <div class="p-6 sm:p-8">
+                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
+                      Billing Structure
+                    </p>
+
+                    <p class="mt-2 font-serif text-base font-bold text-brand-accent">
+                      {service.billing}
+                    </p>
+                  </div>
+
+                </div>
+
               </div>
             </div>
-          </details>
+
+
+            <!-- How This Engagement Works -->
+            <div class="mt-6 border border-brand-accent/10 bg-white p-6 sm:p-8">
+
+              <div class="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                <div>
+                  <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-secondary">
+                    How It Works
+                  </p>
+
+                  <h4 class="mt-1 font-serif text-xl font-bold text-brand-accent">
+                    From first conversation to successful hire.
+                  </h4>
+                </div>
+              </div>
+
+              <ol class="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {service.process.map((step) => (
+                  <li class="relative">
+                    <div class="flex items-center gap-3">
+                      <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-primary font-sans text-[10px] font-bold text-white">
+                        {step.number}
+                      </span>
+
+                      <span class="h-px flex-1 bg-brand-accent/10 lg:hidden"></span>
+                    </div>
+
+                    <h5 class="mt-3 font-sans text-xs font-bold uppercase tracking-wider text-brand-accent">
+                      {step.title}
+                    </h5>
+
+                    <p class="mt-2 font-sans text-xs leading-relaxed text-brand-accent/65">
+                      {step.body}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+
+            </div>
+
+          </article>
         ))}
+
       </div>
     </div>
   </section>
 
-  <!-- ============ 4. PROCESS SECTION ============ -->
-  <section class="bg-brand-primary-soft py-20 sm:py-24">
+
+  <!-- =========================================================
+       3. THE BEACON APPROACH
+       ========================================================= -->
+  <section class="bg-brand-accent py-20 text-white sm:py-24">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl text-center mb-14">
-        <h2 class="text-3xl font-bold tracking-tight text-brand-accent uppercase sm:text-4xl">
-          OUR PROCESS
+
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+          The Beacon Approach
+        </p>
+
+        <h2 class="mt-2 font-serif text-3xl font-bold tracking-tight sm:text-4xl">
+          One standard of work, regardless of engagement.
         </h2>
-        <p class="mt-4 text-base leading-relaxed text-brand-accent/70 sm:text-lg">
-          A clear, structured path from initial alignment to long-term success.
+
+        <p class="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
+          The way you engage us may change. The way we work doesn't. Every search starts with understanding the business, reaches beyond active applicants, and stays focused on the right fit through the finish line.
         </p>
       </div>
 
-      <div class="relative">
-        <!-- Connecting line (desktop only) -->
-        <div class="hidden lg:block absolute top-9 left-0 right-0 h-0.5 bg-brand-primary/25"></div>
+
+      <div class="relative mt-14">
+
+        <!-- Connecting line -->
+        <div class="absolute left-0 right-0 top-9 hidden h-px bg-white/15 lg:block"></div>
 
         <ol class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((step) => (
             <li class="relative flex flex-col items-center text-center">
-              <!-- Icon + number badge -->
-              <div class="relative z-10 mb-4 flex h-18 w-18 items-center justify-center rounded-full bg-brand-primary shadow-md text-white [&>svg]:h-8 [&>svg]:w-8">
+
+              <div class="relative z-10 mb-5 flex h-18 w-18 items-center justify-center rounded-full bg-brand-primary text-white shadow-lg [&>svg]:h-8 [&>svg]:w-8">
                 <Fragment set:html={step.icon} />
-                <span class="absolute -top-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-bold text-brand-accent shadow-sm border border-slate-200">
+
+                <span class="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand-secondary font-sans text-xs font-bold text-brand-accent">
                   {step.number}
                 </span>
               </div>
 
-              <!-- Card -->
-              <div class="w-full flex-1 rounded-2xl bg-white p-5 shadow-sm border border-brand-accent/5 transition hover:-translate-y-1 hover:shadow-md">
-                <h3 class="text-sm font-bold uppercase tracking-wider mb-2 text-brand-accent">
-                  {step.title}
-                </h3>
-                <p class="text-sm leading-relaxed text-brand-accent/70">
-                  {step.body}
-                </p>
-              </div>
+              <h3 class="font-sans text-sm font-bold uppercase tracking-wider text-white">
+                {step.title}
+              </h3>
+
+              <p class="mt-2 max-w-xs text-sm leading-relaxed text-white/60">
+                {step.body}
+              </p>
+
             </li>
           ))}
         </ol>
+
       </div>
     </div>
   </section>
 
-  <!-- ============ 5. FAQ SECTION ============ -->
-  <section class="bg-slate-50 py-20 sm:py-24 border-t border-brand-accent/10">
+
+  <!-- =========================================================
+       4. COMPARE ENGAGEMENT MODELS
+       ========================================================= -->
+  <section class="bg-white py-20 sm:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+          Compare Your Options
+        </p>
+
+        <h2 class="mt-2 font-serif text-3xl font-bold tracking-tight text-brand-accent sm:text-4xl">
+          Find the right engagement.
+        </h2>
+
+        <p class="mt-4 font-sans text-base leading-relaxed text-brand-accent/70">
+          Different hiring problems call for different recruiting models. Here's a quick way to see where each engagement fits.
+        </p>
+      </div>
+
+
+      <!-- Desktop Comparison -->
+      <div class="mt-12 hidden overflow-hidden border border-brand-accent/10 lg:block">
+
+        <div class="grid grid-cols-7 bg-brand-accent text-white">
+
+          <div class="p-4">
+            <span class="font-sans text-[9px] font-bold uppercase tracking-wider text-white/50">
+              Hiring Need
+            </span>
+          </div>
+
+          {engagementModels.map((service) => (
+            <a
+              href={`#${service.slug}`}
+              class="border-l border-white/10 p-4 transition hover:bg-white/5"
+            >
+              <span class="font-sans text-[9px] font-bold uppercase tracking-wider text-brand-secondary">
+                {service.number}
+              </span>
+
+              <span class="mt-1 block font-serif text-sm font-bold leading-tight">
+                {service.shortName}
+              </span>
+            </a>
+          ))}
+
+        </div>
+
+
+        {[
+          {
+            label: 'Leadership-level hire',
+            values: ['yes', 'yes', '', '', '', ''],
+          },
+          {
+            label: 'Permanent placement',
+            values: ['yes', 'yes', '', '', '', ''],
+          },
+          {
+            label: 'Temporary / project talent',
+            values: ['', '', 'yes', '', 'yes', ''],
+          },
+          {
+            label: 'High-volume hiring',
+            values: ['', '', '', 'yes', 'yes', ''],
+          },
+          {
+            label: 'New facility / expansion',
+            values: ['', '', '', '', 'yes', ''],
+          },
+          {
+            label: 'Embedded recruiting team',
+            values: ['', '', '', 'yes', '', ''],
+          },
+          {
+            label: 'Extra recruiting capacity',
+            values: ['', '', '', 'yes', '', 'yes'],
+          },
+          {
+            label: 'Hourly engagement',
+            values: ['', '', 'yes', '', '', 'yes'],
+          },
+          {
+            label: 'Passive candidate search',
+            values: ['yes', 'yes', '', 'yes', 'yes', ''],
+          },
+        ].map((row, rowIndex) => (
+          <div
+            class={`grid grid-cols-7 border-t border-brand-accent/10 ${
+              rowIndex % 2 === 0 ? 'bg-brand-primary-soft/15' : 'bg-white'
+            }`}
+          >
+            <div class="p-4">
+              <span class="font-sans text-xs font-semibold text-brand-accent/75">
+                {row.label}
+              </span>
+            </div>
+
+            {row.values.map((value) => (
+              <div class="flex items-center justify-center border-l border-brand-accent/10 p-4">
+                {value === 'yes' && (
+                  <span class="flex h-5 w-5 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary">
+                    <svg class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                  </span>
+                )}
+              </div>
+            ))}
+
+          </div>
+        ))}
+
+      </div>
+
+
+      <!-- Mobile Comparison -->
+      <div class="mt-10 space-y-3 lg:hidden">
+
+        {engagementModels.map((service) => (
+          <a
+            href={`#${service.slug}`}
+            class="group block border border-brand-accent/10 bg-brand-primary-soft/15 p-5 transition hover:border-brand-primary/30"
+          >
+            <div class="flex items-center gap-3">
+              <span class="font-serif text-2xl font-bold text-brand-primary/60">
+                {service.number}
+              </span>
+
+              <div class="flex-1">
+                <p class="font-sans text-[9px] font-semibold uppercase tracking-wider text-brand-secondary">
+                  {service.category}
+                </p>
+
+                <h3 class="font-serif text-base font-bold text-brand-accent">
+                  {service.shortName}
+                </h3>
+              </div>
+
+              <svg class="h-4 w-4 text-brand-primary transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </div>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              {service.bestFor.map((item) => (
+                <span class="border border-brand-accent/10 bg-white px-2.5 py-1.5 font-sans text-[10px] text-brand-accent/65">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))}
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       5. FAQ
+       ========================================================= -->
+  <section class="border-t border-brand-accent/10 bg-brand-primary-soft/20 py-20 sm:py-24">
     <div class="mx-auto max-w-3xl px-6">
-      <div class="text-center mb-12">
-        <h2 class="font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
+
+      <div class="text-center">
+        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+          Questions
+        </p>
+
+        <h2 class="mt-2 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
           Frequently Asked Questions
         </h2>
+
+        <p class="mt-4 font-sans text-base text-brand-accent/65">
+          A few of the questions we hear most often when organizations are evaluating their recruiting options.
+        </p>
       </div>
 
-      <div class="space-y-4">
+
+      <div class="mt-10 space-y-3">
+
         {faqs.map((faq) => (
-          <details class="group rounded-xl border border-brand-accent/10 bg-white p-6 shadow-xs [[open]]:shadow-sm">
-            <summary class="flex cursor-pointer items-center justify-between font-serif text-base sm:text-lg font-bold text-brand-accent list-none">
+          <details class="group border border-brand-accent/10 bg-white px-5 py-5 sm:px-6">
+
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-base font-bold text-brand-accent">
               <span>{faq.question}</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5 text-brand-primary transition-transform duration-200 group-open:rotate-180 shrink-0 ml-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
+
+              <span class="flex h-7 w-7 shrink-0 items-center justify-center border border-brand-accent/10 text-brand-primary transition group-open:bg-brand-primary group-open:text-white">
+                <svg
+                  class="h-3.5 w-3.5 transition-transform duration-200 group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  aria-hidden="true"
+                >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </span>
             </summary>
-            <p class="mt-3 font-sans text-sm leading-relaxed text-brand-accent/75 pt-3 border-t border-slate-100">
+
+            <p class="mt-4 border-t border-brand-accent/10 pt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
               {faq.answer}
             </p>
+
           </details>
         ))}
+
       </div>
+
     </div>
   </section>
 
+
+  <!-- =========================================================
+       6. CTA
+       ========================================================= -->
   <CTA />
+
 </Layout>
-
-<!-- ============ COUNT-UP ANIMATION SCRIPT ============ -->
-<script>
-  function initCountUp() {
-    const statsSection = document.getElementById('stats-section');
-    if (!statsSection) return;
-
-    let animated = false;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !animated) {
-            animated = true;
-            const elements = statsSection.querySelectorAll('.stat-number');
-
-            elements.forEach((el) => {
-              const target = parseInt(el.getAttribute('data-target') || '0', 10);
-              const duration = 1500; // ms
-              const stepTime = 20;
-              const steps = duration / stepTime;
-              const increment = target / steps;
-              let current = 0;
-
-              const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                  el.textContent = target.toString();
-                  clearInterval(timer);
-                } else {
-                  el.textContent = Math.floor(current).toString();
-                }
-              }, stepTime);
-            });
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    observer.observe(statsSection);
-  }
-
-  // Initialize on DOM load and Astro page navigation events
-  document.addEventListener('DOMContentLoaded', initCountUp);
-  document.addEventListener('astro:page-load', initCountUp);
-</script>
+```

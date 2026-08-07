@@ -1,22 +1,35 @@
 ---
 interface Props {
-  tagline: string;
+  eyebrow: string;
   title: string;
-  class?: string;
+  description?: string;
+  align?: 'left' | 'center';
+  theme?: 'light' | 'dark';
 }
 
-const { tagline, title, class: className } = Astro.props;
+const { eyebrow, title, description, align = 'left', theme = 'light' } = Astro.props;
+
+const isDark = theme === 'dark';
+const isCenter = align === 'center';
 ---
 
-<div class:list={["text-center max-w-xl mx-auto mb-14", className]}>
-  <p class="text-sm tracking-[0.3em] uppercase text-brand-secondary mb-3">
-    {tagline}
+<div class={`${isCenter ? 'mx-auto text-center' : ''} max-w-2xl`}>
+  <p class={`flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-primary ${
+    isCenter ? 'justify-center' : ''
+  }`}>
+    <span aria-hidden="true" class="inline-block h-0.5 w-6 bg-brand-secondary"></span>
+    {eyebrow}
   </p>
-
-  <h2 class="font-headers text-4xl md:text-5xl mb-4 leading-tight">
+  <h2 class={`mt-2 font-serif text-3xl font-bold tracking-tight sm:text-4xl ${
+    isDark ? 'text-white' : 'text-brand-accent'
+  }`}>
     {title}
   </h2>
-
-  <div class="w-16 h-0.5 bg-brand-secondary mx-auto mb-6 rounded-full"></div>
-  <slot />
+  {description && (
+    <p class={`mt-4 font-sans text-base leading-relaxed ${
+      isDark ? 'text-white/70' : 'text-brand-accent/70'
+    } ${isCenter ? 'mx-auto' : ''}`}>
+      {description}
+    </p>
+  )}
 </div>

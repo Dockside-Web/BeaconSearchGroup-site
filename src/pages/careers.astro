@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content'
 import PageHero from '../components/PageHero.astro'
 import Button from '../components/Button.astro'
 import JobCard from '../components/careers/JobCard.astro'
+import SectionHeader from '../components/UI/SectionHeader.astro'
 import { contactInfo } from '../data/site'
 import ClientContactForm from '../components/ClientContactForm.astro'
 
@@ -58,22 +59,6 @@ const metaDescription =
     image="https://cdn.magicpatterns.com/patterns/generated-images/977aaf88-fdf4-42e0-835e-09c130db7174.jpg"
     imageAlt="Engineer walking through a manufacturing facility"
   >
-    <Button href="#open-roles" variant="primary" size="lg">
-      See open roles
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="h-4 w-4"
-        aria-hidden="true"
-      >
-        <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
-      </svg>
-    </Button>
   </PageHero>
 
   <!-- ============ Open roles ============ -->
@@ -83,20 +68,12 @@ const metaDescription =
     class="scroll-mt-24 bg-[#f0f7fd] px-4 py-20 sm:px-6 lg:px-8"
   >
     <div class="mx-auto max-w-7xl">
-      <div id="open-roles-heading">
-        <div class="flex items-center gap-2">
-          <span class="h-0.5 w-6 bg-brand-secondary"></span>
-          <p class="font-sans text-xs font-semibold uppercase tracking-[0.15em] text-brand-primary-dark">
-            Open Opportunities
-          </p>
-        </div>
-        <h2 class="mt-2 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
-          Current Openings
-        </h2>
-        <p class="mt-4 max-w-2xl font-sans text-base leading-relaxed text-brand-accent/70">
-          Every posting links directly to that role's application page.
-        </p>
-      </div>
+
+      <SectionHeader
+          eyebrow="Candidate Opportunities"
+          title="Current Openings"
+          description="Every posting links directly to that role's application page"
+        />
 
       <div class="mt-8 flex flex-col gap-4">
         <div class="flex flex-col gap-4 sm:flex-row">

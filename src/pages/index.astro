@@ -25,7 +25,7 @@ const services = [
     subtitle: 'Retained Search',
     tagline: 'Confidential, dedicated search for leadership-level hiring.',
     whatItIs:
-      'An exclusive search partnership for executive and leadership-level roles — dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
+      'An exclusive search partnership for executive and leadership-level roles, dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
     bestFor: [
       'C-suite, VP, and director-level leadership hires',
       'Confidential replacements where discretion is essential',
@@ -41,7 +41,7 @@ const services = [
     subtitle: 'Permanent Placement',
     tagline: 'Permanent placement, sourced and vetted end to end.',
     whatItIs:
-      'Permanent placement for critical roles — we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
+      'Permanent placement for critical roles where we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
     bestFor: [
       'Engineering, quality, EHS, supply chain, HR, and operations roles',
       'Companies replacing a key contributor or adding headcount',
@@ -56,7 +56,7 @@ const services = [
     subtitle: 'Interim & Project Support',
     tagline: 'Flexible technical talent for project work and coverage gaps.',
     whatItIs:
-      'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire — compliance, insurance, and onboarding handled on our end.',
+      'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire with compliance, insurance, and onboarding handled on our end.',
     bestFor: [
       'Launches, shutdowns, capital projects, and seasonal ramps',
       'Leave coverage and interim technical leadership',
@@ -86,7 +86,7 @@ const services = [
     subtitle: 'Facility Launches & Ramps',
     tagline: 'Project-based recruiting for facility launches and expansions.',
     whatItIs:
-      'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth — built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
+      'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
     bestFor: [
       'New facility launches and plant startups',
       'Acquisitions and large-scale workforce growth initiatives',
@@ -101,7 +101,7 @@ const services = [
     subtitle: 'Hourly Support',
     tagline: 'Hourly recruiting support, without a placement-fee commitment.',
     whatItIs:
-      'Hourly support for sourcing, screening, interviewing, and hiring assistance — expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
+      'Hourly support for sourcing, screening, interviewing, and hiring assistance with expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
     bestFor: [
       'Internal teams that need extra recruiting hands, not another agency fee',
       'Targeted hiring projects with a defined scope',
@@ -313,17 +313,26 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
     </section>
 
     {/* ================= SERVICES OVERVIEW ================= */}
-<section class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20" aria-labelledby="services-heading">
+<section
+  class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20"
+  aria-labelledby="services-heading"
+>
   <SectionHeader
     eyebrow="Our Services"
     title="The right engagement for the role you're filling"
     description="From one retained executive search to a full contract workforce ramp-up, the engagement flexes to how you actually need to hire."
   />
 
-  <div class="mt-10 lg:mt-12 lg:grid lg:grid-cols-12 lg:gap-8 items-center" id="services-tabs">
-    {/* Navigation Column (Compacted Vertical Sidebar / Horizontal Mobile Scroll) */}
-    <nav 
-      class="lg:col-span-4 flex lg:flex-col overflow-x-auto lg:overflow-x-visible no-scrollbar space-x-2.5 lg:space-x-0 lg:space-y-1.5 pb-4 lg:pb-0 border-b border-brand-accent/10 lg:border-b-0 lg:border-r lg:pr-6" 
+  <div
+    class="mt-10 lg:mt-12 lg:grid lg:grid-cols-12 lg:gap-8"
+    id="services-tabs"
+  >
+
+    {/* =========================================================
+        DESKTOP / TABLET SERVICE NAVIGATION
+        ========================================================= */}
+    <nav
+      class="hidden lg:col-span-4 lg:flex lg:flex-col lg:border-r lg:border-brand-accent/10 lg:pr-6"
       aria-label="Services List"
     >
       {services.map((service, index) => (
@@ -331,184 +340,462 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
           type="button"
           data-service-tab={service.slug}
           aria-selected={index === 0 ? "true" : "false"}
-          class={`service-tab-btn group relative flex shrink-0 lg:shrink flex-col text-left px-3 py-2.5 rounded-sm border transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary min-w-[200px] sm:min-w-[240px] lg:min-w-0 ${
+          class={`service-tab-btn group relative flex cursor-pointer items-center gap-4 border-b border-brand-accent/10 py-5 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
             index === 0
-              ? 'border-brand-primary/40 bg-brand-primary-soft/40 shadow-xs'
-              : 'border-brand-accent/10 lg:border-transparent bg-white lg:bg-transparent hover:bg-brand-primary-soft/20'
+              ? 'bg-brand-primary-soft/30'
+              : 'hover:bg-brand-primary-soft/15'
           }`}
         >
+          {/* Active indicator */}
           <span
             aria-hidden="true"
-            class={`active-indicator absolute left-0 top-0 bottom-0 w-1 bg-brand-primary transition-opacity duration-200 ${
-              index === 0 ? 'opacity-100' : 'opacity-0 group-hover:opacity-40'
+            class={`active-indicator absolute left-0 top-0 h-full w-1 bg-brand-primary transition-opacity duration-200 ${
+              index === 0 ? 'opacity-100' : 'opacity-0'
             }`}
-          />
-          <div class="pl-2">
-            <div class="flex items-center justify-between gap-1.5">
-              <span class="font-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-brand-secondary">
+          ></span>
+
+          {/* Number */}
+          <span
+            class={`service-number pl-4 font-serif text-2xl font-bold leading-none transition-colors duration-200 ${
+              index === 0
+                ? 'text-brand-primary'
+                : 'text-brand-accent/20 group-hover:text-brand-primary/50'
+            }`}
+          >
+            {String(index + 1).padStart(2, '0')}
+          </span>
+
+          {/* Service name */}
+          <div class="min-w-0 flex-1 pr-3">
+            <div class="flex items-center gap-2">
+              <span class="font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
                 {service.subtitle}
               </span>
+
               {service.badge && (
-                <span class="bg-brand-secondary/20 text-brand-accent text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.2 rounded-xs shrink-0">
+                <span class="bg-brand-secondary/20 px-1.5 py-0.5 font-sans text-[8px] font-bold uppercase tracking-wider text-brand-accent">
                   {service.badge}
                 </span>
               )}
             </div>
-            <h3 class="mt-0.5 font-serif text-sm sm:text-base font-bold text-brand-accent group-hover:text-brand-primary transition-colors">
+
+            <h3
+              class={`mt-1 font-serif text-base font-bold transition-colors duration-200 ${
+                index === 0
+                  ? 'text-brand-accent'
+                  : 'text-brand-accent/75 group-hover:text-brand-accent'
+              }`}
+            >
               {service.name}
             </h3>
           </div>
+
+          {/* Arrow */}
+          <svg
+            class={`mr-4 h-4 w-4 shrink-0 transition-all duration-200 ${
+              index === 0
+                ? 'translate-x-0 text-brand-primary opacity-100'
+                : '-translate-x-1 text-brand-accent/20 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'
+            }`}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         </button>
       ))}
     </nav>
 
-    {/* Content Panel Column (Centered vertically relative to sidebar) */}
-    <div class="lg:col-span-8 mt-6 lg:mt-0 my-auto">
+
+    {/* =========================================================
+        MOBILE SERVICE ACCORDION
+        ========================================================= */}
+    <div class="lg:hidden">
+      <div class="border-t border-brand-accent/10">
+        {services.map((service, index) => (
+          <div
+            class="mobile-service border-b border-brand-accent/10"
+            data-mobile-service={service.slug}
+          >
+            {/* Accordion Header */}
+            <button
+              type="button"
+              class="mobile-service-btn group flex w-full items-center gap-4 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+              data-mobile-service-btn={service.slug}
+              aria-expanded={index === 0 ? "true" : "false"}
+              aria-controls={`mobile-panel-${service.slug}`}
+            >
+              {/* Number */}
+              <span
+                class={`font-serif text-xl font-bold leading-none ${
+                  index === 0
+                    ? 'text-brand-primary'
+                    : 'text-brand-accent/25'
+                }`}
+                data-mobile-number={service.slug}
+              >
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              {/* Name */}
+              <span class="min-w-0 flex-1">
+                <span class="block font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
+                  {service.subtitle}
+                </span>
+
+                <span class="mt-0.5 block font-serif text-lg font-bold text-brand-accent">
+                  {service.name}
+                </span>
+              </span>
+
+              {service.badge && (
+                <span class="hidden bg-brand-secondary/20 px-2 py-1 font-sans text-[8px] font-bold uppercase tracking-wider text-brand-accent sm:inline-block">
+                  {service.badge}
+                </span>
+              )}
+
+              {/* Plus / Minus */}
+              <span
+                class="mobile-service-icon flex h-7 w-7 shrink-0 items-center justify-center border border-brand-accent/15 text-brand-accent transition-all duration-200"
+                data-mobile-icon={service.slug}
+                aria-hidden="true"
+              >
+                <svg
+                  class={`h-3.5 w-3.5 ${
+                    index === 0 ? 'hidden' : 'block'
+                  }`}
+                  data-plus-icon={service.slug}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M12 5v14M5 12h14"
+                  />
+                </svg>
+
+                <svg
+                  class={`h-3.5 w-3.5 ${
+                    index === 0 ? 'block' : 'hidden'
+                  }`}
+                  data-minus-icon={service.slug}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 12h14"
+                  />
+                </svg>
+              </span>
+            </button>
+
+
+            {/* Accordion Content */}
+            <div
+              id={`mobile-panel-${service.slug}`}
+              class={`mobile-service-panel overflow-hidden transition-all duration-300 ${
+                index === 0
+                  ? 'max-h-[900px] opacity-100'
+                  : 'max-h-0 opacity-0'
+              }`}
+              data-mobile-panel={service.slug}
+            >
+              <div class="pb-6">
+
+                {/* Image */}
+                <div class="relative aspect-[16/9] overflow-hidden border border-brand-accent/10">
+                  <img
+                    src={service.image}
+                    alt={service.imageAlt}
+                    class="h-full w-full object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
+
+                  {/* Subtle image overlay */}
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-0 bg-brand-accent/10"
+                  ></div>
+
+                  {/* Number overlay */}
+                  <span
+                    aria-hidden="true"
+                    class="absolute bottom-3 right-4 font-serif text-5xl font-bold leading-none text-white/20"
+                  >
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div class="mt-5">
+                  <p class="font-sans text-sm leading-relaxed text-brand-accent/75">
+                    {service.whatItIs}
+                  </p>
+
+                  {/* Best Suited For */}
+                  <div class="mt-5 border-t border-brand-accent/10 pt-4">
+                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent/45">
+                      Best Suited For
+                    </p>
+
+                    <div class="mt-3 flex flex-wrap gap-2">
+                      {service.bestFor.map((item) => (
+                        <span
+                          class="border border-brand-accent/10 bg-brand-primary-soft/40 px-2.5 py-1.5 font-sans text-[11px] leading-tight text-brand-accent/75"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Link */}
+                  <div class="mt-5">
+                    <a
+                      href={`/services#${service.slug}`}
+                      class="group inline-flex items-center gap-2 font-sans text-xs font-semibold text-brand-secondary transition-colors hover:text-brand-accent"
+                    >
+                      Learn more about {service.name}
+
+                      <svg
+                        class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        aria-hidden="true"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+
+    {/* =========================================================
+        DESKTOP SERVICE DETAIL PANEL
+        ========================================================= */}
+    <div class="hidden lg:col-span-8 lg:block">
       {services.map((service, index) => (
         <div
           id={`panel-${service.slug}`}
           data-service-panel={service.slug}
           class={`service-panel transition-all duration-300 ${
-            index === 0 ? 'block opacity-100' : 'hidden opacity-0'
+            index === 0
+              ? 'block opacity-100'
+              : 'hidden opacity-0'
           }`}
         >
-          <div class="border border-brand-accent/10 bg-white p-6 sm:p-8 shadow-xs">
-            {/* Header Area */}
-            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-brand-accent/10 pb-4">
-              <div>
-                <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+          <div class="relative overflow-hidden border border-brand-accent/10 bg-brand-primary-soft/25 shadow-xs">
+
+            {/* Large background number */}
+            <span
+              aria-hidden="true"
+              class="pointer-events-none absolute -right-2 -top-8 font-serif text-[180px] font-bold leading-none text-brand-accent/[0.035]"
+            >
+              {String(index + 1).padStart(2, '0')}
+            </span>
+
+            {/* Image */}
+            <div class="relative aspect-[16/7] overflow-hidden">
+              <img
+                src={service.image}
+                alt={service.imageAlt}
+                class="h-full w-full object-cover"
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+
+              {/* Image overlay */}
+              <div
+                aria-hidden="true"
+                class="absolute inset-0 bg-gradient-to-t from-brand-accent/70 via-brand-accent/10 to-transparent"
+              ></div>
+
+              {/* Image label */}
+              <div class="absolute bottom-5 left-6 sm:left-8">
+                <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
                   {service.subtitle}
                 </p>
-                <h3 class="mt-1 font-serif text-2xl font-bold text-brand-accent sm:text-3xl">
+
+                <h3 class="mt-1 font-serif text-2xl font-bold text-white sm:text-3xl">
                   {service.name}
                 </h3>
               </div>
+
+              {/* Badge */}
               {service.badge && (
-                <span class="bg-brand-secondary py-1 px-3 font-sans text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-accent shadow-xs">
+                <span class="absolute right-5 top-5 bg-brand-secondary px-3 py-1.5 font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-accent">
                   {service.badge}
                 </span>
               )}
             </div>
 
-            {/* Grid Content */}
-            <div class="mt-6 grid gap-6 md:grid-cols-12 md:items-center">
-              {/* Image Column */}
-              <div class="relative overflow-hidden rounded-sm border border-brand-accent/10 md:col-span-5 aspect-4/3 md:aspect-square">
-                <img
-                  src={service.image}
-                  alt={service.imageAlt}
-                  class="h-full w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
 
-              {/* Text Body */}
-              <div class="flex flex-col justify-center md:col-span-7">
-                <p class="font-sans text-xs sm:text-sm leading-relaxed text-brand-accent/80">
+            {/* Bottom Content */}
+            <div class="relative grid gap-7 p-6 sm:p-8 md:grid-cols-12 md:gap-8">
+
+              {/* Description */}
+              <div class="md:col-span-7">
+                <p class="font-sans text-sm leading-relaxed text-brand-accent/75">
                   {service.whatItIs}
                 </p>
 
-                <div class="mt-4 border-t border-brand-accent/10 pt-3.5">
-                  <p class="font-sans text-[10px] font-semibold uppercase tracking-wider text-brand-accent/50">
-                    Best Suited For
-                  </p>
-                  <ul class="mt-2 space-y-1.5">
-                    {service.bestFor.map((item) => (
-                      <li class="flex items-start gap-2 font-sans text-xs text-brand-accent/80">
-                        <span class="mt-0.5 flex h-3.5 w-3.5 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary">
-                          <svg class="h-2 w-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                          </svg>
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div class="mt-6">
+                  <a
+                    href={`/services#${service.slug}`}
+                    class="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-brand-secondary transition-colors hover:text-brand-accent"
+                  >
+                    Learn more about {service.name}
+
+                    <svg
+                      class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      aria-hidden="true"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      />
+                    </svg>
+                  </a>
                 </div>
               </div>
-            </div>
 
-            {/* Bottom Link */}
-            <div class="mt-6 border-t border-brand-accent/10 pt-4">
-              <a
-                href={`/services#${service.slug}`}
-                class="group inline-flex items-center gap-2 font-sans text-xs sm:text-sm font-semibold text-brand-secondary hover:text-brand-accent transition-colors"
-              >
-                Learn more about {service.name}
-                <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </a>
+
+              {/* Best Suited For */}
+              <div class="md:col-span-5">
+                <div class="border-l border-brand-accent/10 pl-6">
+                  <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent/45">
+                    Best Suited For
+                  </p>
+
+                  <div class="mt-3 flex flex-wrap gap-2">
+                    {service.bestFor.map((item) => (
+                      <span
+                        class="border border-brand-accent/10 bg-white/60 px-2.5 py-1.5 font-sans text-[11px] leading-tight text-brand-accent/70"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       ))}
     </div>
+
   </div>
 
-  <div class="mt-12 flex justify-center">
+
+  {/* View All Services */}
+  <div class="mt-10 flex justify-center md:mt-12">
     <Button href="/services" variant="outline" size="md">
       View All Services
-      <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+
+      <svg
+        class="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M14 5l7 7m0 0l-7 7m7-7H3"
+        />
       </svg>
     </Button>
   </div>
 </section>
 
-    {/* ================= INDUSTRIES SECTION ================= */}
-    <section class="beacon-sweep relative overflow-hidden bg-brand-accent py-16 text-white md:py-24" aria-labelledby="industries-heading">
-      <div
-        aria-hidden="true"
-        class="pointer-events-none absolute -left-40 top-1/2 h-150 w-150 -translate-y-1/2 rounded-full border border-white/5"
-      ></div>
-      <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
-        <SectionHeader
-          theme="dark"
-          eyebrow="Industries We Serve"
-          title="We know these markets because we only work in them"
-          description="Specialization is the whole point. Our recruiters speak the language of the plant floor, the design review, and the executive team, which is why the candidates we present are actually qualified."
-        />
 
-        <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {industries.map((industry) => (
-            <li class="group flex flex-col border border-white/10 bg-brand-accent-soft transition-all duration-300">
-              <div class="relative aspect-4/3 overflow-hidden">
-                <img
-                  src={industry.image}
-                  alt={industry.imageAlt}
-                  class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span
-                  aria-hidden="true"
-                  class="absolute inset-0 bg-brand-accent/25 transition-opacity duration-300 group-hover:opacity-0"
-                />
-                <span
-                  aria-hidden="true"
-                  class="absolute bottom-0 left-0 h-1 w-12 bg-brand-secondary transition-all duration-300 group-hover:w-full"
-                />
-              </div>
-              <div class="flex flex-1 flex-col p-6">
-                <h3 class="font-serif text-xl font-bold text-white">{industry.name}</h3>
-                <p class="mt-3 flex-1 font-sans text-sm leading-relaxed text-white/60">
-                  {industry.description}
-                </p>
-                <ul class="mt-5 space-y-1.5 border-t border-white/10 pt-4">
-                  {industry.roles.map((role) => (
-                    <li class="font-sans text-[13px] text-brand-primary">
-                      {role}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+{/* ================= INDUSTRIES SECTION ================= */}
+<section class="beacon-sweep relative overflow-hidden bg-brand-accent py-16 text-white md:py-24" aria-labelledby="industries-heading">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -left-40 top-1/2 h-150 w-150 -translate-y-1/2 rounded-full border border-white/5"
+  ></div>
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <SectionHeader
+      theme="dark"
+      eyebrow="Industries We Serve"
+      title="We know these markets because we only work in them"
+      description="Specialization is the whole point. Our recruiters speak the language of the plant floor, the design review, and the executive team, which is why the candidates we present are actually qualified."
+    />
+
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {industries.map((industry) => (
+        <li class="group flex flex-col border border-white/10 bg-brand-accent-soft transition-all duration-300">
+          <div class="relative aspect-4/3 overflow-hidden">
+            <img
+              src={industry.image}
+              alt={industry.imageAlt}
+              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              loading="lazy"
+              decoding="async"
+            />
+            <span
+              aria-hidden="true"
+              class="absolute inset-0 bg-brand-accent/25 transition-opacity duration-300 group-hover:opacity-0"
+            />
+            <span
+              aria-hidden="true"
+              class="absolute bottom-0 left-0 h-1 w-12 bg-brand-secondary transition-all duration-300 group-hover:w-full"
+            />
+          </div>
+          <div class="flex flex-1 flex-col p-6">
+            <h3 class="font-serif text-xl font-bold text-white">{industry.name}</h3>
+            <p class="mt-3 flex-1 font-sans text-sm leading-relaxed text-white/60">
+              {industry.description}
+            </p>
+            <ul class="mt-5 space-y-1.5 border-t border-white/10 pt-4">
+              {industry.roles.map((role) => (
+                <li class="font-sans text-[13px] text-brand-primary">
+                  {role}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
 
     {/* ================= WHY BEACON ================= */}
     <section class="bg-brand-primary-soft/50 py-16 md:py-24" aria-labelledby="why-heading">
@@ -712,52 +999,347 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
   document.addEventListener('astro:page-load', initCounters);
 
   function setupServiceTabs(): void {
-    const container = document.getElementById('services-tabs');
-    if (!container) return;
+  const container = document.getElementById('services-tabs');
+  if (!container) return;
 
-    const tabs = container.querySelectorAll<HTMLButtonElement>('[data-service-tab]');
-    const panels = container.querySelectorAll<HTMLElement>('[data-service-panel]');
+  /* =========================================================
+     DESKTOP TABS
+     ========================================================= */
+  const tabs = container.querySelectorAll<HTMLButtonElement>(
+    '[data-service-tab]'
+  );
 
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const targetSlug = tab.getAttribute('data-service-tab');
-        if (!targetSlug) return;
+  const panels = container.querySelectorAll<HTMLElement>(
+    '[data-service-panel]'
+  );
 
-        // Update tabs state
-        tabs.forEach((t) => {
-          const isSelected = t === tab;
-          t.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-          
-          const indicator = t.querySelector('.active-indicator');
-          if (isSelected) {
-            t.classList.add('border-brand-primary/40', 'bg-brand-primary-soft/40', 'shadow-xs');
-            t.classList.remove('border-brand-accent/10', 'lg:border-transparent', 'bg-white', 'lg:bg-transparent');
-            if (indicator) indicator.classList.replace('opacity-0', 'opacity-100');
-          } else {
-            t.classList.remove('border-brand-primary/40', 'bg-brand-primary-soft/40', 'shadow-xs');
-            t.classList.add('border-brand-accent/10', 'lg:border-transparent', 'bg-white', 'lg:bg-transparent');
-            if (indicator) indicator.classList.replace('opacity-100', 'opacity-0');
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const targetSlug = tab.getAttribute('data-service-tab');
+      if (!targetSlug) return;
+
+      /* Update desktop navigation */
+      tabs.forEach((t) => {
+        const isSelected = t === tab;
+
+        t.setAttribute(
+          'aria-selected',
+          isSelected ? 'true' : 'false'
+        );
+
+        const indicator = t.querySelector('.active-indicator');
+        const number = t.querySelector('.service-number');
+        const arrow = t.querySelector('svg');
+
+        if (isSelected) {
+          t.classList.add(
+            'bg-brand-primary-soft/30'
+          );
+
+          t.classList.remove(
+            'hover:bg-brand-primary-soft/15'
+          );
+
+          if (indicator) {
+            indicator.classList.replace(
+              'opacity-0',
+              'opacity-100'
+            );
           }
-        });
 
-        // Update panels visibility
-        panels.forEach((panel) => {
-          const isMatch = panel.getAttribute('data-service-panel') === targetSlug;
-          if (isMatch) {
-            panel.classList.remove('hidden');
-            setTimeout(() => {
-              panel.classList.remove('opacity-0');
-              panel.classList.add('opacity-100');
-            }, 10);
-          } else {
-            panel.classList.add('opacity-0');
-            panel.classList.remove('opacity-100');
-            panel.classList.add('hidden');
+          if (number) {
+            number.classList.remove(
+              'text-brand-accent/20'
+            );
+
+            number.classList.add(
+              'text-brand-primary'
+            );
           }
-        });
+
+          if (arrow) {
+            arrow.classList.remove(
+              '-translate-x-1',
+              'text-brand-accent/20',
+              'opacity-0'
+            );
+
+            arrow.classList.add(
+              'translate-x-0',
+              'text-brand-primary',
+              'opacity-100'
+            );
+          }
+        } else {
+          t.classList.remove(
+            'bg-brand-primary-soft/30'
+          );
+
+          t.classList.add(
+            'hover:bg-brand-primary-soft/15'
+          );
+
+          if (indicator) {
+            indicator.classList.replace(
+              'opacity-100',
+              'opacity-0'
+            );
+          }
+
+          if (number) {
+            number.classList.remove(
+              'text-brand-primary'
+            );
+
+            number.classList.add(
+              'text-brand-accent/20'
+            );
+          }
+
+          if (arrow) {
+            arrow.classList.remove(
+              'translate-x-0',
+              'text-brand-primary',
+              'opacity-100'
+            );
+
+            arrow.classList.add(
+              '-translate-x-1',
+              'text-brand-accent/20',
+              'opacity-0'
+            );
+          }
+        }
+      });
+
+
+      /* Update desktop panels */
+      panels.forEach((panel) => {
+        const isMatch =
+          panel.getAttribute('data-service-panel') === targetSlug;
+
+        if (isMatch) {
+          panel.classList.remove('hidden');
+
+          requestAnimationFrame(() => {
+            panel.classList.remove('opacity-0');
+            panel.classList.add('opacity-100');
+          });
+        } else {
+          panel.classList.add('opacity-0');
+          panel.classList.remove('opacity-100');
+          panel.classList.add('hidden');
+        }
       });
     });
-  }
+  });
+
+
+  /* =========================================================
+     MOBILE ACCORDION
+     ========================================================= */
+  const mobileButtons =
+    container.querySelectorAll<HTMLButtonElement>(
+      '[data-mobile-service-btn]'
+    );
+
+  const mobilePanels =
+    container.querySelectorAll<HTMLElement>(
+      '[data-mobile-panel]'
+    );
+
+  mobileButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const targetSlug =
+        button.getAttribute('data-mobile-service-btn');
+
+      if (!targetSlug) return;
+
+      const panel = container.querySelector<HTMLElement>(
+        `[data-mobile-panel="${targetSlug}"]`
+      );
+
+      const isCurrentlyOpen =
+        button.getAttribute('aria-expanded') === 'true';
+
+
+      /* Close every other accordion */
+      mobileButtons.forEach((otherButton) => {
+        const otherSlug =
+          otherButton.getAttribute(
+            'data-mobile-service-btn'
+          );
+
+        const otherPanel = container.querySelector<HTMLElement>(
+          `[data-mobile-panel="${otherSlug}"]`
+        );
+
+        const plusIcon =
+          container.querySelector<SVGElement>(
+            `[data-plus-icon="${otherSlug}"]`
+          );
+
+        const minusIcon =
+          container.querySelector<SVGElement>(
+            `[data-minus-icon="${otherSlug}"]`
+          );
+
+        const number =
+          container.querySelector<HTMLElement>(
+            `[data-mobile-number="${otherSlug}"]`
+          );
+
+        if (otherButton !== button) {
+          otherButton.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+          if (otherPanel) {
+            otherPanel.classList.remove(
+              'max-h-[900px]',
+              'opacity-100'
+            );
+
+            otherPanel.classList.add(
+              'max-h-0',
+              'opacity-0'
+            );
+          }
+
+          if (plusIcon) {
+            plusIcon.classList.remove('hidden');
+            plusIcon.classList.add('block');
+          }
+
+          if (minusIcon) {
+            minusIcon.classList.remove('block');
+            minusIcon.classList.add('hidden');
+          }
+
+          if (number) {
+            number.classList.remove(
+              'text-brand-primary'
+            );
+
+            number.classList.add(
+              'text-brand-accent/25'
+            );
+          }
+        }
+      });
+
+
+      /* Toggle clicked accordion */
+      if (isCurrentlyOpen) {
+        button.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+        if (panel) {
+          panel.classList.remove(
+            'max-h-[900px]',
+            'opacity-100'
+          );
+
+          panel.classList.add(
+            'max-h-0',
+            'opacity-0'
+          );
+        }
+
+        const plusIcon =
+          container.querySelector<SVGElement>(
+            `[data-plus-icon="${targetSlug}"]`
+          );
+
+        const minusIcon =
+          container.querySelector<SVGElement>(
+            `[data-minus-icon="${targetSlug}"]`
+          );
+
+        const number =
+          container.querySelector<HTMLElement>(
+            `[data-mobile-number="${targetSlug}"]`
+          );
+
+        if (plusIcon) {
+          plusIcon.classList.remove('hidden');
+          plusIcon.classList.add('block');
+        }
+
+        if (minusIcon) {
+          minusIcon.classList.remove('block');
+          minusIcon.classList.add('hidden');
+        }
+
+        if (number) {
+          number.classList.remove(
+            'text-brand-primary'
+          );
+
+          number.classList.add(
+            'text-brand-accent/25'
+          );
+        }
+
+      } else {
+        button.setAttribute(
+          'aria-expanded',
+          'true'
+        );
+
+        if (panel) {
+          panel.classList.remove(
+            'max-h-0',
+            'opacity-0'
+          );
+
+          panel.classList.add(
+            'max-h-[900px]',
+            'opacity-100'
+          );
+        }
+
+        const plusIcon =
+          container.querySelector<SVGElement>(
+            `[data-plus-icon="${targetSlug}"]`
+          );
+
+        const minusIcon =
+          container.querySelector<SVGElement>(
+            `[data-minus-icon="${targetSlug}"]`
+          );
+
+        const number =
+          container.querySelector<HTMLElement>(
+            `[data-mobile-number="${targetSlug}"]`
+          );
+
+        if (plusIcon) {
+          plusIcon.classList.remove('block');
+          plusIcon.classList.add('hidden');
+        }
+
+        if (minusIcon) {
+          minusIcon.classList.remove('hidden');
+          minusIcon.classList.add('block');
+        }
+
+        if (number) {
+          number.classList.remove(
+            'text-brand-accent/25'
+          );
+
+          number.classList.add(
+            'text-brand-primary'
+          );
+        }
+      }
+    });
+  });
+}
 
   document.addEventListener('DOMContentLoaded', setupServiceTabs);
   document.addEventListener('astro:page-load', setupServiceTabs);

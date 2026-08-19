@@ -1,7 +1,7 @@
 ---
 interface Props {
   background?: "stone" | "white" | string;
-  class?: string; 
+  class?: string;
 }
 
 const { background = "stone", class: className } = Astro.props;
@@ -17,10 +17,7 @@ const bgClass = bgMap[background] || background;
 ---
 
 <section class:list={["py-18", bgClass]}>
-  <div class:list={[
-    "container mx-auto px-6",
-    className 
-  ]}>
+  <div class:list={["container mx-auto px-6", className]}>
     <slot />
   </div>
 </section>

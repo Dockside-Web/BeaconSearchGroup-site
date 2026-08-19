@@ -1,25 +1,17 @@
 ---
-// src/components/shared/PageHero.astro
-//
-// Converted from the React PageHero (framer-motion swapped for a plain CSS
-// fade-up animation on load, since there's no client-side runtime here).
-//
-// The Eyebrow markup is inlined below rather than imported, since the
-// original pulled it from ../ui/Section. If you already have an
-// Eyebrow.astro equivalent, swap the <p> block for <Eyebrow tone="dark">.
-
 interface Props {
-  eyebrow: string
-  title: string
-  intro: string
-  image?: string
-  imageAlt?: string
+  eyebrow: string;
+  title: string;
+  intro: string;
+  image?: string;
+  imageAlt?: string;
 }
 
-const { eyebrow, title, intro, image, imageAlt = '' } = Astro.props
+const { eyebrow, title, intro, image, imageAlt = "" } = Astro.props;
 ---
 
-<section class="beacon-sweep relative w-full overflow-hidden bg-brand-accent px-5 py-16 text-white sm:px-8 md:py-24">
+<section
+  class="beacon-sweep relative w-full overflow-hidden bg-brand-accent px-5 py-16 text-white sm:px-8 md:py-24">
   {
     image && (
       <>
@@ -41,18 +33,19 @@ const { eyebrow, title, intro, image, imageAlt = '' } = Astro.props
 
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute -right-24 -top-32 h-105 w-105 rounded-full border border-white/6"
-  />
+    class="pointer-events-none absolute -right-24 -top-32 h-105 w-105 rounded-full border border-white/6">
+  </div>
   <div
     aria-hidden="true"
-    class="pointer-events-none absolute -right-10 -top-16 h-70 w-70 rounded-full border border-brand-primary/20"
-  />
+    class="pointer-events-none absolute -right-10 -top-16 h-70 w-70 rounded-full border border-brand-primary/20">
+  </div>
 
   <div class="page-hero-content relative mx-auto w-full max-w-6xl">
     <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
       {eyebrow}
     </p>
-    <h1 class="mt-5 max-w-3xl font-serif text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-[56px]">
+    <h1
+      class="mt-5 max-w-3xl font-serif text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl md:text-[56px]">
       {title}
     </h1>
     <p class="mt-6 max-w-2xl font-sans text-lg leading-relaxed text-white/70">

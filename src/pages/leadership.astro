@@ -4,12 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import CTASection from "../components/CTA.astro";
 
 import aaronPhoto from "../assets/headshot-aaron.webp";
-import alexPhoto from "../assets/headshot-aaron.webp";
-
-interface LeaderLink {
-  type: "email" | "linkedin";
-  href: string;
-}
+import alexPhoto from "../assets/headshot-alex.webp";
 
 const leaders = [
   {
@@ -71,10 +66,6 @@ const affiliations = [
   title="Leadership"
   description="Meet the co-founders behind Beacon Search Group and learn more about the experience, values, and relationships behind the firm."
 >
-
-  <!-- =========================================================
-       HERO
-       ========================================================= -->
   <section class="bg-brand-accent">
     <div class="mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 md:py-20">
 
@@ -134,7 +125,7 @@ const affiliations = [
           <article class="overflow-hidden border border-brand-accent/10 bg-white">
 
             <!-- Photo -->
-            <div class="relative aspect-[5/4] overflow-hidden bg-brand-primary-soft">
+            <div class="relative aspect-5/4 overflow-hidden bg-brand-primary-soft">
               <Image
                 src={leader.image}
                 alt={leader.imageAlt}
@@ -143,7 +134,7 @@ const affiliations = [
                 decoding="async"
               />
 
-              <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-brand-accent/40 to-transparent"></div>
+              <div class="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-brand-accent/40 to-transparent"></div>
             </div>
 
 
@@ -241,31 +232,6 @@ const affiliations = [
 
 
   <!-- =========================================================
-       WHAT WE BELIEVE
-       ========================================================= -->
-  <section class="bg-white py-20 sm:py-24">
-    <div class="mx-auto max-w-4xl px-6 text-center">
-
-      <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
-        What We Believe
-      </p>
-
-      <blockquote class="mt-5 font-serif text-2xl font-bold leading-relaxed text-brand-accent sm:text-3xl">
-        "Recruiting should be built on relationships, not transactions."
-      </blockquote>
-
-      <p class="mx-auto mt-5 max-w-2xl font-sans text-base leading-relaxed text-brand-accent/65">
-        That's the foundation behind Beacon Search Group. We believe clients
-        deserve a recruiting partner who understands their business, and
-        candidates deserve to be treated with the same level of respect and
-        transparency.
-      </p>
-
-    </div>
-  </section>
-
-
-  <!-- =========================================================
        OUR STORY
        ========================================================= -->
   <section class="bg-brand-primary-soft/20 py-20 sm:py-24">
@@ -341,11 +307,6 @@ const affiliations = [
     </div>
   </section>
 
-
-  <!-- =========================================================
-       CTA
-       ========================================================= -->
   <CTASection />
 
 </Layout>
-```

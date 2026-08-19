@@ -1,84 +1,105 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import { getCollection } from 'astro:content'
-import PageHero from '../components/PageHero.astro'
-import Button from '../components/Button.astro'
-import JobCard from '../components/careers/JobCard.astro'
-import SectionHeader from '../components/UI/SectionHeader.astro'
-import { contactInfo } from '../data/site'
-import ClientContactForm from '../components/ClientContactForm.astro'
-
-interface JobEntry {
-  id: string
-  data: {
-    title: string
-    department: string
-    location: string
-    summary: string
-    datePosted: string
-    applyUrl: string
-    employmentType?: string
-  }
-}
+import Layout from "../layouts/Layout.astro";
+import PageHero from "../components/PageHero.astro";
+import JobCard from "../components/careers/JobCard.astro";
+import Button from "../components/Button.astro";
+import SectionHeader from "../components/UI/SectionHeader.astro";
+import { contactInfo } from "../data/site";
+import ClientContactForm from "../components/ClientContactForm.astro";
 
 interface Job {
-  slug: string
-  title: string
-  department: string
-  location: string
-  summary: string
-  datePosted: string
-  applyUrl: string
-  employmentType: string
+  slug: string;
+  title: string;
+  department: string;
+  location: string;
+  summary: string;
+  datePosted: string;
+  applyUrl: string;
+  employmentType: string;
 }
 
-const rawJobs = (await getCollection('jobs')) as JobEntry[]
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXu6o48-7QYKuKsM9FiX7bl2Y9U9fU41J1sK8WBff-GDKT9CjbQD8mLsiNNUAmvwKLCZ04QGoOmzTF/pub?gid=2068522996&single=true&output=csv";
 
-const jobs: Job[] = rawJobs
-  .filter((entry) => !entry.id.startsWith('_'))
-  .map((entry) => ({
-    slug: entry.id,
-    ...entry.data,
-    employmentType: entry.data.employmentType || 'Full-time',
-  }))
-  .sort((a, b) => b.datePosted.localeCompare(a.datePosted))
+function parseCSV(text: string) {
+  const lines = text.trim().split(/\r?\n/);
+  if (lines.length < 2) return [];
 
-const departments = ['All', ...Array.from(new Set(jobs.map((job) => job.department))).sort()]
-const openCount = jobs.length
+  const headers = lines[0].split(",").map(h => h.trim());
 
-const pageTitle = 'Careers'
-const metaDescription =
-  'Open searches for manufacturers, engineering firms, and industrial operations from skilled trades to leadership roles.'
+  return lines.slice(1).map((line, index) => {
+    const values = line.match(/(?:\"[^\"]*\"|[^,])+/g) || [];
+    const entry: Record<string, string> = {};
+
+    headers.forEach((header, i) => {
+      let val = values[i] ? values[i].trim() : "";
+      if (val.startsWith('"') && val.endsWith('"')) {
+        val = val.slice(1, -1).replace(/""/g, '"');
+      }
+      entry[header] = val;
+    });
+
+    return {
+      slug: `job-${index}`,
+      title: entry["Title"] || "",
+      department: entry["Department"] || "Uncategorized",
+      location: entry["Location"] || "",
+      summary: entry["Summary"] || "",
+      datePosted: entry["DatePosted"] || "",
+      applyUrl: entry["ApplyURL"] || "",
+      employmentType: "Full-time"
+    } as Job;
+  });
+}
+
+let jobs: Job[] = [];
+
+try {
+  const res = await fetch(CSV_URL);
+  const csvData = await res.text();
+
+  jobs = parseCSV(csvData).sort((a, b) => new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime());
+} catch (error) {
+  console.error("Failed to fetch jobs CSV:", error);
+}
+
+const departments = ["All", ...Array.from(new Set(jobs.map(job => job.department))).sort()];
+const openCount = jobs.length;
+
+const pageTitle = "Careers";
+const metaDescription = "Open searches for manufacturers, engineering firms, and industrial operations from skilled trades to leadership roles.";
 ---
 
-<Layout title={pageTitle} description={metaDescription}>
+<Layout
+  title={pageTitle}
+  description={metaDescription}>
   <PageHero
     eyebrow="Careers"
     title="Your next role should be a step, not a sideways move."
     intro="We recruit for manufacturers, engineering firms, and industrial operations across the country, covering every level from skilled floor trades to front-office leadership."
     image="https://cdn.magicpatterns.com/patterns/generated-images/977aaf88-fdf4-42e0-835e-09c130db7174.jpg"
     imageAlt="Engineer walking through a manufacturing facility"
-  >
-  </PageHero>
+  />
 
   <!-- ============ Open roles ============ -->
   <section
     id="open-roles"
     aria-labelledby="open-roles-heading"
-    class="scroll-mt-24 bg-[#f0f7fd] px-4 py-20 sm:px-6 lg:px-8"
-  >
+    class="scroll-mt-24 bg-[#f0f7fd] px-4 py-20 sm:px-6 lg:px-8">
     <div class="mx-auto max-w-7xl">
-
       <SectionHeader
-          eyebrow="Candidate Opportunities"
-          title="Current Openings"
-          description="Every posting links directly to that role's application page"
-        />
+        eyebrow="Candidate Opportunities"
+        title="Current Openings"
+        description="Every posting links directly to that role's application page"
+      />
 
       <div class="mt-8 flex flex-col gap-4">
         <div class="flex flex-col gap-4 sm:flex-row">
           <div class="relative flex-1">
-            <label for="job-search" class="sr-only">Search open roles</label>
+            <label
+              for="job-search"
+              class="sr-only"
+              >Search open roles</label
+            >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -88,9 +109,12 @@ const metaDescription =
               stroke-linecap="round"
               stroke-linejoin="round"
               class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-accent/40"
-              aria-hidden="true"
-            >
-              <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+              aria-hidden="true">
+              <circle
+                cx="11"
+                cy="11"
+                r="8"
+              ></circle><path d="m21 21-4.3-4.3"></path>
             </svg>
             <input
               id="job-search"
@@ -100,31 +124,50 @@ const metaDescription =
             />
           </div>
           <div class="sm:w-64">
-            <label for="job-department" class="sr-only">Filter by category</label>
+            <label
+              for="job-department"
+              class="sr-only"
+              >Filter by category</label
+            >
             <select
               id="job-department"
-              class="w-full rounded-sm border border-brand-accent/15 bg-white px-4 py-3 font-sans text-sm text-brand-accent focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
-            >
-              {departments.map((dept) => (
-                <option value={dept}>{dept === 'All' ? 'All categories' : dept}</option>
-              ))}
+              class="w-full rounded-sm border border-brand-accent/15 bg-white px-4 py-3 font-sans text-sm text-brand-accent focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25">
+              {departments.map(dept => <option value={dept}>{dept === "All" ? "All categories" : dept}</option>)}
             </select>
           </div>
         </div>
       </div>
 
-      <p id="job-count" aria-live="polite" class="mt-6 font-sans text-sm text-brand-accent/60">
-        Showing {openCount} {openCount === 1 ? 'role' : 'roles'}
+      <p
+        id="job-count"
+        aria-live="polite"
+        class="mt-6 font-sans text-sm text-brand-accent/60">
+        Showing {openCount}
+        {openCount === 1 ? "role" : "roles"}
       </p>
 
       <!-- Updated Job Cards List -->
-      <ul id="job-list" class="mt-4 space-y-4">
-        {jobs.map((job) => (
-          <JobCard job={job} />
-        ))}
+      <ul
+        id="job-list"
+        class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+        {jobs.map(job => <JobCard job={job} />)}
       </ul>
 
-      <div id="no-results" class="hidden mt-4 flex-col items-center border border-dashed border-brand-accent/20 bg-white px-6 py-16 text-center">
+      <!-- Load More Button Container -->
+      <div
+        id="load-more-container"
+        class="mt-8 flex justify-center">
+        <button
+          id="load-more-btn"
+          type="button"
+          class="inline-flex items-center rounded-sm bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-primary-dark focus:outline-none focus:ring-2 focus:ring-brand-primary/50 cursor-pointer">
+          Load More Roles
+        </button>
+      </div>
+
+      <div
+        id="no-results"
+        class="hidden mt-4 flex-col items-center border border-dashed border-brand-accent/20 bg-white px-6 py-16 text-center">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -134,22 +177,23 @@ const metaDescription =
           stroke-linecap="round"
           stroke-linejoin="round"
           class="h-8 w-8 text-brand-accent/30"
-          aria-hidden="true"
-        >
-          <rect x="3" y="8" width="18" height="12" rx="2" /><path d="M3 12h4l2 3h6l2-3h4" /><path d="M12 4v4" />
+          aria-hidden="true">
+          <rect
+            x="3"
+            y="8"
+            width="18"
+            height="12"
+            rx="2"
+          ></rect><path d="M3 12h4l2 3h6l2-3h4"></path><path d="M12 4v4"></path>
         </svg>
-        <h3 class="mt-4 font-serif text-xl font-bold text-brand-accent">
-          No roles match that search
-        </h3>
+        <h3 class="mt-4 font-serif text-xl font-bold text-brand-accent">No roles match that search</h3>
         <p class="mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-accent/60">
-          Try a broader keyword or a different category. New roles open weekly, and many are
-          filled before they are ever posted.
+          Try a broader keyword or a different category. New roles open weekly, and many are filled before they are ever posted.
         </p>
         <button
           id="clear-filters"
           type="button"
-          class="mt-6 inline-flex items-center rounded-sm border border-brand-accent/25 px-5 py-2.5 font-sans text-sm font-semibold text-brand-accent transition-colors hover:border-brand-primary hover:text-brand-primary-dark"
-        >
+          class="mt-6 inline-flex items-center rounded-sm border border-brand-accent/25 px-5 py-2.5 font-sans text-sm font-semibold text-brand-accent transition-colors hover:border-brand-primary hover:text-brand-primary-dark">
           Clear filters
         </button>
       </div>
@@ -159,88 +203,126 @@ const metaDescription =
   <!-- ============ Bottom CTA / candidate form ============ -->
   <section
     aria-labelledby="candidate-cta"
-    class="beacon-sweep overflow-hidden bg-brand-accent px-4 py-20 text-white sm:px-6 lg:px-8"
-  >
+    class="beacon-sweep overflow-hidden bg-brand-accent px-4 py-20 text-white sm:px-6 lg:px-8">
     <div class="relative mx-auto max-w-7xl">
       <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
-        <!-- Copy column -->
         <div class="max-w-xl">
-          <h2 id="candidate-cta" class="mt-2 font-serif text-3xl font-bold text-white sm:text-4xl">
+          <h2
+            id="candidate-cta"
+            class="mt-2 font-serif text-3xl font-bold text-white sm:text-4xl">
             Don't see your role posted?
           </h2>
           <p class="mt-4 font-sans text-base leading-relaxed text-white/70">
-            Most of our roles are filled from relationships, not postings. Send us your resume
-            and we will keep you in mind as roles open in your discipline and geography.
+            Most of our roles are filled from relationships, not postings. Send us your resume and we will keep you in mind as roles open in your discipline and geography.
           </p>
           <p class="mt-6 font-sans text-sm leading-relaxed text-white/50">
-            Prefer email? {contactInfo.email ? (
-              <a href={`mailto:${contactInfo.email}`} class="underline decoration-white/30 underline-offset-2 hover:text-white/70">
-                Reach out directly
-              </a>
-            ) : (
-              'Reach out directly'
-            )} and a recruiter will follow up with you.
+            Prefer email? {
+              contactInfo.email ? (
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  class="underline decoration-white/30 underline-offset-2 hover:text-white/70">
+                  Reach out directly
+                </a>
+              ) : (
+                "Reach out directly"
+              )
+            } and a recruiter will follow up with you.
           </p>
         </div>
 
-        <!-- Form column -->
         <div class="rounded-sm bg-white p-6 sm:p-8">
           <ClientContactForm />
         </div>
       </div>
     </div>
   </section>
-
 </Layout>
 
 <script>
-  const searchInput = document.getElementById('job-search') as HTMLInputElement
-  const deptSelect = document.getElementById('job-department') as HTMLSelectElement
-  const jobList = document.getElementById('job-list') as HTMLUListElement
-  const jobItems = Array.from(jobList.querySelectorAll<HTMLLIElement>('[data-job]'))
-  const countEl = document.getElementById('job-count') as HTMLParagraphElement
-  const noResults = document.getElementById('no-results') as HTMLDivElement
-  const clearBtn = document.getElementById('clear-filters') as HTMLButtonElement | null
+  const searchInput = document.getElementById("job-search") as HTMLInputElement;
+  const deptSelect = document.getElementById("job-department") as HTMLSelectElement;
+  const jobList = document.getElementById("job-list") as HTMLUListElement;
+  const jobItems = Array.from(jobList.querySelectorAll<HTMLLIElement>("[data-job]"));
+  const countEl = document.getElementById("job-count") as HTMLParagraphElement;
+  const noResults = document.getElementById("no-results") as HTMLDivElement;
+  const clearBtn = document.getElementById("clear-filters") as HTMLButtonElement | null;
+  const loadMoreBtn = document.getElementById("load-more-btn") as HTMLButtonElement | null;
+  const loadMoreContainer = document.getElementById("load-more-container") as HTMLDivElement | null;
+
+  const PAGE_SIZE = 10;
+  let visibleLimit = PAGE_SIZE;
 
   function applyFilters() {
-    const query = searchInput.value.trim().toLowerCase()
-    const dept = deptSelect.value
+    const query = searchInput.value.trim().toLowerCase();
+    const dept = deptSelect.value;
 
-    let visibleCount = 0
+    // First filter items based on search/department inputs
+    const matchingItems = jobItems.filter(item => {
+      const matchesDept = dept === "All" || item.dataset.department === dept;
+      const matchesQuery = !query || (item.dataset.search ?? "").includes(query);
+      return matchesDept && matchesQuery;
+    });
 
-    for (const item of jobItems) {
-      const matchesDept = dept === 'All' || item.dataset.department === dept
-      const matchesQuery = !query || (item.dataset.search ?? '').includes(query)
-      const visible = matchesDept && matchesQuery
+    // Hide all items first
+    jobItems.forEach(item => item.classList.add("hidden"));
 
-      item.classList.toggle('hidden', !visible)
-      if (visible) visibleCount++
+    // Show matching items up to the active limit
+    const itemsToDisplay = matchingItems.slice(0, visibleLimit);
+    itemsToDisplay.forEach(item => item.classList.remove("hidden"));
+
+    // Update UI counters and toggle visibility of controls
+    const totalMatching = matchingItems.length;
+    const currentlyShowing = itemsToDisplay.length;
+
+    countEl.textContent = `Showing ${currentlyShowing} of ${totalMatching} ${totalMatching === 1 ? "role" : "roles"}`;
+
+    // Hide/show No Results panel
+    noResults.classList.toggle("hidden", totalMatching !== 0);
+    noResults.classList.toggle("flex", totalMatching === 0);
+
+    // Hide/show Load More button depending on remaining hidden matches
+    if (loadMoreContainer) {
+      const hasMore = currentlyShowing < totalMatching;
+      loadMoreContainer.classList.toggle("hidden", !hasMore);
     }
-
-    countEl.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'role' : 'roles'}`
-    noResults.classList.toggle('hidden', visibleCount !== 0)
-    noResults.classList.toggle('flex', visibleCount === 0)
   }
 
-  searchInput.addEventListener('input', applyFilters)
-  deptSelect.addEventListener('change', applyFilters)
-  clearBtn?.addEventListener('click', () => {
-    searchInput.value = ''
-    deptSelect.value = 'All'
-    applyFilters()
-  })
+  // Load More button click listener
+  loadMoreBtn?.addEventListener("click", () => {
+    visibleLimit += PAGE_SIZE;
+    applyFilters();
+  });
 
-  applyFilters()
+  // Reset batch count when search query or department filter changes
+  searchInput.addEventListener("input", () => {
+    visibleLimit = PAGE_SIZE;
+    applyFilters();
+  });
+
+  deptSelect.addEventListener("change", () => {
+    visibleLimit = PAGE_SIZE;
+    applyFilters();
+  });
+
+  clearBtn?.addEventListener("click", () => {
+    searchInput.value = "";
+    deptSelect.value = "All";
+    visibleLimit = PAGE_SIZE;
+    applyFilters();
+  });
+
+  // Initial application setup
+  applyFilters();
 
   // Reset handler for the form success panel
-  const resetBtn = document.getElementById('cf-reset') as HTMLButtonElement | null
-  const formWrap = document.getElementById('cf-form-wrap') as HTMLDivElement | null
-  const successPanel = document.getElementById('cf-success') as HTMLDivElement | null
+  const resetBtn = document.getElementById("cf-reset") as HTMLButtonElement | null;
+  const formWrap = document.getElementById("cf-form-wrap") as HTMLDivElement | null;
+  const successPanel = document.getElementById("cf-success") as HTMLDivElement | null;
 
-  resetBtn?.addEventListener('click', () => {
-    if (!formWrap || !successPanel) return
-    successPanel.classList.add('hidden')
-    successPanel.classList.remove('flex')
-    formWrap.classList.remove('hidden')
-  })
+  resetBtn?.addEventListener("click", () => {
+    if (!formWrap || !successPanel) return;
+    successPanel.classList.add("hidden");
+    successPanel.classList.remove("flex");
+    formWrap.classList.remove("hidden");
+  });
 </script>

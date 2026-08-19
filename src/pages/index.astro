@@ -1,8 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Button from '../components/Button.astro';
-import CTASection from '../components/CTA.astro';
-import SectionHeader from '../components/UI/SectionHeader.astro';
+import Button from "../components/Button.astro";
+import CTASection from "../components/CTA.astro";
+import SectionHeader from "../components/UI/SectionHeader.astro";
 
 interface StatItem {
   value: string;
@@ -12,867 +12,728 @@ interface StatItem {
 }
 
 const stats: StatItem[] = [
-  { value: '50+', number: 50, suffix: '+', label: 'Years of combined recruiting experience' },
-  { value: '98%', number: 98, suffix: '%', label: 'Retained search completion rate' },
-  { value: '24hr', number: 24, suffix: 'hr', label: 'Average submission response time' },
-  { value: 'Nationwide', number: null, suffix: '', label: 'Search reach across U.S. industry' },
+  {
+    value: "50+",
+    number: 50,
+    suffix: "+",
+    label: "Years of combined recruiting experience"
+  },
+  {
+    value: "98%",
+    number: 98,
+    suffix: "%",
+    label: "Retained search completion rate"
+  },
+  {
+    value: "24hr",
+    number: 24,
+    suffix: "hr",
+    label: "Average submission response time"
+  },
+  {
+    value: "Nationwide",
+    number: null,
+    suffix: "",
+    label: "Search reach across U.S. industry"
+  }
 ];
 
 const services = [
   {
-    slug: 'executive-recruitment',
-    name: 'Executive Recruitment',
-    subtitle: 'Retained Search',
-    tagline: 'Confidential, dedicated search for leadership-level hiring.',
+    slug: "executive-recruitment",
+    name: "Executive Recruitment",
+    subtitle: "Retained Search",
+    tagline: "Confidential, dedicated search for leadership-level hiring.",
     whatItIs:
-      'An exclusive search partnership for executive and leadership-level roles, dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
-    bestFor: [
-      'C-suite, VP, and director-level leadership hires',
-      'Confidential replacements where discretion is essential',
-      'Roles where the right person is not actively job-hunting',
-    ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
-    imageAlt: 'Two executives in a private boardroom discussion',
-    badge: 'Signature Service',
+      "An exclusive search partnership for executive and leadership-level roles, dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.",
+    bestFor: ["C-suite, VP, and director-level leadership hires", "Confidential replacements where discretion is essential", "Roles where the right person is not actively job-hunting"],
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg",
+    imageAlt: "Two executives in a private boardroom discussion",
+    badge: "Signature Service"
   },
   {
-    slug: 'direct-hire',
-    name: 'Direct Hire Placement',
-    subtitle: 'Permanent Placement',
-    tagline: 'Permanent placement, sourced and vetted end to end.',
-    whatItIs:
-      'Permanent placement for critical roles where we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
+    slug: "direct-hire",
+    name: "Direct Hire Placement",
+    subtitle: "Permanent Placement",
+    tagline: "Permanent placement, sourced and vetted end to end.",
+    whatItIs: "Permanent placement for critical roles where we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.",
     bestFor: [
-      'Engineering, quality, EHS, supply chain, HR, and operations roles',
-      'Companies replacing a key contributor or adding headcount',
-      'Hard-to-fill roles where posting a job has not worked',
+      "Engineering, quality, EHS, supply chain, HR, and operations roles",
+      "Companies replacing a key contributor or adding headcount",
+      "Hard-to-fill roles where posting a job has not worked"
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
-    imageAlt: 'A hiring manager welcoming a newly placed employee in an industrial office',
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg",
+    imageAlt: "A hiring manager welcoming a newly placed employee in an industrial office"
   },
   {
-    slug: 'contract-staffing',
-    name: 'Contract Staffing',
-    subtitle: 'Interim & Project Support',
-    tagline: 'Flexible technical talent for project work and coverage gaps.',
+    slug: "contract-staffing",
+    name: "Contract Staffing",
+    subtitle: "Interim & Project Support",
+    tagline: "Flexible technical talent for project work and coverage gaps.",
     whatItIs:
-      'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire with compliance, insurance, and onboarding handled on our end.',
-    bestFor: [
-      'Launches, shutdowns, capital projects, and seasonal ramps',
-      'Leave coverage and interim technical leadership',
-      'Teams that want to work with someone before committing',
-    ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
-    imageAlt: 'Contract technicians working on a capital project inside a manufacturing plant',
+      "Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire with compliance, insurance, and onboarding handled on our end.",
+    bestFor: ["Launches, shutdowns, capital projects, and seasonal ramps", "Leave coverage and interim technical leadership", "Teams that want to work with someone before committing"],
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg",
+    imageAlt: "Contract technicians working on a capital project inside a manufacturing plant"
   },
   {
-    slug: 'rpo',
-    name: 'Recruitment Process Outsourcing (RPO)',
-    subtitle: 'Embedded Partnership',
-    tagline: 'Your recruiting team, scaled up without adding headcount.',
+    slug: "rpo",
+    name: "Recruitment Process Outsourcing (RPO)",
+    subtitle: "Embedded Partnership",
+    tagline: "Your recruiting team, scaled up without adding headcount.",
     whatItIs:
-      'An embedded recruiting partnership for sustained or high-volume hiring. We run requisitions end to end under your employer brand, so hiring managers see consistent quality without carrying the full recruiting load internally.',
+      "An embedded recruiting partnership for sustained or high-volume hiring. We run requisitions end to end under your employer brand, so hiring managers see consistent quality without carrying the full recruiting load internally.",
     bestFor: [
-      'Sustained hiring volume that has outgrown your internal team capacity',
-      'Organizations that want recruiting handled under their own employer brand',
-      'Companies scaling headcount quickly across multiple roles or sites',
+      "Sustained hiring volume that has outgrown your internal team capacity",
+      "Organizations that want recruiting handled under their own employer brand",
+      "Companies scaling headcount quickly across multiple roles or sites"
     ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
-    imageAlt: 'A consultant leading a hiring process working session with an operations team',
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg",
+    imageAlt: "A consultant leading a hiring process working session with an operations team"
   },
   {
-    slug: 'greenfield-brownfield',
-    name: 'Greenfield & Brownfield Recruitment',
-    subtitle: 'Facility Launches & Ramps',
-    tagline: 'Project-based recruiting for facility launches and expansions.',
+    slug: "greenfield-brownfield",
+    name: "Greenfield & Brownfield Recruitment",
+    subtitle: "Facility Launches & Ramps",
+    tagline: "Project-based recruiting for facility launches and expansions.",
     whatItIs:
-      'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
-    bestFor: [
-      'New facility launches and plant startups',
-      'Acquisitions and large-scale workforce growth initiatives',
-      'Expansions with aggressive, fixed hiring timelines',
-    ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
-    imageAlt: 'Warehouse operations team managing inventory in a large distribution facility',
+      "Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth built to hit aggressive, fixed hiring timelines from first hire to full staffing.",
+    bestFor: ["New facility launches and plant startups", "Acquisitions and large-scale workforce growth initiatives", "Expansions with aggressive, fixed hiring timelines"],
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg",
+    imageAlt: "Warehouse operations team managing inventory in a large distribution facility"
   },
   {
-    slug: 'recruiter-for-hire',
-    name: 'Recruiter for Hire',
-    subtitle: 'Hourly Support',
-    tagline: 'Hourly recruiting support, without a placement-fee commitment.',
+    slug: "recruiter-for-hire",
+    name: "Recruiter for Hire",
+    subtitle: "Hourly Support",
+    tagline: "Hourly recruiting support, without a placement-fee commitment.",
     whatItIs:
-      'Hourly support for sourcing, screening, interviewing, and hiring assistance with expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
-    bestFor: [
-      'Internal teams that need extra recruiting hands, not another agency fee',
-      'Targeted hiring projects with a defined scope',
-      'Ongoing support that flexes up or down with demand',
-    ],
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
-    imageAlt: 'Automated production line inside a modern manufacturing plant',
-  },
+      "Hourly support for sourcing, screening, interviewing, and hiring assistance with expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.",
+    bestFor: ["Internal teams that need extra recruiting hands, not another agency fee", "Targeted hiring projects with a defined scope", "Ongoing support that flexes up or down with demand"],
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg",
+    imageAlt: "Automated production line inside a modern manufacturing plant"
+  }
 ];
-
-// Inline SVG path data, keyed to match the `icon` field above
-const iconPaths: Record<string, string> = {
-  target: 'M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zM12 16a4 4 0 100-8 4 4 0 000 8zM12 12h.01',
-  clock: 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z',
-  layers: 'M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5',
-  building: 'M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4',
-  'user-check': 'M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zm10 0l2 2 4-4',
-};
 
 const industries = [
   {
-    name: 'Manufacturing & Heavy Industry',
-    description: 'From plant leadership and operations to skilled trades and production support, we build high-performing teams that drive productivity, quality, and immediate impact.',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/f2b14831-d44e-4040-a984-08ce782d5f22.jpg',
-    imageAlt: 'Manufacturing and plant floor operations',
-    roles: ['Plant Manager', 'Process Engineer', 'Maintenance Manager', 'Quality Manager'],
+    name: "Manufacturing",
+    description: "From plant leadership and operations to skilled trades and production support, we build high-performing teams that drive productivity, quality, and immediate impact.",
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/f2b14831-d44e-4040-a984-08ce782d5f22.jpg",
+    imageAlt: "Manufacturing and plant floor operations",
+    roles: ["Plant Manager", "Process Engineer", "Maintenance Manager", "Quality Manager"]
   },
   {
-    name: 'Engineering & Construction',
-    description: 'Connecting top talent across mechanical, electrical, manufacturing, quality, and structural disciplines, alongside skilled construction and project management professionals.',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/8eeabe6d-c66a-4049-b5a4-afc43f76dbe9.jpg',
-    imageAlt: 'Engineering design and construction site management',
-    roles: ['Mechanical Engineer', 'Electrical Engineer', 'Project Manager', 'Controls Specialist'],
+    name: "Engineering & Construction",
+    description: "Connecting top talent across mechanical, electrical, manufacturing, quality, and structural disciplines, alongside skilled construction and project management professionals.",
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/8eeabe6d-c66a-4049-b5a4-afc43f76dbe9.jpg",
+    imageAlt: "Engineering design and construction site management",
+    roles: ["Mechanical Engineer", "Electrical Engineer", "Project Manager", "Controls Specialist"]
   },
   {
-    name: 'Aerospace & Defense',
-    description: 'Specializing in precision, compliance, and technical expertise required for highly regulated, mission-critical defense and aerospace environments.',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/787727ef-fe41-4eea-9e31-12282675c434.jpg',
-    imageAlt: 'Aerospace manufacturing and defense engineering',
-    roles: ['Quality Assurance Lead', 'Manufacturing Engineer', 'EHS Director', 'Systems Engineer'],
+    name: "Aerospace & Defense",
+    description: "Specializing in precision, compliance, and technical expertise required for highly regulated, mission-critical defense and aerospace environments.",
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/787727ef-fe41-4eea-9e31-12282675c434.jpg",
+    imageAlt: "Aerospace manufacturing and defense engineering",
+    roles: ["Quality Assurance Lead", "Manufacturing Engineer", "EHS Director", "Systems Engineer"]
   },
   {
-    name: 'Corporate, Tech & Professional Services',
-    description: 'Uniting Finance, Accounting, HR, IT, and Academics to drive financial performance, digital infrastructure, organizational growth, and strategic business leadership.',
-    image: 'https://cdn.magicpatterns.com/patterns/generated-images/5526439e-9324-41e1-8079-0e0f553fad6f.jpg',
-    imageAlt: 'Modern office environment and professional services team',
-    roles: ['Financial Analyst', 'HR Director', 'Software Engineer', 'Systems Architect'],
+    name: "Information Technology",
+    description: "Uniting Finance, Accounting, HR, IT, and Academics to drive financial performance, digital infrastructure, organizational growth, and strategic business leadership.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+    imageAlt: "Server racks and digital cloud infrastructure",
+    roles: ["Software Engineer", "Systems Architect", "IT Manager", "Data Analyst"]
   },
+  {
+    name: "Professional Services",
+    description: "Uniting Finance, Accounting, HR, IT, and Academics to drive financial performance, digital infrastructure, organizational growth, and strategic business leadership.",
+    image: "https://cdn.magicpatterns.com/patterns/generated-images/5526439e-9324-41e1-8079-0e0f553fad6f.jpg",
+    imageAlt: "Modern office environment and professional services team",
+    roles: ["Financial Analyst", "HR Director", "C Suite", "Consultant"]
+  }
 ];
 
 const differentiators = [
   {
-    title: 'A network, not a database',
-    body: 'The people we place are usually not applying to anything. They are known to us — from years of working the same plants, the same conferences, and the same technical communities.',
+    title: "A network, not a database",
+    body: "The people we place are usually not applying to anything. They are known to us — from years of working the same plants, the same conferences, and the same technical communities."
   },
   {
-    title: 'Consultative from the first call',
-    body: 'We will tell you if the comp is off, if the title is wrong, or if the search will take longer than you hope. Honest market feedback beats a stack of resumes.',
+    title: "Consultative from the first call",
+    body: "We will tell you if the comp is off, if the title is wrong, or if the search will take longer than you hope. Honest market feedback beats a stack of resumes."
   },
   {
-    title: 'Industry depth, not generalists',
-    body: 'Manufacturing, engineering, skilled trades, supply chain, quality, EHS, HR, and professional operations. That is the whole list, and it is deliberately short.',
+    title: "Industry depth, not generalists",
+    body: "Manufacturing, engineering, skilled trades, supply chain, quality, EHS, HR, and professional operations. That is the whole list, and it is deliberately short."
   },
   {
-    title: 'Any size, any volume',
-    body: 'One retained executive search or fifty contract technicians for a launch. Growing manufacturers and Fortune 500 operations get the same senior attention.',
-  },
+    title: "Any size, any volume",
+    body: "One retained executive search or fifty contract technicians for a launch. Growing manufacturers and Fortune 500 operations get the same senior attention."
+  }
 ];
 
 const testimonials = [
   {
     quote:
-      'Aaron has been my go-to recruiting partner for over 18 years. His work ethic, deep local knowledge, and focus on finding the exact skill fit make him my first call for any open role.',
-    title: 'HR Manager',
-    company: 'Tier 1 Automotive Supplier',
+      "I’ve worked with Aaron as a trusted recruiting resource for over 18 years. What sets him apart is his unmatched character, work ethic, and commitment to integrity. He is exceptionally professional, knowledgeable about local industry, and dedicated to finding the exact skill fit for every open role. Aaron is always my very first call, and I highly recommend him and his team.",
+    title: "HR Manager",
+    company: "Tier 1 Automotive Supplier"
   },
   {
-  quote: "Aaron isn't just a recruiter; he's a trusted partner who truly understands manufacturing. He asks the right questions, communicates constantly, and presents candidates who fit both our skills and culture perfectly.",
-  title: 'VP of Operations',
-  company: 'Manufacturing Company',
+    quote:
+      "Aaron isn't just a recruiter; he is a true partner who deeply understands the manufacturing industry. He asks the right questions, maintains clear communication throughout the search, and consistently delivers qualified candidates who fit both our technical needs and company culture. I wouldn\'t hesitate to recommend Aaron and his team to any organization.",
+    title: "Director of Operations",
+    company: "Manufacturing Company"
   },
   {
-    quote: 'NEED A 3RD ONE HERE.',
-    name: 'Test name',
-    title: 'Director of Test',
-    company: 'GG Group',
-  },
+    quote:
+      "I’ve worked with Aaron for nearly a decade with consistently positive results across technical, operations, and leadership roles. He excels at finding qualified passive candidates with niche skills by fishing where no one else is looking. Aaron’s professionalism, deep capability, and dedicated efforts make him a essential partner, and I recommend him every chance I get.",
+    title: "HR Manager",
+    company: "Global Automotive Manufacturer"
+  }
 ];
 
-const clientLogos = ['Company Logo Here', 'Company Logo Here', 'Company Logo Here', 'Company Logo Here', 'Company Logo Here', 'Company Logo Here'];
-
-const metaDescription = "Beacon Search Group recruits for manufacturers, engineering firms, and industrial operations nationwide, from skilled trades to executive leadership. Retained search, direct hire, and more.";
+const metaDescription =
+  "Beacon Search Group recruits for manufacturers, engineering firms, and industrial operations nationwide, from skilled trades to executive leadership. Retained search, direct hire, and more.";
 ---
 
 <Layout description={metaDescription}>
-  <section class="relative w-full overflow-hidden bg-brand-accent">
+  <section class="relative flex min-h-160 w-full items-center overflow-hidden bg-slate-950 text-white">
+    <!-- Fallback Background Gradient -->
+    <div class="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-900 to-slate-800"></div>
+
+    <!-- Background Image -->
     <img
-      src="https://cdn.magicpatterns.com/patterns/generated-images/f2b14831-d44e-4040-a984-08ce782d5f22.jpg"
-      alt="Advanced manufacturing floor with CNC machines lit by a sweeping beam of light"
-      class="absolute inset-0 h-full w-full object-cover opacity-40"
+      src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=80"
+      alt="Industrial engineer working in high-tech manufacturing facility"
+      class="absolute inset-0 h-full w-full object-cover object-right opacity-70 lg:object-center"
       loading="eager"
       decoding="async"
     />
-    <div aria-hidden="true" class="absolute inset-0 bg-brand-accent/80"></div>
-    <div aria-hidden="true" class="absolute inset-y-0 left-0 hidden w-1/2 bg-brand-accent/45 md:block"></div>
-    <div aria-hidden="true" class="absolute -left-24 top-0 hidden h-full w-24 rotate-12 bg-brand-primary/[0.07] md:block"></div>
 
-    <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-14 pt-16 sm:px-8 md:pb-20 md:pt-28">
-      <div class="max-w-3xl transition-all duration-700 ease-out">
-        <p class="flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-primary">
-          <span aria-hidden="true" class="inline-block h-px w-8 bg-brand-secondary"></span>
+    <!-- Desktop Gradient Overlay -->
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 hidden w-3/4 bg-linear-to-r from-slate-950 via-slate-950/90 to-transparent lg:block">
+    </div>
+
+    <!-- Mobile & Tablet Gradient Overlay -->
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/90 to-slate-950/50 lg:hidden">
+    </div>
+
+    <!-- Content Container -->
+    <div class="relative z-10 mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+      <div class="max-w-2xl">
+        <!-- Tagline / Eyebrow -->
+        <p class="flex items-center gap-3 font-sans text-xs font-semibold uppercase tracking-widest text-brand-primary">
+          <span
+            aria-hidden="true"
+            class="h-px w-6 bg-brand-secondary"
+          ></span>
           Specialized Recruiting &amp; Executive Search
         </p>
 
-        <h1 class="mt-6 font-serif text-[38px] font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-[62px]">
-          Lighting the Way In{' '}
-          <span class="relative inline-block text-brand-primary">Talent Innovation</span>
+        <!-- Main Headline -->
+        <h1 class="mt-4 font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+          Lighting the Way In{" "}
+          <span class="text-brand-primary">Talent Innovation</span>
         </h1>
 
-        <p class="mt-6 max-w-2xl font-sans text-lg leading-relaxed text-white/75">
-          We place engineers, skilled tradespeople, and operations leaders with manufacturers
-          and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
-          Decades of combined experience, and a network you cannot query from a database.
+        <!-- Subheadline / Body Text -->
+        <p class="mt-6 font-sans text-base leading-relaxed text-slate-200/90 sm:text-lg">
+          We place engineers, skilled tradespeople, and operations leaders with manufacturers and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
         </p>
-      </div>
 
-      <div class="mt-10 grid gap-4 sm:grid-cols-2 md:mt-14 md:max-w-4xl">
-        {/* Card 1: Employer Path */}
-        <div class="group relative flex flex-col justify-between overflow-hidden rounded-sm border border-brand-secondary/60 bg-brand-secondary/10 p-6 transition-colors duration-200 hover:bg-brand-secondary/20">
-          <span
-            aria-hidden="true"
-            class="absolute left-0 top-0 h-full w-1 bg-brand-secondary"
-          ></span>
-          <div class="pl-3">
-            <svg class="h-6 w-6 text-brand-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-            </svg>
-            <h2 class="mt-4 font-serif text-2xl font-bold text-white">
-              <a href="/contact" class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-accent after:absolute after:inset-0">
-                I'm hiring
-              </a>
-            </h2>
-            <p class="mt-2 font-sans text-sm leading-relaxed text-white/65">
-              Tell us about the role. We will tell you what the market looks like and what it takes to fill it.
-            </p>
-          </div>
-          <span class="mt-6 inline-flex items-center gap-2 pl-3 font-sans text-sm font-semibold text-brand-secondary">
-            Start a search
-            <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </span>
-        </div>
+        <!-- CTAs Using Button.astro -->
+        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <Button
+            href="/contact"
+            variant="primary"
+            size="lg">
+            Find talent
+          </Button>
 
-        {/* Card 2: Candidate Path */}
-        <div class="group relative flex flex-col justify-between overflow-hidden rounded-sm border border-white/20 bg-white/6 p-6 transition-colors duration-200 hover:bg-white/12">
-          <span
-            aria-hidden="true"
-            class="absolute left-0 top-0 h-full w-1 bg-brand-primary"
-          ></span>
-          <div class="pl-3">
-            <svg class="h-6 w-6 text-brand-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-            </svg>
-            <h2 class="mt-4 font-serif text-2xl font-bold text-white">
-              <a href="/careers" class="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary focus-visible:ring-offset-2 focus-visible:ring-offset-brand-accent after:absolute after:inset-0">
-                I'm looking for a role
-              </a>
-            </h2>
-            <p class="mt-2 font-sans text-sm leading-relaxed text-white/65">
-              See open positions across manufacturing, engineering, skilled trades, and leadership.
-            </p>
-          </div>
-          <span class="mt-6 inline-flex items-center gap-2 pl-3 font-sans text-sm font-semibold text-brand-primary">
-            Browse open roles
-            <svg class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </span>
+          <Button
+            href="/careers"
+            variant="outlineLight"
+            size="lg">
+            Find a role
+          </Button>
         </div>
       </div>
     </div>
   </section>
 
-    {/* ================= STATS BAR ================= */}
-    <section aria-label="Beacon Search Group at a glance" class="w-full bg-brand-primary-soft">
-      <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden bg-brand-accent/10 sm:px-0 lg:grid-cols-4">
-        {stats.map((stat: StatItem) => (
+  {/* ================= STATS BAR ================= */}
+  <section
+    aria-label="Beacon Search Group at a glance"
+    class="w-full bg-brand-primary-soft">
+    <div class="mx-auto grid max-w-7xl grid-cols-2 gap-px overflow-hidden bg-brand-accent/10 sm:px-0 lg:grid-cols-4">
+      {
+        stats.map((stat: StatItem) => (
           <div class="bg-brand-primary-soft px-5 py-8 text-center sm:px-8">
             <p class="font-serif text-2xl font-bold text-brand-accent sm:text-3xl">
               {stat.number !== null ? (
-                <span 
-                  class="stat-counter" 
-                  data-target={stat.number} 
-                  data-suffix={stat.suffix}
-                >
+                <span
+                  class="stat-counter"
+                  data-target={stat.number}
+                  data-suffix={stat.suffix}>
                   0{stat.suffix}
                 </span>
               ) : (
                 <span>{stat.value}</span>
               )}
             </p>
-            <p class="mx-auto mt-2 max-w-[16rem] font-sans text-[13px] leading-snug text-brand-accent/60">
-              {stat.label}
-            </p>
+            <p class="mx-auto mt-2 max-w-[16rem] font-sans text-[13px] leading-snug text-brand-accent/60">{stat.label}</p>
           </div>
-        ))}
-      </div>
-    </section>
+        ))
+      }
+    </div>
+  </section>
 
-    {/* ================= SERVICES OVERVIEW ================= */}
-<section
-  class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20"
-  aria-labelledby="services-heading"
->
-  <SectionHeader
-    eyebrow="Our Services"
-    title="The right engagement for the role you're filling"
-    description="From one retained executive search to a full contract workforce ramp-up, the engagement flexes to how you actually need to hire."
-  />
-
-  <div
-    class="mt-10 lg:mt-12 lg:grid lg:grid-cols-12 lg:gap-8"
-    id="services-tabs"
-  >
-
-    {/* =========================================================
-        DESKTOP / TABLET SERVICE NAVIGATION
-        ========================================================= */}
-    <nav
-      class="hidden lg:col-span-4 lg:flex lg:flex-col lg:border-r lg:border-brand-accent/10 lg:pr-6"
-      aria-label="Services List"
-    >
-      {services.map((service, index) => (
-        <button
-          type="button"
-          data-service-tab={service.slug}
-          aria-selected={index === 0 ? "true" : "false"}
-          class={`service-tab-btn group relative flex cursor-pointer items-center gap-4 border-b border-brand-accent/10 py-5 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
-            index === 0
-              ? 'bg-brand-primary-soft/30'
-              : 'hover:bg-brand-primary-soft/15'
-          }`}
-        >
-          {/* Active indicator */}
-          <span
-            aria-hidden="true"
-            class={`active-indicator absolute left-0 top-0 h-full w-1 bg-brand-primary transition-opacity duration-200 ${
-              index === 0 ? 'opacity-100' : 'opacity-0'
-            }`}
-          ></span>
-
-          {/* Number */}
-          <span
-            class={`service-number pl-4 font-serif text-2xl font-bold leading-none transition-colors duration-200 ${
-              index === 0
-                ? 'text-brand-primary'
-                : 'text-brand-accent/20 group-hover:text-brand-primary/50'
-            }`}
-          >
-            {String(index + 1).padStart(2, '0')}
-          </span>
-
-          {/* Service name */}
-          <div class="min-w-0 flex-1 pr-3">
-            <div class="flex items-center gap-2">
-              <span class="font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
-                {service.subtitle}
-              </span>
-
-              {service.badge && (
-                <span class="bg-brand-secondary/20 px-1.5 py-0.5 font-sans text-[8px] font-bold uppercase tracking-wider text-brand-accent">
-                  {service.badge}
-                </span>
-              )}
-            </div>
-
-            <h3
-              class={`mt-1 font-serif text-base font-bold transition-colors duration-200 ${
-                index === 0
-                  ? 'text-brand-accent'
-                  : 'text-brand-accent/75 group-hover:text-brand-accent'
-              }`}
-            >
-              {service.name}
-            </h3>
-          </div>
-
-          {/* Arrow */}
+  {/* ================= SERVICES OVERVIEW ================= */}
+  <section
+    class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20"
+    aria-labelledby="services-heading">
+    {/* Header with high-visibility CTA on the right */}
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <SectionHeader
+        eyebrow="Our Services"
+        title="The right engagement for the role you're filling"
+        description="From one retained executive search to a full contract workforce ramp-up, the engagement flexes to how you actually need to hire."
+      />
+      <div class="shrink-0 pb-1">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 rounded-md px-5 py-3 font-sans text-sm font-semibold text-brand-secondary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2">
+          View All Services
           <svg
-            class={`mr-4 h-4 w-4 shrink-0 transition-all duration-200 ${
-              index === 0
-                ? 'translate-x-0 text-brand-primary opacity-100'
-                : '-translate-x-1 text-brand-accent/20 opacity-0 group-hover:translate-x-0 group-hover:opacity-100'
-            }`}
+            class="h-4 w-4"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
             stroke-width="2"
-            aria-hidden="true"
-          >
+            aria-hidden="true">
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M9 5l7 7-7 7"
-            />
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+            ></path>
           </svg>
-        </button>
-      ))}
-    </nav>
-
-
-    {/* =========================================================
-        MOBILE SERVICE ACCORDION
-        ========================================================= */}
-    <div class="lg:hidden">
-      <div class="border-t border-brand-accent/10">
-        {services.map((service, index) => (
-          <div
-            class="mobile-service border-b border-brand-accent/10"
-            data-mobile-service={service.slug}
-          >
-            {/* Accordion Header */}
-            <button
-              type="button"
-              class="mobile-service-btn group flex w-full items-center gap-4 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
-              data-mobile-service-btn={service.slug}
-              aria-expanded={index === 0 ? "true" : "false"}
-              aria-controls={`mobile-panel-${service.slug}`}
-            >
-              {/* Number */}
-              <span
-                class={`font-serif text-xl font-bold leading-none ${
-                  index === 0
-                    ? 'text-brand-primary'
-                    : 'text-brand-accent/25'
-                }`}
-                data-mobile-number={service.slug}
-              >
-                {String(index + 1).padStart(2, '0')}
-              </span>
-
-              {/* Name */}
-              <span class="min-w-0 flex-1">
-                <span class="block font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
-                  {service.subtitle}
-                </span>
-
-                <span class="mt-0.5 block font-serif text-lg font-bold text-brand-accent">
-                  {service.name}
-                </span>
-              </span>
-
-              {service.badge && (
-                <span class="hidden bg-brand-secondary/20 px-2 py-1 font-sans text-[8px] font-bold uppercase tracking-wider text-brand-accent sm:inline-block">
-                  {service.badge}
-                </span>
-              )}
-
-              {/* Plus / Minus */}
-              <span
-                class="mobile-service-icon flex h-7 w-7 shrink-0 items-center justify-center border border-brand-accent/15 text-brand-accent transition-all duration-200"
-                data-mobile-icon={service.slug}
-                aria-hidden="true"
-              >
-                <svg
-                  class={`h-3.5 w-3.5 ${
-                    index === 0 ? 'hidden' : 'block'
-                  }`}
-                  data-plus-icon={service.slug}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 5v14M5 12h14"
-                  />
-                </svg>
-
-                <svg
-                  class={`h-3.5 w-3.5 ${
-                    index === 0 ? 'block' : 'hidden'
-                  }`}
-                  data-minus-icon={service.slug}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M5 12h14"
-                  />
-                </svg>
-              </span>
-            </button>
-
-
-            {/* Accordion Content */}
-            <div
-              id={`mobile-panel-${service.slug}`}
-              class={`mobile-service-panel overflow-hidden transition-all duration-300 ${
-                index === 0
-                  ? 'max-h-[900px] opacity-100'
-                  : 'max-h-0 opacity-0'
-              }`}
-              data-mobile-panel={service.slug}
-            >
-              <div class="pb-6">
-
-                {/* Image */}
-                <div class="relative aspect-[16/9] overflow-hidden border border-brand-accent/10">
-                  <img
-                    src={service.image}
-                    alt={service.imageAlt}
-                    class="h-full w-full object-cover"
-                    loading="lazy"
-                    decoding="async"
-                  />
-
-                  {/* Subtle image overlay */}
-                  <div
-                    aria-hidden="true"
-                    class="absolute inset-0 bg-brand-accent/10"
-                  ></div>
-
-                  {/* Number overlay */}
-                  <span
-                    aria-hidden="true"
-                    class="absolute bottom-3 right-4 font-serif text-5xl font-bold leading-none text-white/20"
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div class="mt-5">
-                  <p class="font-sans text-sm leading-relaxed text-brand-accent/75">
-                    {service.whatItIs}
-                  </p>
-
-                  {/* Best Suited For */}
-                  <div class="mt-5 border-t border-brand-accent/10 pt-4">
-                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent/45">
-                      Best Suited For
-                    </p>
-
-                    <div class="mt-3 flex flex-wrap gap-2">
-                      {service.bestFor.map((item) => (
-                        <span
-                          class="border border-brand-accent/10 bg-brand-primary-soft/40 px-2.5 py-1.5 font-sans text-[11px] leading-tight text-brand-accent/75"
-                        >
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Link */}
-                  <div class="mt-5">
-                    <a
-                      href={`/services#${service.slug}`}
-                      class="group inline-flex items-center gap-2 font-sans text-xs font-semibold text-brand-secondary transition-colors hover:text-brand-accent"
-                    >
-                      Learn more about {service.name}
-
-                      <svg
-                        class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14 5l7 7m0 0l-7 7m7-7H3"
-                        />
-                      </svg>
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+        </a>
       </div>
     </div>
 
-
-    {/* =========================================================
-        DESKTOP SERVICE DETAIL PANEL
-        ========================================================= */}
-    <div class="hidden lg:col-span-8 lg:block">
-      {services.map((service, index) => (
-        <div
-          id={`panel-${service.slug}`}
-          data-service-panel={service.slug}
-          class={`service-panel transition-all duration-300 ${
-            index === 0
-              ? 'block opacity-100'
-              : 'hidden opacity-0'
-          }`}
-        >
-          <div class="relative overflow-hidden border border-brand-accent/10 bg-brand-primary-soft/25 shadow-xs">
-
-            {/* Large background number */}
-            <span
-              aria-hidden="true"
-              class="pointer-events-none absolute -right-2 -top-8 font-serif text-[180px] font-bold leading-none text-brand-accent/[0.035]"
-            >
-              {String(index + 1).padStart(2, '0')}
-            </span>
-
-            {/* Image */}
-            <div class="relative aspect-[16/7] overflow-hidden">
-              <img
-                src={service.image}
-                alt={service.imageAlt}
-                class="h-full w-full object-cover"
-                loading={index === 0 ? 'eager' : 'lazy'}
-                decoding="async"
+    <div
+      class="mt-10 lg:mt-12 lg:grid lg:grid-cols-12 lg:gap-8"
+      id="services-tabs">
+      <nav
+        class="hidden lg:col-span-4 lg:flex lg:flex-col lg:border-r lg:border-brand-accent/10 lg:pr-6"
+        aria-label="Services List">
+        {
+          services.map((service, index) => (
+            <button
+              type="button"
+              data-service-tab={service.slug}
+              aria-selected={index === 0 ? "true" : "false"}
+              class={`service-tab-btn group relative flex cursor-pointer items-center gap-4 border-b border-brand-accent/10 py-5 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary ${
+                index === 0 ? "bg-brand-primary-soft/30 pl-5" : "pl-4 hover:bg-brand-primary-soft/15"
+              }`}>
+              <span
+                aria-hidden="true"
+                class={`active-indicator absolute left-0 top-0 h-full w-1 bg-brand-primary transition-opacity duration-200 ${index === 0 ? "opacity-100" : "opacity-0"}`}
               />
 
-              {/* Image overlay */}
-              <div
-                aria-hidden="true"
-                class="absolute inset-0 bg-gradient-to-t from-brand-accent/70 via-brand-accent/10 to-transparent"
-              ></div>
+              <div class="min-w-0 flex-1 pr-3">
+                <div class="flex items-center gap-2">
+                  <span class="font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">{service.subtitle}</span>
+                  {service.badge && <span class="bg-brand-secondary/20 px-1.5 py-0.5 font-sans text-[8px] font-bold uppercase tracking-wider text-brand-accent">{service.badge}</span>}
+                </div>
 
-              {/* Image label */}
-              <div class="absolute bottom-5 left-6 sm:left-8">
-                <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.2em] text-brand-primary">
-                  {service.subtitle}
-                </p>
-
-                <h3 class="mt-1 font-serif text-2xl font-bold text-white sm:text-3xl">
+                <h3 class={`mt-1 font-serif text-base font-bold transition-colors duration-200 ${index === 0 ? "text-brand-accent" : "text-brand-accent/75 group-hover:text-brand-accent"}`}>
                   {service.name}
                 </h3>
               </div>
 
-              {/* Badge */}
-              {service.badge && (
-                <span class="absolute right-5 top-5 bg-brand-secondary px-3 py-1.5 font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-accent">
-                  {service.badge}
-                </span>
-              )}
-            </div>
+              <svg
+                class={`mr-4 h-4 w-4 shrink-0 transition-all duration-200 ${
+                  index === 0 ? "translate-x-0 text-brand-primary opacity-100" : "-translate-x-1 text-brand-accent/20 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+          ))
+        }
+      </nav>
+      <div class="lg:hidden">
+        <div class="border-t border-brand-accent/10">
+          {
+            services.map((service, index) => (
+              <div
+                class="mobile-service border-b border-brand-accent/10"
+                data-mobile-service={service.slug}>
+                <button
+                  type="button"
+                  class="mobile-service-btn group flex w-full items-center gap-4 py-5 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary"
+                  data-mobile-service-btn={service.slug}
+                  aria-expanded={index === 0 ? "true" : "false"}
+                  aria-controls={`mobile-panel-${service.slug}`}>
+                  <span class="min-w-0 flex-1">
+                    <span class="block font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">{service.subtitle}</span>
+                    <span class="mt-0.5 block font-serif text-lg font-bold text-brand-accent">{service.name}</span>
+                  </span>
 
+                  {service.badge && (
+                    <span class="hidden bg-brand-secondary/20 px-2 py-1 font-sans text-[8px] font-bold uppercase tracking-wider text-brand-accent sm:inline-block">{service.badge}</span>
+                  )}
 
-            {/* Bottom Content */}
-            <div class="relative grid gap-7 p-6 sm:p-8 md:grid-cols-12 md:gap-8">
-
-              {/* Description */}
-              <div class="md:col-span-7">
-                <p class="font-sans text-sm leading-relaxed text-brand-accent/75">
-                  {service.whatItIs}
-                </p>
-
-                <div class="mt-6">
-                  <a
-                    href={`/services#${service.slug}`}
-                    class="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-brand-secondary transition-colors hover:text-brand-accent"
-                  >
-                    Learn more about {service.name}
-
+                  <span
+                    class="mobile-service-icon flex h-7 w-7 shrink-0 items-center justify-center border border-brand-accent/15 text-brand-accent transition-all duration-200"
+                    data-mobile-icon={service.slug}
+                    aria-hidden="true">
                     <svg
-                      class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                      class={`h-3.5 w-3.5 ${index === 0 ? "hidden" : "block"}`}
+                      data-plus-icon={service.slug}
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
-                      stroke-width="2"
-                      aria-hidden="true"
-                    >
+                      stroke-width="2">
                       <path
                         stroke-linecap="round"
                         stroke-linejoin="round"
-                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        d="M12 5v14M5 12h14"
                       />
                     </svg>
-                  </a>
-                </div>
-              </div>
+                    <svg
+                      class={`h-3.5 w-3.5 ${index === 0 ? "block" : "hidden"}`}
+                      data-minus-icon={service.slug}
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5 12h14"
+                      />
+                    </svg>
+                  </span>
+                </button>
 
+                <div
+                  id={`mobile-panel-${service.slug}`}
+                  class={`mobile-service-panel overflow-hidden transition-all duration-300 ${index === 0 ? "max-h-225 opacity-100" : "max-h-0 opacity-0"}`}
+                  data-mobile-panel={service.slug}>
+                  <div class="pb-6">
+                    <div class="relative aspect-video overflow-hidden border border-brand-accent/10">
+                      <img
+                        src={service.image}
+                        alt={service.imageAlt}
+                        class="h-full w-full object-cover"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <div
+                        aria-hidden="true"
+                        class="absolute inset-0 bg-brand-accent/10"
+                      />
+                    </div>
 
-              {/* Best Suited For */}
-              <div class="md:col-span-5">
-                <div class="border-l border-brand-accent/10 pl-6">
-                  <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent/45">
-                    Best Suited For
-                  </p>
+                    <div class="mt-5">
+                      <p class="font-sans text-sm leading-relaxed text-brand-accent/75">{service.whatItIs}</p>
 
-                  <div class="mt-3 flex flex-wrap gap-2">
-                    {service.bestFor.map((item) => (
-                      <span
-                        class="border border-brand-accent/10 bg-white/60 px-2.5 py-1.5 font-sans text-[11px] leading-tight text-brand-accent/70"
-                      >
-                        {item}
-                      </span>
-                    ))}
+                      <div class="mt-5 border-t border-brand-accent/10 pt-4">
+                        <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent/45">Best Suited For</p>
+
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          {service.bestFor.map(item => (
+                            <span class="border border-brand-accent/10 bg-brand-primary-soft/40 px-2.5 py-1.5 font-sans text-[11px] leading-tight text-brand-accent/75">{item}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div class="mt-5">
+                        <a
+                          href={`/services#${service.slug}`}
+                          class="group inline-flex items-center gap-2 font-sans text-xs font-semibold text-brand-primary transition-colors hover:text-blue-800">
+                          Learn more about {service.name}
+                          <svg
+                            class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            aria-hidden="true">
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-
-            </div>
-          </div>
+            ))
+          }
         </div>
-      ))}
+      </div>
+
+      {
+        /* =========================================================
+      DESKTOP SERVICE DETAIL PANEL
+      ========================================================= */
+      }
+      <div class="hidden lg:col-span-8 lg:block">
+        {
+          services.map((service, index) => (
+            <div
+              id={`panel-${service.slug}`}
+              data-service-panel={service.slug}
+              class={`service-panel transition-all duration-300 ${index === 0 ? "block opacity-100" : "hidden opacity-0"}`}>
+              <div class="relative overflow-hidden border border-brand-accent/10 bg-brand-primary-soft/25 shadow-xs">
+                {/* Image with overlay title */}
+                <div class="relative aspect-16/7 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.imageAlt}
+                    class="h-full w-full object-cover"
+                    loading={index === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+
+                  <div
+                    aria-hidden="true"
+                    class="absolute inset-0 bg-linear-to-t from-brand-accent/80 via-brand-accent/20 to-transparent"
+                  />
+
+                  <div class="absolute bottom-5 left-6 sm:left-8">
+                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.2em] text-orange-500">{service.subtitle}</p>
+                    <h3 class="mt-1 font-serif text-2xl font-bold text-white sm:text-3xl">{service.name}</h3>
+                  </div>
+
+                  {service.badge && (
+                    <span class="absolute right-5 top-5 bg-brand-secondary px-3 py-1.5 font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-accent">{service.badge}</span>
+                  )}
+                </div>
+
+                {/* Bottom Content */}
+                <div class="relative grid gap-7 p-6 sm:p-8 md:grid-cols-12 md:gap-8">
+                  <div class="md:col-span-7">
+                    <p class="font-sans text-sm leading-relaxed text-brand-accent/75">{service.whatItIs}</p>
+
+                    <div class="mt-6">
+                      <a
+                        href={`/services#${service.slug}`}
+                        class="group inline-flex items-center gap-2 font-sans text-sm font-semibold text-brand-primary transition-colors hover:text-blue-800">
+                        Learn more about {service.name}
+                        <svg
+                          class="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          aria-hidden="true">
+                          <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="md:col-span-5">
+                    <div class="border-l border-brand-accent/10 pl-6">
+                      <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.16em] text-brand-accent/45">Best Suited For</p>
+
+                      <div class="mt-3 flex flex-wrap gap-2">
+                        {service.bestFor.map(item => (
+                          <span class="border border-brand-accent/10 bg-white/60 px-2.5 py-1.5 font-sans text-[11px] leading-tight text-brand-accent/70">{item}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
     </div>
+  </section>
 
-  </div>
-
-
-  {/* View All Services */}
-  <div class="mt-10 flex justify-center md:mt-12">
-    <Button href="/services" variant="outline" size="md">
-      View All Services
-
-      <svg
-        class="h-4 w-4"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
-        aria-hidden="true"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M14 5l7 7m0 0l-7 7m7-7H3"
-        />
-      </svg>
-    </Button>
-  </div>
-</section>
-
-
-{/* ================= INDUSTRIES SECTION ================= */}
-<section class="beacon-sweep relative overflow-hidden bg-brand-accent py-16 text-white md:py-24" aria-labelledby="industries-heading">
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute -left-40 top-1/2 h-150 w-150 -translate-y-1/2 rounded-full border border-white/5"
-  ></div>
+  {/* ================= INDUSTRIES SECTION ================= */}
+  <section class="relative overflow-hidden bg-brand-accent py-16 text-white md:py-20">
   <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
     <SectionHeader
       theme="dark"
       eyebrow="Industries We Serve"
       title="We know these markets because we only work in them"
-      description="Specialization is the whole point. Our recruiters speak the language of the plant floor, the design review, and the executive team, which is why the candidates we present are actually qualified."
+      description="Specialization is the whole point. Our recruiters speak the language of the plant floor, design reviews, and executive leadership."
     />
 
-    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {industries.map((industry) => (
-        <li class="group flex flex-col border border-white/10 bg-brand-accent-soft transition-all duration-300">
-          <div class="relative aspect-4/3 overflow-hidden">
-            <img
-              src={industry.image}
-              alt={industry.imageAlt}
-              class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              loading="lazy"
-              decoding="async"
-            />
-            <span
-              aria-hidden="true"
-              class="absolute inset-0 bg-brand-accent/25 transition-opacity duration-300 group-hover:opacity-0"
-            />
-            <span
-              aria-hidden="true"
-              class="absolute bottom-0 left-0 h-1 w-12 bg-brand-secondary transition-all duration-300 group-hover:w-full"
-            />
+    <div id="industry-accordion" class="mt-10 flex flex-col gap-4 lg:h-80 lg:flex-row">
+      {industries.map((industry, index) => (
+        <button
+          type="button"
+          data-accordion-card
+          data-index={index}
+          aria-expanded={index === 0 ? "true" : "false"}
+          class={`accordion-card group relative flex flex-1 flex-col justify-end overflow-hidden border p-5 text-left transition-all duration-500 ease-in-out cursor-pointer border-white/10 not-[.is-active]:hover:border-white/30 not-[.is-active]:hover:bg-white/5 [&.is-active]:border-brand-secondary lg:[&.is-active]:flex-[3] ${
+            index === 0 ? "is-active" : ""
+          }`}
+        >
+          <!-- Background Image -->
+          <img
+            src={industry.image}
+            alt={industry.imageAlt}
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-[.is-active]:scale-105 not-[.is-active]:group-hover:scale-102"
+          />
+          
+          <!-- Shifted Overlay: Dark solid at bottom, 90% opacity up to 60% height -->
+          <div class="absolute inset-0 bg-gradient-to-t from-brand-accent via-brand-accent/90 via-60% to-transparent transition-opacity duration-300 not-[.is-active]:group-hover:opacity-95" />
+          
+          <div class="relative z-10 flex flex-col justify-end pointer-events-none">
+            <!-- Title -->
+            <h3 class="font-serif text-base font-bold text-white transition-all duration-300 group-[.is-active]:text-lg not-[.is-active]:group-hover:text-brand-secondary">
+              {industry.name}
+            </h3>
+
+            <!-- Details Slide Up & Fade In -->
+            <div class="grid grid-rows-[0fr] transition-all duration-500 ease-in-out group-[.is-active]:grid-rows-[1fr]">
+              <div class="overflow-hidden">
+                <p class="mt-2 font-sans text-xs leading-relaxed text-white/90 opacity-0 transition-opacity duration-300 group-[.is-active]:opacity-100">
+                  {industry.description}
+                </p>
+
+                <div class="mt-3 border-t border-white/20 pt-2 opacity-0 transition-opacity duration-300 group-[.is-active]:opacity-100">
+                  <span class="text-[10px] font-semibold uppercase tracking-wider text-white/50">Placements</span>
+                  <ul class="mt-1.5 grid grid-cols-2 gap-x-2 gap-y-0.5">
+                    {industry.roles.map(role => (
+                      <li class="font-sans text-[11px] font-medium text-brand-primary">• {role}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="flex flex-1 flex-col p-6">
-            <h3 class="font-serif text-xl font-bold text-white">{industry.name}</h3>
-            <p class="mt-3 flex-1 font-sans text-sm leading-relaxed text-white/60">
-              {industry.description}
-            </p>
-            <ul class="mt-5 space-y-1.5 border-t border-white/10 pt-4">
-              {industry.roles.map((role) => (
-                <li class="font-sans text-[13px] text-brand-primary">
-                  {role}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </li>
+        </button>
       ))}
-    </ul>
+    </div>
   </div>
 </section>
 
-    {/* ================= WHY BEACON ================= */}
-    <section class="bg-brand-primary-soft/50 py-16 md:py-24" aria-labelledby="why-heading">
-      <div class="mx-auto max-w-7xl px-5 sm:px-8">
-        <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <div class="relative order-2 lg:order-1">
-            <div
-              aria-hidden="true"
-              class="absolute -left-4 -top-4 hidden h-24 w-24 border-l-2 border-t-2 border-brand-secondary sm:block"
-            ></div>
+  {/* ================= WHY BEACON ================= */}
+  <section
+    class="bg-brand-primary-soft/50 py-16 md:py-24"
+    aria-labelledby="why-heading">
+    <div class="mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div class="relative order-2 lg:order-1">
+          <div
+            aria-hidden="true"
+            class="absolute -left-4 -top-4 hidden h-24 w-24 border-l-2 border-t-2 border-brand-secondary sm:block">
+          </div>
+          <img
+            src="https://cdn.magicpatterns.com/patterns/generated-images/8eeabe6d-c66a-4049-b5a4-afc43f76dbe9.jpg"
+            alt="Two professionals reviewing plans on a tablet overlooking a production floor"
+            class="relative w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="mt-4 grid grid-cols-2 gap-4">
             <img
-              src="https://cdn.magicpatterns.com/patterns/generated-images/8eeabe6d-c66a-4049-b5a4-afc43f76dbe9.jpg"
-              alt="Two professionals reviewing plans on a tablet overlooking a production floor"
-              class="relative w-full object-cover"
+              src="https://cdn.magicpatterns.com/patterns/generated-images/5526439e-9324-41e1-8079-0e0f553fad6f.jpg"
+              alt="Maintenance technician servicing an industrial electrical panel"
+              class="aspect-4/3 w-full object-cover"
               loading="lazy"
               decoding="async"
             />
-            <div class="mt-4 grid grid-cols-2 gap-4">
-              <img
-                src="https://cdn.magicpatterns.com/patterns/generated-images/5526439e-9324-41e1-8079-0e0f553fad6f.jpg"
-                alt="Maintenance technician servicing an industrial electrical panel"
-                class="aspect-4/3 w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-              <img
-                src="https://cdn.magicpatterns.com/patterns/generated-images/787727ef-fe41-4eea-9e31-12282675c434.jpg"
-                alt="Engineer reviewing a 3D CAD assembly on a monitor"
-                class="aspect-4/3 w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-          </div>
-
-          <div class="order-1 lg:order-2">
-            <SectionHeader
-              eyebrow="Why Beacon"
-              title="Hiring in this market is hard. That is exactly the job."
-              description="Technical talent is scarce, candidates are cautious, and job boards return the same forty resumes to everyone. We work the way recruiting worked before it got automated: by knowing people."
+            <img
+              src="https://cdn.magicpatterns.com/patterns/generated-images/787727ef-fe41-4eea-9e31-12282675c434.jpg"
+              alt="Engineer reviewing a 3D CAD assembly on a monitor"
+              class="aspect-4/3 w-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
+          </div>
+        </div>
 
-            <ul class="mt-10 space-y-6">
-              {differentiators.map((item) => (
+        <div class="order-1 lg:order-2">
+          <SectionHeader
+            eyebrow="Why Beacon"
+            title="Hiring in this market is hard. That is exactly the job."
+            description="Technical talent is scarce, candidates are cautious, and job boards return the same forty resumes to everyone. We work the way recruiting worked before it got automated: by knowing people."
+          />
+
+          <ul class="mt-10 space-y-6">
+            {
+              differentiators.map(item => (
                 <li class="flex gap-4">
                   <span
                     aria-hidden="true"
-                    class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary"
-                  >
-                    <svg class="h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3" aria-hidden="true">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    class="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-brand-primary">
+                    <svg
+                      class="h-3.5 w-3.5 text-white"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="3"
+                      aria-hidden="true">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M5 13l4 4L19 7"
+                      />
                     </svg>
                   </span>
                   <div>
                     <h3 class="font-serif text-lg font-bold text-brand-accent">{item.title}</h3>
-                    <p class="mt-1.5 font-sans text-sm leading-relaxed text-brand-accent/70">
-                      {item.body}
-                    </p>
+                    <p class="mt-1.5 font-sans text-sm leading-relaxed text-brand-accent/70">{item.body}</p>
                   </div>
                 </li>
-              ))}
-            </ul>
-            <div class="mt-10 flex flex-wrap gap-4">
-              <Button href="/contact" variant="primary" size="md">
-                Schedule a Consultation
-              </Button>
-              <Button href="/about" variant="outline" size="md">
-                Our Search Process
-              </Button>
-            </div>
+              ))
+            }
+          </ul>
+          <div class="mt-10 flex flex-wrap gap-4">
+            <Button
+              href="/contact"
+              variant="primary"
+              size="md">
+              Schedule a Consultation
+            </Button>
+            <Button
+              href="/about"
+              variant="outline"
+              size="md">
+              Our Search Process
+            </Button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    {/* ================= SOCIAL PROOF ================= */}
-    <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24" aria-labelledby="proof-heading">
+  {/* ================= SOCIAL PROOF ================= */}
+  <section
+    class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20"
+    aria-labelledby="proof-heading">
+    <div class="mx-auto max-w-4xl text-center">
       <SectionHeader
         eyebrow="Client Feedback"
         title="What our clients say"
@@ -880,68 +741,85 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
         align="center"
       />
 
-      <ul class="mt-12 grid gap-6 md:grid-cols-3">
-  {testimonials.map((testimonial) => (
-    <li class="flex flex-col border border-brand-accent/10 bg-white p-7 transition-colors duration-200 hover:border-brand-primary/50">
-      <svg
-        class="h-6 w-6 text-brand-primary"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-        aria-hidden="true"
-      >
-        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-      </svg>
-      <blockquote class="mt-5 flex-1">
-        <p class="font-serif text-[17px] leading-relaxed text-brand-accent/85">
-          “{testimonial.quote}”
-        </p>
-      </blockquote>
-      <footer class="mt-6 flex items-center gap-4 border-t border-brand-accent/10 pt-5">
-        {/* Replaced initial text circle with a subtle Building/Company SVG Icon */}
-        <span
-          aria-hidden="true"
-          class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary-dark"
-        >
-          <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-        </span>
-        <div>
-          <p class="font-sans text-sm font-semibold text-brand-accent">
-            {testimonial.title}
-          </p>
-          <p class="mt-0.5 font-sans text-[13px] text-brand-accent/55">
-            {testimonial.company}
-          </p>
+      {/* Interactive Container */}
+      <div
+        class="mt-10 lg:mt-12"
+        id="testimonial-widget">
+        {/* Tab Navigation using Button Component */}
+        <div class="mb-8 flex flex-wrap items-center justify-center gap-3">
+          {
+            testimonials.map((t, index) => (
+              <Button
+                type="button"
+                variant={index === 0 ? "primary" : "outline"}
+                size="md"
+                class="testimonial-tab-btn text-xs tracking-wide"
+                ariaLabel={`View testimonial from ${t.title}`}>
+                <span data-testimonial-btn-label={index}>{t.title}</span>
+              </Button>
+            ))
+          }
         </div>
-      </footer>
-    </li>
-  ))}
-</ul>
 
-      <div class="mt-14 border border-brand-accent/10 bg-brand-primary-soft px-6 py-10">
-        <div class="flex items-center justify-center gap-3">
-          {/* BeaconMark SVG */}
-          <svg class="h-6 w-6 text-brand-accent" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M12 2L2 22h20L12 2zm0 3.5L18.5 20H5.5L12 5.5z"/>
-          </svg>
-          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/45">
-            Trusted by industrial and manufacturing teams nationwide
-          </p>
+        {/* Testimonial Display Stage */}
+        <div class="relative overflow-hidden border border-brand-accent/10 bg-brand-primary-soft/25 p-8 shadow-sm sm:p-12 md:p-14">
+          {/* Top Active Accent Line */}
+          <div
+            class="absolute left-0 top-0 h-1 w-full bg-brand-primary"
+            aria-hidden="true">
+          </div>
+
+          {/* Decorative Background Quote Number */}
+          <span
+            aria-hidden="true"
+            class="pointer-events-none absolute -right-4 -top-8 font-serif text-[160px] font-bold leading-none text-brand-accent/3 select-none">
+            ”
+          </span>
+
+          {
+            testimonials.map((t, index) => (
+              <div
+                data-testimonial-content={index}
+                class={`transition-all duration-300 ${index === 0 ? "block opacity-100" : "hidden opacity-0"}`}>
+                {/* Card Header: Icon & Badge */}
+                <div class="mb-6 flex items-center justify-between border-b border-brand-accent/10 pb-5">
+                  <div class="flex items-center gap-2">
+                    <svg
+                      class="h-6 w-6 text-brand-primary"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true">
+                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                    </svg>
+                    <span class="font-sans text-[11px] font-semibold uppercase tracking-wider text-brand-secondary">Verified Endorsement</span>
+                  </div>
+                  <span class="font-sans text-xs font-semibold text-brand-accent/40">
+                    0{index + 1} / 0{testimonials.length}
+                  </span>
+                </div>
+
+                {/* Quote Body */}
+                <blockquote class="relative z-10 text-left">
+                  <p class="font-serif text-lg leading-relaxed text-brand-accent/90">“{t.quote}”</p>
+                </blockquote>
+
+                {/* Attribution Footer */}
+                <div class="relative z-10 mt-8 flex items-center justify-between pt-6">
+                  <div class="text-left">
+                    <p class="font-serif text-lg font-bold text-brand-accent">{t.title}</p>
+                    <p class="font-sans text-xs font-medium text-brand-accent/60">{t.company}</p>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
         </div>
-        <ul class="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {clientLogos.map((logo) => (
-            <li class="flex h-16 items-center justify-center border border-brand-accent/10 bg-white font-sans text-[10px] font-semibold uppercase tracking-[0.15em] text-brand-accent/30">
-              {logo}
-            </li>
-          ))}
-        </ul>
       </div>
-    </section>
+    </div>
+  </section>
 
-    {/* ================= CTA SECTION ================= */}
-    <CTASection />
-
+  {/* ================= CTA SECTION ================= */}
+  <CTASection />
 </Layout>
 
 <style>
@@ -955,25 +833,26 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
   }
 </style>
 
-
 <script>
+  // 1. STAT COUNTERS
   function initCounters(): void {
-    const counters = document.querySelectorAll<HTMLElement>('.stat-counter');
+    const counters = document.querySelectorAll<HTMLElement>(".stat-counter");
     if (!counters.length) return;
 
-    const observer = new IntersectionObserver((entries: IntersectionObserverEntry[], obs: IntersectionObserver) => {
-      entries.forEach((entry: IntersectionObserverEntry) => {
-        if (entry.isIntersecting) {
+    const observer = new IntersectionObserver(
+      (entries: IntersectionObserverEntry[], obs: IntersectionObserver) => {
+        entries.forEach((entry: IntersectionObserverEntry) => {
+          if (!entry.isIntersecting) return;
+
           const el = entry.target as HTMLElement;
-          const target = parseInt(el.getAttribute('data-target') ?? '0', 10);
-          const suffix = el.getAttribute('data-suffix') ?? '';
+          const target = parseInt(el.getAttribute("data-target") ?? "0", 10);
+          const suffix = el.getAttribute("data-suffix") ?? "";
           const duration = 1000;
           const startTime = performance.now();
 
           function updateCount(currentTime: number): void {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
-            
             const easeOutProgress = 1 - Math.pow(1 - progress, 2);
             const currentCount = Math.floor(easeOutProgress * target);
 
@@ -988,359 +867,192 @@ const metaDescription = "Beacon Search Group recruits for manufacturers, enginee
 
           requestAnimationFrame(updateCount);
           obs.unobserve(el);
-        }
-      });
-    }, { threshold: 0.3 });
+        });
+      },
+      { threshold: 0.3 }
+    );
 
     counters.forEach((counter: HTMLElement) => observer.observe(counter));
   }
 
-  document.addEventListener('DOMContentLoaded', initCounters);
-  document.addEventListener('astro:page-load', initCounters);
-
+  // 2. SERVICES TABS & ACCORDION
   function setupServiceTabs(): void {
-  const container = document.getElementById('services-tabs');
-  if (!container) return;
+    const container = document.getElementById("services-tabs");
+    if (!container) return;
 
-  /* =========================================================
-     DESKTOP TABS
-     ========================================================= */
-  const tabs = container.querySelectorAll<HTMLButtonElement>(
-    '[data-service-tab]'
-  );
+    /* Desktop Tabs */
+    const tabs = container.querySelectorAll<HTMLButtonElement>("[data-service-tab]");
+    const panels = container.querySelectorAll<HTMLElement>("[data-service-panel]");
 
-  const panels = container.querySelectorAll<HTMLElement>(
-    '[data-service-panel]'
-  );
+    tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        const targetSlug = tab.getAttribute("data-service-tab");
+        if (!targetSlug) return;
 
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const targetSlug = tab.getAttribute('data-service-tab');
-      if (!targetSlug) return;
+        tabs.forEach(t => {
+          const isSelected = t === tab;
+          t.setAttribute("aria-selected", isSelected ? "true" : "false");
 
-      /* Update desktop navigation */
-      tabs.forEach((t) => {
-        const isSelected = t === tab;
+          const indicator = t.querySelector(".active-indicator");
+          const number = t.querySelector(".service-number");
+          const arrow = t.querySelector("svg");
 
-        t.setAttribute(
-          'aria-selected',
-          isSelected ? 'true' : 'false'
-        );
-
-        const indicator = t.querySelector('.active-indicator');
-        const number = t.querySelector('.service-number');
-        const arrow = t.querySelector('svg');
-
-        if (isSelected) {
-          t.classList.add(
-            'bg-brand-primary-soft/30'
-          );
-
-          t.classList.remove(
-            'hover:bg-brand-primary-soft/15'
-          );
+          t.classList.toggle("bg-brand-primary-soft/30", isSelected);
+          t.classList.toggle("hover:bg-brand-primary-soft/15", !isSelected);
 
           if (indicator) {
-            indicator.classList.replace(
-              'opacity-0',
-              'opacity-100'
-            );
+            indicator.classList.toggle("opacity-100", isSelected);
+            indicator.classList.toggle("opacity-0", !isSelected);
           }
 
           if (number) {
-            number.classList.remove(
-              'text-brand-accent/20'
-            );
-
-            number.classList.add(
-              'text-brand-primary'
-            );
+            number.classList.toggle("text-brand-primary", isSelected);
+            number.classList.toggle("text-brand-accent/20", !isSelected);
           }
 
           if (arrow) {
-            arrow.classList.remove(
-              '-translate-x-1',
-              'text-brand-accent/20',
-              'opacity-0'
-            );
-
-            arrow.classList.add(
-              'translate-x-0',
-              'text-brand-primary',
-              'opacity-100'
-            );
+            arrow.classList.toggle("translate-x-0", isSelected);
+            arrow.classList.toggle("-translate-x-1", !isSelected);
+            arrow.classList.toggle("text-brand-primary", isSelected);
+            arrow.classList.toggle("text-brand-accent/20", !isSelected);
+            arrow.classList.toggle("opacity-100", isSelected);
+            arrow.classList.toggle("opacity-0", !isSelected);
           }
-        } else {
-          t.classList.remove(
-            'bg-brand-primary-soft/30'
-          );
+        });
 
-          t.classList.add(
-            'hover:bg-brand-primary-soft/15'
-          );
+        panels.forEach(panel => {
+          const isMatch = panel.getAttribute("data-service-panel") === targetSlug;
 
-          if (indicator) {
-            indicator.classList.replace(
-              'opacity-100',
-              'opacity-0'
-            );
+          if (isMatch) {
+            panel.classList.remove("hidden");
+            requestAnimationFrame(() => {
+              panel.classList.remove("opacity-0");
+              panel.classList.add("opacity-100");
+            });
+          } else {
+            panel.classList.replace("opacity-100", "opacity-0");
+            panel.classList.add("hidden");
           }
-
-          if (number) {
-            number.classList.remove(
-              'text-brand-primary'
-            );
-
-            number.classList.add(
-              'text-brand-accent/20'
-            );
-          }
-
-          if (arrow) {
-            arrow.classList.remove(
-              'translate-x-0',
-              'text-brand-primary',
-              'opacity-100'
-            );
-
-            arrow.classList.add(
-              '-translate-x-1',
-              'text-brand-accent/20',
-              'opacity-0'
-            );
-          }
-        }
-      });
-
-
-      /* Update desktop panels */
-      panels.forEach((panel) => {
-        const isMatch =
-          panel.getAttribute('data-service-panel') === targetSlug;
-
-        if (isMatch) {
-          panel.classList.remove('hidden');
-
-          requestAnimationFrame(() => {
-            panel.classList.remove('opacity-0');
-            panel.classList.add('opacity-100');
-          });
-        } else {
-          panel.classList.add('opacity-0');
-          panel.classList.remove('opacity-100');
-          panel.classList.add('hidden');
-        }
+        });
       });
     });
-  });
 
+    /* Mobile Accordion */
+    const mobileButtons = container.querySelectorAll<HTMLButtonElement>("[data-mobile-service-btn]");
 
-  /* =========================================================
-     MOBILE ACCORDION
-     ========================================================= */
-  const mobileButtons =
-    container.querySelectorAll<HTMLButtonElement>(
-      '[data-mobile-service-btn]'
-    );
+    const toggleAccordionState = (slug: string, isOpen: boolean) => {
+      const panel = container.querySelector<HTMLElement>(`[data-mobile-panel="${slug}"]`);
+      const plusIcon = container.querySelector<SVGElement>(`[data-plus-icon="${slug}"]`);
+      const minusIcon = container.querySelector<SVGElement>(`[data-minus-icon="${slug}"]`);
+      const number = container.querySelector<HTMLElement>(`[data-mobile-number="${slug}"]`);
 
-  const mobilePanels =
-    container.querySelectorAll<HTMLElement>(
-      '[data-mobile-panel]'
-    );
+      if (panel) {
+        panel.classList.toggle("max-h-[900px]", isOpen);
+        panel.classList.toggle("opacity-100", isOpen);
+        panel.classList.toggle("max-h-0", !isOpen);
+        panel.classList.toggle("opacity-0", !isOpen);
+      }
 
-  mobileButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const targetSlug =
-        button.getAttribute('data-mobile-service-btn');
+      if (plusIcon) plusIcon.classList.toggle("hidden", isOpen);
+      if (minusIcon) minusIcon.classList.toggle("hidden", !isOpen);
 
-      if (!targetSlug) return;
+      if (number) {
+        number.classList.toggle("text-brand-primary", isOpen);
+        number.classList.toggle("text-brand-accent/25", !isOpen);
+      }
+    };
 
-      const panel = container.querySelector<HTMLElement>(
-        `[data-mobile-panel="${targetSlug}"]`
-      );
+    mobileButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const targetSlug = button.getAttribute("data-mobile-service-btn");
+        if (!targetSlug) return;
 
-      const isCurrentlyOpen =
-        button.getAttribute('aria-expanded') === 'true';
+        const isCurrentlyOpen = button.getAttribute("aria-expanded") === "true";
 
-
-      /* Close every other accordion */
-      mobileButtons.forEach((otherButton) => {
-        const otherSlug =
-          otherButton.getAttribute(
-            'data-mobile-service-btn'
-          );
-
-        const otherPanel = container.querySelector<HTMLElement>(
-          `[data-mobile-panel="${otherSlug}"]`
-        );
-
-        const plusIcon =
-          container.querySelector<SVGElement>(
-            `[data-plus-icon="${otherSlug}"]`
-          );
-
-        const minusIcon =
-          container.querySelector<SVGElement>(
-            `[data-minus-icon="${otherSlug}"]`
-          );
-
-        const number =
-          container.querySelector<HTMLElement>(
-            `[data-mobile-number="${otherSlug}"]`
-          );
-
-        if (otherButton !== button) {
-          otherButton.setAttribute(
-            'aria-expanded',
-            'false'
-          );
-
-          if (otherPanel) {
-            otherPanel.classList.remove(
-              'max-h-[900px]',
-              'opacity-100'
-            );
-
-            otherPanel.classList.add(
-              'max-h-0',
-              'opacity-0'
-            );
+        // Close all other accordions
+        mobileButtons.forEach(otherBtn => {
+          if (otherBtn !== button) {
+            const otherSlug = otherBtn.getAttribute("data-mobile-service-btn");
+            if (otherSlug) {
+              otherBtn.setAttribute("aria-expanded", "false");
+              toggleAccordionState(otherSlug, false);
+            }
           }
+        });
 
-          if (plusIcon) {
-            plusIcon.classList.remove('hidden');
-            plusIcon.classList.add('block');
-          }
+        // Toggle clicked item
+        button.setAttribute("aria-expanded", isCurrentlyOpen ? "false" : "true");
+        toggleAccordionState(targetSlug, !isCurrentlyOpen);
+      });
+    });
+  }
 
-          if (minusIcon) {
-            minusIcon.classList.remove('block');
-            minusIcon.classList.add('hidden');
-          }
+  function setupAccordion() {
+  const accordion = document.getElementById('industry-accordion');
+  if (!accordion) return;
 
-          if (number) {
-            number.classList.remove(
-              'text-brand-primary'
-            );
+  const cards = accordion.querySelectorAll<HTMLButtonElement>('[data-accordion-card]');
 
-            number.classList.add(
-              'text-brand-accent/25'
-            );
-          }
-        }
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      // 1. Deactivate all cards
+      cards.forEach(c => {
+        c.classList.remove('is-active');
+        c.setAttribute('aria-expanded', 'false');
       });
 
-
-      /* Toggle clicked accordion */
-      if (isCurrentlyOpen) {
-        button.setAttribute(
-          'aria-expanded',
-          'false'
-        );
-
-        if (panel) {
-          panel.classList.remove(
-            'max-h-[900px]',
-            'opacity-100'
-          );
-
-          panel.classList.add(
-            'max-h-0',
-            'opacity-0'
-          );
-        }
-
-        const plusIcon =
-          container.querySelector<SVGElement>(
-            `[data-plus-icon="${targetSlug}"]`
-          );
-
-        const minusIcon =
-          container.querySelector<SVGElement>(
-            `[data-minus-icon="${targetSlug}"]`
-          );
-
-        const number =
-          container.querySelector<HTMLElement>(
-            `[data-mobile-number="${targetSlug}"]`
-          );
-
-        if (plusIcon) {
-          plusIcon.classList.remove('hidden');
-          plusIcon.classList.add('block');
-        }
-
-        if (minusIcon) {
-          minusIcon.classList.remove('block');
-          minusIcon.classList.add('hidden');
-        }
-
-        if (number) {
-          number.classList.remove(
-            'text-brand-primary'
-          );
-
-          number.classList.add(
-            'text-brand-accent/25'
-          );
-        }
-
-      } else {
-        button.setAttribute(
-          'aria-expanded',
-          'true'
-        );
-
-        if (panel) {
-          panel.classList.remove(
-            'max-h-0',
-            'opacity-0'
-          );
-
-          panel.classList.add(
-            'max-h-[900px]',
-            'opacity-100'
-          );
-        }
-
-        const plusIcon =
-          container.querySelector<SVGElement>(
-            `[data-plus-icon="${targetSlug}"]`
-          );
-
-        const minusIcon =
-          container.querySelector<SVGElement>(
-            `[data-minus-icon="${targetSlug}"]`
-          );
-
-        const number =
-          container.querySelector<HTMLElement>(
-            `[data-mobile-number="${targetSlug}"]`
-          );
-
-        if (plusIcon) {
-          plusIcon.classList.remove('block');
-          plusIcon.classList.add('hidden');
-        }
-
-        if (minusIcon) {
-          minusIcon.classList.remove('hidden');
-          minusIcon.classList.add('block');
-        }
-
-        if (number) {
-          number.classList.remove(
-            'text-brand-accent/25'
-          );
-
-          number.classList.add(
-            'text-brand-primary'
-          );
-        }
-      }
+      // 2. Activate clicked card
+      card.classList.add('is-active');
+      card.setAttribute('aria-expanded', 'true');
     });
   });
 }
 
-  document.addEventListener('DOMContentLoaded', setupServiceTabs);
-  document.addEventListener('astro:page-load', setupServiceTabs);
+  // 3. TESTIMONIALS WIDGET
+  function setupTestimonialWidget(): void {
+    const widget = document.getElementById("testimonial-widget");
+    if (!widget) return;
+
+    const buttons = widget.querySelectorAll<HTMLButtonElement>(".testimonial-tab-btn");
+    const contents = widget.querySelectorAll<HTMLElement>("[data-testimonial-content]");
+
+    buttons.forEach((btn, index) => {
+      btn.addEventListener("click", () => {
+        // Toggle button active variants
+        buttons.forEach((b, i) => {
+          const isSelected = i === index;
+
+          if (isSelected) {
+            b.classList.add("bg-brand-secondary", "text-white", "shadow-sm");
+            b.classList.remove("border", "border-brand-accent/25", "text-brand-accent", "bg-white", "hover:border-brand-primary", "hover:text-brand-primary");
+          } else {
+            b.classList.remove("bg-brand-secondary", "text-white", "shadow-sm");
+            b.classList.add("border", "border-brand-accent/25", "text-brand-accent", "bg-white", "hover:border-brand-primary", "hover:text-brand-primary");
+          }
+        });
+
+        // Toggle panels
+        contents.forEach((c, i) => {
+          const isMatch = i === index;
+          c.classList.toggle("block", isMatch);
+          c.classList.toggle("opacity-100", isMatch);
+          c.classList.toggle("hidden", !isMatch);
+          c.classList.toggle("opacity-0", !isMatch);
+        });
+      });
+    });
+  }
+
+  // BIND ALL INITIALIZERS
+  function initAll(): void {
+    initCounters();
+    setupServiceTabs();
+    setupTestimonialWidget();
+  }
+
+  setupAccordion();
+  document.addEventListener('astro:page-load', setupAccordion);
+
+  document.addEventListener("DOMContentLoaded", initAll);
+  document.addEventListener("astro:page-load", initAll);
 </script>

@@ -1,18 +1,18 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CTA from '../components/CTA.astro';
+import Button from '../components/Button.astro';
 import PageHero from '../components/PageHero.astro';
 
 const engagementModels = [
   {
-    number: '01',
     slug: 'executive-recruitment',
     category: 'Permanent Placement',
     name: 'Executive Recruitment / Retained Search',
     shortName: 'Retained Search',
     tagline: 'Confidential, dedicated search for leadership-level hiring.',
     whatItIs:
-      'An exclusive search partnership for executive and leadership-level roles — dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
+      'An exclusive search partnership for executive and leadership-level roles with dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
     bestFor: [
       'C-suite, VP, and director-level leadership hires',
       'Confidential replacements where discretion is essential',
@@ -27,41 +27,18 @@ const engagementModels = [
     ],
     engagement: 'Retained',
     billing: 'Structured search milestones',
-    process: [
-      {
-        number: '01',
-        title: 'Align',
-        body: 'Define the role, culture, compensation, and candidate profile.'
-      },
-      {
-        number: '02',
-        title: 'Map',
-        body: 'Identify the target market and reach qualified passive candidates.'
-      },
-      {
-        number: '03',
-        title: 'Evaluate',
-        body: 'Screen candidates against the technical and leadership requirements.'
-      },
-      {
-        number: '04',
-        title: 'Close',
-        body: 'Manage interviews, offer negotiations, and the transition to day one.'
-      },
-    ],
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
     imageAlt: 'Two executives in a private boardroom discussion',
   },
   {
-    number: '02',
     slug: 'direct-hire',
     category: 'Permanent Placement',
     name: 'Direct Hire Placement',
     shortName: 'Direct Hire',
     tagline: 'Permanent placement, sourced and vetted end to end.',
     whatItIs:
-      'Permanent placement for critical roles — we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
+      'Permanent placement for critical roles where we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
     bestFor: [
       'Engineering, quality, EHS, supply chain, HR, and operations roles',
       'Companies replacing a key contributor or adding headcount',
@@ -76,42 +53,19 @@ const engagementModels = [
     ],
     engagement: 'Contingency',
     billing: 'Percentage of first-year salary upon successful hire',
-    process: [
-      {
-        number: '01',
-        title: 'Define',
-        body: 'Build a clear understanding of the role, requirements, and ideal candidate.'
-      },
-      {
-        number: '02',
-        title: 'Source',
-        body: 'Identify and engage qualified candidates through targeted recruiting.'
-      },
-      {
-        number: '03',
-        title: 'Vet',
-        body: 'Screen candidates before presenting them for consideration.'
-      },
-      {
-        number: '04',
-        title: 'Place',
-        body: 'Support interviews, offer acceptance, and the transition into the role.'
-      },
-    ],
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
     imageAlt:
       'A hiring manager welcoming a newly placed employee in an industrial office',
   },
   {
-    number: '03',
     slug: 'contract-staffing',
     category: 'Flexible Workforce',
     name: 'Contract Staffing',
     shortName: 'Contract Staffing',
     tagline: 'Flexible technical talent for project work and coverage gaps.',
     whatItIs:
-      'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire — compliance, insurance, and onboarding handled on our end.',
+      'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire while compliance, insurance, and onboarding handled on our end.',
     bestFor: [
       'Launches, shutdowns, capital projects, and seasonal ramps',
       'Leave coverage and interim technical leadership',
@@ -126,35 +80,12 @@ const engagementModels = [
     ],
     engagement: 'Contract',
     billing: 'Hourly',
-    process: [
-      {
-        number: '01',
-        title: 'Scope',
-        body: 'Understand the project, timeline, technical requirements, and workforce gap.'
-      },
-      {
-        number: '02',
-        title: 'Source',
-        body: 'Identify experienced professionals aligned with the assignment.'
-      },
-      {
-        number: '03',
-        title: 'Deploy',
-        body: 'Handle onboarding, payroll, compliance, and placement.'
-      },
-      {
-        number: '04',
-        title: 'Support',
-        body: 'Stay involved as project needs change or the assignment develops.'
-      },
-    ],
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
     imageAlt:
       'Contract technicians working on a capital project inside a manufacturing plant',
   },
   {
-    number: '04',
     slug: 'rpo',
     category: 'Scaled Recruiting',
     name: 'Recruitment Process Outsourcing (RPO)',
@@ -176,42 +107,19 @@ const engagementModels = [
     ],
     engagement: 'Embedded Partnership',
     billing: 'Structured engagement',
-    process: [
-      {
-        number: '01',
-        title: 'Assess',
-        body: 'Understand your hiring volume, internal capacity, and recruiting workflow.'
-      },
-      {
-        number: '02',
-        title: 'Embed',
-        body: 'Integrate recruiting resources into your existing team and employer brand.'
-      },
-      {
-        number: '03',
-        title: 'Execute',
-        body: 'Run requisitions, sourcing, screening, and candidate coordination end to end.'
-      },
-      {
-        number: '04',
-        title: 'Scale',
-        body: 'Adjust recruiting capacity as hiring demand changes across your organization.'
-      },
-    ],
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
     imageAlt:
       'A consultant leading a hiring process working session with an operations team',
   },
   {
-    number: '05',
     slug: 'greenfield-brownfield',
     category: 'Project Recruiting',
     name: 'Greenfield & Brownfield Recruitment',
     shortName: 'Project Recruiting',
     tagline: 'Project-based recruiting for facility launches and expansions.',
     whatItIs:
-      'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth — built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
+      'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth that is built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
     bestFor: [
       'New facility launches and plant startups',
       'Acquisitions and large-scale workforce growth initiatives',
@@ -226,42 +134,19 @@ const engagementModels = [
     ],
     engagement: 'Project-Based',
     billing: 'Structured project engagement',
-    process: [
-      {
-        number: '01',
-        title: 'Plan',
-        body: 'Map workforce requirements, hiring phases, roles, and project timelines.'
-      },
-      {
-        number: '02',
-        title: 'Build',
-        body: 'Create the recruiting pipeline needed to support the project.'
-      },
-      {
-        number: '03',
-        title: 'Ramp',
-        body: 'Accelerate sourcing and candidate flow as hiring volume increases.'
-      },
-      {
-        number: '04',
-        title: 'Staff',
-        body: 'Drive hiring toward the workforce target and project completion date.'
-      },
-    ],
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
     imageAlt:
       'Warehouse operations team managing inventory in a large distribution facility',
   },
   {
-    number: '06',
     slug: 'recruiter-for-hire',
     category: 'Flexible Recruiting',
     name: 'Recruiter for Hire',
     shortName: 'Recruiter for Hire',
     tagline: 'Hourly recruiting support, without a placement-fee commitment.',
     whatItIs:
-      'Hourly support for sourcing, screening, interviewing, and hiring assistance — expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
+      'Hourly support for sourcing, screening, interviewing, and hiring assistance with expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
     bestFor: [
       'Internal teams that need extra recruiting hands, not another agency fee',
       'Targeted hiring projects with a defined scope',
@@ -276,28 +161,6 @@ const engagementModels = [
     ],
     engagement: 'Hourly Support',
     billing: 'Hourly',
-    process: [
-      {
-        number: '01',
-        title: 'Scope',
-        body: 'Define the roles, workload, recruiting needs, and level of support required.'
-      },
-      {
-        number: '02',
-        title: 'Integrate',
-        body: 'Work alongside your existing team and hiring process.'
-      },
-      {
-        number: '03',
-        title: 'Recruit',
-        body: 'Provide sourcing, screening, interviewing, and hiring support.'
-      },
-      {
-        number: '04',
-        title: 'Adjust',
-        body: 'Flex the level of recruiting support as your needs change.'
-      },
-    ],
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
     imageAlt:
@@ -307,71 +170,24 @@ const engagementModels = [
 
 const processSteps = [
   {
-    number: '1',
+    number: '01',
     title: 'PARTNERSHIP & ALIGNMENT',
     body: 'We dive deep into your operational environment, culture, and technical requirements to define the exact candidate profile.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>`,
   },
   {
-    number: '2',
+    number: '02',
     title: 'TARGETED SOURCING',
     body: 'Proactive outreach to passive industry talent and vetted networks, going far beyond surface-level job boards.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>`,
   },
   {
-    number: '3',
+    number: '03',
     title: 'VETTING & EVALUATION',
     body: 'Rigorously screened for technical competence, track record, and cultural add before any profile hits your desk.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>`,
   },
   {
-    number: '4',
+    number: '04',
     title: 'OFFER & ONBOARDING',
     body: 'Managing interview cadence, offer negotiations, and resignation transitions through a successful day one.',
-    icon: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="m9 16 2 2 4-4"/></svg>`,
-  },
-];
-
-const faqs = [
-  {
-    question: 'When should I choose retained search vs. direct hire?',
-    answer:
-      'Retained Search is designed for executive and leadership-level roles where a dedicated, confidential search strategy is important. Direct Hire is designed for permanent roles where sourcing, screening, and placement are managed on a successful-hire basis.',
-  },
-  {
-    question: 'Can contract employees convert to direct hire?',
-    answer:
-      'Yes. Contract staffing can provide an opportunity to work with someone before making a longer-term commitment, with conversion to direct hire available.',
-  },
-  {
-    question: 'How does RPO differ from Recruiter for Hire?',
-    answer:
-      'RPO is an embedded recruiting partnership designed around sustained or high-volume hiring, with recruiting handled under your employer brand. Recruiter for Hire provides hourly recruiting support for targeted or ongoing needs without a traditional placement-fee structure.',
-  },
-  {
-    question: 'Can you staff an entire new facility or major expansion?',
-    answer:
-      'Yes. Greenfield and Brownfield Recruitment is designed for facility startups, plant expansions, acquisitions, and large-scale workforce growth with aggressive, fixed hiring timelines.',
-  },
-  {
-    question: 'How quickly can you start submitting candidates for our role?',
-    answer:
-      'Our initial intake call takes 30–45 minutes. For standard direct hire and contract roles, you can expect your first batch of vetted candidates within 3 to 5 business days.',
-  },
-  {
-    question: 'What industries and roles do you specialize in?',
-    answer:
-      'We focus heavily on technical, industrial, and specialized disciplines across engineering, operations, quality, supply chain, EHS, human resources, and C-suite leadership.',
-  },
-  {
-    question: 'How do fee structures work across your engagement models?',
-    answer:
-      'Direct hire is contingency-based, Retained Search involves structured milestones, Contract Staffing operates on hourly billing, and Recruiter-for-Hire uses hourly advisory rates.',
-  },
-  {
-    question: 'What happens if a placed candidate does not work out?',
-    answer:
-      'All permanent placements come backed with our standard replacement guarantee period to ensure complete peace of mind and long-term fit.',
   },
 ];
 
@@ -440,9 +256,6 @@ const metaDescription =
             href={`#${service.slug}`}
             class="group flex min-h-28 items-center gap-4 border border-brand-accent/10 bg-brand-primary-soft/20 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-primary/30 hover:bg-brand-primary-soft/40"
           >
-            <span class="font-serif text-2xl font-bold text-brand-primary/70">
-              {service.number}
-            </span>
 
             <span class="min-w-0 flex-1">
               <span class="block font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
@@ -503,10 +316,6 @@ const metaDescription =
 
               <div class="lg:col-span-8">
                 <div class="flex items-center gap-3">
-                  <span class="font-serif text-4xl font-bold leading-none text-brand-primary/60 sm:text-5xl">
-                    {service.number}
-                  </span>
-
                   <span class="h-px w-12 bg-brand-primary/30"></span>
 
                   <span class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
@@ -552,11 +361,7 @@ const metaDescription =
                   decoding="async"
                 />
 
-                <div class="absolute inset-0 bg-gradient-to-t from-brand-accent/60 via-transparent to-transparent"></div>
-
-                <span class="absolute bottom-5 left-6 font-serif text-7xl font-bold leading-none text-white/20">
-                  {service.number}
-                </span>
+                <div class="absolute inset-0 bg-linear-to-t from-brand-accent/60 via-transparent to-transparent"></div>
               </div>
 
 
@@ -649,59 +454,115 @@ const metaDescription =
   </section>
 
 
-  <!-- =========================================================
-       3. THE BEACON APPROACH
-       ========================================================= -->
   <section class="bg-brand-accent py-20 text-white sm:py-24">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
-      <div class="mx-auto max-w-2xl text-center">
-        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
-          The Beacon Approach
-        </p>
-
-        <h2 class="mt-2 font-serif text-3xl font-bold tracking-tight sm:text-4xl">
-          One standard of work, regardless of engagement.
-        </h2>
-
-        <p class="mt-4 text-base leading-relaxed text-white/70 sm:text-lg">
-          The way you engage us may change. The way we work doesn't. Every search starts with understanding the business, reaches beyond active applicants, and stays focused on the right fit through the finish line.
-        </p>
-      </div>
-
-
-      <div class="relative mt-14">
-
-        <!-- Connecting line -->
-        <div class="absolute left-0 right-0 top-9 hidden h-px bg-white/15 lg:block"></div>
-
-        <ol class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {processSteps.map((step) => (
-            <li class="relative flex flex-col items-center text-center">
-
-              <div class="relative z-10 mb-5 flex h-18 w-18 items-center justify-center rounded-full bg-brand-primary text-white shadow-lg [&>svg]:h-8 [&>svg]:w-8">
-                <Fragment set:html={step.icon} />
-
-                <span class="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-brand-secondary font-sans text-xs font-bold text-brand-accent">
-                  {step.number}
-                </span>
-              </div>
-
-              <h3 class="font-sans text-sm font-bold uppercase tracking-wider text-white">
-                {step.title}
-              </h3>
-
-              <p class="mt-2 max-w-xs text-sm leading-relaxed text-white/60">
-                {step.body}
-              </p>
-
-            </li>
-          ))}
-        </ol>
-
-      </div>
+    <div class="mx-auto max-w-6xl px-6">
+    
+    {/* HEADER */}
+    <div class="mx-auto mb-16 max-w-3xl text-center">
+      <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent">
+        The Beacon Approach
+      </p>
+      <h2 class="mt-2 font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl">
+        One standard of work, regardless of engagement.
+      </h2>
+      <p class="mt-4 font-sans text-base leading-relaxed text-white/70 sm:text-lg">
+        The way you engage us may change. The way we work doesn't. Every search starts with understanding the business, reaches beyond active applicants, and stays focused on the right fit through the finish line.
+      </p>
     </div>
-  </section>
+
+    {/* DESKTOP GRID */}
+    <div class="hidden grid-cols-4 lg:grid">
+      {
+        processSteps.map((s, i) => (
+          <div class="flex flex-col items-center text-center">
+            {/* Step Number Circle (Brand Secondary / #f59242) */}
+            <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-brand-secondary text-white shadow-md">
+              <span class="font-sans text-sm font-bold tracking-wide">
+                {s.number}
+              </span>
+            </div>
+
+            {/* Connecting Horizontal Line & Dot Node (Brand Primary / #50abe4) */}
+            <div class="relative mt-3 flex h-4 w-full items-center justify-center">
+              <div
+                class={`absolute top-1/2 h-px -translate-y-1/2 bg-white/20 ${i === 0 ? "left-1/2" : "left-0"} right-1/2`}
+              />
+              <div
+                class={`absolute top-1/2 h-px -translate-y-1/2 bg-white/20 left-1/2 ${i === processSteps.length - 1 ? "right-1/2" : "right-0"}`}
+              />
+              <div class="relative z-10 h-2.5 w-2.5 rounded-full bg-brand-primary shadow-[0_0_8px_rgba(80,171,228,0.8)]" />
+            </div>
+
+            {/* Content */}
+            <div class="mt-5 px-3">
+              <h3 class="font-sans text-base font-bold uppercase tracking-wider text-white">
+                {s.title}
+              </h3>
+              <p class="mx-auto mt-2 max-w-50 font-sans text-sm leading-relaxed text-pretty text-white/65">
+                {s.body}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {/* MOBILE TIMELINE */}
+    <div class="relative lg:hidden">
+      {/* Vertical Connecting Line */}
+      <div
+        class="absolute z-0 w-[1.5px] bg-white/20"
+        style="left: 1.2rem; top: 2.6rem; bottom: 2.6rem;"
+      >
+      </div>
+
+      {
+        processSteps.map((s, i) => (
+          <div class="relative flex items-start gap-4 py-6">
+            {/* Step Circle */}
+            <div class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-secondary text-white shadow-md">
+              <span class="font-sans text-sm font-bold tracking-wide">
+                {s.number}
+              </span>
+            </div>
+
+            {/* Dot Node */}
+            <div class="mt-[1.1rem] flex shrink-0 items-center self-start">
+              <div class="relative z-10 h-2.5 w-2.5 rounded-full bg-brand-primary shadow-[0_0_8px_rgba(80,171,228,0.8)]" />
+            </div>
+
+            {/* Content */}
+            <div class="pt-1">
+              <h3 class="font-sans text-base font-bold uppercase tracking-wider text-white">
+                {s.title}
+              </h3>
+              <p class="mt-1 font-sans text-sm leading-relaxed text-pretty text-white/65">
+                {s.body}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  {/* BOTTOM CTA BUTTON */}
+  <div class="mx-auto max-w-3xl pt-12 text-center">
+    <Button href="/contact/" variant="primary" size="lg">
+      Book a Discovery Meeting now!
+      <svg
+        class="h-4 w-4"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+      </svg>
+    </Button>
+  </div>
+</section>
 
 
   <!-- =========================================================
@@ -741,10 +602,6 @@ const metaDescription =
               href={`#${service.slug}`}
               class="border-l border-white/10 p-4 transition hover:bg-white/5"
             >
-              <span class="font-sans text-[9px] font-bold uppercase tracking-wider text-brand-secondary">
-                {service.number}
-              </span>
-
               <span class="mt-1 block font-serif text-sm font-bold leading-tight">
                 {service.shortName}
               </span>
@@ -752,7 +609,6 @@ const metaDescription =
           ))}
 
         </div>
-
 
         {[
           {
@@ -830,10 +686,6 @@ const metaDescription =
             class="group block border border-brand-accent/10 bg-brand-primary-soft/15 p-5 transition hover:border-brand-primary/30"
           >
             <div class="flex items-center gap-3">
-              <span class="font-serif text-2xl font-bold text-brand-primary/60">
-                {service.number}
-              </span>
-
               <div class="flex-1">
                 <p class="font-sans text-[9px] font-semibold uppercase tracking-wider text-brand-secondary">
                   {service.category}
@@ -865,67 +717,18 @@ const metaDescription =
     </div>
   </section>
 
-
-  <!-- =========================================================
-       5. FAQ
-       ========================================================= -->
-  <section class="border-t border-brand-accent/10 bg-brand-primary-soft/20 py-20 sm:py-24">
-    <div class="mx-auto max-w-3xl px-6">
-
-      <div class="text-center">
-        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
-          Questions
-        </p>
-
-        <h2 class="mt-2 font-serif text-3xl font-bold text-brand-accent sm:text-4xl">
-          Frequently Asked Questions
-        </h2>
-
-        <p class="mt-4 font-sans text-base text-brand-accent/65">
-          A few of the questions we hear most often when organizations are evaluating their recruiting options.
-        </p>
-      </div>
-
-
-      <div class="mt-10 space-y-3">
-
-        {faqs.map((faq) => (
-          <details class="group border border-brand-accent/10 bg-white px-5 py-5 sm:px-6">
-
-            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-base font-bold text-brand-accent">
-              <span>{faq.question}</span>
-
-              <span class="flex h-7 w-7 shrink-0 items-center justify-center border border-brand-accent/10 text-brand-primary transition group-open:bg-brand-primary group-open:text-white">
-                <svg
-                  class="h-3.5 w-3.5 transition-transform duration-200 group-open:rotate-180"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  aria-hidden="true"
-                >
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </span>
-            </summary>
-
-            <p class="mt-4 border-t border-brand-accent/10 pt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
-              {faq.answer}
-            </p>
-
-          </details>
-        ))}
-
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- =========================================================
-       6. CTA
-       ========================================================= -->
   <CTA />
-
 </Layout>
-```
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0');
+        entry.target.classList.add('animate-fade-up'); // or your CSS reveal class
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal-up').forEach((el) => observer.observe(el));
+</script>

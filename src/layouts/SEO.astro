@@ -15,9 +15,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 
 // If a title exists (About, Gallery, etc.), show "Page | Brand"
 // If no title exists (Home), show "Brand | Tagline"
-const siteTitle = title
-  ? `${title} | ${brandName}`
-  : `${brandName} | ${homepageTagline}`;
+const siteTitle = title ? `${title} | ${brandName}` : `${brandName} | ${homepageTagline}`;
 ---
 
 <!-- Primary -->

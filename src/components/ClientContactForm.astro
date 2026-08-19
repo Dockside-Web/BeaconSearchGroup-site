@@ -1,7 +1,7 @@
 ---
-import Button from './Button.astro'
+import Button from "./Button.astro";
 
-const formAction = 'https://usebasin.com/f/6e42e968a35e'
+const formAction = "https://usebasin.com/f/6e42e968a35e";
 ---
 
 <div class="relative">
@@ -12,8 +12,7 @@ const formAction = 'https://usebasin.com/f/6e42e968a35e'
       action={formAction}
       method="POST"
       enctype="multipart/form-data"
-      class="flex flex-col gap-5"
-    >
+      class="flex flex-col gap-5">
       <input type="hidden" name="_subject" value="New Candidate Profile Submission" />
 
       <div class="grid gap-5 sm:grid-cols-2">
@@ -119,7 +118,9 @@ const formAction = 'https://usebasin.com/f/6e42e968a35e'
         ></textarea>
       </div>
 
-      <div id="cf-error" class="hidden rounded-sm border border-red-200 bg-red-50 px-4 py-3 font-sans text-sm text-red-700">
+      <div
+        id="cf-error"
+        class="hidden rounded-sm border border-red-200 bg-red-50 px-4 py-3 font-sans text-sm text-red-700">
         Something went wrong sending your profile. Please try again or email us directly.
       </div>
 
@@ -134,71 +135,80 @@ const formAction = 'https://usebasin.com/f/6e42e968a35e'
   <!-- Success State -->
   <div id="cf-success" class="hidden flex-col items-center py-8 text-center">
     <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 text-brand-primary" aria-hidden="true">
-        <path d="M20 6 9 17l-5-5"/>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="h-7 w-7 text-brand-primary"
+        aria-hidden="true">
+        <path d="M20 6 9 17l-5-5"></path>
       </svg>
     </div>
     <h3 class="mt-4 font-serif text-xl font-bold text-brand-accent">
       Thanks — You're on Our Radar
     </h3>
     <p class="mt-2 max-w-sm font-sans text-sm leading-relaxed text-brand-accent/70">
-      A member of our team will review your background and reach out when relevant opportunities align with your target profile.
+      A member of our team will review your background and reach out when relevant opportunities
+      align with your target profile.
     </p>
     <button
       id="cf-reset"
       type="button"
-      class="mt-6 font-sans text-sm font-semibold text-brand-primary hover:underline"
-    >
+      class="mt-6 font-sans text-sm font-semibold text-brand-primary hover:underline">
       Submit another profile
     </button>
   </div>
 </div>
 
 <script>
-  const form = document.getElementById('candidate-form') as HTMLFormElement | null
-  const formWrap = document.getElementById('cf-form-wrap') as HTMLDivElement | null
-  const successPanel = document.getElementById('cf-success') as HTMLDivElement | null
-  const errorBanner = document.getElementById('cf-error') as HTMLDivElement | null
-  const submitLabel = document.getElementById('cf-submit-label') as HTMLSpanElement | null
-  const resetBtn = document.getElementById('cf-reset') as HTMLButtonElement | null
+  const form = document.getElementById("candidate-form") as HTMLFormElement | null;
+  const formWrap = document.getElementById("cf-form-wrap") as HTMLDivElement | null;
+  const successPanel = document.getElementById("cf-success") as HTMLDivElement | null;
+  const errorBanner = document.getElementById("cf-error") as HTMLDivElement | null;
+  const submitLabel = document.getElementById("cf-submit-label") as HTMLSpanElement | null;
+  const resetBtn = document.getElementById("cf-reset") as HTMLButtonElement | null;
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    if (!formWrap || !successPanel) return
+  form?.addEventListener("submit", async e => {
+    e.preventDefault();
+    if (!formWrap || !successPanel) return;
 
-    errorBanner?.classList.add('hidden')
-    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null
-    if (submitBtn) submitBtn.disabled = true
-    if (submitLabel) submitLabel.textContent = 'Sending...'
+    errorBanner?.classList.add("hidden");
+    const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
+    if (submitBtn) submitBtn.disabled = true;
+    if (submitLabel) submitLabel.textContent = "Sending...";
 
     try {
       const response = await fetch(form.action, {
-        method: 'POST',
+        method: "POST",
         body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      })
+        headers: { Accept: "application/json" }
+      });
 
       if (response.ok) {
-        formWrap.classList.add('hidden')
-        successPanel.classList.remove('hidden')
-        successPanel.classList.add('flex')
-        successPanel.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        form.reset()
+        formWrap.classList.add("hidden");
+        successPanel.classList.remove("hidden");
+        successPanel.classList.add("flex");
+        successPanel.scrollIntoView({ behavior: "smooth", block: "center" });
+        form.reset();
       } else {
-        errorBanner?.classList.remove('hidden')
+        errorBanner?.classList.remove("hidden");
       }
     } catch {
-      errorBanner?.classList.remove('hidden')
+      errorBanner?.classList.remove("hidden");
     } finally {
-      if (submitBtn) submitBtn.disabled = false
-      if (submitLabel) submitLabel.textContent = 'Submit Candidate Profile'
+      if (submitBtn) submitBtn.disabled = false;
+      if (submitLabel) submitLabel.textContent = "Submit Candidate Profile";
     }
-  })
+  });
 
-  resetBtn?.addEventListener('click', () => {
-    if (!formWrap || !successPanel) return
-    successPanel.classList.add('hidden')
-    successPanel.classList.remove('flex')
-    formWrap.classList.remove('hidden')
-  })
+  resetBtn?.addEventListener("click", () => {
+    if (!formWrap || !successPanel) return;
+    successPanel.classList.add("hidden");
+    successPanel.classList.remove("flex");
+    formWrap.classList.remove("hidden");
+  });
 </script>

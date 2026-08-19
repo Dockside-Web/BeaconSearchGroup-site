@@ -1,47 +1,43 @@
 ---
-// Button.astro
-// Polymorphic button: renders <a> when `href` is passed, otherwise <button>.
-// Ported from the original React Button component (variant/size logic preserved).
-
-type Variant = 'primary' | 'secondary' | 'outline' | 'outlineLight' | 'ghost'
-type Size = 'md' | 'lg'
+type Variant = "primary" | "secondary" | "outline" | "outlineLight" | "ghost";
+type Size = "md" | "lg";
 
 interface Props {
-  href?: string
-  variant?: Variant
-  size?: Size
-  type?: 'button' | 'submit' | 'reset'
-  class?: string
-  ariaLabel?: string
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+  ariaLabel?: string;
 }
 
 const {
   href,
-  variant = 'primary',
-  size = 'md',
-  type = 'button',
-  class: className = '',
-  ariaLabel,
-} = Astro.props
+  variant = "primary",
+  size = "md",
+  type = "button",
+  class: className = "",
+  ariaLabel
+} = Astro.props;
 
 const base =
-  'inline-flex items-center justify-center gap-2 font-sans font-semibold rounded-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-primary disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer'
+  "inline-flex items-center justify-center gap-2 font-sans font-semibold rounded-sm transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-brand-primary disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer";
 
 const variants: Record<Variant, string> = {
-  primary: 'bg-brand-secondary text-white hover:bg-brand-secondary/90 shadow-sm',
-  secondary: 'bg-brand-primary text-white hover:bg-brand-primary/90 shadow-sm',
+  primary: "bg-brand-secondary text-white hover:bg-brand-secondary/90 shadow-sm",
+  secondary: "bg-brand-primary text-white hover:bg-brand-primary/90 shadow-sm",
   outline:
-    'border border-brand-accent/25 text-brand-accent hover:border-brand-primary hover:text-brand-primary bg-white',
-  outlineLight: 'border border-white/35 text-white hover:bg-white/10',
-  ghost: 'text-brand-accent hover:text-brand-primary',
-}
+    "border border-brand-accent/25 text-brand-accent hover:border-brand-primary hover:text-brand-primary bg-white",
+  outlineLight: "border border-white/35 text-white hover:bg-white/10",
+  ghost: "text-brand-accent hover:text-brand-primary"
+};
 
 const sizes: Record<Size, string> = {
-  md: 'px-5 py-2.5 text-sm',
-  lg: 'px-7 py-3.5 text-[15px]',
-}
+  md: "px-5 py-2.5 text-sm",
+  lg: "px-7 py-3.5 text-[15px]"
+};
 
-const classes = [base, variants[variant], sizes[size], className].filter(Boolean).join(' ')
+const classes = [base, variants[variant], sizes[size], className].filter(Boolean).join(" ");
 ---
 
 {

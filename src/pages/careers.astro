@@ -18,13 +18,14 @@ interface Job {
   employmentType: string;
 }
 
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXu6o48-7QYKuKsM9FiX7bl2Y9U9fU41J1sK8WBff-GDKT9CjbQD8mLsiNNUAmvwKLCZ04QGoOmzTF/pub?gid=2068522996&single=true&output=csv";
+const CSV_URL =
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXu6o48-7QYKuKsM9FiX7bl2Y9U9fU41J1sK8WBff-GDKT9CjbQD8mLsiNNUAmvwKLCZ04QGoOmzTF/pub?gid=2068522996&single=true&output=csv";
 
 function parseCSV(text: string) {
   const lines = text.trim().split(/\r?\n/);
   if (lines.length < 2) return [];
 
-  const headers = lines[0].split(",").map(h => h.trim());
+  const headers = lines[0].split(",").map((h) => h.trim());
 
   return lines.slice(1).map((line, index) => {
     const values = line.match(/(?:\"[^\"]*\"|[^,])+/g) || [];
@@ -46,7 +47,7 @@ function parseCSV(text: string) {
       summary: entry["Summary"] || "",
       datePosted: entry["DatePosted"] || "",
       applyUrl: entry["ApplyURL"] || "",
-      employmentType: "Full-time"
+      employmentType: "Full-time",
     } as Job;
   });
 }
@@ -57,27 +58,30 @@ try {
   const res = await fetch(CSV_URL);
   const csvData = await res.text();
 
-  jobs = parseCSV(csvData).sort((a, b) => new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime());
+  jobs = parseCSV(csvData).sort(
+    (a, b) =>
+      new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime(),
+  );
 } catch (error) {
   console.error("Failed to fetch jobs CSV:", error);
 }
 
-const departments = ["All", ...Array.from(new Set(jobs.map(job => job.department))).sort()];
+const departments = [
+  "All",
+  ...Array.from(new Set(jobs.map((job) => job.department))).sort(),
+];
 const openCount = jobs.length;
 
 const pageTitle = "Careers";
-const metaDescription = "Open searches for manufacturers, engineering firms, and industrial operations from skilled trades to leadership roles.";
+const metaDescription =
+  "Open searches for manufacturers, engineering firms, and industrial operations from skilled trades to leadership roles.";
 ---
 
-<Layout
-  title={pageTitle}
-  description={metaDescription}>
+<Layout title={pageTitle} description={metaDescription}>
   <PageHero
     eyebrow="Careers"
-    title="Your next role should be a step, not a sideways move."
-    intro="We recruit for manufacturers, engineering firms, and industrial operations across the country, covering every level from skilled floor trades to front-office leadership."
-    image="https://cdn.magicpatterns.com/patterns/generated-images/977aaf88-fdf4-42e0-835e-09c130db7174.jpg"
-    imageAlt="Engineer walking through a manufacturing facility"
+    title="Make Your Next Move Count"
+    intro="Connecting skilled trades and executive leaders with top industrial firms nationwide."
   />
 
   <!-- ============ Open roles ============ -->
@@ -95,11 +99,7 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
       <div class="mt-8 flex flex-col gap-4">
         <div class="flex flex-col gap-4 sm:flex-row">
           <div class="relative flex-1">
-            <label
-              for="job-search"
-              class="sr-only"
-              >Search open roles</label
-            >
+            <label for="job-search" class="sr-only">Search open roles</label>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -110,11 +110,8 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
               stroke-linejoin="round"
               class="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-brand-accent/40"
               aria-hidden="true">
-              <circle
-                cx="11"
-                cy="11"
-                r="8"
-              ></circle><path d="m21 21-4.3-4.3"></path>
+              <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+              ></path>
             </svg>
             <input
               id="job-search"
@@ -124,15 +121,19 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
             />
           </div>
           <div class="sm:w-64">
-            <label
-              for="job-department"
-              class="sr-only"
+            <label for="job-department" class="sr-only"
               >Filter by category</label
             >
             <select
               id="job-department"
               class="w-full rounded-sm border border-brand-accent/15 bg-white px-4 py-3 font-sans text-sm text-brand-accent focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25">
-              {departments.map(dept => <option value={dept}>{dept === "All" ? "All categories" : dept}</option>)}
+              {
+                departments.map((dept) => (
+                  <option value={dept}>
+                    {dept === "All" ? "All categories" : dept}
+                  </option>
+                ))
+              }
             </select>
           </div>
         </div>
@@ -147,16 +148,12 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
       </p>
 
       <!-- Updated Job Cards List -->
-      <ul
-        id="job-list"
-        class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-        {jobs.map(job => <JobCard job={job} />)}
+      <ul id="job-list" class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
+        {jobs.map((job) => <JobCard job={job} />)}
       </ul>
 
       <!-- Load More Button Container -->
-      <div
-        id="load-more-container"
-        class="mt-8 flex justify-center">
+      <div id="load-more-container" class="mt-8 flex justify-center">
         <button
           id="load-more-btn"
           type="button"
@@ -178,17 +175,16 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
           stroke-linejoin="round"
           class="h-8 w-8 text-brand-accent/30"
           aria-hidden="true">
-          <rect
-            x="3"
-            y="8"
-            width="18"
-            height="12"
-            rx="2"
-          ></rect><path d="M3 12h4l2 3h6l2-3h4"></path><path d="M12 4v4"></path>
+          <rect x="3" y="8" width="18" height="12" rx="2"></rect><path
+            d="M3 12h4l2 3h6l2-3h4"></path><path d="M12 4v4"></path>
         </svg>
-        <h3 class="mt-4 font-serif text-xl font-bold text-brand-accent">No roles match that search</h3>
-        <p class="mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-accent/60">
-          Try a broader keyword or a different category. New roles open weekly, and many are filled before they are ever posted.
+        <h3 class="mt-4 font-serif text-xl font-bold text-brand-accent">
+          No roles match that search
+        </h3>
+        <p
+          class="mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-accent/60">
+          Try a broader keyword or a different category. New roles open weekly,
+          and many are filled before they are ever posted.
         </p>
         <button
           id="clear-filters"
@@ -205,7 +201,8 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
     aria-labelledby="candidate-cta"
     class="beacon-sweep overflow-hidden bg-brand-accent px-4 py-20 text-white sm:px-6 lg:px-8">
     <div class="relative mx-auto max-w-7xl">
-      <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
+      <div
+        class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
         <div class="max-w-xl">
           <h2
             id="candidate-cta"
@@ -213,7 +210,9 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
             Don't see your role posted?
           </h2>
           <p class="mt-4 font-sans text-base leading-relaxed text-white/70">
-            Most of our roles are filled from relationships, not postings. Send us your resume and we will keep you in mind as roles open in your discipline and geography.
+            Most of our roles are filled from relationships, not postings. Send
+            us your resume and we will keep you in mind as roles open in your
+            discipline and geography.
           </p>
           <p class="mt-6 font-sans text-sm leading-relaxed text-white/50">
             Prefer email? {
@@ -240,14 +239,24 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
 
 <script>
   const searchInput = document.getElementById("job-search") as HTMLInputElement;
-  const deptSelect = document.getElementById("job-department") as HTMLSelectElement;
+  const deptSelect = document.getElementById(
+    "job-department",
+  ) as HTMLSelectElement;
   const jobList = document.getElementById("job-list") as HTMLUListElement;
-  const jobItems = Array.from(jobList.querySelectorAll<HTMLLIElement>("[data-job]"));
+  const jobItems = Array.from(
+    jobList.querySelectorAll<HTMLLIElement>("[data-job]"),
+  );
   const countEl = document.getElementById("job-count") as HTMLParagraphElement;
   const noResults = document.getElementById("no-results") as HTMLDivElement;
-  const clearBtn = document.getElementById("clear-filters") as HTMLButtonElement | null;
-  const loadMoreBtn = document.getElementById("load-more-btn") as HTMLButtonElement | null;
-  const loadMoreContainer = document.getElementById("load-more-container") as HTMLDivElement | null;
+  const clearBtn = document.getElementById(
+    "clear-filters",
+  ) as HTMLButtonElement | null;
+  const loadMoreBtn = document.getElementById(
+    "load-more-btn",
+  ) as HTMLButtonElement | null;
+  const loadMoreContainer = document.getElementById(
+    "load-more-container",
+  ) as HTMLDivElement | null;
 
   const PAGE_SIZE = 10;
   let visibleLimit = PAGE_SIZE;
@@ -257,18 +266,19 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
     const dept = deptSelect.value;
 
     // First filter items based on search/department inputs
-    const matchingItems = jobItems.filter(item => {
+    const matchingItems = jobItems.filter((item) => {
       const matchesDept = dept === "All" || item.dataset.department === dept;
-      const matchesQuery = !query || (item.dataset.search ?? "").includes(query);
+      const matchesQuery =
+        !query || (item.dataset.search ?? "").includes(query);
       return matchesDept && matchesQuery;
     });
 
     // Hide all items first
-    jobItems.forEach(item => item.classList.add("hidden"));
+    jobItems.forEach((item) => item.classList.add("hidden"));
 
     // Show matching items up to the active limit
     const itemsToDisplay = matchingItems.slice(0, visibleLimit);
-    itemsToDisplay.forEach(item => item.classList.remove("hidden"));
+    itemsToDisplay.forEach((item) => item.classList.remove("hidden"));
 
     // Update UI counters and toggle visibility of controls
     const totalMatching = matchingItems.length;
@@ -315,9 +325,15 @@ const metaDescription = "Open searches for manufacturers, engineering firms, and
   applyFilters();
 
   // Reset handler for the form success panel
-  const resetBtn = document.getElementById("cf-reset") as HTMLButtonElement | null;
-  const formWrap = document.getElementById("cf-form-wrap") as HTMLDivElement | null;
-  const successPanel = document.getElementById("cf-success") as HTMLDivElement | null;
+  const resetBtn = document.getElementById(
+    "cf-reset",
+  ) as HTMLButtonElement | null;
+  const formWrap = document.getElementById(
+    "cf-form-wrap",
+  ) as HTMLDivElement | null;
+  const successPanel = document.getElementById(
+    "cf-success",
+  ) as HTMLDivElement | null;
 
   resetBtn?.addEventListener("click", () => {
     if (!formWrap || !successPanel) return;

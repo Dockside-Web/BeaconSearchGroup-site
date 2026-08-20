@@ -11,6 +11,7 @@ const engagementModels = [
     name: 'Executive Recruitment / Retained Search',
     shortName: 'Retained Search',
     tagline: 'Confidential, dedicated search for leadership-level hiring.',
+    needStatement: 'Fill a confidential leadership role',
     whatItIs:
       'An exclusive search partnership for executive and leadership-level roles with dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.',
     bestFor: [
@@ -25,8 +26,6 @@ const engagementModels = [
       'Candidate vetting and evaluation',
       'Offer and onboarding support',
     ],
-    engagement: 'Retained',
-    billing: 'Structured search milestones',
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
     imageAlt: 'Two executives in a private boardroom discussion',
@@ -37,6 +36,7 @@ const engagementModels = [
     name: 'Direct Hire Placement',
     shortName: 'Direct Hire',
     tagline: 'Permanent placement, sourced and vetted end to end.',
+    needStatement: 'Make a permanent hire for a hard-to-fill role',
     whatItIs:
       'Permanent placement for critical roles where we manage sourcing, screening, and offer acceptance. Fees are a percentage of first-year salary, payable only upon a successful hire.',
     bestFor: [
@@ -51,8 +51,6 @@ const engagementModels = [
       'Interview coordination',
       'Offer and acceptance support',
     ],
-    engagement: 'Contingency',
-    billing: 'Percentage of first-year salary upon successful hire',
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
     imageAlt:
@@ -64,6 +62,7 @@ const engagementModels = [
     name: 'Contract Staffing',
     shortName: 'Contract Staffing',
     tagline: 'Flexible technical talent for project work and coverage gaps.',
+    needStatement: 'Cover a project or seasonal gap',
     whatItIs:
       'Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire while compliance, insurance, and onboarding handled on our end.',
     bestFor: [
@@ -78,8 +77,6 @@ const engagementModels = [
       'Onboarding support',
       'Flexible project and workforce coverage',
     ],
-    engagement: 'Contract',
-    billing: 'Hourly',
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
     imageAlt:
@@ -91,6 +88,7 @@ const engagementModels = [
     name: 'Recruitment Process Outsourcing (RPO)',
     shortName: 'RPO',
     tagline: 'Your recruiting team, scaled up without adding headcount.',
+    needStatement: 'Scale my hiring without growing my team',
     whatItIs:
       'An embedded recruiting partnership for sustained or high-volume hiring. We run requisitions end to end under your employer brand, so hiring managers see consistent quality without carrying the full recruiting load internally.',
     bestFor: [
@@ -105,8 +103,6 @@ const engagementModels = [
       'Candidate screening and coordination',
       'Scalable recruiting capacity',
     ],
-    engagement: 'Embedded Partnership',
-    billing: 'Structured engagement',
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
     imageAlt:
@@ -118,6 +114,7 @@ const engagementModels = [
     name: 'Greenfield & Brownfield Recruitment',
     shortName: 'Project Recruiting',
     tagline: 'Project-based recruiting for facility launches and expansions.',
+    needStatement: 'Staff a new facility or expansion',
     whatItIs:
       'Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth that is built to hit aggressive, fixed hiring timelines from first hire to full staffing.',
     bestFor: [
@@ -132,8 +129,6 @@ const engagementModels = [
       'Coordinated hiring execution',
       'Recruiting against fixed project timelines',
     ],
-    engagement: 'Project-Based',
-    billing: 'Structured project engagement',
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg',
     imageAlt:
@@ -145,6 +140,7 @@ const engagementModels = [
     name: 'Recruiter for Hire',
     shortName: 'Recruiter for Hire',
     tagline: 'Hourly recruiting support, without a placement-fee commitment.',
+    needStatement: 'Add recruiting capacity, hourly',
     whatItIs:
       'Hourly support for sourcing, screening, interviewing, and hiring assistance with expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.',
     bestFor: [
@@ -159,8 +155,6 @@ const engagementModels = [
       'Interview and hiring assistance',
       'Flexible recruiting capacity',
     ],
-    engagement: 'Hourly Support',
-    billing: 'Hourly',
     image:
       'https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg',
     imageAlt:
@@ -191,48 +185,50 @@ const processSteps = [
   },
 ];
 
+const comparisonRows = [
+  { label: 'Leadership-level hire', values: ['yes', 'yes', '', '', '', ''] },
+  { label: 'Permanent placement', values: ['yes', 'yes', '', '', '', ''] },
+  { label: 'Temporary / project talent', values: ['', '', 'yes', '', 'yes', ''] },
+  { label: 'High-volume hiring', values: ['', '', '', 'yes', 'yes', ''] },
+  { label: 'New facility / expansion', values: ['', '', '', '', 'yes', ''] },
+  { label: 'Embedded recruiting team', values: ['', '', '', 'yes', '', ''] },
+  { label: 'Extra recruiting capacity', values: ['', '', '', 'yes', '', 'yes'] },
+  { label: 'Hourly engagement', values: ['', '', 'yes', '', '', 'yes'] },
+  { label: 'Passive candidate search', values: ['yes', 'yes', '', 'yes', 'yes', ''] },
+];
+
 const pageTitle = 'Services';
 const metaDescription =
   'Explore Beacon Search Group engagement models for executive search, direct hire, contract staffing, RPO, project recruiting, and recruiter-for-hire support.';
 ---
 
 <Layout title={pageTitle} description={metaDescription}>
+<PageHero
+  eyebrow="Our Services"
+  title="Flexible Hiring Solutions"
+  intro="From single executive searches to full plant staffing, we tailor our engagement to your needs."
+>
+  <div class="flex flex-wrap gap-3">
+    <a
+      href="/contact"
+      class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark"
+    >
+      Talk to Us About Hiring
+      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M5 12h14"></path>
+        <path d="m12 5 7 7-7 7"></path>
+      </svg>
+    </a>
 
-  <!-- =========================================================
-       HERO
-       ========================================================= -->
-  <PageHero
-    eyebrow="Our Services"
-    title="Six engagements. One standard of work."
-    intro="Retained search, direct hire, contract staffing, RPO, project-based recruiting, and recruiter-for-hire matched to the problem you actually have, whether that's one executive hire or an entire plant to staff."
-    image="https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg"
-    imageAlt="Automated production line inside a modern manufacturing plant"
-  >
-    <div class="flex flex-wrap gap-3">
-      <a
-        href="/contact"
-        class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark"
-      >
-        Talk to Us About Hiring
-        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </a>
+    <a
+      href="/careers"
+      class="inline-flex items-center gap-2 border border-white/40 px-6 py-3 font-sans text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
+    >
+      I'm looking for a role
+    </a>
+  </div>
+</PageHero>
 
-      <a
-        href="/careers"
-        class="inline-flex items-center gap-2 border border-white/40 px-6 py-3 font-sans text-sm font-semibold text-white transition hover:border-white hover:bg-white/10"
-      >
-        I'm looking for a role
-      </a>
-    </div>
-  </PageHero>
-
-
-  <!-- =========================================================
-       1. FIND THE RIGHT ENGAGEMENT
-       ========================================================= -->
   <section class="bg-white py-20 sm:py-24">
     <div class="mx-auto max-w-6xl px-6">
 
@@ -263,7 +259,7 @@ const metaDescription =
               </span>
 
               <span class="mt-1 block font-serif text-base font-bold leading-snug text-brand-accent">
-                {service.bestFor[0]}
+                {service.needStatement}
               </span>
 
               <span class="mt-2 inline-flex items-center gap-1.5 font-sans text-[10px] font-bold uppercase tracking-wider text-brand-primary">
@@ -281,30 +277,10 @@ const metaDescription =
     </div>
   </section>
 
-
-  <!-- =========================================================
-       2. ENGAGEMENT MODELS
-       ========================================================= -->
-  <section class="bg-brand-primary-soft/30 py-20 sm:py-28">
+  
+  <section class="bg-brand-primary-soft/30 py-10">
     <div class="mx-auto max-w-6xl px-6">
-
-      <div class="mx-auto max-w-2xl text-center">
-        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
-          How We Engage
-        </p>
-
-        <h2 class="mt-2 font-serif text-3xl font-bold tracking-tight text-brand-accent sm:text-4xl">
-          Recruiting built around the problem you're solving.
-        </h2>
-
-        <p class="mt-4 font-sans text-base leading-relaxed text-brand-accent/70">
-          Every engagement is structured differently, but the standard stays the same: understand the need, find the right people, and stay involved through the finish line.
-        </p>
-      </div>
-
-
       <div class="mt-16 space-y-16 sm:space-y-24">
-
         {engagementModels.map((service, index) => (
           <article
             id={service.slug}
@@ -379,9 +355,8 @@ const metaDescription =
                   </p>
                 </div>
 
-
                 <!-- What You Get -->
-                <div class="grid border-b border-brand-accent/10 sm:grid-cols-2">
+                <div class="grid sm:grid-cols-2">
 
                   <div class="border-b border-brand-accent/10 p-6 sm:border-b-0 sm:border-r sm:p-8">
                     <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
@@ -419,31 +394,6 @@ const metaDescription =
                   </div>
 
                 </div>
-
-
-                <!-- Engagement Structure -->
-                <div class="grid sm:grid-cols-2">
-
-                  <div class="border-b border-brand-accent/10 p-6 sm:border-b-0 sm:border-r sm:p-8">
-                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
-                      Engagement
-                    </p>
-
-                    <p class="mt-2 font-serif text-base font-bold text-brand-accent">
-                      {service.engagement}
-                    </p>
-                  </div>
-
-                  <div class="p-6 sm:p-8">
-                    <p class="font-sans text-[9px] font-semibold uppercase tracking-[0.18em] text-brand-accent/45">
-                      Billing Structure
-                    </p>
-
-                    <p class="mt-2 font-serif text-base font-bold text-brand-accent">
-                      {service.billing}
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </article>
@@ -472,8 +422,7 @@ const metaDescription =
 
     {/* DESKTOP GRID */}
     <div class="hidden grid-cols-4 lg:grid">
-      {
-        processSteps.map((s, i) => (
+      {processSteps.map((s, i) => (
           <div class="flex flex-col items-center text-center">
             {/* Step Number Circle (Brand Secondary / #f59242) */}
             <div class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-brand-secondary text-white shadow-md">
@@ -515,9 +464,7 @@ const metaDescription =
         style="left: 1.2rem; top: 2.6rem; bottom: 2.6rem;"
       >
       </div>
-
-      {
-        processSteps.map((s, i) => (
+      {processSteps.map((s, i) => (
           <div class="relative flex items-start gap-4 py-6">
             {/* Step Circle */}
             <div class="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-secondary text-white shadow-md">
@@ -564,11 +511,7 @@ const metaDescription =
   </div>
 </section>
 
-
-  <!-- =========================================================
-       4. COMPARE ENGAGEMENT MODELS
-       ========================================================= -->
-  <section class="bg-white py-20 sm:py-24">
+      <section class="hidden bg-white py-20 sm:py-24 md:block lg:block">
     <div class="mx-auto max-w-6xl px-6">
 
       <div class="mx-auto max-w-2xl text-center">
@@ -585,12 +528,10 @@ const metaDescription =
         </p>
       </div>
 
-
-      <!-- Desktop Comparison -->
-      <div class="mt-12 hidden overflow-hidden border border-brand-accent/10 lg:block">
+      <!-- Comparison Table -->
+      <div class="mt-12 overflow-hidden border border-brand-accent/10">
 
         <div class="grid grid-cols-7 bg-brand-accent text-white">
-
           <div class="p-4">
             <span class="font-sans text-[9px] font-bold uppercase tracking-wider text-white/50">
               Hiring Need
@@ -607,47 +548,9 @@ const metaDescription =
               </span>
             </a>
           ))}
-
         </div>
 
-        {[
-          {
-            label: 'Leadership-level hire',
-            values: ['yes', 'yes', '', '', '', ''],
-          },
-          {
-            label: 'Permanent placement',
-            values: ['yes', 'yes', '', '', '', ''],
-          },
-          {
-            label: 'Temporary / project talent',
-            values: ['', '', 'yes', '', 'yes', ''],
-          },
-          {
-            label: 'High-volume hiring',
-            values: ['', '', '', 'yes', 'yes', ''],
-          },
-          {
-            label: 'New facility / expansion',
-            values: ['', '', '', '', 'yes', ''],
-          },
-          {
-            label: 'Embedded recruiting team',
-            values: ['', '', '', 'yes', '', ''],
-          },
-          {
-            label: 'Extra recruiting capacity',
-            values: ['', '', '', 'yes', '', 'yes'],
-          },
-          {
-            label: 'Hourly engagement',
-            values: ['', '', 'yes', '', '', 'yes'],
-          },
-          {
-            label: 'Passive candidate search',
-            values: ['yes', 'yes', '', 'yes', 'yes', ''],
-          },
-        ].map((row, rowIndex) => (
+        {comparisonRows.map((row, rowIndex) => (
           <div
             class={`grid grid-cols-7 border-t border-brand-accent/10 ${
               rowIndex % 2 === 0 ? 'bg-brand-primary-soft/15' : 'bg-white'
@@ -670,50 +573,9 @@ const metaDescription =
                 )}
               </div>
             ))}
-
           </div>
         ))}
-
       </div>
-
-
-      <!-- Mobile Comparison -->
-      <div class="mt-10 space-y-3 lg:hidden">
-
-        {engagementModels.map((service) => (
-          <a
-            href={`#${service.slug}`}
-            class="group block border border-brand-accent/10 bg-brand-primary-soft/15 p-5 transition hover:border-brand-primary/30"
-          >
-            <div class="flex items-center gap-3">
-              <div class="flex-1">
-                <p class="font-sans text-[9px] font-semibold uppercase tracking-wider text-brand-secondary">
-                  {service.category}
-                </p>
-
-                <h3 class="font-serif text-base font-bold text-brand-accent">
-                  {service.shortName}
-                </h3>
-              </div>
-
-              <svg class="h-4 w-4 text-brand-primary transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                <path d="M5 12h14"></path>
-                <path d="m12 5 7 7-7 7"></path>
-              </svg>
-            </div>
-
-            <div class="mt-4 flex flex-wrap gap-2">
-              {service.bestFor.map((item) => (
-                <span class="border border-brand-accent/10 bg-white px-2.5 py-1.5 font-sans text-[10px] text-brand-accent/65">
-                  {item}
-                </span>
-              ))}
-            </div>
-          </a>
-        ))}
-
-      </div>
-
     </div>
   </section>
 

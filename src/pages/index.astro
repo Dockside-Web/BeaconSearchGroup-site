@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import Button from "../components/Button.astro";
 import CTASection from "../components/CTA.astro";
 import SectionHeader from "../components/UI/SectionHeader.astro";
+import { Image } from "astro:assets";
+import aaronAlexSitPhoto from "../assets/aaron-alex-sit.webp";
+import aaronAlexStandPhoto from "../assets/aaron-alex-stand.webp";
 
 interface StatItem {
   value: string;
@@ -139,7 +142,7 @@ const industries = [
   },
   {
     name: "Information Technology",
-    description: "Uniting Finance, Accounting, HR, IT, and Academics to drive financial performance, digital infrastructure, organizational growth, and strategic business leadership.",
+    description: "Supporting the systems that keep industrial operations running, from plant-floor infrastructure and ERP integrations to the architects and analysts driving digital transformation across the plant.",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
     imageAlt: "Server racks and digital cloud infrastructure",
     roles: ["Software Engineer", "Systems Architect", "IT Manager", "Data Analyst"]
@@ -156,7 +159,7 @@ const industries = [
 const differentiators = [
   {
     title: "A network, not a database",
-    body: "The people we place are usually not applying to anything. They are known to us — from years of working the same plants, the same conferences, and the same technical communities."
+    body: "The people we place are usually not applying to anything. They are known to us from years of working the same plants, the same conferences, and the same technical communities."
   },
   {
     title: "Consultative from the first call",
@@ -164,7 +167,7 @@ const differentiators = [
   },
   {
     title: "Industry depth, not generalists",
-    body: "Manufacturing, engineering, skilled trades, supply chain, quality, EHS, HR, and professional operations. That is the whole list, and it is deliberately short."
+    body: "We stay close to a focused set of markets instead of spreading thin across every industry that will take our call. That focus is what lets us move fast when a search opens up."
   },
   {
     title: "Any size, any volume",
@@ -187,7 +190,7 @@ const testimonials = [
   },
   {
     quote:
-      "I’ve worked with Aaron for nearly a decade with consistently positive results across technical, operations, and leadership roles. He excels at finding qualified passive candidates with niche skills by fishing where no one else is looking. Aaron’s professionalism, deep capability, and dedicated efforts make him a essential partner, and I recommend him every chance I get.",
+      "I’ve worked with Aaron for nearly a decade with consistently positive results across technical, operations, and leadership roles. He excels at finding qualified passive candidates with niche skills by fishing where no one else is looking. Aaron’s professionalism, deep capability, and dedicated efforts make him an essential partner, and I recommend him every chance I get.",
     title: "HR Manager",
     company: "Global Automotive Manufacturer"
   }
@@ -199,72 +202,80 @@ const metaDescription =
 
 <Layout description={metaDescription}>
   <section class="relative flex min-h-160 w-full items-center overflow-hidden bg-slate-950 text-white">
-    <!-- Fallback Background Gradient -->
-    <div class="absolute inset-0 bg-linear-to-r from-slate-950 via-slate-900 to-slate-800"></div>
 
-    <!-- Background Image -->
-    <img
-      src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=2000&q=80"
-      alt="Industrial engineer working in high-tech manufacturing facility"
-      class="absolute inset-0 h-full w-full object-cover object-right opacity-70 lg:object-center"
-      loading="eager"
-      decoding="async"
-    />
+  <!-- Desktop Image -->
+<div class="absolute inset-y-0 right-0 hidden h-full lg:block">
+  <Image
+    src={aaronAlexStandPhoto}
+    alt="The Owners of Beacon Search Group, Aaron and Alex, standing and talking about business"
+    class="h-full w-auto max-w-none object-contain"
+    style="mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%);"
+    loading="eager"
+    decoding="async"
+  />
+</div>
 
-    <!-- Desktop Gradient Overlay -->
-    <div
-      aria-hidden="true"
-      class="absolute inset-0 hidden w-3/4 bg-linear-to-r from-slate-950 via-slate-950/90 to-transparent lg:block">
-    </div>
+<!-- Desktop Gradient -->
+<div
+  aria-hidden="true"
+  class="absolute inset-0 hidden lg:block bg-linear-to-r from-slate-950 via-slate-950/70 via-45% to-transparent to-75%"
+></div>
 
-    <!-- Mobile & Tablet Gradient Overlay -->
-    <div
-      aria-hidden="true"
-      class="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/90 to-slate-950/50 lg:hidden">
-    </div>
+  <!-- Mobile / Tablet Image -->
+  <Image
+    src={aaronAlexStandPhoto}
+    alt="The Owners of Beacon Search Group, Aaron and Alex, standing and talking about business"
+    class="absolute inset-0 h-full w-full object-cover object-center lg:hidden"
+    loading="eager"
+    decoding="async"
+  />
 
-    <!-- Content Container -->
-    <div class="relative z-10 mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
-      <div class="max-w-2xl">
-        <!-- Tagline / Eyebrow -->
-        <p class="flex items-center gap-3 font-sans text-xs font-semibold uppercase tracking-widest text-brand-primary">
-          <span
-            aria-hidden="true"
-            class="h-px w-6 bg-brand-secondary"
-          ></span>
-          Specialized Recruiting &amp; Executive Search
-        </p>
+  <!-- Mobile / Tablet Overlay -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/90 to-slate-950/40 lg:hidden"
+  ></div>
 
-        <!-- Main Headline -->
-        <h1 class="mt-4 font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-          Lighting the Way In{" "}
-          <span class="text-brand-primary">Talent Innovation</span>
-        </h1>
+  <!-- Content -->
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-28">
+    <div class="max-w-2xl">
 
-        <!-- Subheadline / Body Text -->
-        <p class="mt-6 font-sans text-base leading-relaxed text-slate-200/90 sm:text-lg">
-          We place engineers, skilled tradespeople, and operations leaders with manufacturers and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
-        </p>
+      <p class="flex items-center gap-3 font-sans text-xs font-semibold uppercase tracking-widest text-brand-primary">
+        <span
+          aria-hidden="true"
+          class="h-px w-6 bg-brand-secondary"
+        ></span>
+        Specialized Recruiting &amp; Executive Search
+      </p>
 
-        <!-- CTAs Using Button.astro -->
-        <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
-          <Button
-            href="/contact"
-            variant="primary"
-            size="lg">
-            Find talent
-          </Button>
+      <h1 class="mt-4 font-serif text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+        Lighting the Way In{" "}
+        <span class="text-brand-primary">Talent Innovation</span>
+      </h1>
 
-          <Button
-            href="/careers"
-            variant="outlineLight"
-            size="lg">
-            Find a role
-          </Button>
-        </div>
+      <p class="mt-6 font-sans text-base leading-relaxed text-slate-200/90 sm:text-lg">
+        We place engineers, skilled tradespeople, and operations leaders with manufacturers and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center">
+        <Button
+          href="/contact"
+          variant="primary"
+          size="lg">
+          Find talent
+        </Button>
+
+        <Button
+          href="/careers"
+          variant="outlineLight"
+          size="lg">
+          Find a role
+        </Button>
       </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
   {/* ================= STATS BAR ================= */}
   <section
@@ -649,13 +660,13 @@ const metaDescription =
             aria-hidden="true"
             class="absolute -left-4 -top-4 hidden h-24 w-24 border-l-2 border-t-2 border-brand-secondary sm:block">
           </div>
-          <img
-            src="https://cdn.magicpatterns.com/patterns/generated-images/8eeabe6d-c66a-4049-b5a4-afc43f76dbe9.jpg"
-            alt="Two professionals reviewing plans on a tablet overlooking a production floor"
-            class="relative w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
+          <Image
+                src={aaronAlexStandPhoto}
+                alt="The Owners of Beacon Search Group, Aaron and Alex, standing and talking about business"
+                class="relative h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
           <div class="mt-4 grid grid-cols-2 gap-4">
             <img
               src="https://cdn.magicpatterns.com/patterns/generated-images/5526439e-9324-41e1-8079-0e0f553fad6f.jpg"
@@ -894,7 +905,6 @@ const metaDescription =
           t.setAttribute("aria-selected", isSelected ? "true" : "false");
 
           const indicator = t.querySelector(".active-indicator");
-          const number = t.querySelector(".service-number");
           const arrow = t.querySelector("svg");
 
           t.classList.toggle("bg-brand-primary-soft/30", isSelected);
@@ -903,11 +913,6 @@ const metaDescription =
           if (indicator) {
             indicator.classList.toggle("opacity-100", isSelected);
             indicator.classList.toggle("opacity-0", !isSelected);
-          }
-
-          if (number) {
-            number.classList.toggle("text-brand-primary", isSelected);
-            number.classList.toggle("text-brand-accent/20", !isSelected);
           }
 
           if (arrow) {
@@ -944,7 +949,6 @@ const metaDescription =
       const panel = container.querySelector<HTMLElement>(`[data-mobile-panel="${slug}"]`);
       const plusIcon = container.querySelector<SVGElement>(`[data-plus-icon="${slug}"]`);
       const minusIcon = container.querySelector<SVGElement>(`[data-minus-icon="${slug}"]`);
-      const number = container.querySelector<HTMLElement>(`[data-mobile-number="${slug}"]`);
 
       if (panel) {
         panel.classList.toggle("max-h-[900px]", isOpen);
@@ -955,11 +959,6 @@ const metaDescription =
 
       if (plusIcon) plusIcon.classList.toggle("hidden", isOpen);
       if (minusIcon) minusIcon.classList.toggle("hidden", !isOpen);
-
-      if (number) {
-        number.classList.toggle("text-brand-primary", isOpen);
-        number.classList.toggle("text-brand-accent/25", !isOpen);
-      }
     };
 
     mobileButtons.forEach(button => {

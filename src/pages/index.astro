@@ -201,25 +201,25 @@ const metaDescription =
 ---
 
 <Layout description={metaDescription}>
-  <section class="relative flex min-h-160 w-full items-center overflow-hidden bg-slate-950 text-white">
+  <section class="relative flex min-h-160 w-full items-center overflow-hidden bg-linear-to-br from-[#1e3850] via-[#1a3146] to-[#142638] text-white">
 
   <!-- Desktop Image -->
-<div class="absolute inset-y-0 right-0 hidden h-full lg:block">
-  <Image
-    src={aaronAlexStandPhoto}
-    alt="The Owners of Beacon Search Group, Aaron and Alex, standing and talking about business"
-    class="h-full w-auto max-w-none object-contain"
-    style="mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%);"
-    loading="eager"
-    decoding="async"
-  />
-</div>
+  <div class="absolute inset-y-0 right-0 hidden h-full lg:block">
+    <Image
+      src={aaronAlexStandPhoto}
+      alt="The Owners of Beacon Search Group, Aaron and Alex, standing and talking about business"
+      class="h-full w-auto max-w-none object-contain"
+      style="mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%);"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
 
-<!-- Desktop Gradient -->
-<div
-  aria-hidden="true"
-  class="absolute inset-0 hidden lg:block bg-linear-to-r from-slate-950 via-slate-950/70 via-45% to-transparent to-75%"
-></div>
+  <!-- Desktop Gradient -->
+  <div
+    aria-hidden="true"
+    class="absolute inset-0 hidden lg:block bg-linear-to-r from-[#1e3850] via-[#1a3146]/80 via-45% to-transparent to-75%"
+  ></div>
 
   <!-- Mobile / Tablet Image -->
   <Image
@@ -233,7 +233,7 @@ const metaDescription =
   <!-- Mobile / Tablet Overlay -->
   <div
     aria-hidden="true"
-    class="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/90 to-slate-950/40 lg:hidden"
+    class="absolute inset-0 bg-linear-to-t from-[#142638] via-[#1a3146]/90 to-[#1e3850]/50 lg:hidden"
   ></div>
 
   <!-- Content -->
@@ -253,7 +253,7 @@ const metaDescription =
         <span class="text-brand-primary">Talent Innovation</span>
       </h1>
 
-      <p class="mt-6 font-sans text-base leading-relaxed text-slate-200/90 sm:text-lg">
+      <p class="mt-6 font-sans text-base leading-relaxed text-[#b5cbde] sm:text-lg">
         We place engineers, skilled tradespeople, and operations leaders with manufacturers and industrial companies. From a single hard-to-fill role to a full plant ramp-up.
       </p>
 

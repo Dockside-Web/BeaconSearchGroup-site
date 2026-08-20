@@ -12,10 +12,10 @@ const { eyebrow, title, intro } = Astro.props;
 ---
 
 <section
-  class="relative overflow-hidden bg-gradient-to-br from-[#1e3850] via-[#1a3146] to-[#142638] py-16 md:py-24 text-white">
-  {/* Atmospheric Background Glows */}
+  class="relative overflow-hidden bg-linear-to-br from-[#1e3850] via-[#1a3146] to-[#142638] py-16 md:py-24 text-white">
+  {/* Atmospheric Background Glow - Left */}
   <div
-    class="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-[#50abe4]/20 blur-[120px]"
+    class="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-brand-primary/20 blur-[120px]"
     aria-hidden="true">
   </div>
 
@@ -26,7 +26,7 @@ const { eyebrow, title, intro } = Astro.props;
         {
           eyebrow && (
             <div class="mb-4">
-              <span class="font-mono text-xs font-bold uppercase tracking-[0.25em] text-[#f59242]">
+              <span class="font-mono text-xs font-bold uppercase tracking-[0.25em] text-brand-secondary">
                 {eyebrow}
               </span>
             </div>
@@ -55,12 +55,14 @@ const { eyebrow, title, intro } = Astro.props;
         }
       </div>
 
-      {/* RIGHT: Logo Watermark with Localized Beacon Glow */}
+      {
+        /* RIGHT: Logo Watermark (Sits absolute behind content on narrow screens, relative on desktop) */
+      }
       <div
-        class="pointer-events-none relative flex justify-end lg:col-span-5 h-full min-h-[16rem] lg:min-h-0">
-        {/* Localized amber/blue ambient glow anchored right behind the logo */}
+        class="pointer-events-none absolute inset-y-0 right-0 z-0 flex items-center justify-end pr-4 sm:pr-8 lg:relative lg:inset-auto lg:col-span-5 lg:p-0">
+        {/* Atmospheric Background Glow - Right */}
         <div
-          class="absolute right-4 top-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-gradient-to-tr from-[#50abe4]/20 via-[#f59242]/20 to-transparent blur-[90px]"
+          class="absolute right-0 top-1/2 -translate-y-1/2 h-80 w-80 rounded-full bg-brand-primary/20 blur-[120px]"
           aria-hidden="true">
         </div>
 
@@ -68,7 +70,7 @@ const { eyebrow, title, intro } = Astro.props;
           src={logoIcon}
           alt=""
           aria-hidden="true"
-          class="absolute right-[-10%] top-1/2 -translate-y-1/2 h-[120%] w-auto max-w-none object-contain opacity-[0.12] mix-blend-screen grayscale brightness-125 lg:right-0 lg:h-[135%]"
+          class="relative z-10 h-48 sm:h-56 lg:h-64 w-auto max-w-none object-contain opacity-[0.10] mix-blend-screen grayscale brightness-125 lg:opacity-[0.12]"
           loading="eager"
         />
       </div>

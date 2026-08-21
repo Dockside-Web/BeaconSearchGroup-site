@@ -180,19 +180,22 @@ const testimonials = [
     quote:
       "I’ve worked with Aaron as a trusted recruiting resource for over 18 years. What sets him apart is his unmatched character, work ethic, and commitment to integrity. He is exceptionally professional, knowledgeable about local industry, and dedicated to finding the exact skill fit for every open role. Aaron is always my very first call, and I highly recommend him and his team.",
     title: "HR Manager",
-    company: "Tier 1 Automotive Supplier"
+    company: "Tier 1 Automotive Supplier",
+    iconPath: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z M15 12a3 3 0 11-6 0 3 3 0 016 0z"
   },
   {
     quote:
       "Aaron isn't just a recruiter; he is a true partner who deeply understands the manufacturing industry. He asks the right questions, maintains clear communication throughout the search, and consistently delivers qualified candidates who fit both our technical needs and company culture. I wouldn\'t hesitate to recommend Aaron and his team to any organization.",
     title: "Director of Operations",
-    company: "Manufacturing Company"
+    company: "Manufacturing Company",
+    iconPath: "M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
   },
   {
     quote:
       "I’ve worked with Aaron for nearly a decade with consistently positive results across technical, operations, and leadership roles. He excels at finding qualified passive candidates with niche skills by fishing where no one else is looking. Aaron’s professionalism, deep capability, and dedicated efforts make him an essential partner, and I recommend him every chance I get.",
     title: "HR Manager",
-    company: "Global Automotive Manufacturer"
+    company: "Global Automotive Manufacturer",
+    iconPath: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z M3.6 9h16.8 M3.6 15h16.8 M11.5 3a17 17 0 000 18 M12.5 3a17 17 0 010 18"
   }
 ];
 
@@ -741,93 +744,52 @@ const metaDescription =
   </section>
 
   {/* ================= SOCIAL PROOF ================= */}
-  <section
-    class="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20"
-    aria-labelledby="proof-heading">
-    <div class="mx-auto max-w-4xl text-center">
-      <SectionHeader
-        eyebrow="Client Feedback"
-        title="What our clients say"
-        description="From growing manufacturers to Fortune 500 operations, the measure of a search partner is whether people call them back for the next role."
-        align="center"
-      />
+  <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 md:py-24" aria-labelledby="proof-heading">
+  <SectionHeader
+    eyebrow="Client Feedback"
+    title="What our clients say"
+    description="From growing manufacturers to Fortune 500 operations, the measure of a search partner is whether people call them back for the next role."
+    align="center"
+  />
 
-      {/* Interactive Container */}
-      <div
-        class="mt-10 lg:mt-12"
-        id="testimonial-widget">
-        {/* Tab Navigation using Button Component */}
-        <div class="mb-8 flex flex-wrap items-center justify-center gap-3">
-          {
-            testimonials.map((t, index) => (
-              <Button
-                type="button"
-                variant={index === 0 ? "primary" : "outline"}
-                size="md"
-                class="testimonial-tab-btn text-xs tracking-wide"
-                ariaLabel={`View testimonial from ${t.title}`}>
-                <span data-testimonial-btn-label={index}>{t.title}</span>
-              </Button>
-            ))
-          }
-        </div>
-
-        {/* Testimonial Display Stage */}
-        <div class="relative overflow-hidden border border-brand-accent/10 bg-brand-primary-soft/25 p-8 shadow-sm sm:p-12 md:p-14">
-          {/* Top Active Accent Line */}
-          <div
-            class="absolute left-0 top-0 h-1 w-full bg-brand-primary"
-            aria-hidden="true">
-          </div>
-
-          {/* Decorative Background Quote Number */}
+  <ul class="mt-12 grid gap-6 md:grid-cols-3">
+    {testimonials.map((testimonial) => (
+      <li class="flex flex-col border border-brand-accent/10 bg-white p-7 transition-colors duration-200 hover:border-brand-primary/50">
+        <svg
+          class="h-6 w-6 text-brand-primary"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        </svg>
+        <blockquote class="mt-5 flex-1">
+          <p class="font-serif text-[17px] leading-relaxed text-brand-accent/85">
+            “{testimonial.quote}”
+          </p>
+        </blockquote>
+        <footer class="mt-6 flex items-center gap-4 border-t border-brand-accent/10 pt-5">
           <span
             aria-hidden="true"
-            class="pointer-events-none absolute -right-4 -top-8 font-serif text-[160px] font-bold leading-none text-brand-accent/3 select-none">
-            ”
+            class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand-primary-soft text-brand-primary-dark"
+          >
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d={testimonial.iconPath} />
+            </svg>
           </span>
-
-          {
-            testimonials.map((t, index) => (
-              <div
-                data-testimonial-content={index}
-                class={`transition-all duration-300 ${index === 0 ? "block opacity-100" : "hidden opacity-0"}`}>
-                {/* Card Header: Icon & Badge */}
-                <div class="mb-6 flex items-center justify-between border-b border-brand-accent/10 pb-5">
-                  <div class="flex items-center gap-2">
-                    <svg
-                      class="h-6 w-6 text-brand-primary"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                    <span class="font-sans text-[11px] font-semibold uppercase tracking-wider text-brand-secondary">Verified Endorsement</span>
-                  </div>
-                  <span class="font-sans text-xs font-semibold text-brand-accent/40">
-                    0{index + 1} / 0{testimonials.length}
-                  </span>
-                </div>
-
-                {/* Quote Body */}
-                <blockquote class="relative z-10 text-left">
-                  <p class="font-serif text-lg leading-relaxed text-brand-accent/90">“{t.quote}”</p>
-                </blockquote>
-
-                {/* Attribution Footer */}
-                <div class="relative z-10 mt-8 flex items-center justify-between pt-6">
-                  <div class="text-left">
-                    <p class="font-serif text-lg font-bold text-brand-accent">{t.title}</p>
-                    <p class="font-sans text-xs font-medium text-brand-accent/60">{t.company}</p>
-                  </div>
-                </div>
-              </div>
-            ))
-          }
-        </div>
-      </div>
-    </div>
-  </section>
+          <div>
+            <p class="font-sans text-sm font-semibold text-brand-accent">
+              {testimonial.title}
+            </p>
+            <p class="mt-0.5 font-sans text-[13px] text-brand-accent/55">
+              {testimonial.company}
+            </p>
+          </div>
+        </footer>
+      </li>
+    ))}
+  </ul>
+</section>
 
   {/* ================= CTA SECTION ================= */}
   <CTASection />

@@ -1,72 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
-import JobCard from "../components/careers/JobCard.astro";
-import Button from "../components/Button.astro";
 import SectionHeader from "../components/UI/SectionHeader.astro";
 import { contactInfo } from "../data/site";
 import ClientContactForm from "../components/ClientContactForm.astro";
-
-interface Job {
-  slug: string;
-  title: string;
-  department: string;
-  location: string;
-  summary: string;
-  datePosted: string;
-  applyUrl: string;
-  employmentType: string;
-}
-
-const CSV_URL =
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXu6o48-7QYKuKsM9FiX7bl2Y9U9fU41J1sK8WBff-GDKT9CjbQD8mLsiNNUAmvwKLCZ04QGoOmzTF/pub?gid=2068522996&single=true&output=csv";
-
-function parseCSV(text: string) {
-  const lines = text.trim().split(/\r?\n/);
-  if (lines.length < 2) return [];
-
-  const headers = lines[0].split(",").map(h => h.trim());
-
-  return lines.slice(1).map((line, index) => {
-    const values = line.match(/(?:\"[^\"]*\"|[^,])+/g) || [];
-    const entry: Record<string, string> = {};
-
-    headers.forEach((header, i) => {
-      let val = values[i] ? values[i].trim() : "";
-      if (val.startsWith('"') && val.endsWith('"')) {
-        val = val.slice(1, -1).replace(/""/g, '"');
-      }
-      entry[header] = val;
-    });
-
-    return {
-      slug: `job-${index}`,
-      title: entry["Title"] || "",
-      department: entry["Department"] || "Uncategorized",
-      location: entry["Location"] || "",
-      summary: entry["Summary"] || "",
-      datePosted: entry["DatePosted"] || "",
-      applyUrl: entry["ApplyURL"] || "",
-      employmentType: "Full-time"
-    } as Job;
-  });
-}
-
-let jobs: Job[] = [];
-
-try {
-  const res = await fetch(CSV_URL);
-  const csvData = await res.text();
-
-  jobs = parseCSV(csvData).sort(
-    (a, b) => new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime()
-  );
-} catch (error) {
-  console.error("Failed to fetch jobs CSV:", error);
-}
-
-const departments = ["All", ...Array.from(new Set(jobs.map(job => job.department))).sort()];
-const openCount = jobs.length;
 
 const pageTitle = "Careers";
 const metaDescription =
@@ -94,6 +31,14 @@ const metaDescription =
 
       <div class="mt-8 flex flex-col gap-4">
         <div class="flex flex-col gap-4 sm:flex-row">
+          <div class="sm:w-64">
+            <label for="job-department" class="sr-only">Department</label>
+            <select
+              id="job-department"
+              class="w-full rounded-sm border border-brand-accent/15 bg-white px-4 py-3 font-sans text-sm text-brand-accent focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25">
+              <option value="All">All departments</option>
+            </select>
+          </div>
           <div class="relative flex-1">
             <label for="job-search" class="sr-only">Search open roles</label>
             <svg
@@ -114,33 +59,108 @@ const metaDescription =
               class="w-full rounded-sm border border-brand-accent/15 bg-white py-3 pl-11 pr-4 font-sans text-sm text-brand-accent placeholder:text-brand-accent/40 focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25"
             />
           </div>
-          <div class="sm:w-64">
-            <label for="job-department" class="sr-only">Filter by category</label>
-            <select
-              id="job-department"
-              class="w-full rounded-sm border border-brand-accent/15 bg-white px-4 py-3 font-sans text-sm text-brand-accent focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/25">
-              {
-                departments.map(dept => (
-                  <option value={dept}>{dept === "All" ? "All categories" : dept}</option>
-                ))
-              }
-            </select>
-          </div>
         </div>
       </div>
 
       <p id="job-count" aria-live="polite" class="mt-6 font-sans text-sm text-brand-accent/60">
-        Showing {openCount}
-        {openCount === 1 ? "role" : "roles"}
+        Loading roles&hellip;
       </p>
 
-      <!-- Updated Job Cards List -->
-      <ul id="job-list" class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
-        {jobs.map(job => <JobCard job={job} />)}
-      </ul>
+      <!-- Job cards are rendered client-side into this list -->
+      <ul id="job-list" class="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2"></ul>
+
+      <!-- Template for a single job card. Cloned and populated in the script below. -->
+      <template id="job-card-template">
+        <li
+          data-job
+          class="group relative flex flex-col justify-between rounded-md border border-slate-200/80 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-primary/50 hover:shadow-md">
+          <div>
+            <!-- Top Bar: Department & Status -->
+            <div class="flex items-center justify-between gap-2">
+              <span
+                data-field="department"
+                class="inline-flex items-center rounded-md bg-brand-primary/10 px-2.5 py-1 font-sans text-xs font-semibold uppercase tracking-wider text-brand-primary-dark">
+              </span>
+              <span
+                class="inline-flex items-center gap-1.5 font-sans text-xs font-semibold uppercase tracking-wider text-brand-secondary">
+                <span aria-hidden="true" class="h-2 w-2 rounded-full bg-brand-secondary"></span>
+                Open
+              </span>
+            </div>
+
+            <!-- Title -->
+            <h3
+              class="mt-3 font-serif text-xl font-bold text-brand-accent group-hover:text-brand-primary transition-colors">
+              <a
+                data-field="apply-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="after:absolute after:inset-0 focus:outline-none">
+                <span data-field="title"></span>
+              </a>
+            </h3>
+
+            <!-- Single Inline Sub-Header: Prominent Location + Meta Info -->
+            <div
+              class="mt-2 flex flex-wrap items-center gap-x-2.5 gap-y-1 font-sans text-xs text-slate-500">
+              <!-- Location -->
+              <span class="inline-flex items-center gap-1 text-sm font-semibold text-brand-accent">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="h-4 w-4 text-brand-primary shrink-0"
+                  aria-hidden="true">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span data-field="location"></span>
+              </span>
+
+              <span class="text-slate-300" aria-hidden="true">&bull;</span>
+
+              <!-- Employment Type -->
+              <span data-field="employment-type"></span>
+
+              <span class="text-slate-300" aria-hidden="true">&bull;</span>
+
+              <!-- Date Posted -->
+              <span>Posted <span data-field="date-posted"></span></span>
+            </div>
+
+            <!-- Summary -->
+            <p class="mt-3 font-sans text-sm leading-relaxed text-slate-600" data-field="summary">
+            </p>
+          </div>
+
+          <!-- Bottom CTA Area (Compact Footer) -->
+          <div class="mt-5 flex justify-end border-t border-slate-100 pt-3.5">
+            <span
+              class="inline-flex items-center gap-1.5 rounded-sm bg-brand-secondary/10 px-3.5 py-1.5 font-sans text-xs font-semibold text-brand-secondary group-hover:bg-brand-secondary group-hover:text-white transition-all">
+              View role
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5"
+                aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </span>
+          </div>
+        </li>
+      </template>
 
       <!-- Load More Button Container -->
-      <div id="load-more-container" class="mt-8 flex justify-center">
+      <div id="load-more-container" class="mt-8 hidden justify-center">
         <button
           id="load-more-btn"
           type="button"
@@ -219,10 +239,88 @@ const metaDescription =
 </Layout>
 
 <script>
+  const CSV_URL =
+    "https://docs.google.com/spreadsheets/d/e/2PACX-1vRXu6o48-7QYKuKsM9FiX7bl2Y9U9fU41J1sK8WBff-GDKT9CjbQD8mLsiNNUAmvwKLCZ04QGoOmzTF/pub?gid=2068522996&single=true&output=csv";
+
+  interface Job {
+    title: string;
+    active: string;
+    department: string;
+    location: string;
+    summary: string;
+    datePosted: string;
+    applyUrl: string;
+    employmentType: string;
+  }
+
+  function parseCSV(text: string): Job[] {
+    const lines = text.trim().split(/\r?\n/);
+    if (lines.length < 2) return [];
+
+    const headers = lines[0].split(",").map(h => h.trim());
+
+    return lines.slice(1).map((line, index) => {
+      const values = line.match(/(?:"[^"]*"|[^,])+/g) || [];
+      const entry: Record<string, string> = {};
+
+      headers.forEach((header, i) => {
+        let val = values[i] ? values[i].trim() : "";
+        if (val.startsWith('"') && val.endsWith('"')) {
+          val = val.slice(1, -1).replace(/""/g, '"');
+        }
+        entry[header] = val;
+      });
+
+      return {
+        title: entry["Title"] || "",
+        active: entry["Active"] || "N",
+        department: entry["Department"] || "Uncategorized",
+        location: entry["Location"] || "",
+        summary: entry["Summary"] || "",
+        datePosted: entry["DatePosted"] || "",
+        applyUrl: entry["ApplyURL"] || "",
+        employmentType: "Full-time"
+      };
+    });
+  }
+
+  function formatDate(dateStr: string): string {
+    if (!dateStr) return "Recently";
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+  }
+
+  const cardTemplate = document.getElementById("job-card-template") as HTMLTemplateElement;
+
+  function buildJobCard(job: Job): HTMLLIElement {
+    const fragment = cardTemplate.content.cloneNode(true) as DocumentFragment;
+    const card = fragment.querySelector("[data-job]") as HTMLLIElement;
+
+    const searchBlob =
+      `${job.title} ${job.location} ${job.department} ${job.summary}`.toLowerCase();
+    card.dataset.department = job.department;
+    card.dataset.search = searchBlob;
+
+    (card.querySelector('[data-field="department"]') as HTMLElement).textContent = job.department;
+    (card.querySelector('[data-field="title"]') as HTMLElement).textContent = job.title;
+    (card.querySelector('[data-field="location"]') as HTMLElement).textContent = job.location;
+    (card.querySelector('[data-field="employment-type"]') as HTMLElement).textContent =
+      job.employmentType;
+    (card.querySelector('[data-field="date-posted"]') as HTMLElement).textContent = formatDate(
+      job.datePosted
+    );
+    (card.querySelector('[data-field="summary"]') as HTMLElement).textContent = job.summary;
+
+    const applyLink = card.querySelector('[data-field="apply-link"]') as HTMLAnchorElement;
+    applyLink.href = job.applyUrl || "#";
+
+    return card;
+  }
+
   const searchInput = document.getElementById("job-search") as HTMLInputElement;
   const deptSelect = document.getElementById("job-department") as HTMLSelectElement;
   const jobList = document.getElementById("job-list") as HTMLUListElement;
-  const jobItems = Array.from(jobList.querySelectorAll<HTMLLIElement>("[data-job]"));
   const countEl = document.getElementById("job-count") as HTMLParagraphElement;
   const noResults = document.getElementById("no-results") as HTMLDivElement;
   const clearBtn = document.getElementById("clear-filters") as HTMLButtonElement | null;
@@ -231,49 +329,79 @@ const metaDescription =
 
   const PAGE_SIZE = 10;
   let visibleLimit = PAGE_SIZE;
+  let jobItems: HTMLLIElement[] = [];
 
   function applyFilters() {
     const query = searchInput.value.trim().toLowerCase();
     const dept = deptSelect.value;
 
-    // First filter items based on search/department inputs
     const matchingItems = jobItems.filter(item => {
       const matchesDept = dept === "All" || item.dataset.department === dept;
       const matchesQuery = !query || (item.dataset.search ?? "").includes(query);
       return matchesDept && matchesQuery;
     });
 
-    // Hide all items first
     jobItems.forEach(item => item.classList.add("hidden"));
 
-    // Show matching items up to the active limit
     const itemsToDisplay = matchingItems.slice(0, visibleLimit);
     itemsToDisplay.forEach(item => item.classList.remove("hidden"));
 
-    // Update UI counters and toggle visibility of controls
     const totalMatching = matchingItems.length;
     const currentlyShowing = itemsToDisplay.length;
 
     countEl.textContent = `Showing ${currentlyShowing} of ${totalMatching} ${totalMatching === 1 ? "role" : "roles"}`;
 
-    // Hide/show No Results panel
     noResults.classList.toggle("hidden", totalMatching !== 0);
     noResults.classList.toggle("flex", totalMatching === 0);
 
-    // Hide/show Load More button depending on remaining hidden matches
     if (loadMoreContainer) {
       const hasMore = currentlyShowing < totalMatching;
       loadMoreContainer.classList.toggle("hidden", !hasMore);
+      loadMoreContainer.classList.toggle("flex", hasMore);
     }
   }
 
-  // Load More button click listener
+  function populateDepartments(jobs: Job[]) {
+    const departments = ["All", ...Array.from(new Set(jobs.map(j => j.department))).sort()];
+    deptSelect.innerHTML = "";
+    departments.forEach(dept => {
+      const option = document.createElement("option");
+      option.value = dept;
+      option.textContent = dept === "All" ? "All departments" : dept;
+      deptSelect.appendChild(option);
+    });
+  }
+
+  async function loadJobs() {
+    try {
+      const res = await fetch(CSV_URL, { cache: "no-store" });
+      const csvText = await res.text();
+      const jobs = parseCSV(csvText)
+        .filter(
+          job =>
+            job.title.trim() !== "" &&
+            job.datePosted.trim() !== "" &&
+            job.active.toLowerCase() === "y"
+        )
+        .sort((a, b) => new Date(b.datePosted).getTime() - new Date(a.datePosted).getTime());
+
+      populateDepartments(jobs);
+      jobList.innerHTML = "";
+      jobItems = jobs.map(buildJobCard);
+      jobItems.forEach(item => jobList.appendChild(item));
+
+      applyFilters();
+    } catch (error) {
+      console.error("Failed to fetch jobs CSV:", error);
+      countEl.textContent = "Unable to load roles right now. Please refresh or check back shortly.";
+    }
+  }
+
   loadMoreBtn?.addEventListener("click", () => {
     visibleLimit += PAGE_SIZE;
     applyFilters();
   });
 
-  // Reset batch count when search query or department filter changes
   searchInput.addEventListener("input", () => {
     visibleLimit = PAGE_SIZE;
     applyFilters();
@@ -291,8 +419,7 @@ const metaDescription =
     applyFilters();
   });
 
-  // Initial application setup
-  applyFilters();
+  loadJobs();
 
   // Reset handler for the form success panel
   const resetBtn = document.getElementById("cf-reset") as HTMLButtonElement | null;

@@ -1,16 +1,17 @@
 ---
 import Button from "./Button.astro";
 import SectionHeader from "./UI/SectionHeader.astro";
+import { contactInfo } from "../data/site";
 
 interface Props {
   clientBasinId?: string;
   candidateBasinId?: string;
 }
 
-const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = Astro.props;
+const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = Astro.props;
 ---
 
-<div id="contact-form-container" class="w-full">
+<div id="contact-form-container" class="w-full max-w-4xl mx-auto">
   <SectionHeader
     eyebrow="Get in Touch"
     title="How can we help you?"
@@ -23,15 +24,20 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
       <button
         type="button"
         id="btn-client"
-        class="toggle-btn rounded-sm py-3 font-sans text-xs font-semibold uppercase tracking-wider transition-all sm:text-sm bg-white text-brand-accent shadow-sm cursor-pointer"
-        aria-selected="true">
+        role="tab"
+        aria-controls="client-form-wrap"
+        aria-selected="true"
+        class="toggle-btn rounded-sm py-3 font-sans text-xs font-semibold uppercase tracking-wider transition-all sm:text-sm bg-white text-brand-accent shadow-sm cursor-pointer">
         Company Looking to Hire
       </button>
       <button
         type="button"
         id="btn-candidate"
-        class="toggle-btn rounded-sm py-3 font-sans text-xs font-semibold uppercase tracking-wider transition-all sm:text-sm text-brand-accent/60 hover:text-brand-accent cursor-pointer"
-        aria-selected="false">
+        role="tab"
+        aria-controls="candidate-form-wrap"
+        aria-selected="false"
+        tabindex="-1"
+        class="toggle-btn rounded-sm py-3 font-sans text-xs font-semibold uppercase tracking-wider transition-all sm:text-sm text-brand-accent/60 hover:text-brand-accent cursor-pointer">
         Job Seeker / Candidate
       </button>
     </div>
@@ -42,7 +48,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
       FORM 1: CLIENT / COMPANY FORM
      ======================================================= */
   }
-  <div id="client-form-wrap" class="mt-8">
+  <div id="client-form-wrap" role="tabpanel" aria-labelledby="btn-client" class="mt-8">
     <form
       id="form-client"
       action={`https://usebasin.com/f/${clientBasinId}`}
@@ -157,10 +163,19 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
         ></textarea>
       </div>
 
+      {/* Client Error Card */}
       <div
         id="client-error"
-        class="hidden rounded-sm border border-red-300 bg-red-100/90 px-4 py-3 font-sans text-sm text-red-900">
-        Something went wrong submitting your request. Please try again or email us directly.
+        class="hidden rounded-lg border border-red-200 bg-red-50 p-4 text-red-800 shadow-sm items-start gap-3">
+        <svg class="h-5 w-5 text-red-600 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <p class="font-sans text-sm">
+          Something went wrong submitting your request. Please try again or email us directly.
+        </p>
       </div>
 
       <div class="mt-2 flex items-center justify-end">
@@ -171,11 +186,12 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
     </form>
   </div>
 
-  {/* Client Success State */}
-  <div id="client-success" class="hidden flex-col items-center py-12 text-center">
+  {/* Client Success Card */}
+  <div
+    id="client-success"
+    class="hidden flex-col items-center mt-8 rounded-lg border border-brand-accent/10 bg-white p-8 sm:p-12 text-center shadow-md">
     <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -205,7 +221,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
       FORM 2: JOB SEEKER / CANDIDATE FORM
      ======================================================= */
   }
-  <div id="candidate-form-wrap" class="mt-8 hidden">
+  <div id="candidate-form-wrap" role="tabpanel" aria-labelledby="btn-candidate" class="mt-8 hidden">
     <form
       id="form-candidate"
       action={`https://usebasin.com/f/${candidateBasinId}`}
@@ -318,10 +334,21 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
         ></textarea>
       </div>
 
+      {/* Candidate Error Card */}
       <div
         id="cand-error"
-        class="hidden rounded-sm border border-red-300 bg-red-100/90 px-4 py-3 font-sans text-sm text-red-900">
-        Something went wrong sending your profile. Please try again or email us directly.
+        class="hidden rounded-lg border border-red-200 bg-red-50 p-4 text-red-800 shadow-sm items-start gap-3">
+        <svg class="h-5 w-5 text-red-600 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+          <path
+            fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+            clip-rule="evenodd"></path>
+        </svg>
+        <p class="font-sans text-sm">
+          Something went wrong sending your profile. Please try again or email us directly at {
+            contactInfo.email
+          }.
+        </p>
       </div>
 
       <div class="mt-2 flex items-center justify-end">
@@ -332,11 +359,12 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
     </form>
   </div>
 
-  {/* Candidate Success State */}
-  <div id="candidate-success" class="hidden flex-col items-center py-12 text-center">
+  {/* Candidate Success Card */}
+  <div
+    id="candidate-success"
+    class="hidden flex-col items-center mt-8 rounded-lg border border-brand-accent/10 bg-white p-8 sm:p-12 text-center shadow-md">
     <div class="flex h-14 w-14 items-center justify-center rounded-full bg-brand-primary/10">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -349,7 +377,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
       </svg>
     </div>
     <h3 class="mt-4 font-serif text-2xl font-bold text-brand-accent">
-      Thanks — You're on Our Radar
+      Thanks! You're on Our Radar
     </h3>
     <p class="mt-2 max-w-md font-sans text-sm leading-relaxed text-brand-accent/70">
       A member of our team will review your background and reach out when relevant opportunities
@@ -387,30 +415,58 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
   const clientReset = document.getElementById("client-reset");
   const candReset = document.getElementById("cand-reset");
 
+  // Reset state helper
+  function resetFormView(
+    wrap: HTMLElement | null,
+    successPanel: HTMLElement | null,
+    errorPanel: HTMLElement | null
+  ) {
+    successPanel?.classList.add("hidden");
+    successPanel?.classList.remove("flex");
+    errorPanel?.classList.add("hidden");
+    wrap?.classList.remove("hidden");
+  }
+
   // Tab Switcher
   function setTab(active: "client" | "candidate") {
     if (active === "client") {
-      clientWrap?.classList.remove("hidden");
+      // Hide Candidate views completely
       candWrap?.classList.add("hidden");
+      candSuccess?.classList.add("hidden");
+      candSuccess?.classList.remove("flex");
 
+      // Show Client view
+      clientWrap?.classList.remove("hidden");
+
+      // Update Tab Styles & ARIA
       btnClient?.classList.add("bg-white", "text-brand-accent", "shadow-sm");
       btnClient?.classList.remove("text-brand-accent/60");
       btnClient?.setAttribute("aria-selected", "true");
+      btnClient?.removeAttribute("tabindex");
 
       btnCandidate?.classList.remove("bg-white", "shadow-sm");
       btnCandidate?.classList.add("text-brand-accent/60");
       btnCandidate?.setAttribute("aria-selected", "false");
+      btnCandidate?.setAttribute("tabindex", "-1");
     } else {
-      candWrap?.classList.remove("hidden");
+      // Hide Client views completely
       clientWrap?.classList.add("hidden");
+      clientSuccess?.classList.add("hidden");
+      clientSuccess?.classList.remove("flex");
 
+      // Show Candidate view
+      candWrap?.classList.remove("hidden");
+
+      // Update Tab Styles & ARIA
       btnCandidate?.classList.add("bg-white", "text-brand-accent", "shadow-sm");
       btnCandidate?.classList.remove("text-brand-accent/60");
       btnCandidate?.setAttribute("aria-selected", "true");
+      btnCandidate?.removeAttribute("tabindex");
 
       btnClient?.classList.remove("bg-white", "shadow-sm");
       btnClient?.classList.add("text-brand-accent/60");
       btnClient?.setAttribute("aria-selected", "false");
+      btnClient?.setAttribute("tabindex", "-1");
     }
   }
 
@@ -484,14 +540,10 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "6e42e968a35e" } = As
 
   // Bind Reset Listeners
   clientReset?.addEventListener("click", () => {
-    clientSuccess?.classList.add("hidden");
-    clientSuccess?.classList.remove("flex");
-    clientWrap?.classList.remove("hidden");
+    resetFormView(clientWrap, clientSuccess, clientError);
   });
 
   candReset?.addEventListener("click", () => {
-    candSuccess?.classList.add("hidden");
-    candSuccess?.classList.remove("flex");
-    candWrap?.classList.remove("hidden");
+    resetFormView(candWrap, candSuccess, candError);
   });
 </script>

@@ -2,6 +2,8 @@ export const contactInfo = {
   phone: "(419) 740-5531",
   phoneHref: "tel:+14197405531",
   email: "contact@beaconsearchgroup.com",
+  aaronEmail: "alaird@beaconsearchgroup.com",
+  alexEmail: "agundy@beaconsearchgroup.com",
   addressLines: ["100 S. Main Street, 2nd Floor", "Bowling Green, OH 43402"],
   hours: "Monday – Friday, 8:00am – 6:00pm ET"
 };

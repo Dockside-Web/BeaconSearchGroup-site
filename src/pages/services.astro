@@ -4,6 +4,14 @@ import CTA from '../components/CTA.astro';
 import Button from '../components/Button.astro';
 import PageHero from '../components/PageHero.astro';
 
+import {Image} from 'astro:assets';
+import aaronSitPhoto from "../assets/index/services/aaron-sit.webp";
+import contractStaffingPhoto from "../assets/index/services/contract-staffing.webp";
+import directHirePhoto from "../assets/index/services/direct-hire.webp";
+import executiveRecruitmentPhoto from "../assets/index/services/executive-recruitment.webp";
+import greenfieldPhoto from "../assets/index/services/greenfield.webp";
+import rpoPhoto from "../assets/index/services/rpo.webp";
+
 const engagementModels = [
   {
     slug: 'executive-recruitment',
@@ -27,7 +35,7 @@ const engagementModels = [
       'Offer and onboarding support',
     ],
     image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg',
+      executiveRecruitmentPhoto,
     imageAlt: 'Two executives in a private boardroom discussion',
   },
   {
@@ -52,7 +60,7 @@ const engagementModels = [
       'Offer and acceptance support',
     ],
     image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg',
+      directHirePhoto,
     imageAlt:
       'A hiring manager welcoming a newly placed employee in an industrial office',
   },
@@ -78,7 +86,7 @@ const engagementModels = [
       'Flexible project and workforce coverage',
     ],
     image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg',
+      contractStaffingPhoto,
     imageAlt:
       'Contract technicians working on a capital project inside a manufacturing plant',
   },
@@ -104,7 +112,7 @@ const engagementModels = [
       'Scalable recruiting capacity',
     ],
     image:
-      'https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg',
+      rpoPhoto,
     imageAlt:
       'A consultant leading a hiring process working session with an operations team',
   },
@@ -130,7 +138,7 @@ const engagementModels = [
       'Recruiting against fixed project timelines',
     ],
     image:
-      'https://images.unsplash.com/photo-1786744026718-a349e80a9533?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      greenfieldPhoto,
     imageAlt:
       'A guy cutting and measuring wooden planks in a new manufacturing facility under construction',
   },
@@ -156,7 +164,7 @@ const engagementModels = [
       'Flexible recruiting capacity',
     ],
     image:
-      'https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      aaronSitPhoto,
     imageAlt:
       'Recruiter reviewing resumes and conducting interviews in a modern office environment',
   },
@@ -252,7 +260,6 @@ const metaDescription =
             href={`#${service.slug}`}
             class="group flex min-h-28 items-center gap-4 border border-brand-accent/10 bg-brand-primary-soft/20 p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-primary/30 hover:bg-brand-primary-soft/40"
           >
-
             <span class="min-w-0 flex-1">
               <span class="block font-sans text-[9px] font-semibold uppercase tracking-[0.15em] text-brand-secondary">
                 I need to...
@@ -286,14 +293,12 @@ const metaDescription =
             id={service.slug}
             class="scroll-mt-24"
           >
-
             <!-- Service Header -->
             <div class="grid gap-8 lg:grid-cols-12 lg:items-end">
 
               <div class="lg:col-span-8">
                 <div class="flex items-center gap-3">
                   <span class="h-px w-12 bg-brand-primary/30"></span>
-
                   <span class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
                     {service.category}
                   </span>
@@ -329,7 +334,7 @@ const metaDescription =
 
               <!-- Image -->
               <div class="relative min-h-72 overflow-hidden lg:col-span-5">
-                <img
+                <Image
                   src={service.image}
                   alt={service.imageAlt}
                   class="h-full w-full object-cover"

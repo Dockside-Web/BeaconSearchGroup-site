@@ -4,8 +4,24 @@ import Button from "../components/Button.astro";
 import CTASection from "../components/CTA.astro";
 import SectionHeader from "../components/UI/SectionHeader.astro";
 import { Image } from "astro:assets";
-import aaronAlexSitPhoto from "../assets/aaron-alex-sit.webp";
 import aaronAlexStandPhoto from "../assets/aaron-alex-stand.webp";
+
+import aaronSitPhoto from "../assets/index/services/aaron-sit.webp";
+import contractStaffingPhoto from "../assets/index/services/contract-staffing.webp";
+import directHirePhoto from "../assets/index/services/direct-hire.webp";
+import executiveRecruitmentPhoto from "../assets/index/services/executive-recruitment.webp";
+import greenfieldPhoto from "../assets/index/services/greenfield.webp";
+import rpoPhoto from "../assets/index/services/rpo.webp";
+
+import aerospacePhoto from "../assets/index/industries/aerospace.webp";
+import engineeringPhoto from "../assets/index/industries/engineering.webp";
+import itPhoto from "../assets/index/industries/it.webp";
+import manufacturingPhoto from "../assets/index/industries/manufacturing.webp";
+import professionalServicesPhoto from "../assets/index/industries/professional-services.webp";
+
+import aaronAlexSitPhoto from "../assets/aaron-alex-sit.webp";
+import officeMeetingPhoto from "../assets/office-meeting.webp";
+import laptopPhoto from "../assets/laptop.webp";
 
 interface StatItem {
   value: string;
@@ -50,7 +66,7 @@ const services = [
     whatItIs:
       "An exclusive search partnership for executive and leadership-level roles, dedicated recruiting resources, a customized strategy, and access to passive candidates. 98% search success rate, white-glove and confidential from first call to start date.",
     bestFor: ["C-suite, VP, and director-level leadership hires", "Confidential replacements where discretion is essential", "Roles where the right person is not actively job-hunting"],
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/6d4a5a34-605a-47f6-8686-998d56a1f7ad.jpg",
+    image: executiveRecruitmentPhoto,
     imageAlt: "Two executives in a private boardroom discussion",
     badge: "Signature Service"
   },
@@ -65,7 +81,7 @@ const services = [
       "Companies replacing a key contributor or adding headcount",
       "Hard-to-fill roles where posting a job has not worked"
     ],
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/415753f7-452d-4984-b7aa-980617a5bea6.jpg",
+    image: directHirePhoto,
     imageAlt: "A hiring manager welcoming a newly placed employee in an industrial office"
   },
   {
@@ -76,7 +92,7 @@ const services = [
     whatItIs:
       "Experienced professionals on our payroll, ready for project demands, seasonal workloads, or interim leadership needs. Contractors can convert to direct hire with compliance, insurance, and onboarding handled on our end.",
     bestFor: ["Launches, shutdowns, capital projects, and seasonal ramps", "Leave coverage and interim technical leadership", "Teams that want to work with someone before committing"],
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/7fe8f4b2-9c3b-43ff-a757-d57c3614df66.jpg",
+    image: contractStaffingPhoto,
     imageAlt: "Contract technicians working on a capital project inside a manufacturing plant"
   },
   {
@@ -91,7 +107,7 @@ const services = [
       "Organizations that want recruiting handled under their own employer brand",
       "Companies scaling headcount quickly across multiple roles or sites"
     ],
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/135de5e8-f67b-4978-bc03-f88fe5091c1f.jpg",
+    image: rpoPhoto,
     imageAlt: "A consultant leading a hiring process working session with an operations team"
   },
   {
@@ -102,7 +118,7 @@ const services = [
     whatItIs:
       "Project-based recruiting for facility startups, plant expansions, acquisitions, and large-scale workforce growth built to hit aggressive, fixed hiring timelines from first hire to full staffing.",
     bestFor: ["New facility launches and plant startups", "Acquisitions and large-scale workforce growth initiatives", "Expansions with aggressive, fixed hiring timelines"],
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/a0dfae42-966e-4e92-8b70-76d85e3be4c2.jpg",
+    image: greenfieldPhoto,
     imageAlt: "Warehouse operations team managing inventory in a large distribution facility"
   },
   {
@@ -113,8 +129,8 @@ const services = [
     whatItIs:
       "Hourly support for sourcing, screening, interviewing, and hiring assistance with expert recruiting resources without a traditional placement-fee structure. Ideal for targeted or ongoing projects that flex with demand.",
     bestFor: ["Internal teams that need extra recruiting hands, not another agency fee", "Targeted hiring projects with a defined scope", "Ongoing support that flexes up or down with demand"],
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/f52c5b3a-ec06-48ab-8167-b0088a13037b.jpg",
-    imageAlt: "Automated production line inside a modern manufacturing plant"
+    image: aaronSitPhoto,
+    imageAlt: "Co-owner of Beacon Search Group, Aaron, sitting at a desk and reviewing candidate resumes",
   }
 ];
 
@@ -122,35 +138,35 @@ const industries = [
   {
     name: "Manufacturing",
     description: "From plant leadership and operations to skilled trades and production support, we build high-performing teams that drive productivity, quality, and immediate impact.",
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/f2b14831-d44e-4040-a984-08ce782d5f22.jpg",
+    image: manufacturingPhoto,
     imageAlt: "Manufacturing and plant floor operations",
     roles: ["Plant Manager", "Process Engineer", "Maintenance Manager", "Quality Manager"]
   },
   {
     name: "Engineering & Construction",
     description: "Connecting top talent across mechanical, electrical, manufacturing, quality, and structural disciplines, alongside skilled construction and project management professionals.",
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/8eeabe6d-c66a-4049-b5a4-afc43f76dbe9.jpg",
+    image: engineeringPhoto,
     imageAlt: "Engineering design and construction site management",
     roles: ["Mechanical Engineer", "Electrical Engineer", "Project Manager", "Controls Specialist"]
   },
   {
     name: "Aerospace & Defense",
     description: "Specializing in precision, compliance, and technical expertise required for highly regulated, mission-critical defense and aerospace environments.",
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/787727ef-fe41-4eea-9e31-12282675c434.jpg",
+    image: aerospacePhoto,
     imageAlt: "Aerospace manufacturing and defense engineering",
     roles: ["Quality Assurance Lead", "Manufacturing Engineer", "EHS Director", "Systems Engineer"]
   },
   {
     name: "Information Technology",
     description: "Supporting the systems that keep industrial operations running, from plant-floor infrastructure and ERP integrations to the architects and analysts driving digital transformation across the plant.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80",
+    image: itPhoto,
     imageAlt: "Server racks and digital cloud infrastructure",
     roles: ["Software Engineer", "Systems Architect", "IT Manager", "Data Analyst"]
   },
   {
     name: "Professional Services",
     description: "Uniting Finance, Accounting, HR, IT, and Academics to drive financial performance, digital infrastructure, organizational growth, and strategic business leadership.",
-    image: "https://cdn.magicpatterns.com/patterns/generated-images/5526439e-9324-41e1-8079-0e0f553fad6f.jpg",
+    image: professionalServicesPhoto,
     imageAlt: "Modern office environment and professional services team",
     roles: ["Financial Analyst", "HR Director", "C Suite", "Consultant"]
   }
@@ -214,6 +230,7 @@ const metaDescription =
       class="h-full w-auto max-w-none object-contain"
       style="mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 28%, black 100%);"
       loading="eager"
+      fetchpriority="high"
       decoding="async"
     />
   </div>
@@ -390,6 +407,7 @@ const metaDescription =
           ))
         }
       </nav>
+
       <div class="lg:hidden">
         <div class="border-t border-brand-accent/10">
           {
@@ -451,12 +469,11 @@ const metaDescription =
                   data-mobile-panel={service.slug}>
                   <div class="pb-6">
                     <div class="relative aspect-video overflow-hidden border border-brand-accent/10">
-                      <img
+                      <Image
                         src={service.image}
                         alt={service.imageAlt}
+                        loading={index === 0 ? "eager" : "lazy"}
                         class="h-full w-full object-cover"
-                        loading="lazy"
-                        decoding="async"
                       />
                       <div
                         aria-hidden="true"
@@ -508,8 +525,8 @@ const metaDescription =
 
       {
         /* =========================================================
-      DESKTOP SERVICE DETAIL PANEL
-      ========================================================= */
+        DESKTOP SERVICE DETAIL PANEL
+        ========================================================= */
       }
       <div class="hidden lg:col-span-8 lg:block">
         {
@@ -521,12 +538,12 @@ const metaDescription =
               <div class="relative overflow-hidden border border-brand-accent/10 bg-brand-primary-soft/25 shadow-xs">
                 {/* Image with overlay title */}
                 <div class="relative aspect-16/7 overflow-hidden">
-                  <img
+                  <Image
                     src={service.image}
                     alt={service.imageAlt}
-                    class="h-full w-full object-cover"
                     loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
+                    class="h-full w-full object-cover object-[50%_25%]"
                   />
 
                   <div
@@ -613,9 +630,11 @@ const metaDescription =
           }`}
         >
           <!-- Background Image -->
-          <img
+          <Image
             src={industry.image}
             alt={industry.imageAlt}
+            loading={index === 0 ? "eager" : "lazy"}
+            decoding="async"
             class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-[.is-active]:scale-105 not-[.is-active]:group-hover:scale-102"
           />
           
@@ -671,16 +690,16 @@ const metaDescription =
                 decoding="async"
               />
           <div class="mt-4 grid grid-cols-2 gap-4">
-            <img
-              src="https://cdn.magicpatterns.com/patterns/generated-images/5526439e-9324-41e1-8079-0e0f553fad6f.jpg"
-              alt="Maintenance technician servicing an industrial electrical panel"
-              class="aspect-4/3 w-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            <img
-              src="https://cdn.magicpatterns.com/patterns/generated-images/787727ef-fe41-4eea-9e31-12282675c434.jpg"
-              alt="Engineer reviewing a 3D CAD assembly on a monitor"
+            <Image
+                src={officeMeetingPhoto}
+                alt="Three workers of Beacon Search Group sitting at a table and discussing business"
+                class="aspect-4/3 w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            <Image
+              src={laptopPhoto}
+              alt="Two recruiters looking at a laptop and discussing a candidate search"
               class="aspect-4/3 w-full object-cover"
               loading="lazy"
               decoding="async"
@@ -795,17 +814,6 @@ const metaDescription =
   <CTASection />
 </Layout>
 
-<style>
-  /* Utility to hide scrollbars on mobile horizontal tab list */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-</style>
-
 <script>
   // 1. STAT COUNTERS
   function initCounters(): void {
@@ -913,10 +921,14 @@ const metaDescription =
       const minusIcon = container.querySelector<SVGElement>(`[data-minus-icon="${slug}"]`);
 
       if (panel) {
-        panel.classList.toggle("max-h-[900px]", isOpen);
-        panel.classList.toggle("opacity-100", isOpen);
-        panel.classList.toggle("max-h-0", !isOpen);
-        panel.classList.toggle("opacity-0", !isOpen);
+        if (isOpen) {
+          panel.classList.remove("max-h-0", "opacity-0");
+          panel.classList.add("max-h-[900px]", "opacity-100");
+        } else {
+          // Remove BOTH potential max-height classes so max-h-0 takes full effect
+          panel.classList.remove("max-h-[900px]", "max-h-225", "opacity-100");
+          panel.classList.add("max-h-0", "opacity-0");
+        }
       }
 
       if (plusIcon) plusIcon.classList.toggle("hidden", isOpen);
@@ -942,64 +954,49 @@ const metaDescription =
         });
 
         // Toggle clicked item
-        button.setAttribute("aria-expanded", isCurrentlyOpen ? "false" : "true");
-        toggleAccordionState(targetSlug, !isCurrentlyOpen);
+        const willOpen = !isCurrentlyOpen;
+
+        button.setAttribute("aria-expanded", willOpen ? "true" : "false");
+        toggleAccordionState(targetSlug, willOpen);
+
+        // On mobile, scroll the clicked card to the top of the viewport
+        if (willOpen && window.innerWidth < 1024) {
+          setTimeout(() => {
+            const card = button.closest<HTMLElement>(".mobile-service");
+
+            if (!card) return;
+
+            const offset = 96;
+            const cardTop = card.getBoundingClientRect().top + window.scrollY;
+
+            window.scrollTo({
+              top: cardTop - offset,
+              behavior: "smooth",
+            });
+          }, 350);
+        }
       });
     });
   }
 
-  function setupAccordion() {
-  const accordion = document.getElementById('industry-accordion');
-  if (!accordion) return;
+  // 3. INDUSTRIES ACCORDION
+  function setupAccordion(): void {
+    const accordion = document.getElementById("industry-accordion");
+    if (!accordion) return;
 
-  const cards = accordion.querySelectorAll<HTMLButtonElement>('[data-accordion-card]');
+    const cards = accordion.querySelectorAll<HTMLButtonElement>("[data-accordion-card]");
 
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      // 1. Deactivate all cards
-      cards.forEach(c => {
-        c.classList.remove('is-active');
-        c.setAttribute('aria-expanded', 'false');
-      });
-
-      // 2. Activate clicked card
-      card.classList.add('is-active');
-      card.setAttribute('aria-expanded', 'true');
-    });
-  });
-}
-
-  // 3. TESTIMONIALS WIDGET
-  function setupTestimonialWidget(): void {
-    const widget = document.getElementById("testimonial-widget");
-    if (!widget) return;
-
-    const buttons = widget.querySelectorAll<HTMLButtonElement>(".testimonial-tab-btn");
-    const contents = widget.querySelectorAll<HTMLElement>("[data-testimonial-content]");
-
-    buttons.forEach((btn, index) => {
-      btn.addEventListener("click", () => {
-        // Toggle button active variants
-        buttons.forEach((b, i) => {
-          const isSelected = i === index;
-
-          if (isSelected) {
-            b.classList.add("bg-brand-secondary", "text-white", "shadow-sm");
-            b.classList.remove("border", "border-brand-accent/25", "text-brand-accent", "bg-white", "hover:border-brand-primary", "hover:text-brand-primary");
-          } else {
-            b.classList.remove("bg-brand-secondary", "text-white", "shadow-sm");
-            b.classList.add("border", "border-brand-accent/25", "text-brand-accent", "bg-white", "hover:border-brand-primary", "hover:text-brand-primary");
-          }
+    cards.forEach(card => {
+      card.addEventListener("click", () => {
+        // 1. Deactivate all cards
+        cards.forEach(c => {
+          c.classList.remove("is-active");
+          c.setAttribute("aria-expanded", "false");
         });
 
-        // Toggle panels
-        contents.forEach((c, i) => {
-          const isMatch = i === index;
-          c.classList.toggle("block", isMatch);
-          c.classList.toggle("opacity-100", isMatch);
-          c.classList.toggle("hidden", !isMatch);
-          c.classList.toggle("opacity-0", !isMatch);
-        });
+        // 2. Activate clicked card
+        card.classList.add("is-active");
+        card.setAttribute("aria-expanded", "true");
       });
     });
   }
@@ -1008,11 +1005,8 @@ const metaDescription =
   function initAll(): void {
     initCounters();
     setupServiceTabs();
-    setupTestimonialWidget();
+    setupAccordion();
   }
-
-  setupAccordion();
-  document.addEventListener('astro:page-load', setupAccordion);
 
   document.addEventListener("DOMContentLoaded", initAll);
   document.addEventListener("astro:page-load", initAll);

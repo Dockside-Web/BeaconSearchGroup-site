@@ -1,0 +1,257 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTASection from "../../components/CTA.astro";
+import { contactInfo } from "../../data/site";
+
+const lastUpdatedDate = "August 31, 2026";
+
+const pageTitle = "Terms of Service";
+const metaDescription =
+  "View the official Terms of Use for " +
+  contactInfo.businessName +
+  ". Review our service agreement, user responsibilities, and legal conditions for our recruiting services.";
+---
+
+<Layout title={pageTitle} description={metaDescription}>
+  <PageHero eyebrow="Legal" title="Terms of Service" intro={contactInfo.businessNameLegal} />
+
+  <section class="bg-brand-primary-soft/20 py-20 sm:py-24">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="border border-brand-accent/10 bg-white">
+        <div class="space-y-10 p-7 sm:p-10">
+          <!-- Last Updated -->
+          <div class="border-l-4 border-brand-secondary bg-brand-primary-soft/30 p-4">
+            <p class="font-sans text-sm font-semibold text-brand-accent/70">
+              Last Updated: <span class="text-brand-secondary">{lastUpdatedDate}</span>
+            </p>
+          </div>
+
+          <!-- Introduction -->
+          <p class="font-sans text-sm leading-relaxed text-brand-accent/70">
+            These Terms of Service ("Terms") govern your access to and use of the {
+              contactInfo.businessNameLegal
+            } website (the "Site"). By accessing or using the Site, you agree to these Terms.
+          </p>
+
+          <!-- 1) Who We Are -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">1) Who We Are</h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              {contactInfo.businessNameLegal} ("{contactInfo.businessName}," "we," "us," or "our")
+              provides information about our recruiting and search services and a way to contact us.
+            </p>
+          </div>
+
+          <!-- 2) Eligibility -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">2) Eligibility</h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              The Site is intended for users age 13 and older. By using the Site, you represent that
+              you are at least 13 years old.
+            </p>
+          </div>
+
+          <!-- 3) Permitted Use -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">3) Permitted Use</h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              You may use the Site for lawful purposes and in accordance with these Terms. You agree
+              not to misuse the Site, interfere with its operation, probe or scan for
+              vulnerabilities, attempt to access non-public areas or systems, or use automated means
+              to access the Site in a way that degrades performance.
+            </p>
+          </div>
+
+          <!-- 4) Contacting Us -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">4) Contacting Us</h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              If you contact us through the Site, you agree that the information you provide is
+              accurate and that you have the right to provide it. You also agree not to submit
+              unlawful, infringing, or harmful content.
+            </p>
+          </div>
+
+          <!-- 5) No User-Generated Content -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              5) No User-Generated Content
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              The Site does not allow public posting or user-generated content (such as comments,
+              reviews, or uploads). Content on the Site is provided and maintained by {
+                contactInfo.businessName
+              }.
+            </p>
+          </div>
+
+          <!-- 6) No Client Relationship -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              6) No Client Relationship; Separate Service Agreement
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              Browsing the Site, submitting a resume or application, or contacting us does not
+              create a client relationship or obligate us to provide services. Any professional
+              recruiting or search services we provide (including scope, fees, timelines,
+              guarantees, and deliverables) are governed by a separate written service agreement
+              between {contactInfo.businessName} and the client. If there is any conflict between these
+              Terms and a signed service agreement, the service agreement controls.
+            </p>
+          </div>
+
+          <!-- 7) Intellectual Property -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              7) Intellectual Property (Site Content)
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              The Site and its content (including text, graphics, logos, and design) are owned by {
+                contactInfo.businessName
+              } or our licensors and are protected by applicable intellectual property laws. You may not
+              copy, reproduce, modify, distribute, or create derivative works from the Site without our
+              prior written permission, except as permitted by law.
+            </p>
+          </div>
+
+          <!-- 8) Third-Party Services and Links -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              8) Third-Party Services and Links
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              The Site may incorporate or link to third-party services (for example, Cloudflare for
+              hosting, Basin for form handling, and job board or application portals). Third-party
+              services are governed by their own terms and policies, and we are not responsible for
+              third-party content, practices, or availability.
+            </p>
+            <div class="mt-4 border border-brand-primary/20 bg-brand-primary-soft/30 p-4">
+              <p class="font-sans text-sm text-brand-accent/70">
+                <span class="font-semibold text-brand-accent">Note:</span> We use Cloudflare for website
+                hosting and Basin for contact form processing. Their terms can be found at
+                <a
+                  href="https://www.cloudflare.com/terms/"
+                  class="font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 hover:text-brand-primary-dark"
+                  target="_blank"
+                  rel="noopener noreferrer">cloudflare.com/terms</a
+                > and
+                <a
+                  href="https://usebasin.com/terms"
+                  class="font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 hover:text-brand-primary-dark"
+                  target="_blank"
+                  rel="noopener noreferrer">usebasin.com/terms</a
+                >.
+              </p>
+            </div>
+          </div>
+
+          <!-- 9) Disclaimers -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">9) Disclaimers</h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              The Site is provided on an "as is" and "as available" basis. We do not warrant that
+              the Site will be uninterrupted, error-free, or secure, or that any content is
+              accurate, complete, or current. Your use of the Site is at your own risk.
+            </p>
+          </div>
+
+          <!-- 10) Limitation of Liability -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              10) Limitation of Liability
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              To the maximum extent permitted by law, {contactInfo.businessName} will not be liable for
+              any indirect, incidental, special, consequential, or punitive damages, or any loss of profits,
+              revenue, data, or goodwill, arising out of or related to your use of (or inability to use)
+              the Site.
+            </p>
+          </div>
+
+          <!-- 11) Indemnification -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">11) Indemnification</h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              You agree to indemnify and hold harmless {contactInfo.businessName} from and against claims,
+              liabilities, damages, losses, and expenses (including reasonable attorneys' fees) arising
+              from your misuse of the Site or violation of these Terms.
+            </p>
+          </div>
+
+          <!-- 12) Termination / Restriction of Access -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              12) Termination / Restriction of Access
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              We may suspend or restrict your access to the Site (including blocking access from
+              certain IP addresses) if we reasonably believe you are violating these Terms,
+              attempting to harm the Site or other users, or using the Site in an unlawful manner.
+              This section does not limit any other rights or remedies we may have.
+            </p>
+          </div>
+
+          <!-- 13) Accessibility and Availability -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              13) Accessibility and Availability
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              We aim to keep the Site available and working for visitors, but we do not guarantee
+              uninterrupted access. The Site may be temporarily unavailable due to maintenance,
+              updates, hosting outages, or circumstances outside our control.
+            </p>
+          </div>
+
+          <!-- 14) Changes to the Site or Terms -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">
+              14) Changes to the Site or Terms
+            </h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              We may modify the Site or these Terms at any time. Updated Terms will be posted on
+              this page with a new "Last Updated" date. Continued use of the Site after changes
+              become effective means you accept the updated Terms.
+            </p>
+          </div>
+
+          <!-- 15) Governing Law -->
+          <div>
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">15) Governing Law</h2>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              These Terms are governed by and construed in accordance with applicable laws, without
+              regard to conflict-of-laws principles.
+            </p>
+          </div>
+
+          <!-- Contact Us -->
+          <div class="border border-brand-accent/10 bg-brand-primary-soft/20 p-6">
+            <h2 class="font-serif text-2xl font-bold text-brand-accent">Contact Us</h2>
+            <div class="mt-3 space-y-1 font-sans text-sm text-brand-accent/70">
+              <p class="font-semibold text-brand-accent">{contactInfo.businessNameLegal}</p>
+              <p>
+                Email:
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  class="font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 hover:text-brand-primary-dark"
+                  >{contactInfo.email}</a
+                >
+              </p>
+              <p>
+                Phone:
+                <a
+                  href={contactInfo.phoneHref}
+                  class="font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 hover:text-brand-primary-dark"
+                  >{contactInfo.phone}</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</Layout>

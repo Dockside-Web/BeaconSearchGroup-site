@@ -1,4 +1,6 @@
 export const contactInfo = {
+  businessName: "Beacon Search Group",
+  businessNameLegal: "Beacon Search Group LLP",
   phone: "(419) 740-5531",
   phoneHref: "tel:+14197405531",
   email: "contact@beaconsearchgroup.com",

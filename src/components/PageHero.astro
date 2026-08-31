@@ -12,7 +12,7 @@ const { eyebrow, title, intro } = Astro.props;
 ---
 
 <section
-  class="relative overflow-hidden bg-linear-to-br from-[#1e3850] via-[#1a3146] to-[#142638] py-16 md:py-24 text-white">
+  class="relative overflow-hidden bg-linear-to-br from-[#1e3850] via-[#1a3146] to-[#142638] py-10 md:py-14 text-white">
   {/* Atmospheric Background Glow - Left */}
   <div
     class="pointer-events-none absolute -left-32 -top-32 h-96 w-96 rounded-full bg-brand-primary/20 blur-[120px]"
@@ -25,7 +25,7 @@ const { eyebrow, title, intro } = Astro.props;
       <div class="relative z-10 lg:col-span-7 max-w-3xl">
         {
           eyebrow && (
-            <div class="mb-4">
+            <div class="mb-3">
               <span class="font-mono text-xs font-bold uppercase tracking-[0.25em] text-brand-secondary">
                 {eyebrow}
               </span>
@@ -34,13 +34,13 @@ const { eyebrow, title, intro } = Astro.props;
         }
 
         <h1
-          class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl leading-[1.08]">
+          class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl leading-[1.08]">
           {title}
         </h1>
 
         {
           intro && (
-            <p class="mt-6 text-lg leading-relaxed text-[#b5cbde] sm:text-xl font-normal">
+            <p class="mt-4 text-base leading-relaxed text-[#b5cbde] sm:text-lg font-normal">
               {intro}
             </p>
           )
@@ -48,7 +48,7 @@ const { eyebrow, title, intro } = Astro.props;
 
         {
           Astro.slots.has("default") && (
-            <div class="mt-8 flex flex-wrap items-center gap-4">
+            <div class="mt-6 flex flex-wrap items-center gap-4">
               <slot />
             </div>
           )
@@ -70,7 +70,7 @@ const { eyebrow, title, intro } = Astro.props;
           src={logoIcon}
           alt=""
           aria-hidden="true"
-          class="relative z-10 h-48 sm:h-56 lg:h-64 w-auto max-w-none object-contain opacity-[0.10] mix-blend-screen grayscale brightness-125 lg:opacity-[0.12]"
+          class="relative z-10 h-36 sm:h-44 lg:h-52 w-auto max-w-none object-contain opacity-[0.10] mix-blend-screen grayscale brightness-125 lg:opacity-[0.12]"
           loading="eager"
         />
       </div>

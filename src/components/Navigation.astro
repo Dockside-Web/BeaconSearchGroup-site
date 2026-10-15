@@ -26,7 +26,9 @@ function isActive(href: string) {
   <!-- Top utility bar -->
   <div class="hidden w-full bg-brand-accent md:block">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-8 py-2">
-      <p class="font-serif text-[13px] italic text-white/70">Lighting the Way In Talent Innovation</p>
+      <p class="font-serif text-[13px] italic text-white/70">
+        Lighting the Way In Talent Innovation
+      </p>
 
       <div class="flex items-center gap-4">
         <a
@@ -43,18 +45,10 @@ function isActive(href: string) {
             stroke-linecap="round"
             stroke-linejoin="round"
             aria-hidden="true">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect
-              x="2"
-              y="9"
-              width="4"
-              height="12"
-            ></rect>
-            <circle
-              cx="4"
-              cy="4"
-              r="2"
-            ></circle>
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+            ></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
           </svg>
         </a>
         <a
@@ -72,6 +66,26 @@ function isActive(href: string) {
             stroke-linejoin="round"
             aria-hidden="true">
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <a
+          href={socialLinks.instagram}
+          class="text-white/80 transition-colors hover:text-brand-primary"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram">
+          <svg
+            class="h-4 w-4"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
         </a>
         <a
@@ -98,27 +112,20 @@ function isActive(href: string) {
 
   <!-- Main row -->
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-    <a
-      href="/"
-      class="flex items-center gap-3"
-      aria-label="Home">
-      <Image
-        src={logo}
-        alt="Logo"
-        class="h-10 w-auto"
-      />
+    <a href="/" class="flex items-center gap-3" aria-label="Home">
+      <Image src={logo} alt="Logo" class="h-10 w-auto" />
     </a>
 
-    <nav
-      aria-label="Main"
-      class="hidden items-center gap-5 md:flex lg:gap-8">
+    <nav aria-label="Main" class="hidden items-center gap-5 md:flex lg:gap-8">
       {
         navItems.map(item => (
           <a
             href={item.href}
             aria-current={isActive(item.href) ? "page" : undefined}
             class={`relative font-sans text-sm font-medium transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-0.5 after:bg-brand-secondary after:transition-all lg:text-[15px] ${
-              isActive(item.href) ? "text-brand-accent after:w-full" : "text-brand-accent/70 hover:text-brand-accent after:w-0 hover:after:w-full"
+              isActive(item.href)
+                ? "text-brand-accent after:w-full"
+                : "text-brand-accent/70 hover:text-brand-accent after:w-0 hover:after:w-full"
             }`}>
             {item.label}
           </a>
@@ -159,24 +166,9 @@ function isActive(href: string) {
         stroke-linecap="round"
         stroke-linejoin="round"
         aria-hidden="true">
-        <line
-          x1="4"
-          y1="6"
-          x2="20"
-          y2="6"
-        ></line>
-        <line
-          x1="4"
-          y1="12"
-          x2="20"
-          y2="12"
-        ></line>
-        <line
-          x1="4"
-          y1="18"
-          x2="20"
-          y2="18"
-        ></line>
+        <line x1="4" y1="6" x2="20" y2="6"></line>
+        <line x1="4" y1="12" x2="20" y2="12"></line>
+        <line x1="4" y1="18" x2="20" y2="18"></line>
       </svg>
       <!-- Close icon (hidden by default) -->
       <svg
@@ -189,29 +181,15 @@ function isActive(href: string) {
         stroke-linecap="round"
         stroke-linejoin="round"
         aria-hidden="true">
-        <line
-          x1="18"
-          y1="6"
-          x2="6"
-          y2="18"
-        ></line>
-        <line
-          x1="6"
-          y1="6"
-          x2="18"
-          y2="18"
-        ></line>
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
     </button>
   </div>
 
   <!-- Mobile nav panel -->
-  <div
-    id="mobile-nav"
-    class="hidden border-t border-brand-accent/10 bg-white md:hidden">
-    <nav
-      aria-label="Mobile"
-      class="mx-auto max-w-7xl px-5 py-4 sm:px-8">
+  <div id="mobile-nav" class="hidden border-t border-brand-accent/10 bg-white md:hidden">
+    <nav aria-label="Mobile" class="mx-auto max-w-7xl px-5 py-4 sm:px-8">
       <ul class="flex flex-col">
         {
           navItems.map(item => (
@@ -226,20 +204,8 @@ function isActive(href: string) {
         }
       </ul>
       <div class="mt-5 flex flex-col gap-3">
-        <Button
-          href="/contact"
-          variant="primary"
-          size="lg"
-          class="w-full">
-          Start a Search
-        </Button>
-        <Button
-          href="/careers"
-          variant="outline"
-          size="lg"
-          class="w-full">
-          Find a Role
-        </Button>
+        <Button href="/contact" variant="primary" size="lg" class="w-full"> Start a Search </Button>
+        <Button href="/careers" variant="outline" size="lg" class="w-full"> Find a Role </Button>
         <a
           href={contactInfo.phoneHref}
           class="mt-1 inline-flex items-center justify-center gap-2 font-sans text-sm text-brand-accent/70">

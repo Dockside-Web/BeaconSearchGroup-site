@@ -58,7 +58,7 @@ const affiliations = [
   },
   {
     name: "Toledo Regional Chamber",
-    href: "https://www.bbb.org/us/oh/toledo/profile/chamber-of-commerce/toledo-regional-chamber-of-commerce-0422-6958",
+    href: "https://www.toledochamber.com/",
   },
 ];
 ---
@@ -81,7 +81,7 @@ const affiliations = [
     <div class="mx-auto max-w-6xl px-6">
 
       <div class="max-w-2xl">
-        <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+        <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary-dark">
           Meet the Founders
         </p>
 
@@ -111,15 +111,11 @@ const affiliations = [
             <!-- Content -->
             <div class="p-7 sm:p-8">
               <h3 class="font-serif text-2xl font-bold text-brand-accent sm:text-3xl">
-                {leader.name}
-
-                {leader.credentials && (
-                  <span class="ml-1 font-sans text-base font-semibold text-brand-accent/45">
-                    , {leader.credentials}
-                  </span>
+                {leader.name}{leader.credentials && (
+                  <span class="font-sans text-base font-semibold text-brand-accent/60">, {leader.credentials}</span>
                 )}
               </h3>
-              <p class="mt-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-secondary">
+              <p class="mt-1 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-secondary-dark">
                 {leader.title}
               </p>
 
@@ -194,14 +190,14 @@ const affiliations = [
   <!-- =========================================================
        OUR STORY
        ========================================================= -->
-  <section class="bg-brand-primary-soft/20 py-20 sm:py-24">
+  <section class="bg-white py-20 sm:py-24">
     <div class="mx-auto max-w-6xl px-6">
 
       <div class="grid gap-10 lg:grid-cols-12 lg:gap-16">
 
         <!-- Heading -->
         <div class="lg:col-span-4">
-          <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-secondary">
+          <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-secondary-dark">
             Our Story
           </p>
 
@@ -237,7 +233,7 @@ const affiliations = [
           <!-- Affiliations -->
           <div class="mt-9 border-t border-brand-accent/10 pt-7">
 
-            <p class="font-sans text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-accent/40">
+            <p class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-accent/60">
               Proud Members Of
             </p>
 
@@ -249,7 +245,7 @@ const affiliations = [
                     href={org.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="font-sans text-sm font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 transition-colors duration-200 hover:text-brand-primary-dark"
+                    class="font-sans text-sm font-semibold text-brand-secondary-dark underline decoration-brand-secondary-dark/30 underline-offset-4 transition-colors duration-200 hover:text-brand-primary-dark"
                   >
                     {org.name}
                   </a>

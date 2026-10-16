@@ -6,10 +6,15 @@
   --color-brand-primary-dark: #1f6491; /* Dark blue for readable text */
 
   --color-brand-secondary: #f59242;
+  --color-brand-secondary-dark: #aa5109; /* Dark orange for readable text on light backgrounds */
   --color-brand-accent: #202020;
 
-  --font-brand: "Source Sans 3", "system-ui", "sans-serif";
-  --font-headers: "Fraunces", "serif";
+  --font-brand: "Source Sans 3", system-ui, sans-serif;
+  --font-headers: "Fraunces", Georgia, serif;
+
+  /* Map Tailwind's font-sans / font-serif utilities to the brand fonts */
+  --font-sans: var(--font-brand);
+  --font-serif: var(--font-headers);
 }
 
 /* Force hover to work on all devices (especially laptops with touchscreens) */
@@ -21,7 +26,7 @@
     margin: 0;
     width: 100%;
     font-family: var(--font-brand);
-    color: var(--color-brand-primary);
+    color: var(--color-brand-accent);
   }
 
   h1,
@@ -31,5 +36,16 @@
   h5,
   h6 {
     font-family: var(--font-headers);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }

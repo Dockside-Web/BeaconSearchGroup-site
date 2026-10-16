@@ -27,7 +27,7 @@ function isActive(href: string) {
   <div class="hidden w-full bg-brand-accent md:block">
     <div class="mx-auto flex max-w-7xl items-center justify-between px-8 py-2">
       <p class="font-serif text-[13px] italic text-white/70">
-        Lighting the Way In Talent Innovation
+        Lighting the Way in Talent Innovation
       </p>
 
       <div class="flex items-center gap-4">
@@ -35,7 +35,8 @@ function isActive(href: string) {
           href={socialLinks.linkedin}
           class="text-white/80 transition-colors hover:text-brand-primary"
           target="_blank"
-          aria-label="LinkedIn">
+          rel="noopener noreferrer"
+          aria-label="Beacon Search Group on LinkedIn">
           <svg
             class="h-4 w-4"
             viewBox="0 0 24 24"
@@ -55,7 +56,8 @@ function isActive(href: string) {
           href={socialLinks.facebook}
           class="text-white/80 transition-colors hover:text-brand-primary"
           target="_blank"
-          aria-label="Facebook">
+          rel="noopener noreferrer"
+          aria-label="Beacon Search Group on Facebook">
           <svg
             class="h-4 w-4"
             viewBox="0 0 24 24"
@@ -73,7 +75,7 @@ function isActive(href: string) {
           class="text-white/80 transition-colors hover:text-brand-primary"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Instagram">
+          aria-label="Beacon Search Group on Instagram">
           <svg
             class="h-4 w-4"
             viewBox="0 0 24 24"
@@ -112,8 +114,8 @@ function isActive(href: string) {
 
   <!-- Main row -->
   <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-    <a href="/" class="flex items-center gap-3" aria-label="Home">
-      <Image src={logo} alt="Logo" class="h-10 w-auto" />
+    <a href="/" class="flex items-center gap-3">
+      <Image src={logo} alt="Beacon Search Group home" class="h-10 w-auto" />
     </a>
 
     <nav aria-label="Main" class="hidden items-center gap-5 md:flex lg:gap-8">
@@ -196,6 +198,7 @@ function isActive(href: string) {
             <li>
               <a
                 href={item.href}
+                aria-current={isActive(item.href) ? "page" : undefined}
                 class="block border-b border-brand-accent/10 py-3.5 font-serif text-lg font-bold text-brand-accent">
                 {item.label}
               </a>

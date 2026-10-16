@@ -1,20 +1,19 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import PageHero from "../components/PageHero.astro";
+import Button from "../components/Button.astro";
 
 const pageTitle = "Page Not Found";
 const metaDescription = "This page doesn't exist.";
 ---
 
-<Layout title={pageTitle} description={metaDescription}>
+<Layout title={pageTitle} description={metaDescription} noindex>
   <PageHero
     eyebrow="Error"
     title="Page Not Found"
     intro="The page you're looking for doesn't exist or has been moved.">
     <div class="flex flex-wrap gap-3">
-      <a
-        href="/contact"
-        class="inline-flex items-center gap-2 bg-brand-primary px-6 py-3 font-sans text-sm font-semibold text-white transition hover:bg-brand-primary-dark">
+      <Button href="/contact" variant="primary" size="lg">
         Talk to Us About Hiring
         <svg
           class="h-4 w-4"
@@ -27,12 +26,8 @@ const metaDescription = "This page doesn't exist.";
           aria-hidden="true">
           <path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path>
         </svg>
-      </a>
-      <a
-        href="/careers"
-        class="inline-flex items-center gap-2 border border-brand-accent/25 px-6 py-3 font-sans text-sm font-semibold text-brand-accent transition hover:border-brand-accent hover:bg-brand-accent/5">
-        I'm looking for a role
-      </a>
+      </Button>
+      <Button href="/careers" variant="outlineLight" size="lg">I'm Looking for a Role</Button>
     </div>
   </PageHero>
 </Layout>

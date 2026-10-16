@@ -13,6 +13,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
 <div id="contact-form-container" class="w-full max-w-4xl mx-auto">
   <SectionHeader
+    id="contact-heading"
     eyebrow="Get in Touch"
     title="How can we help you?"
     description="Whether you are an employer building a team or a professional looking for your next role, we are here to help."
@@ -60,7 +61,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
           <label for="client-name" class="block font-sans text-sm font-medium text-brand-accent">
-            Full Name <span class="text-brand-secondary">*</span>
+            Full Name <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="text"
@@ -74,7 +75,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
         <div>
           <label for="client-company" class="block font-sans text-sm font-medium text-brand-accent">
-            Company Name <span class="text-brand-secondary">*</span>
+            Company Name <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="text"
@@ -90,7 +91,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
           <label for="client-email" class="block font-sans text-sm font-medium text-brand-accent">
-            Work Email <span class="text-brand-secondary">*</span>
+            Work Email <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="email"
@@ -104,7 +105,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
         <div>
           <label for="client-phone" class="block font-sans text-sm font-medium text-brand-accent">
-            Phone Number <span class="text-brand-secondary">*</span>
+            Phone Number <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="tel"
@@ -120,7 +121,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
           <label for="client-roles" class="block font-sans text-sm font-medium text-brand-accent">
-            Role(s) Needed <span class="text-brand-secondary">*</span>
+            Role(s) Needed <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="text"
@@ -151,7 +152,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
       <div>
         <label for="client-message" class="block font-sans text-sm font-medium text-brand-accent">
-          Project / Search Details <span class="text-brand-secondary">*</span>
+          Project / Search Details <span class="text-brand-secondary-dark">*</span>
         </label>
         <textarea
           id="client-message"
@@ -166,8 +167,9 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       {/* Client Error Card */}
       <div
         id="client-error"
+        role="alert"
         class="hidden rounded-lg border border-red-200 bg-red-50 p-4 text-red-800 shadow-sm items-start gap-3">
-        <svg class="h-5 w-5 text-red-600 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+        <svg class="h-5 w-5 text-red-600 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path
             fill-rule="evenodd"
             d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
@@ -211,7 +213,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
     <button
       id="client-reset"
       type="button"
-      class="mt-6 font-sans text-sm font-semibold text-brand-primary hover:underline">
+      class="mt-6 font-sans text-sm font-semibold text-brand-primary-dark hover:underline">
       Submit another request
     </button>
   </div>
@@ -233,7 +235,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
           <label for="cand-name" class="block font-sans text-sm font-medium text-brand-accent">
-            Full Name <span class="text-brand-secondary">*</span>
+            Full Name <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="text"
@@ -247,7 +249,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
         <div>
           <label for="cand-email" class="block font-sans text-sm font-medium text-brand-accent">
-            Email Address <span class="text-brand-secondary">*</span>
+            Email Address <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="email"
@@ -263,7 +265,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
           <label for="cand-phone" class="block font-sans text-sm font-medium text-brand-accent">
-            Phone Number <span class="text-brand-secondary">*</span>
+            Phone Number <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="tel"
@@ -277,7 +279,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
         <div>
           <label for="cand-role" class="block font-sans text-sm font-medium text-brand-accent">
-            Target Role / Specialty <span class="text-brand-secondary">*</span>
+            Target Role / Specialty <span class="text-brand-secondary-dark">*</span>
           </label>
           <input
             type="text"
@@ -322,7 +324,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
       <div>
         <label for="cand-message" class="block font-sans text-sm font-medium text-brand-accent">
-          Message / Career Preferences<span class="text-brand-secondary">*</span>
+          Message / Career Preferences <span class="text-brand-secondary-dark">*</span>
         </label>
         <textarea
           id="cand-message"
@@ -337,8 +339,9 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       {/* Candidate Error Card */}
       <div
         id="cand-error"
+        role="alert"
         class="hidden rounded-lg border border-red-200 bg-red-50 p-4 text-red-800 shadow-sm items-start gap-3">
-        <svg class="h-5 w-5 text-red-600 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+        <svg class="h-5 w-5 text-red-600 shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path
             fill-rule="evenodd"
             d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
@@ -386,7 +389,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
     <button
       id="cand-reset"
       type="button"
-      class="mt-6 font-sans text-sm font-semibold text-brand-primary hover:underline">
+      class="mt-6 font-sans text-sm font-semibold text-brand-primary-dark hover:underline">
       Submit another profile
     </button>
   </div>
@@ -423,7 +426,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
   ) {
     successPanel?.classList.add("hidden");
     successPanel?.classList.remove("flex");
-    errorPanel?.classList.add("hidden");
+    errorPanel?.classList.replace("flex", "hidden");
     wrap?.classList.remove("hidden");
   }
 
@@ -484,7 +487,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
   ) {
     if (!form || !wrap || !successPanel) return;
 
-    errorPanel?.classList.add("hidden");
+    errorPanel?.classList.replace("flex", "hidden");
     const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null;
     if (submitBtn) submitBtn.disabled = true;
     if (labelEl) labelEl.textContent = "Sending...";
@@ -503,10 +506,10 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
         successPanel.scrollIntoView({ behavior: "smooth", block: "center" });
         form.reset();
       } else {
-        errorPanel?.classList.remove("hidden");
+        errorPanel?.classList.replace("hidden", "flex");
       }
     } catch {
-      errorPanel?.classList.remove("hidden");
+      errorPanel?.classList.replace("hidden", "flex");
     } finally {
       if (submitBtn) submitBtn.disabled = false;
       if (labelEl) labelEl.textContent = defaultLabel;

@@ -9,10 +9,12 @@ interface Props {
 
 const {
   services = [
-    { name: "Direct Hire Search", slug: "direct-hire" },
-    { name: "Executive Search", slug: "executive-search" },
-    { name: "Contract & Staffing", slug: "contract-staffing" },
-    { name: "RPO & Volume Hiring", slug: "rpo-volume" }
+    { name: "Executive Recruitment", slug: "executive-recruitment" },
+    { name: "Direct Hire Placement", slug: "direct-hire" },
+    { name: "Contract Staffing", slug: "contract-staffing" },
+    { name: "RPO", slug: "rpo" },
+    { name: "Greenfield & Brownfield", slug: "greenfield-brownfield" },
+    { name: "Recruiter for Hire", slug: "recruiter-for-hire" }
   ]
 } = Astro.props;
 
@@ -35,10 +37,10 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
       {/* Brand Column */}
       <div class="lg:pr-6">
         <div class="flex items-center gap-3">
-          <Image src={logo} alt="Beacon Search Group Logo" class="h-10 w-auto" />
+          <Image src={logo} alt="Beacon Search Group" class="h-10 w-auto" />
         </div>
         <p class="mt-5 font-serif text-lg italic leading-relaxed text-brand-primary">
-          Lighting the Way In Talent Innovation
+          Lighting the Way in Talent Innovation
         </p>
         <p class="mt-4 font-sans text-sm leading-relaxed text-white/60">
           Specialized recruiting and executive search for manufacturing, engineering, and industrial
@@ -50,7 +52,7 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
       <nav aria-labelledby="footer-services">
         <h2
           id="footer-services"
-          class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">
+          class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">
           Services
         </h2>
         <ul class="mt-5 space-y-3">
@@ -72,7 +74,7 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
       <nav aria-labelledby="footer-company">
         <h2
           id="footer-company"
-          class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">
+          class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">
           Company
         </h2>
         <ul class="mt-5 space-y-3">
@@ -92,7 +94,7 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
 
       {/* Get in Touch */}
       <div>
-        <h2 class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/45">
+        <h2 class="font-sans text-[11px] font-semibold uppercase tracking-[0.2em] text-white/60">
           Get in Touch
         </h2>
         <ul class="mt-5 space-y-3.5 font-sans text-sm text-white/80">
@@ -218,14 +220,14 @@ const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComp
 
     {/* Sub-footer */}
     <div class="flex flex-col gap-3 pt-8 sm:flex-row sm:items-center sm:justify-between">
-      <p class="font-sans text-xs text-white/45">
+      <p class="font-sans text-xs text-white/60">
         © {year} Beacon Search Group. All rights reserved.
       </p>
-      <p class="font-sans text-xs text-white/45">
+      <p class="font-sans text-xs text-white/60">
         <a href="/legal/privacy-policy/" class="transition-colors hover:text-brand-primary"
           >Privacy Policy</a
         >
-        <span class="mx-2 text-white/25">|</span>
+        <span class="mx-2 text-white/40">|</span>
         <a href="/legal/terms-of-service/" class="transition-colors hover:text-brand-primary"
           >Terms of Service</a
         >

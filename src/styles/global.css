@@ -9,8 +9,9 @@
   --color-brand-secondary-dark: #aa5109; /* Dark orange for readable text on light backgrounds */
   --color-brand-accent: #202020;
 
-  --font-brand: "Source Sans 3", system-ui, sans-serif;
-  --font-headers: "Fraunces", Georgia, serif;
+  /* Self-hosted via the Astro Fonts API (see astro.config.mjs) */
+  --font-brand: var(--font-source-sans), system-ui, sans-serif;
+  --font-headers: var(--font-fraunces), Georgia, serif;
 
   /* Map Tailwind's font-sans / font-serif utilities to the brand fonts */
   --font-sans: var(--font-brand);

@@ -481,6 +481,8 @@ const metaDescription =
                         loading={index === 0 ? "eager" : "lazy"}
                         decoding="async"
                         class="h-full w-full object-cover"
+                        widths={[640, 960, 1264]}
+                        sizes="100vw"
                       />
                       <div
                         aria-hidden="true"
@@ -554,6 +556,8 @@ const metaDescription =
                     loading={index === 0 ? "eager" : "lazy"}
                     decoding="async"
                     class="h-full w-full object-cover object-[50%_25%]"
+                    widths={[640, 960, 1264]}
+                    sizes="(min-width: 1280px) 820px, 66vw"
                   />
 
                   <div
@@ -643,6 +647,8 @@ const metaDescription =
           <Image
             src={industry.image}
             alt={industry.imageAlt}
+            widths={[480, 800, 1200]}
+            sizes="(min-width: 1024px) 700px, 100vw"
             loading={index === 0 ? "eager" : "lazy"}
             decoding="async"
             class="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-[.is-active]:scale-105 not-[.is-active]:group-hover:scale-102"
@@ -695,6 +701,8 @@ const metaDescription =
           <Image
                 src={aaronAlexSitPhoto}
                 alt="Beacon Search Group co-founders Aaron and Alex reviewing a candidate search on a laptop"
+                widths={[640, 1000, 1402]}
+                sizes="(min-width: 1280px) 600px, (min-width: 1024px) 45vw, 100vw"
                 class="relative h-full w-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -703,6 +711,8 @@ const metaDescription =
             <Image
                 src={officeMeetingPhoto}
                 alt="Three workers of Beacon Search Group sitting at a table and discussing business"
+                widths={[400, 800]}
+                sizes="(min-width: 1024px) 300px, 50vw"
                 class="aspect-4/3 w-full object-cover"
                 loading="lazy"
                 decoding="async"
@@ -710,6 +720,8 @@ const metaDescription =
             <Image
               src={laptopPhoto}
               alt="Two recruiters looking at a laptop and discussing a candidate search"
+              widths={[400, 800]}
+              sizes="(min-width: 1024px) 300px, 50vw"
               class="aspect-4/3 w-full object-cover"
               loading="lazy"
               decoding="async"

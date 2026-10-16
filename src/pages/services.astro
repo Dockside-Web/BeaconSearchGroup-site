@@ -331,6 +331,8 @@ const metaDescription =
                 <Image
                   src={service.image}
                   alt={service.imageAlt}
+                  widths={[640, 960, 1264]}
+                  sizes="(min-width: 1152px) 460px, (min-width: 1024px) 40vw, 100vw"
                   class="h-full w-full object-cover"
                   loading={index < 2 ? 'eager' : 'lazy'}
                   decoding="async"

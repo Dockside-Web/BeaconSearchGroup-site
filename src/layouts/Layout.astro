@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
 import SEO from "../layouts/SEO.astro";
+import { Font } from "astro:assets";
 
 interface Props {
   title?: string;
@@ -24,6 +25,8 @@ const { title, description, noindex = false } = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="theme-color" content="#202020" />
+    <Font cssVariable="--font-source-sans" preload={[{ weight: 400, style: "normal" }]} />
+    <Font cssVariable="--font-fraunces" preload={[{ style: "normal" }]} />
     <SEO title={title} description={description} noindex={noindex} />
   </head>
   <body>

@@ -102,6 +102,8 @@ const affiliations = [
               <Image
                 src={leader.image}
                 alt={leader.imageAlt}
+                widths={[600, 1000, 1320]}
+                sizes="(min-width: 1152px) 560px, (min-width: 1024px) 48vw, 100vw"
                 class="h-full w-full object-cover"
                 loading="lazy"
                 decoding="async"

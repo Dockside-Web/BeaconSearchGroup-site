@@ -1,0 +1,38 @@
+---
+/**
+ * Optional SMS opt-in checkbox (required for TCR / carrier 10DLC registration).
+ * Must stay unchecked by default and must NOT be required.
+ * Wording is the exact text supplied by the RingCentral SMS Compliance Team.
+ * If unchecked, the form submit handler sends sms_consent=No so Basin records both cases.
+ */
+interface Props {
+  idPrefix: string;
+}
+
+const { idPrefix } = Astro.props;
+const id = `${idPrefix}-sms-consent`;
+const linkClass =
+  "font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 hover:text-brand-primary-dark";
+---
+
+<div class="flex items-start gap-3">
+  <input
+    type="checkbox"
+    id={id}
+    name="sms_consent"
+    value="Yes"
+    class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer rounded-sm border-brand-accent/30 accent-brand-primary focus:ring-2 focus:ring-brand-primary/25"
+  />
+  <label for={id} class="font-sans text-xs leading-relaxed text-brand-accent/70">
+    By checking this box, I consent to receive conversational text messages from Beacon Search
+    Group Limited Liability Partnership. Reply STOP to opt-out; Reply HELP for support; Message and
+    data rates may apply; Messaging frequency may vary. Visit the <a
+      href="/legal/privacy-policy/"
+      target="_blank"
+      rel="noopener"
+      class={linkClass}>Privacy Policy</a
+    > and <a href="/legal/terms-of-service/" target="_blank" rel="noopener" class={linkClass}
+      >Terms of Service</a
+    > for more information.
+  </label>
+</div>

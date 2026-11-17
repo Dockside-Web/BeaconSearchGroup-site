@@ -4,7 +4,7 @@ import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTA.astro";
 import { contactInfo } from "../../data/site";
 
-const lastUpdatedDate = "August 31, 2026";
+const lastUpdatedDate = "November 17, 2026";
 
 const pageTitle = "Privacy Policy";
 const metaDescription =
@@ -57,6 +57,7 @@ const metaDescription =
                   <li>Role(s) needed</li>
                   <li>Hiring timeline</li>
                   <li>Project/search details, including headcount and role requirements</li>
+                  <li>SMS consent (if you choose to opt in to text messages)</li>
                 </ul>
                 <p class="mt-3 font-sans text-sm font-semibold text-brand-accent">
                   For Candidates:
@@ -72,6 +73,7 @@ const metaDescription =
                     Message content and career preferences, including desired location and
                     compensation
                   </li>
+                  <li>SMS consent (if you choose to opt in to text messages)</li>
                 </ul>
                 <div class="mt-4 border border-brand-primary/20 bg-brand-primary-soft/30 p-4">
                   <p class="font-sans text-sm text-brand-accent/70">
@@ -120,7 +122,17 @@ const metaDescription =
               <li>Provide and improve our Site and services</li>
               <li>Monitor Site performance, troubleshoot issues, and maintain security</li>
               <li>Understand aggregated usage trends to improve content and user experience</li>
+              <li>
+                Send conversational text messages related to your inquiry, if you have opted in to
+                receive them
+              </li>
             </ul>
+            <div class="mt-4 border border-brand-primary/20 bg-brand-primary-soft/30 p-4">
+              <p class="font-sans text-sm font-semibold text-brand-accent">
+                SMS consent will not be shared with third parties for marketing purposes. No mobile
+                opt-in information will be shared.
+              </p>
+            </div>
           </div>
 
           <!-- Cookies and Tracking -->
@@ -174,6 +186,11 @@ const metaDescription =
                 </p>
               </div>
             </div>
+            <p class="mt-4 font-sans text-sm leading-relaxed text-brand-accent/70">
+              All of the above categories exclude text messaging originator opt-in data and consent.
+              We do not sell, rent, release, or transfer your SMS consent or phone number to any third
+              party for marketing purposes.
+            </p>
           </div>
 
           <!-- Data Retention -->
@@ -209,6 +226,10 @@ const metaDescription =
               <li>
                 Opting out of certain analytics tracking (when supported), or blocking cookies in
                 your browser
+              </li>
+              <li>
+                Opting out of text messages at any time by replying STOP to any message we send. Reply
+                HELP for support.
               </li>
             </ul>
             <p class="mt-3 font-sans text-sm leading-relaxed text-brand-accent/70">
@@ -261,6 +282,15 @@ const metaDescription =
                   >{contactInfo.email}</a
                 >
               </p>
+              <p>
+                Phone:
+                <a
+                  href={contactInfo.phoneHref}
+                  class="font-semibold text-brand-secondary underline decoration-brand-secondary/30 underline-offset-4 hover:text-brand-primary-dark"
+                  >{contactInfo.phone}</a
+                >
+              </p>
+              {contactInfo.addressLines.map(line => <p>{line}</p>)}
             </div>
           </div>
         </div>

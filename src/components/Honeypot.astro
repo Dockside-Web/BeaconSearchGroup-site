@@ -1,0 +1,17 @@
+---
+/**
+ * Spam honeypot. Real visitors never see or fill this field; bots that fill every
+ * input do. Basin rejects submissions where `_botvortex` has a value, and the submit
+ * handlers also drop them client-side.
+ * Hidden off-screen (not display:none) so naive bots still treat it as a real field.
+ */
+---
+
+<div
+  aria-hidden="true"
+  style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+  <label>
+    Leave this field empty
+    <input type="text" name="_botvortex" tabindex="-1" autocomplete="off" value="" />
+  </label>
+</div>

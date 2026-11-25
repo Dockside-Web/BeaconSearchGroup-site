@@ -1,6 +1,7 @@
 ---
 import Button from "./Button.astro";
 import SmsConsent from "./SmsConsent.astro";
+import Honeypot from "./Honeypot.astro";
 
 const formAction = "https://usebasin.com/f/24c5dd43cfdf";
 ---
@@ -15,6 +16,7 @@ const formAction = "https://usebasin.com/f/24c5dd43cfdf";
       enctype="multipart/form-data"
       class="flex flex-col gap-5">
       <input type="hidden" name="_subject" value="New Candidate Profile Submission" />
+      <Honeypot />
 
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
@@ -187,6 +189,14 @@ const formAction = "https://usebasin.com/f/24c5dd43cfdf";
 
     try {
       const formData = new FormData(form);
+      // Honeypot filled = bot. Show success without sending anything.
+      if (String(formData.get("_botvortex") ?? "").trim()) {
+        formWrap.classList.add("hidden");
+        successPanel.classList.remove("hidden");
+        successPanel.classList.add("flex");
+        form.reset();
+        return;
+      }
       if (!formData.has("sms_consent")) formData.set("sms_consent", "No");
 
       const response = await fetch(form.action, {

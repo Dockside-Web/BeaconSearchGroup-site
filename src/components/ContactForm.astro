@@ -2,6 +2,7 @@
 import Button from "./Button.astro";
 import SectionHeader from "./UI/SectionHeader.astro";
 import SmsConsent from "./SmsConsent.astro";
+import Honeypot from "./Honeypot.astro";
 import { contactInfo } from "../data/site";
 
 interface Props {
@@ -58,6 +59,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       enctype="multipart/form-data"
       class="flex flex-col gap-5">
       <input type="hidden" name="_subject" value="New Client Hiring Inquiry" />
+      <Honeypot />
 
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
@@ -234,6 +236,7 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
       enctype="multipart/form-data"
       class="flex flex-col gap-5">
       <input type="hidden" name="_subject" value="New Candidate Profile Inquiry" />
+      <Honeypot />
 
       <div class="grid gap-5 sm:grid-cols-2">
         <div>
@@ -499,6 +502,14 @@ const { clientBasinId = "6e42e968a35e", candidateBasinId = "24c5dd43cfdf" } = As
 
     try {
       const formData = new FormData(form);
+      // Honeypot filled = bot. Show success without sending anything.
+      if (String(formData.get("_botvortex") ?? "").trim()) {
+        wrap.classList.add("hidden");
+        successPanel.classList.remove("hidden");
+        successPanel.classList.add("flex");
+        form.reset();
+        return;
+      }
       if (!formData.has("sms_consent")) formData.set("sms_consent", "No");
 
       const response = await fetch(form.action, {
